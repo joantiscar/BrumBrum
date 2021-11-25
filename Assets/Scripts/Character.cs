@@ -34,7 +34,7 @@ public class Character : MonoBehaviour
 
     int[] cooldowns;
 
-    private ImgHabilidades imgs;
+    private UICombate UICombate;
 
     void Start(){
         // TEST. En un futuro, constructor o algo
@@ -45,13 +45,13 @@ public class Character : MonoBehaviour
             Habilidades.EsquirlaDeHielo
         };
 
-        imgs = GameObject.Find("SkillsImages").GetComponent<ImgHabilidades>();
+        UICombate = GameObject.Find("SkillsImages").GetComponent<UICombate>();
     }
 
     public void EmpiezaTurno(){
         // Cambiamos todas las imagenes de las habilidades para adaptarse al personaje
         // ESTO SOLO SE DEBERIA HACER PARA NUESTROS PERSONAJES
-        imgs.cambiaImagenes(habilidadesDisponibles);
+        UICombate.cambiaImagenes(habilidadesDisponibles);
         
         // Al empezar el turno reseteamos los metros y restamos 1 a los cooldowns
         metrosRestantes = metrosMaximos;
