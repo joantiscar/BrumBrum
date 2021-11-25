@@ -14,7 +14,9 @@ public class Character : MonoBehaviour
     public int defense;
 	public int special_defense;
 	public int velocity;
-		
+	
+    public string nombre = "PJ";
+
     public string elemental_resistance;
     public int level;
     public int experience;
@@ -25,12 +27,17 @@ public class Character : MonoBehaviour
     public double metrosMaximos = 10.0f;
     public double metrosRestantes = 10.0f;
 
-    public Habilidad[] habilidadesDisponibles;
+    public int exp_when_killed = 100;
+
+
+    Habilidad[] habilidadesDisponibles;
+
     int[] cooldowns;
 
     private ImgHabilidades imgs;
 
     void Start(){
+        // TEST. En un futuro, constructor o algo
         cooldowns = new int[] { 0, 0, 0 };
         habilidadesDisponibles = new Habilidad[] {
             Habilidades.BolaDeFuego,
@@ -44,6 +51,7 @@ public class Character : MonoBehaviour
     public void EmpiezaTurno(){
         imgs.cambiaImagenes(habilidadesDisponibles);
         
+        // Al empezar el turno reseteamos los metros y restamos 1 a los cooldowns
         metrosRestantes = metrosMaximos;
 
         for(int i = 0; i < cooldowns.Length; i++){
@@ -56,6 +64,7 @@ public class Character : MonoBehaviour
     }
 
     public bool Moverse(double distancia){
+        // Devuelve true si puede moverse la distancia que se puede y la resta de los metros restantes
         bool puedeMoverse = distancia <= metrosRestantes;
         if (puedeMoverse){
             metrosRestantes -= distancia;
@@ -65,19 +74,25 @@ public class Character : MonoBehaviour
     }
 
     public void Atacar(){
+        // Demomento la habilidad seleccionada esta hardcoded. En un futuro vendra de la UI
+        // El objetivo tambien esta hardcoded, en un futuro vendra de la UI tambien
+        // Hay que mirar como hacer los hechizos de area (si los metemos)
         int habilidadSeleccionada = 0;
-        if (this.cooldowns[habilidadSeleccionada] == 0){
+        Habilidad habilidad = habilidadesDisponibles[habilidadSeleccionada];
+        if (this.cooldowns[habilidadSeleccionada] == 0){ // Si la habilidad desta disponible...
             Character a = objetivo.GetComponent<Character>();
-            if (Vector3.Distance(this.transform.position, objetivo.transform.position) <= habilidadesDisponibles[habilidadSeleccionada].range){
-                Habilidades.lanzar(this, a, habilidadesDisponibles[habilidadSeleccionada]);
-                cooldowns[habilidadSeleccionada] += habilidadesDisponibles[habilidadSeleccionada].cooldown;
-                Debug.Log("Lanzando habilidad");
+            // Miramos si estamos a rango de la habilidad
+            if (Vector3.Distance(this.transform.position, objetivo.transform.position) <= habilidad.range){
+                // Lanzamos la habilidad y la ponemos en cooldown
+                Habilidades.lanzar(this, a, habilidad);
+                cooldowns[habilidadSeleccionada] += habilidad.cooldown;
+                Debug.Log("Lanzando habilidad " + habilidad.name);
             }else{
-                Debug.Log("Fuera de rango");
+                Debug.Log(habilidad.name + " fuera de rango");
             }
             
         }else{
-            Debug.Log("Skill en cooldown");
+            Debug.Log("Habilidad en enfriamiento");
         }
 
     }
@@ -101,21 +116,31 @@ public class Character : MonoBehaviour
     }
 
 
-
-    public void is_hit(int enemy_attack)
-    {
-        string element = "fire";
-        hit(enemy_attack, element);
-    }
-
-    public bool hit(int damage, string element)
+    public bool takeHit(int damage, string element)
     {
         if (defense < damage) damage -= defense;
         if (elemental_resistance == element) damage /= 2;
         hp -= damage;
+        if (hp <= 0){
+            morir();
+        }
+        return true;
+    }
+    public bool takeHitSpecial(int damage, string element)
+    {
+        if (special_defense < damage) damage -= special_defense;
+        if (elemental_resistance == element) damage /= 2;
+        hp -= damage;
+        if (hp <= 0){
+            morir();
+        }
         return true;
     }
 
+
+    public void morir(){
+        Debug.Log(nombre + ": Aaaaaa que me muero.");
+    }
 
     public void take_xp(int xp)
     {
