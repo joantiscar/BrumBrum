@@ -11,6 +11,7 @@ public class UICombate : MonoBehaviour
     private Habilidad[] _habilidades;
     private Transform cajaHabilidad;
     public int habilidadSeleccionada = -1;
+    Character pjActual;
 
     void Awake()
     {
@@ -18,7 +19,7 @@ public class UICombate : MonoBehaviour
         cajaHabilidad = transform.parent.Find("CajaSkill");
     }
 
-    public void cambiaImagenes(Habilidad[] habilidades){
+    public void cambiaImagenes(Habilidad[] habilidades,Character pj){
         // Cambia las imagenes de la barra de abajo por las del parametro habilidades
         foreach (Image img in imgs)
         {
@@ -37,6 +38,7 @@ public class UICombate : MonoBehaviour
             i++;
         }
         _habilidades = habilidades;
+        pjActual = pj;
     }
 
     public void muestraDescripcion(int pos){
@@ -45,12 +47,20 @@ public class UICombate : MonoBehaviour
             habilidadSeleccionada = pos;
             cajaHabilidad.gameObject.SetActive(true);
             cajaHabilidad.Find("Nombre").GetComponent<Text>().text = _habilidades[pos].name;
+            cajaHabilidad.Find("Dano").GetComponent<Text>().text = _habilidades[pos].damage.ToString();
+            cajaHabilidad.Find("Descripcion").GetComponent<Text>().text = _habilidades[pos].description;
         }
     }
 
-    public void escondeCaja(int pos){
+    public void escondeCaja(){
         habilidadSeleccionada = -1;
         cajaHabilidad.gameObject.SetActive(false);
+    }
+
+    public void seleccionarHabilidad(int h){
+        // HACER QUE HAYA UN POCO DE FEEDBACK EN LA UI
+        Debug.Log("Habilidad cambiada a: "+_habilidades[h].name);
+        pjActual.habilidadSeleccionada = h;
     }
 
 }

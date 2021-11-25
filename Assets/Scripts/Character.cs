@@ -26,6 +26,7 @@ public class Character : MonoBehaviour
 
     public double metrosMaximos = 10.0f;
     public double metrosRestantes = 10.0f;
+    public int habilidadSeleccionada = 0;
 
     public int exp_when_killed = 100;
 
@@ -51,7 +52,7 @@ public class Character : MonoBehaviour
     public void EmpiezaTurno(){
         // Cambiamos todas las imagenes de las habilidades para adaptarse al personaje
         // ESTO SOLO SE DEBERIA HACER PARA NUESTROS PERSONAJES
-        UICombate.cambiaImagenes(habilidadesDisponibles);
+        UICombate.cambiaImagenes(habilidadesDisponibles,this);
         
         // Al empezar el turno reseteamos los metros y restamos 1 a los cooldowns
         metrosRestantes = metrosMaximos;
@@ -79,7 +80,6 @@ public class Character : MonoBehaviour
         // Demomento la habilidad seleccionada esta hardcoded. En un futuro vendra de la UI
         // El objetivo tambien esta hardcoded, en un futuro vendra de la UI tambien
         // Hay que mirar como hacer los hechizos de area (si los metemos)
-        int habilidadSeleccionada = 0;
         Habilidad habilidad = habilidadesDisponibles[habilidadSeleccionada];
         if (this.cooldowns[habilidadSeleccionada] == 0){ // Si la habilidad desta disponible...
             Character a = objetivo.GetComponent<Character>();
