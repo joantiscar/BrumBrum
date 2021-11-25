@@ -9,7 +9,7 @@ public class ImgHabilidades : MonoBehaviour
     private Color transparente = new Color(0,0,0,0);
     private Color opaco = Color.white;
 
-    void Start()
+    void Awake()
     {
         imgs = GetComponentsInChildren<Image>();
     }

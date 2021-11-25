@@ -49,6 +49,8 @@ public class Character : MonoBehaviour
     }
 
     public void EmpiezaTurno(){
+        // Cambiamos todas las imagenes de las habilidades para adaptarse al personaje
+        // ESTO SOLO SE DEBERIA HACER PARA NUESTROS PERSONAJES
         imgs.cambiaImagenes(habilidadesDisponibles);
         
         // Al empezar el turno reseteamos los metros y restamos 1 a los cooldowns
@@ -160,7 +162,7 @@ public class Character : MonoBehaviour
     public void use_upgrade_point(string up_stat)
     {
         // Debug.Log("upgrade_points: " + upgrade_points);
-        if (upgrade_points <= 0) Debug.Log("not enogth upgrade points");
+        if (upgrade_points <= 0) Debug.Log("not enough upgrade points");
         else
         {
             switch(up_stat){
