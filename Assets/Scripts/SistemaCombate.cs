@@ -15,7 +15,7 @@ public class SistemaCombate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        pjActual.GetComponent<Character>().EmpiezaTurno();
     }
 
     // Update is called once per frame

@@ -25,28 +25,31 @@ public class Character : MonoBehaviour
     public double metrosMaximos = 10.0f;
     public double metrosRestantes = 10.0f;
 
-
-    Habilidad[] habilidadesDisponibles;
-
+    public Habilidad[] habilidadesDisponibles;
     int[] cooldowns;
 
+    private ImgHabilidades imgs;
 
     void Start(){
         cooldowns = new int[] { 0, 0, 0 };
         habilidadesDisponibles = new Habilidad[] {
             Habilidades.BolaDeFuego,
-            Habilidades.EsquirlaDeHielo,
-            Habilidades.AtaqueConEspada
+            Habilidades.AtaqueConEspada,
+            Habilidades.EsquirlaDeHielo
         };
+
+        imgs = GameObject.Find("SkillsImages").GetComponent<ImgHabilidades>();
     }
 
-
     public void EmpiezaTurno(){
+        imgs.cambiaImagenes(habilidadesDisponibles);
+        
         metrosRestantes = metrosMaximos;
 
         for(int i = 0; i < cooldowns.Length; i++){
             if (cooldowns[i] > 0) cooldowns[i]--;
         }
+        
     }
     
     public void TerminaTurno(){
