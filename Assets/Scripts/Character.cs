@@ -77,7 +77,6 @@ public class Character : MonoBehaviour
     }
 
     public void Atacar(){
-        // Demomento la habilidad seleccionada esta hardcoded. En un futuro vendra de la UI
         // El objetivo tambien esta hardcoded, en un futuro vendra de la UI tambien
         // Hay que mirar como hacer los hechizos de area (si los metemos)
         Habilidad habilidad = habilidadesDisponibles[habilidadSeleccionada];
@@ -142,6 +141,7 @@ public class Character : MonoBehaviour
 
     public void morir(){
         Debug.Log(nombre + ": Aaaaaa que me muero.");
+        Destroy(this.gameObject);
     }
 
     public void take_xp(int xp)
