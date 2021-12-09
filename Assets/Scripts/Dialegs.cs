@@ -10,7 +10,13 @@ public class Dialegs : MonoBehaviour
     public void ActivateDialogue (){
         FindObjectOfType<controlDialegs>().ActivateDialogue();
     }
+    public void ActivateSeguit (){
+        FindObjectOfType<controlDialegs>().ActivateSeguit();
+    }
     public void NextSentence (){
         FindObjectOfType<controlDialegs>().NextSentence();
+    }
+    public void NextSentenceSeguit (){
+        FindObjectOfType<controlDialegs>().NextSentenceSeguit();
     }
 }

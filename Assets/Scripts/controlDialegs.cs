@@ -7,12 +7,18 @@ public class controlDialegs : MonoBehaviour
 {
     public Animator animText;
     public Animator animDialeg;
+    public Animator animSeguit;
     private Queue <string> dialogueQueue = new Queue <string>();
+    private Queue <string> dialogueQueueNPC = new Queue <string>();
+    private Queue <string> dialogueQueuePlayer = new Queue <string>();
+    private Queue <bool> dialogueQueueOrder = new Queue <bool>();
     private Texts text;
     [SerializeField] TextMeshProUGUI screenText;
     [SerializeField] TextMeshProUGUI npcName;
     [SerializeField] TextMeshProUGUI npcDialogueBox;
     [SerializeField] TextMeshProUGUI playerResponse;
+    [SerializeField] TextMeshProUGUI SeguitName;
+    [SerializeField] TextMeshProUGUI SeguitText;
     
     bool isTalking = false;
     bool ended = true;
@@ -30,15 +36,14 @@ public class controlDialegs : MonoBehaviour
         FindObjectOfType<CameraSwitch>().isCameraOnGoing();
         text = textObjecte;
         //text = new Texts(textObjecte.name, textObjecte.dialogue, textObjecte.playerDialogue);
-        switch (text.playerDialogue.Length)
-        {
-            case 0:
-                animText.SetBool("Sign", true);
-                break;
-
-            default: 
-                animDialeg.SetBool("Dialogue", true); //Crida a ActivaDialeg(); La resta de casos tambe cridaran
-                break;
+        if (text.order.Length > 0){
+            animSeguit.SetBool("Seguit", true);
+        }
+        else if (text.playerDialogue.Length == 0) {
+            animText.SetBool("Sign", true);
+        }
+        else{
+            animDialeg.SetBool("Dialogue", true);
         }
     }
 
@@ -68,10 +73,67 @@ public class controlDialegs : MonoBehaviour
         }
     }
 
+    public void ActivateSeguit ()
+    {
+        dialogueQueue.Clear();
+        foreach (string saveTextNPC in text.dialogue)
+        {
+            dialogueQueueNPC.Enqueue(saveTextNPC);
+        }
+        foreach (string saveTextPlayer in text.playerDialogue)
+        {
+            dialogueQueuePlayer.Enqueue(saveTextPlayer);
+        }
+        foreach (bool saveOrder in text.order)
+        {
+            dialogueQueueOrder.Enqueue(saveOrder);
+        }
+        NextSentenceSeguit();
+    }
+
+    public void NextSentenceSeguit ()
+    {
+        string actualSentence;
+        if (ended){
+            if(dialogueQueueOrder.Count == 0)
+            {
+                Debug.Log ("He acabat");
+                SeguitName.text = "";
+                SeguitText.text = "";
+                CloseDialogueSeguit();
+                return;
+            }
+            bool actual = dialogueQueueOrder.Dequeue();
+            if (actual)
+            {
+                Debug.Log ("NPC");
+                SeguitName.text = text.name;
+                actualSentence = dialogueQueueNPC.Dequeue();
+            }
+            else
+            {
+                Debug.Log ("Player");
+                SeguitName.text = text.namePlayer;
+                actualSentence = dialogueQueuePlayer.Dequeue();
+            }
+            SeguitText.text = actualSentence;
+            StartCoroutine(showCaracters(actualSentence));
+        }
+    }
+
     IEnumerator showCaracters (string textToShow)
     {
         ended = false;
-        if (text.playerDialogue.Length == 0){
+        if (text.order.Length > 0)
+        {
+            SeguitText.text = "";
+            foreach (char caracter in textToShow.ToCharArray())
+            {
+                SeguitText.text += caracter;
+                yield return new WaitForSeconds(0.02f);
+            }
+        }
+        else if (text.playerDialogue.Length == 0){
             screenText.text = "";
             foreach (char caracter in textToShow.ToCharArray())
             {
@@ -93,6 +155,14 @@ public class controlDialegs : MonoBehaviour
     void CloseDialogue ()
     {
         animText.SetBool("Sign", false);
+        FindObjectOfType<ThirdPersonMovement>().isTalkKing();
+        FindObjectOfType<Interaccio>().isTalkingStarted();
+        FindObjectOfType<CameraSwitch>().isCameraOnGoing();
+    }
+
+        void CloseDialogueSeguit ()
+    {
+        animSeguit.SetBool("Seguit", false);
         FindObjectOfType<ThirdPersonMovement>().isTalkKing();
         FindObjectOfType<Interaccio>().isTalkingStarted();
         FindObjectOfType<CameraSwitch>().isCameraOnGoing();
@@ -232,7 +302,7 @@ public class controlDialegs : MonoBehaviour
         playerResponse.text = "";
         animDialeg.SetBool("Dialogue", false);
         FindObjectOfType<ThirdPersonMovement>().isTalkKing();
-        FindObjectOfType<CameraSwitch>().isCameraOnGoing();
         FindObjectOfType<Interaccio>().isTalkingStarted();
+        FindObjectOfType<CameraSwitch>().isCameraOnGoing();
     }
 }
