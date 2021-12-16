@@ -11,7 +11,9 @@ public class controlDialegs : MonoBehaviour
     private Queue <string> dialogueQueue = new Queue <string>();
     private Queue <string> dialogueQueueNPC = new Queue <string>();
     private Queue <string> dialogueQueuePlayer = new Queue <string>();
-    private Queue <bool> dialogueQueueOrder = new Queue <bool>();
+    private Queue <string> dialogueQueueExtra1 = new Queue <string>();
+    private Queue <string> dialogueQueueExtra2 = new Queue <string>();
+    private Queue <int> dialogueQueueOrder = new Queue <int>();
     private Texts text;
     [SerializeField] TextMeshProUGUI screenText;
     [SerializeField] TextMeshProUGUI npcName;
@@ -84,7 +86,15 @@ public class controlDialegs : MonoBehaviour
         {
             dialogueQueuePlayer.Enqueue(saveTextPlayer);
         }
-        foreach (bool saveOrder in text.order)
+        foreach (string saveTextExtra1 in text.extraDialogue1)
+        {
+            dialogueQueueExtra1.Enqueue(saveTextExtra1);
+        }
+        foreach (string saveTextExtra2 in text.extraDialogue2)
+        {
+            dialogueQueueExtra2.Enqueue(saveTextExtra2);
+        }
+        foreach (int saveOrder in text.order)
         {
             dialogueQueueOrder.Enqueue(saveOrder);
         }
@@ -93,7 +103,7 @@ public class controlDialegs : MonoBehaviour
 
     public void NextSentenceSeguit ()
     {
-        string actualSentence;
+        string actualSentence = "";
         if (ended){
             if(dialogueQueueOrder.Count == 0)
             {
@@ -103,18 +113,30 @@ public class controlDialegs : MonoBehaviour
                 CloseDialogueSeguit();
                 return;
             }
-            bool actual = dialogueQueueOrder.Dequeue();
-            if (actual)
+            int actual = dialogueQueueOrder.Dequeue();
+            if (actual == 0)
             {
                 Debug.Log ("NPC");
                 SeguitName.text = text.name;
                 actualSentence = dialogueQueueNPC.Dequeue();
             }
-            else
+            else if (actual == 1)
             {
                 Debug.Log ("Player");
                 SeguitName.text = text.namePlayer;
                 actualSentence = dialogueQueuePlayer.Dequeue();
+            }
+            else if (actual == 2)
+            {
+                Debug.Log ("Extra1");
+                SeguitName.text = text.name1;
+                actualSentence = dialogueQueueExtra1.Dequeue();
+            }
+            else if (actual == 3)
+            {
+                Debug.Log ("Extra2");
+                SeguitName.text = text.name2;
+                actualSentence = dialogueQueueExtra2.Dequeue();
             }
             SeguitText.text = actualSentence;
             StartCoroutine(showCaracters(actualSentence));

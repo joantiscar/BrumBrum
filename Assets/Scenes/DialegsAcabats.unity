@@ -460,8 +460,8 @@ GameObject:
   - component: {fileID: 442166709}
   - component: {fileID: 442166708}
   - component: {fileID: 442166713}
-  - component: {fileID: 442166712}
   - component: {fileID: 442166707}
+  - component: {fileID: 442166712}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -478,7 +478,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 442166706}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9aecaa263be6f7b438978a0dcac275d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 5cf95f81c77f0d74e86e75d1738c1ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!65 &442166708
@@ -960,7 +960,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 777382464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aa8621925eee504ea2ffd89605b43e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 4902e01783e2c334a88fa3157bf12944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &777814293
@@ -1294,7 +1294,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.12451124, y: 0.000000012806413, z: -0.0000000016065187, w: 0.9922182}
+  m_LocalRotation: {x: 0.12451124, y: -0.0000000128064075, z: 0.0000000016065046, w: 0.9922182}
   m_LocalPosition: {x: -52.3, y: 16.43, z: -51.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1873,8 +1873,8 @@ GameObject:
   - component: {fileID: 1310309572}
   - component: {fileID: 1310309571}
   - component: {fileID: 1310309570}
-  - component: {fileID: 1310309569}
   - component: {fileID: 1310309575}
+  - component: {fileID: 1310309569}
   m_Layer: 0
   m_Name: NPC_NewQuest
   m_TagString: NPC
@@ -1994,7 +1994,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1310309568}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8854944473f0f22438dd267c5fb2e8ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 35e10d84db4382b49a9ac615913945fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1313042863
@@ -2996,7 +2996,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859975929}
-  m_LocalRotation: {x: 0.12451125, y: 0.000000012804364, z: -0.0000000016067909, w: 0.9922182}
+  m_LocalRotation: {x: 0.12451125, y: -0.000000012804362, z: 0.0000000016067907, w: 0.9922182}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3160,7 +3160,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 18.999, y: -95.97}
-  m_SizeDelta: {x: 800, y: 68.059}
+  m_SizeDelta: {x: 700, y: 68.059}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1986212314
 MonoBehaviour:
@@ -4950,7 +4950,7 @@ RectTransform:
   m_GameObject: {fileID: 8764476740272488553}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8764476740896028249}
   m_RootOrder: 2
@@ -5378,7 +5378,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 18.999, y: -160.67932}
-  m_SizeDelta: {x: 800, y: 61.3573}
+  m_SizeDelta: {x: 700, y: 61.3573}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8764476740765142023
 MonoBehaviour:

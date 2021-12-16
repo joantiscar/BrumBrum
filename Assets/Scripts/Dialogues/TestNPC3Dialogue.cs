@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC3Dialogue : GameDialogue
+public class TestNPC3Dialogue : GameDialogue
 {
     public void Awake()
     {
@@ -10,6 +10,8 @@ public class NPC3Dialogue : GameDialogue
         playerName = "Player";
         dialogue = new string[] { "Hola", "Soc un dialeg simple", "Fins la proxima!"};
         playerDialogue = new string[] {"Hola", "Qui ets?", "Adeu!"};
-        dialogueOrder = new bool [] {true, false, false, true, false, true};
+        dialogue3 = new string[] {};
+        dialogue4 = new string[] {};
+        dialogueOrder = new int [] {0, 1, 1, 0, 1, 0};
     }
 }

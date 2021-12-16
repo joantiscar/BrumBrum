@@ -11,15 +11,23 @@ public class Texts
     [TextArea(1, 15)]
     public string namePlayer;
     public string[] playerDialogue;
-    public bool[] order;
+    public string name1;
+    public string[] extraDialogue1;
+    public string name2;
+    public string[] extraDialogue2;
+    public int[] order;
 
 
-    public Texts(string nC, string nP, string[] d, string[] pd, bool[] o)
+    public Texts(string nC, string nP, string n1, string n2, string[] d, string[] pd, string[] p3, string[] p4, int[] o)
     {
         name = nC;
         namePlayer = nP;
+        name1 = n1;
+        name2 = n2;
         dialogue = d.Clone() as string[];
         playerDialogue = pd.Clone() as string[];
-        order = o.Clone() as bool[];
+        extraDialogue1 = p3.Clone() as string[];
+        extraDialogue2 = p4.Clone() as string[];
+        order = o.Clone() as int[];
     }
 }

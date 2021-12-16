@@ -6,9 +6,14 @@ public class GameDialogue : MonoBehaviour
 {
     protected string[] dialogue;
     protected string[] playerDialogue;
-    protected bool[] dialogueOrder;
+    protected string[] dialogue3;
+    protected string[] dialogue4;
+    protected int[] dialogueOrder;
     protected string characterName;
     protected string playerName;
+    protected string name3;
+    protected string name4;
+    
 
     public string getCharacterName()
     {
@@ -18,6 +23,14 @@ public class GameDialogue : MonoBehaviour
     {
         return playerName;
     }
+    public string getName3()
+    {
+        return name3;
+    }
+    public string getName4()
+    {
+        return name4;
+    }
     public string[] getDialogue()
     {
         return dialogue;
@@ -26,7 +39,15 @@ public class GameDialogue : MonoBehaviour
     {
         return playerDialogue; 
     }
-    public bool[] getDialogueOrder()
+    public string[] getDialogue3()
+    {
+        return dialogue3; 
+    }
+    public string[] getDialogue4()
+    {
+        return dialogue4; 
+    }
+    public int[] getDialogueOrder()
     {
         return dialogueOrder;
     }
