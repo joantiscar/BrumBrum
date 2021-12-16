@@ -6,12 +6,12 @@ public class objecteInteractiu : MonoBehaviour
 {
     //public Texts texts;
     private Texts texts;
-    public Dialogue dialogues;
+    public GameDialogue dialogues;
 
 
     public void Start()
     {
-        dialogues = transform.gameObject.GetComponent<Dialogue>();
+        dialogues = transform.gameObject.GetComponent<GameDialogue>();
         //if (dialogues.transform.gameObject.name != transform.gameObject.name) dialogues = null;
 
         //dialogues = GameObject.Find(transform.gameObject.name).GetComponent<Dialogue>();

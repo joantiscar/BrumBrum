@@ -15,7 +15,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public Transform groundChek;
     public float groundDistance = 0.1f;
     public LayerMask groundMask;
-    Vector3 velocity;
+    //Vector3 velocity;
     private float verticalVelocity;
 
     bool isGrounded;
@@ -40,8 +40,9 @@ public class ThirdPersonMovement : MonoBehaviour
 
             if(isGrounded)
             {
+                animator.SetBool("OnGround", true);
                 verticalVelocity = gravity * Time.deltaTime;
-                if(Input.GetKeyDown(KeyCode.Space))
+                if(Input.GetKeyDown(KeyCode.Space) && !(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")))
                 {
                     verticalVelocity = jumpHeight;
                 }
@@ -49,6 +50,8 @@ public class ThirdPersonMovement : MonoBehaviour
             else 
             {
                 verticalVelocity -= -gravity * Time.deltaTime;
+                animator.Play("Jump");
+                animator.SetBool("OnGround", false);
             }
 
             Vector3 moveVectorJump = new Vector3(0,verticalVelocity,0);
@@ -68,7 +71,8 @@ public class ThirdPersonMovement : MonoBehaviour
             Vector3 auxVec = new Vector3(0, 0, 0);
             
 
-            if (direction.magnitude >= 0.1f)
+            if (direction.magnitude >= 0.1f && 
+                    !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Land"))
             {
                 float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
@@ -90,7 +94,7 @@ public class ThirdPersonMovement : MonoBehaviour
             animator.SetFloat("Velocity", auxVel);
 
 
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetBool("OnGround"))
             {
                 //Debug.Log("Attack");
                 animator.Play("Attack");

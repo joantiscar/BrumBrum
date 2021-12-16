@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC3Dialogue : Dialogue
+public class NPC3Dialogue : GameDialogue
 {
     public void Awake()
     {
