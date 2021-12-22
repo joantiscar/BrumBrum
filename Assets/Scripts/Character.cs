@@ -23,6 +23,7 @@ public class Character : MonoBehaviour
     public int experience_max;
     public int upgrade_points = 0;
     public GameObject objetivo;
+    public IA IA;
 
     public double metrosMaximos = 10.0f;
     public double metrosRestantes = 10.0f;
@@ -31,7 +32,7 @@ public class Character : MonoBehaviour
     public int exp_when_killed = 100;
 
 
-    Habilidad[] habilidadesDisponibles;
+    public Habilidad[] habilidadesDisponibles;
 
     int[] cooldowns;
 
