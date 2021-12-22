@@ -69,8 +69,8 @@ public class Character : MonoBehaviour
 
         if(user_controlled){
             // Cambiamos todas las imagenes de las habilidades para adaptarse al personaje
-            // ESTO SOLO SE DEBERIA HACER PARA NUESTROS PERSONAJES
-            UICombate.cambiaImagenes(habilidadesDisponibles,this);
+            // Además también actualiza la barra de distancia
+            UICombate.adaptaUI(habilidadesDisponibles,this);
         }
         else{
             this.transform.GetComponent<IA>().HacerTurno();

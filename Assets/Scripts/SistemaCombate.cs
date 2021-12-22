@@ -9,7 +9,7 @@ public class SistemaCombate : MonoBehaviour
 
     public GameObject[] pjs;
     public GameObject pjActual;
-    public GameObject labelDistancia;
+    public UICombate UICombate;
 
     private int ordenActual = 0;
     public int nEnemigos = 0;
@@ -47,14 +47,15 @@ public class SistemaCombate : MonoBehaviour
     void Update()
     {   
         if(!derrota && !victoria){
-            labelDistancia.GetComponent<Text>().text = pjActual.GetComponent<Character>().metrosRestantes.ToString();
             if(pjActual.GetComponent<Character>().user_controlled){
+                
                 if (Input.GetMouseButtonDown(0)) {
                         RaycastHit hit;
                         
                         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
                             if (pjActual.GetComponent<Character>().Moverse(Vector3.Distance(hit.point, pjActual.transform.position))){
                                 pjActual.GetComponent<NavMeshAgent>().destination = hit.point;
+                                UICombate.ActualizaDistancia();
                             }
                         }
                     }
