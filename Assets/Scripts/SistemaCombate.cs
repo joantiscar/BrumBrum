@@ -24,7 +24,6 @@ public class SistemaCombate : MonoBehaviour
     }
 
     public void FinalizaTurno(){
-        pjActual.GetComponent<Character>().TerminaTurno();
         ordenActual++;
         if (ordenActual >= pjs.Length) ordenActual = 0;
         pjActual = pjs[ordenActual];
