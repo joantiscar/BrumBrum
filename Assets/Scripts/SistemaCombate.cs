@@ -23,6 +23,14 @@ public class SistemaCombate : MonoBehaviour
         victoria = nEnemigos == 0;
     }
 
+    public void FinalizaTurno(){
+        pjActual.GetComponent<Character>().TerminaTurno();
+        ordenActual++;
+        if (ordenActual >= pjs.Length) ordenActual = 0;
+        pjActual = pjs[ordenActual];
+        pjActual.GetComponent<Character>().EmpiezaTurno();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,11 +59,7 @@ public class SistemaCombate : MonoBehaviour
                     }
                 }
             if (Input.GetKeyDown("space")){
-                pjActual.GetComponent<Character>().TerminaTurno();
-                ordenActual++;
-                if (ordenActual >= pjs.Length) ordenActual = 0;
-                pjActual = pjs[ordenActual];
-                pjActual.GetComponent<Character>().EmpiezaTurno();
+                FinalizaTurno();
             }
             if (Input.GetKeyDown("1")){
                 pjActual.GetComponent<Character>().Atacar();
