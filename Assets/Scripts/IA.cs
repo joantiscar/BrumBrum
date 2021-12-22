@@ -55,4 +55,10 @@ public class IA : MonoBehaviour
             Moverse();
         }
     }
+    public void HacerTurno(){
+        DefinirObjetivo();
+        Moverse();
+        Atacar();
+        Personaje.SistemaCombate.FinalizaTurno();
+    }
 }
