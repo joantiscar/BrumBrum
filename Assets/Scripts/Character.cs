@@ -33,14 +33,14 @@ public class Character : MonoBehaviour
     public int habilidadSeleccionada = 0;
     public int basePAtaques = 5;
     public int maxPAtaques = 10;
-    private int actPAtaques = 0;
+    public int actPAtaques = 0;
 
     public int exp_when_killed = 100;
 
 
     public Habilidad[] habilidadesDisponibles;
 
-    int[] cooldowns;
+    public int[] cooldowns;
 
     private UICombate UICombate;
     public SistemaCombate SistemaCombate;
