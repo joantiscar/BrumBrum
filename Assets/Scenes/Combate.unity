@@ -497,6 +497,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
+      propertyPath: hp
+      value: 99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: nombre
       value: Manolo
       objectReference: {fileID: 0}
@@ -613,6 +617,10 @@ PrefabInstance:
       propertyPath: objetivo
       value: 
       objectReference: {fileID: 1024850899}
+    - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
+      propertyPath: basePAtaques
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: metrosMaximos
       value: 10

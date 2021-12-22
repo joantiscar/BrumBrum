@@ -53,14 +53,16 @@ public class UICombate : MonoBehaviour
     }
 
     public void escondeCaja(){
-        habilidadSeleccionada = -1;
+        //habilidadSeleccionada = -1;
         cajaHabilidad.gameObject.SetActive(false);
     }
 
     public void seleccionarHabilidad(int h){
         // HACER QUE HAYA UN POCO DE FEEDBACK EN LA UI
-        Debug.Log("Habilidad cambiada a: "+_habilidades[h].name);
-        pjActual.habilidadSeleccionada = h;
+        if(h<_habilidades.Length){
+            Debug.Log("Habilidad cambiada a: "+_habilidades[h].name);
+            pjActual.habilidadSeleccionada = h;
+        }
     }
 
 }

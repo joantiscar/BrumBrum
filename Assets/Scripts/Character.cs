@@ -28,7 +28,11 @@ public class Character : MonoBehaviour
 
     public double metrosMaximos = 10.0f;
     public double metrosRestantes = 10.0f;
+
     public int habilidadSeleccionada = 0;
+    public int basePAtaques = 5;
+    public int maxPAtaques = 10;
+    private int actPAtaques = 0;
 
     public int exp_when_killed = 100;
 
@@ -57,13 +61,15 @@ public class Character : MonoBehaviour
         // ESTO SOLO SE DEBERIA HACER PARA NUESTROS PERSONAJES
         UICombate.cambiaImagenes(habilidadesDisponibles,this);
         
-        // Al empezar el turno reseteamos los metros y restamos 1 a los cooldowns
+        // Al empezar el turno reseteamos los metros, restamos 1 a los cooldowns y añadimos los puntos base a los actuales
         metrosRestantes = metrosMaximos;
 
         for(int i = 0; i < cooldowns.Length; i++){
             if (cooldowns[i] > 0) cooldowns[i]--;
         }
-        
+
+        actPAtaques += basePAtaques;
+        if(actPAtaques>maxPAtaques) actPAtaques=maxPAtaques;
     }
     
     public void TerminaTurno(){
@@ -83,21 +89,29 @@ public class Character : MonoBehaviour
         // El objetivo tambien esta hardcoded, en un futuro vendra de la UI tambien
         // Hay que mirar como hacer los hechizos de area (si los metemos)
         Habilidad habilidad = habilidadesDisponibles[habilidadSeleccionada];
-        if (this.cooldowns[habilidadSeleccionada] == 0){ // Si la habilidad desta disponible...
-            Character a = objetivo.GetComponent<Character>();
-            // Miramos si estamos a rango de la habilidad
-            if (Vector3.Distance(this.transform.position, objetivo.transform.position) <= habilidad.range){
-                // Lanzamos la habilidad y la ponemos en cooldown
-                Habilidades.lanzar(this, a, habilidad);
-                cooldowns[habilidadSeleccionada] += habilidad.cooldown;
-                Debug.Log("Lanzando habilidad " + habilidad.name);
+        if (actPAtaques>=habilidad.coste){
+            if (this.cooldowns[habilidadSeleccionada] == 0){ // Si la habilidad desta disponible...
+                Character a = objetivo.GetComponent<Character>();
+                // Miramos si estamos a rango de la habilidad
+                if (Vector3.Distance(this.transform.position, objetivo.transform.position) <= habilidad.range){
+                    // Lanzamos la habilidad y la ponemos en cooldown
+                    Habilidades.lanzar(this, a, habilidad);
+                    cooldowns[habilidadSeleccionada] += habilidad.cooldown;
+                    Debug.Log("Lanzando habilidad " + habilidad.name);
+                    // Restamos los puntos que se usan
+                    actPAtaques -= habilidad.coste;
+                }else{
+                    Debug.Log(habilidad.name + " fuera de rango");
+                }
             }else{
-                Debug.Log(habilidad.name + " fuera de rango");
+                Debug.Log("Habilidad en enfriamiento");
             }
-            
-        }else{
-            Debug.Log("Habilidad en enfriamiento");
         }
+        else{
+            Debug.Log("Sin puntos de ataque!");
+
+        }
+        
 
     }
 
