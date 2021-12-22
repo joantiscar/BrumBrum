@@ -63,8 +63,8 @@ MonoBehaviour:
   metrosMaximos: 0
   metrosRestantes: 0
   habilidadSeleccionada: 0
-  basePAtaques: 0
-  maxPAtaques: 0
+  basePAtaques: 5
+  maxPAtaques: 10
   actPAtaques: 0
   exp_when_killed: 0
   cooldowns: 
