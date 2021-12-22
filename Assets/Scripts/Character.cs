@@ -8,6 +8,8 @@ public class Character : MonoBehaviour
     public const int PLUS_EXPERIENCE = 4;
     public const int INICIAL_MAX_EXPERIENCE = 10;
 
+    public bool user_controlled = false;
+
     public int hp;
     public int attack;
     public int special_attack;
@@ -36,6 +38,7 @@ public class Character : MonoBehaviour
     int[] cooldowns;
 
     private UICombate UICombate;
+    public SistemaCombate SistemaCombate;
 
     void Start(){
         // TEST. En un futuro, constructor o algo
@@ -140,7 +143,11 @@ public class Character : MonoBehaviour
 
 
     public void morir(){
+        // Animacion porfi
         Debug.Log(nombre + ": Aaaaaa que me muero.");
+        if(user_controlled) SistemaCombate.nAliados--;
+        else SistemaCombate.nEnemigos--;
+        SistemaCombate.compruebaVictoria();
         Destroy(this.gameObject);
     }
 

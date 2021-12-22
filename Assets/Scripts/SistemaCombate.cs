@@ -10,37 +10,59 @@ public class SistemaCombate : MonoBehaviour
     public GameObject[] pjs;
     public GameObject pjActual;
     public GameObject labelDistancia;
-    private int i = 0;
+
+    private int ordenActual = 0;
+    public int nEnemigos = 0;
+    public int nAliados = 0;
+
+    public bool derrota = false;
+    public bool victoria = false;
+
+    public void compruebaVictoria(){
+        derrota = nAliados == 0;
+        victoria = nEnemigos == 0;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        for(int i=0;i<pjs.Length;i++){
+            if(pjs[i].GetComponent<Character>().user_controlled) nAliados++;
+            else nEnemigos++;
+            pjs[i].GetComponent<Character>().SistemaCombate = this;
+
+        }
         pjActual.GetComponent<Character>().EmpiezaTurno();
     }
 
     // Update is called once per frame
     void Update()
     {   
-        labelDistancia.GetComponent<Text>().text = pjActual.GetComponent<Character>().metrosRestantes.ToString();
+        if(!derrota && !victoria){
+            labelDistancia.GetComponent<Text>().text = pjActual.GetComponent<Character>().metrosRestantes.ToString();
 
-        if (Input.GetMouseButtonDown(0)) {
-                RaycastHit hit;
-                
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
-                    if (pjActual.GetComponent<Character>().Moverse(Vector3.Distance(hit.point, pjActual.transform.position))){
-                        pjActual.GetComponent<NavMeshAgent>().destination = hit.point;
+            if (Input.GetMouseButtonDown(0)) {
+                    RaycastHit hit;
+                    
+                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
+                        if (pjActual.GetComponent<Character>().Moverse(Vector3.Distance(hit.point, pjActual.transform.position))){
+                            pjActual.GetComponent<NavMeshAgent>().destination = hit.point;
+                        }
                     }
                 }
+            if (Input.GetKeyDown("space")){
+                pjActual.GetComponent<Character>().TerminaTurno();
+                ordenActual++;
+                if (ordenActual >= pjs.Length) ordenActual = 0;
+                pjActual = pjs[ordenActual];
+                pjActual.GetComponent<Character>().EmpiezaTurno();
             }
-        if (Input.GetKeyDown("space")){
-            pjActual.GetComponent<Character>().TerminaTurno();
-            i++;
-            if (i >= pjs.Length) i = 0;
-            pjActual = pjs[i];
-            pjActual.GetComponent<Character>().EmpiezaTurno();
+            if (Input.GetKeyDown("1")){
+                pjActual.GetComponent<Character>().Atacar();
+            }
         }
-        if (Input.GetKeyDown("1")){
-            pjActual.GetComponent<Character>().Atacar();
+        else{
+            Debug.Log("GAMEOVER/VICTORIA");
         }
 
     }
