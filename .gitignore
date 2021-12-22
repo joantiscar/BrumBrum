@@ -67,3 +67,4 @@ Assets/AutoSave/*
 Assets/AutoSave
 UserSettings
 UserSettings/**
+UserSettings/EditorUserSettings.asset
