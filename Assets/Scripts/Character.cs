@@ -80,6 +80,9 @@ public class Character : MonoBehaviour
     }
     
     public void TerminaTurno(){
+        if (!user_controlled){
+            SistemaCombate.FinalizaTurno();
+        }
     }
 
     public bool Moverse(double distancia){

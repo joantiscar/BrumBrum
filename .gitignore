@@ -65,3 +65,6 @@ crashlytics-build.properties
 .history/
 Assets/AutoSave/*
 Assets/AutoSave
+UserSettings
+UserSettings/**
+UserSettings/EditorUserSettings.asset

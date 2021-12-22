@@ -453,6 +453,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pj2
       objectReference: {fileID: 0}
+    - target: {fileID: 2691622543158033119, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
+      propertyPath: estado
+      value: esperando
+      objectReference: {fileID: 0}
     - target: {fileID: 5834205930977296183, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -565,6 +569,10 @@ PrefabInstance:
     - target: {fileID: 2442400643512786858, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: m_Name
       value: Pj1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691622543158033119, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
+      propertyPath: estado
+      value: preparado
       objectReference: {fileID: 0}
     - target: {fileID: 5834205930977296183, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: m_RootOrder
