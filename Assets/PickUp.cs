@@ -11,6 +11,7 @@ public class PickUp : MonoBehaviour
 
     private void Start()
     {
+        pickupText = GameObject.Find("Text").GetComponent<Text>();
         pickupText.gameObject.SetActive(false);
     }
 
