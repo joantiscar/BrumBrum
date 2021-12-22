@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6261801634384945873}
   - component: {fileID: 836169610404103505}
   - component: {fileID: 2691622543158033119}
+  - component: {fileID: 1990894391509111474}
   m_Layer: 0
   m_Name: Pj
   m_TagString: Untagged
@@ -88,7 +89,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 0.86
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &2691622543158033119
@@ -105,6 +106,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Personaje: {fileID: 0}
   Objetivo: {fileID: 0}
+  estado: esperando
+--- !u!64 &1990894391509111474
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2442400643512786858}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &4077187335313896847
 GameObject:
   m_ObjectHideFlags: 0
