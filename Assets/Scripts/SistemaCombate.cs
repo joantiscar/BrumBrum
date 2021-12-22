@@ -48,21 +48,23 @@ public class SistemaCombate : MonoBehaviour
     {   
         if(!derrota && !victoria){
             labelDistancia.GetComponent<Text>().text = pjActual.GetComponent<Character>().metrosRestantes.ToString();
-
-            if (Input.GetMouseButtonDown(0)) {
-                    RaycastHit hit;
-                    
-                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
-                        if (pjActual.GetComponent<Character>().Moverse(Vector3.Distance(hit.point, pjActual.transform.position))){
-                            pjActual.GetComponent<NavMeshAgent>().destination = hit.point;
+            if(pjActual.GetComponent<Character>().user_controlled){
+                if (Input.GetMouseButtonDown(0)) {
+                        RaycastHit hit;
+                        
+                        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
+                            if (pjActual.GetComponent<Character>().Moverse(Vector3.Distance(hit.point, pjActual.transform.position))){
+                                pjActual.GetComponent<NavMeshAgent>().destination = hit.point;
+                            }
                         }
                     }
+                if (Input.GetKeyDown("space")){
+                    FinalizaTurno();
                 }
-            if (Input.GetKeyDown("space")){
-                FinalizaTurno();
-            }
-            if (Input.GetKeyDown("1")){
-                pjActual.GetComponent<Character>().Atacar();
+                if (Input.GetKeyDown("1")){
+                    pjActual.GetComponent<Character>().Atacar();
+                }
+
             }
         }
         else{

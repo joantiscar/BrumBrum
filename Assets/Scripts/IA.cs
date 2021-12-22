@@ -10,12 +10,17 @@ public class IA : MonoBehaviour
     public Character Objetivo;
     Random r = new Random();
     List<int> habilidadesUsables;
+
+    public void Start(){
+        Personaje = this.transform.GetComponent<Character>();
+    }
+
     public void DefinirObjetivo(){
-        Vector3 posActual = Personaje.transform.parent.transform.position;
+        Vector3 posActual = Personaje.transform.transform.position;
         for(int i = 0; i < Personaje.SistemaCombate.pjs.Length; i++){
                 if (Personaje.SistemaCombate.pjs[i].GetComponent<Character>().user_controlled){
                     Vector3 posCandidato = Personaje.SistemaCombate.pjs[i].transform.position;
-                    Vector3 posObjetivo = Objetivo.SistemaCombate.pjs[i].transform.position;
+                    Vector3 posObjetivo = Personaje.SistemaCombate.pjs[i].transform.position;
                     if (Objetivo == null) Objetivo = Personaje.SistemaCombate.pjs[i].GetComponent<Character>();
                     else if (Vector3.Distance(posActual, posCandidato) < Vector3.Distance(posActual, posObjetivo)) Objetivo = Personaje.SistemaCombate.pjs[i].GetComponent<Character>();
                 }
@@ -31,7 +36,7 @@ public class IA : MonoBehaviour
                 distancia = Vector3.Distance(posActual, posObjetivo) - 1;
             }
             Vector3 destino = Vector3.MoveTowards(posActual, posObjetivo, (float) distancia);
-            Personaje.transform.parent.gameObject.GetComponent<NavMeshAgent>().destination = destino;
+            Personaje.transform.gameObject.GetComponent<NavMeshAgent>().destination = destino;
         }
        
     }

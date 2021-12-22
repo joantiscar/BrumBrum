@@ -25,7 +25,6 @@ public class Character : MonoBehaviour
     public int experience_max;
     public int upgrade_points = 0;
     public GameObject objetivo;
-    public IA IA;
 
     public double metrosMaximos = 10.0f;
     public double metrosRestantes = 10.0f;
@@ -58,10 +57,6 @@ public class Character : MonoBehaviour
     }
 
     public void EmpiezaTurno(){
-        // Cambiamos todas las imagenes de las habilidades para adaptarse al personaje
-        // ESTO SOLO SE DEBERIA HACER PARA NUESTROS PERSONAJES
-        UICombate.cambiaImagenes(habilidadesDisponibles,this);
-        
         // Al empezar el turno reseteamos los metros, restamos 1 a los cooldowns y añadimos los puntos base a los actuales
         metrosRestantes = metrosMaximos;
 
@@ -71,6 +66,17 @@ public class Character : MonoBehaviour
 
         actPAtaques += basePAtaques;
         if(actPAtaques>maxPAtaques) actPAtaques=maxPAtaques;
+
+        if(user_controlled){
+            // Cambiamos todas las imagenes de las habilidades para adaptarse al personaje
+            // ESTO SOLO SE DEBERIA HACER PARA NUESTROS PERSONAJES
+            UICombate.cambiaImagenes(habilidadesDisponibles,this);
+        }
+        else{
+            this.transform.GetComponent<IA>().HacerTurno();
+        }
+        
+        
     }
     
     public void TerminaTurno(){

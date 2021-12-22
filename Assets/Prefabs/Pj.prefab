@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5834205930977296183}
   - component: {fileID: 6261801634384945873}
   - component: {fileID: 836169610404103505}
+  - component: {fileID: 2691622543158033119}
   m_Layer: 0
   m_Name: Pj
   m_TagString: Untagged
@@ -45,17 +46,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b19c81eb3955c4e4a88f646786c70894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  user_controlled: 0
   hp: 0
   attack: 0
   special_attack: 0
   defense: 0
   special_defense: 0
   velocity: 0
+  nombre: 
   elemental_resistance: 
   level: 0
   experience: 0
   experience_max: 0
   upgrade_points: 0
+  objetivo: {fileID: 0}
+  metrosMaximos: 0
+  metrosRestantes: 0
+  habilidadSeleccionada: 0
+  basePAtaques: 0
+  maxPAtaques: 0
+  actPAtaques: 0
+  exp_when_killed: 0
+  cooldowns: 
+  SistemaCombate: {fileID: 0}
 --- !u!195 &836169610404103505
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -78,6 +91,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2691622543158033119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2442400643512786858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10aec515b0f32004ab1501be1c69d0cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Personaje: {fileID: 0}
+  Objetivo: {fileID: 0}
 --- !u!1 &4077187335313896847
 GameObject:
   m_ObjectHideFlags: 0
