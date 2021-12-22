@@ -8,6 +8,8 @@ public class Character : MonoBehaviour
     public const int PLUS_EXPERIENCE = 4;
     public const int INICIAL_MAX_EXPERIENCE = 10;
 
+    public bool user_controlled = false;
+
     public int hp;
     public int attack;
     public int special_attack;
@@ -23,36 +25,52 @@ public class Character : MonoBehaviour
     public int experience_max;
     public int upgrade_points = 0;
     public GameObject objetivo;
+    public IA IA;
 
     public double metrosMaximos = 10.0f;
     public double metrosRestantes = 10.0f;
 
+    public int habilidadSeleccionada = 0;
+    public int basePAtaques = 5;
+    public int maxPAtaques = 10;
+    private int actPAtaques = 0;
+
     public int exp_when_killed = 100;
 
 
-    Habilidad[] habilidadesDisponibles;
+    public Habilidad[] habilidadesDisponibles;
 
     int[] cooldowns;
 
+    private UICombate UICombate;
+    public SistemaCombate SistemaCombate;
 
     void Start(){
         // TEST. En un futuro, constructor o algo
         cooldowns = new int[] { 0, 0, 0 };
         habilidadesDisponibles = new Habilidad[] {
             Habilidades.BolaDeFuego,
-            Habilidades.EsquirlaDeHielo,
-            Habilidades.AtaqueConEspada
+            Habilidades.AtaqueConEspada,
+            Habilidades.EsquirlaDeHielo
         };
+
+        UICombate = GameObject.Find("SkillsImages").GetComponent<UICombate>();
     }
 
-
     public void EmpiezaTurno(){
-        // Al empezar el turno reseteamos los metros y restamos 1 a los cooldowns
+        // Cambiamos todas las imagenes de las habilidades para adaptarse al personaje
+        // ESTO SOLO SE DEBERIA HACER PARA NUESTROS PERSONAJES
+        UICombate.cambiaImagenes(habilidadesDisponibles,this);
+        
+        // Al empezar el turno reseteamos los metros, restamos 1 a los cooldowns y añadimos los puntos base a los actuales
         metrosRestantes = metrosMaximos;
 
         for(int i = 0; i < cooldowns.Length; i++){
             if (cooldowns[i] > 0) cooldowns[i]--;
         }
+
+        actPAtaques += basePAtaques;
+        if(actPAtaques>maxPAtaques) actPAtaques=maxPAtaques;
     }
     
     public void TerminaTurno(){
@@ -69,26 +87,32 @@ public class Character : MonoBehaviour
     }
 
     public void Atacar(){
-        // Demomento la habilidad seleccionada esta hardcoded. En un futuro vendra de la UI
         // El objetivo tambien esta hardcoded, en un futuro vendra de la UI tambien
         // Hay que mirar como hacer los hechizos de area (si los metemos)
-        int habilidadSeleccionada = 0;
         Habilidad habilidad = habilidadesDisponibles[habilidadSeleccionada];
-        if (this.cooldowns[habilidadSeleccionada] == 0){ // Si la habilidad desta disponible...
-            Character a = objetivo.GetComponent<Character>();
-            // Miramos si estamos a rango de la habilidad
-            if (Vector3.Distance(this.transform.position, objetivo.transform.position) <= habilidad.range){
-                // Lanzamos la habilidad y la ponemos en cooldown
-                Habilidades.lanzar(this, a, habilidad);
-                cooldowns[habilidadSeleccionada] += habilidad.cooldown;
-                Debug.Log("Lanzando habilidad " + habilidad.name);
+        if (actPAtaques>=habilidad.coste){
+            if (this.cooldowns[habilidadSeleccionada] == 0){ // Si la habilidad desta disponible...
+                Character a = objetivo.GetComponent<Character>();
+                // Miramos si estamos a rango de la habilidad
+                if (Vector3.Distance(this.transform.position, objetivo.transform.position) <= habilidad.range){
+                    // Lanzamos la habilidad y la ponemos en cooldown
+                    Habilidades.lanzar(this, a, habilidad);
+                    cooldowns[habilidadSeleccionada] += habilidad.cooldown;
+                    Debug.Log("Lanzando habilidad " + habilidad.name);
+                    // Restamos los puntos que se usan
+                    actPAtaques -= habilidad.coste;
+                }else{
+                    Debug.Log(habilidad.name + " fuera de rango");
+                }
             }else{
-                Debug.Log(habilidad.name + " fuera de rango");
+                Debug.Log("Habilidad en enfriamiento");
             }
-            
-        }else{
-            Debug.Log("Habilidad en enfriamiento");
         }
+        else{
+            Debug.Log("Sin puntos de ataque!");
+
+        }
+        
 
     }
 
@@ -134,7 +158,12 @@ public class Character : MonoBehaviour
 
 
     public void morir(){
+        // Animacion porfi
         Debug.Log(nombre + ": Aaaaaa que me muero.");
+        if(user_controlled) SistemaCombate.nAliados--;
+        else SistemaCombate.nEnemigos--;
+        SistemaCombate.compruebaVictoria();
+        Destroy(this.gameObject);
     }
 
     public void take_xp(int xp)
@@ -155,7 +184,7 @@ public class Character : MonoBehaviour
     public void use_upgrade_point(string up_stat)
     {
         // Debug.Log("upgrade_points: " + upgrade_points);
-        if (upgrade_points <= 0) Debug.Log("not enogth upgrade points");
+        if (upgrade_points <= 0) Debug.Log("not enough upgrade points");
         else
         {
             switch(up_stat){
