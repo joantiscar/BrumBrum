@@ -17,7 +17,7 @@ public class objecteInteractiu : MonoBehaviour
         //dialogues = GameObject.Find(transform.gameObject.name).GetComponent<Dialogue>();
 
         //Debug.Log(dialogues.transform.gameObject.name);
-        Debug.Log(transform.gameObject.name);
+        //Debug.Log(transform.gameObject.name);
 
         //texts.name = transform.gameObject.name;
 

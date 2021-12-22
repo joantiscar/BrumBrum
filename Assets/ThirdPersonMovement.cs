@@ -41,18 +41,29 @@ public class ThirdPersonMovement : MonoBehaviour
             if(isGrounded)
             {
                 animator.SetBool("OnGround", true);
-                verticalVelocity = gravity * Time.deltaTime;
+                verticalVelocity = -gravity * Time.deltaTime;
+                /*
                 if(Input.GetKeyDown(KeyCode.Space) && !(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")))
                 {
                     verticalVelocity = jumpHeight;
+                    //animator.Play("Jump");
+                    //animator.SetBool("OnGround", false);
+
+                    animator.SetBool("Jumping", true);
                 }
+                */
             }
-            else 
+            else
             {
                 verticalVelocity -= -gravity * Time.deltaTime;
-                animator.Play("Jump");
                 animator.SetBool("OnGround", false);
             }
+            if (Input.GetKeyDown(KeyCode.Space) && (animator.GetCurrentAnimatorStateInfo(0).IsName("Move Blend")))
+            {
+                verticalVelocity = jumpHeight;
+                animator.Play("Jump");
+            }
+
 
             Vector3 moveVectorJump = new Vector3(0,verticalVelocity,0);
             controller.Move(moveVectorJump * Time.deltaTime);

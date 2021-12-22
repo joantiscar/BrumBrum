@@ -9,7 +9,7 @@ public class DialegHerc1 : GameDialogue
         characterName = "Herc";
         dialogue = new string[] { "Lo vamos a destrozar.", 
         "¡¡¡LO VAMOS A DESTROZAAAAAR!!!" };
-        playerDialogue = new string[] { "or seso e si." };
+        playerDialogue = new string[] { "Por supuesto que si." };
         dialogue3 = new string[] {};
         dialogue4 = new string[] {};
         dialogueOrder = new int[] {};
