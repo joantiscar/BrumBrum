@@ -10,10 +10,13 @@ public class IA : MonoBehaviour
     public Character Objetivo;
     Random r = new Random();
     List<int> habilidadesUsables;
+    public String estado = "esperando";
+    Vector3 destino;
 
     public void Start(){
         Personaje = this.transform.GetComponent<Character>();
     }
+
 
     public void DefinirObjetivo(){
         Vector3 posActual = Personaje.transform.transform.position;
@@ -35,9 +38,11 @@ public class IA : MonoBehaviour
             if (Vector3.Distance(posActual, posObjetivo) < distancia){
                 distancia = Vector3.Distance(posActual, posObjetivo) - 1;
             }
-            Vector3 destino = Vector3.MoveTowards(posActual, posObjetivo, (float) distancia);
+            destino = Vector3.MoveTowards(posActual, posObjetivo, (float) distancia);
             Personaje.transform.gameObject.GetComponent<NavMeshAgent>().destination = destino;
+            estado = "moviendose";
         }
+        estado = "preparado";
        
     }
 
@@ -53,17 +58,40 @@ public class IA : MonoBehaviour
     }
 
     public void Atacar(){
-        while(PuedeAtacar()){
-            Personaje.habilidadSeleccionada = habilidadesUsables[r.Next(habilidadesUsables.Count)];
-            Personaje.Atacar();
-            DefinirObjetivo();
-            Moverse();
-        }
+        // while(PuedeAtacar()){
+        //     Personaje.habilidadSeleccionada = habilidadesUsables[r.Next(habilidadesUsables.Count)];
+        //     Personaje.Atacar();
+        // }
+        estado = "terminado";
     }
     public void HacerTurno(){
-        DefinirObjetivo();
-        Moverse();
-        Atacar();
-        Personaje.SistemaCombate.FinalizaTurno();
+        estado = "empiezaTurno";
+    }
+    public void Update(){
+        switch (estado){
+            case "empiezaTurno":
+                DefinirObjetivo();
+                Moverse();
+                break;
+            case "moviendose":
+                if (Personaje.transform.position == destino){
+                    estado = "preparado";
+                }
+                break;
+            case "preparado":
+                Atacar();
+                break;
+            case "terminado":
+                Personaje.TerminaTurno();
+                estado = "esperando";
+                break;
+            case "atacando":
+            case "esperando":
+                break;
+            default:
+                Debug.Log(estado);
+                break;
+
+        }
     }
 }
