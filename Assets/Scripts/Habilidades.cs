@@ -9,7 +9,7 @@ public class Habilidades
     public static Habilidad AtaqueConEspada = new Habilidad("Ataque con espada", "Ataque con espada", "physical", 3, 50, 5);
     public static Habilidad ColmilloVenenoso = new Habilidad("Colmillo venenoso", "El usuario lanza un proyecitl venenoso hacia su oponente", "poison", 3, 50, 5, true, true);
 
-
+    
     
     public static void lanzar(Character caster, Character objetivo, Habilidad habilidad){
         switch(habilidad.name){

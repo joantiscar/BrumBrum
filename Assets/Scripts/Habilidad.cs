@@ -12,6 +12,8 @@ public class Habilidad
     public int range;
     public bool damages = true;
     public bool special = false;
+    public bool aoe = false;
+    public double radius = 0.0f;
 
     public Habilidad(string a_name, string a_description, string a_type, int a_cooldown, int a_damage, int a_range, bool a_damages = true, bool a_special = false){
         name = a_name;
