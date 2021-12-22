@@ -29,13 +29,13 @@ public class Character : MonoBehaviour
     public double metrosMaximos = 10.0f;
     public double metrosRestantes = 10.0f;
 
+    // Puntos para usar una habilidad: a los actuales se le suma base cada turno hasta que llegue a max
     public int habilidadSeleccionada = 0;
     public int basePAtaques = 5;
     public int maxPAtaques = 10;
     public int actPAtaques = 0;
 
     public int exp_when_killed = 100;
-
 
     public Habilidad[] habilidadesDisponibles;
 
@@ -71,6 +71,7 @@ public class Character : MonoBehaviour
             // Cambiamos todas las imagenes de las habilidades para adaptarse al personaje
             // Además también actualiza la barra de distancia
             UICombate.adaptaUI(habilidadesDisponibles,this);
+            objetivo = null;
         }
         else{
             this.transform.GetComponent<IA>().HacerTurno();
@@ -96,12 +97,12 @@ public class Character : MonoBehaviour
     }
 
     public void Atacar(){
-        // El objetivo tambien esta hardcoded, en un futuro vendra de la UI tambien
         // Hay que mirar como hacer los hechizos de area (si los metemos)
         Habilidad habilidad = habilidadesDisponibles[habilidadSeleccionada];
-        if (actPAtaques>=habilidad.coste){
-            if (this.cooldowns[habilidadSeleccionada] == 0){ // Si la habilidad desta disponible...
+        if (objetivo!=null && actPAtaques>=habilidad.coste){
+            if (this.cooldowns[habilidadSeleccionada] == 0){ // Si la habilidad esta disponible...
                 Character a = objetivo.GetComponent<Character>();
+                Debug.Log("OBjetivo a atacar: " + objetivo.GetComponent<Character>().nombre);
                 // Miramos si estamos a rango de la habilidad
                 if (Vector3.Distance(this.transform.position, objetivo.transform.position) <= habilidad.range){
                     // Lanzamos la habilidad y la ponemos en cooldown
@@ -118,7 +119,7 @@ public class Character : MonoBehaviour
             }
         }
         else{
-            Debug.Log("Sin puntos de ataque!");
+            Debug.Log("No has seleccionado un enemigo o no tienes puntos de ataque!");
 
         }
         

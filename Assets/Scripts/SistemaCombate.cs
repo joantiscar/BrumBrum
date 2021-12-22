@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
-
 public class SistemaCombate : MonoBehaviour
 {
 
@@ -17,6 +16,7 @@ public class SistemaCombate : MonoBehaviour
 
     public bool derrota = false;
     public bool victoria = false;
+    public bool gameover = false;
 
     public void compruebaVictoria(){
         derrota = nAliados == 0;
@@ -45,30 +45,43 @@ public class SistemaCombate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if(!derrota && !victoria){
-            if(pjActual.GetComponent<Character>().user_controlled){
-                
-                if (Input.GetMouseButtonDown(0)) {
+        if(!gameover){
+            if(!derrota && !victoria){
+                if(pjActual.GetComponent<Character>().user_controlled){
+                    
+                    if (Input.GetMouseButtonDown(0)) {
                         RaycastHit hit;
                         
                         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
-                            if (pjActual.GetComponent<Character>().Moverse(Vector3.Distance(hit.point, pjActual.transform.position))){
-                                pjActual.GetComponent<NavMeshAgent>().destination = hit.point;
-                                UICombate.ActualizaDistancia();
+                            if(hit.transform.gameObject.name == "Suelo"){
+                                if (pjActual.GetComponent<Character>().Moverse(Vector3.Distance(hit.point, pjActual.transform.position))){
+                                    pjActual.GetComponent<NavMeshAgent>().destination = hit.point;
+                                    UICombate.ActualizaDistancia();
+                                }
+                            }
+                            else{
+                                // Como pilla el objeto como tal, en plan, el modelo, tenemos que decirle que el objetivo es
+                                // el gameObject del padre (Pj1 -> Modelo del personaje)
+                                GameObject objetivo = hit.collider.gameObject.transform.parent.gameObject;
+                                Debug.Log("Objetivo: " + objetivo.name);
+                                if(!objetivo.GetComponent<Character>().user_controlled) pjActual.GetComponent<Character>().objetivo = objetivo;
+                                else Debug.Log("No puedes tenerte a ti mismo o un aliado como objetivo!! De momento...");
                             }
                         }
                     }
-                if (Input.GetKeyDown("space")){
-                    FinalizaTurno();
-                }
-                if (Input.GetKeyDown("1")){
-                    pjActual.GetComponent<Character>().Atacar();
-                }
+                    if (Input.GetKeyDown("space")){
+                        FinalizaTurno();
+                    }
+                    if (Input.GetKeyDown("1")){
+                        pjActual.GetComponent<Character>().Atacar();
+                    }
 
+                }
             }
-        }
-        else{
-            Debug.Log("GAMEOVER/VICTORIA");
+            else{
+                Debug.Log("GAMEOVER/VICTORIA");
+                gameover = true;
+            }
         }
 
     }

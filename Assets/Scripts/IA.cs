@@ -76,44 +76,48 @@ public class IA : MonoBehaviour
     }
     public void Update()
     {
-        Debug.Log(estado);
-        if (estado != "esperando")
-        {
-            switch (estado)
+        if(!Personaje.SistemaCombate.gameover){
+
+            // Debug.Log(estado);
+            if (estado != "esperando")
             {
-                case "empiezaTurno":
-                    DefinirObjetivo();
-                    Moverse();
-                    break;
-                case "moviendose":
-                    if (Vector3.Distance(Personaje.transform.position, destino) < 1)
-                    {
+                switch (estado)
+                {
+                    case "empiezaTurno":
+                        DefinirObjetivo();
+                        Moverse();
+                        break;
+                    case "moviendose":
+                        if (Vector3.Distance(Personaje.transform.position, destino) < 1)
+                        {
+                            estado = "preparado";
+
+                        }
+                        break;
+                    case "preparado":
+                        if (PuedeAtacar())
+                        {
+                            Personaje.habilidadSeleccionada = habilidadesUsables[r.Next(habilidadesUsables.Count)];
+                            Personaje.Atacar();
+                            DefinirObjetivo();
+                            estado = "atacando";
+                        }
+                        else estado = "terminado";
+                        break;
+                    case "terminado":
+                        Personaje.TerminaTurno();
+                        estado = "esperando";
+                        break;
+                    case "atacando":
                         estado = "preparado";
+                        break;
+                    case "esperando":
+                        break;
+                    default:
+                        Debug.Log(estado);
+                        break;
 
-                    }
-                    break;
-                case "preparado":
-                    if (PuedeAtacar())
-                    {
-                        Personaje.habilidadSeleccionada = habilidadesUsables[r.Next(habilidadesUsables.Count)];
-                        Personaje.Atacar();
-                        estado = "atacando";
-                    }
-                    else estado = "terminado";
-                    break;
-                case "terminado":
-                    Personaje.TerminaTurno();
-                    estado = "esperando";
-                    break;
-                case "atacando":
-                    estado = "preparado";
-                    break;
-                case "esperando":
-                    break;
-                default:
-                    Debug.Log(estado);
-                    break;
-
+                }
             }
         }
     }

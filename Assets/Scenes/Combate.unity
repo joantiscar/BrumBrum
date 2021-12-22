@@ -384,6 +384,7 @@ MonoBehaviour:
   nAliados: 0
   derrota: 0
   victoria: 0
+  gameover: 0
 --- !u!4 &107014252
 Transform:
   m_ObjectHideFlags: 0
@@ -574,6 +575,10 @@ PrefabInstance:
       propertyPath: estado
       value: preparado
       objectReference: {fileID: 0}
+    - target: {fileID: 2691622543158033119, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5834205930977296183, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -622,10 +627,6 @@ PrefabInstance:
       propertyPath: nombre
       value: Paco
       objectReference: {fileID: 0}
-    - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
-      propertyPath: objetivo
-      value: 
-      objectReference: {fileID: 1024850899}
     - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: basePAtaques
       value: 5
