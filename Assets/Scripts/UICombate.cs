@@ -71,6 +71,7 @@ public class UICombate : MonoBehaviour
             cajaHabilidad.gameObject.SetActive(true);
             cajaHabilidad.Find("Nombre").GetComponent<Text>().text = _habilidades[pos].name;
             cajaHabilidad.Find("Dano").GetComponent<Text>().text = _habilidades[pos].damage.ToString();
+            cajaHabilidad.Find("Cooldown").GetComponent<Text>().text = pjActual.cooldowns[pos].ToString();
             cajaHabilidad.Find("nCost").GetComponent<Text>().text = _habilidades[pos].coste.ToString() + " PP";
             cajaHabilidad.Find("Descripcion").GetComponent<Text>().text = _habilidades[pos].description;
         }
