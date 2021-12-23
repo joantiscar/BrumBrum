@@ -44,6 +44,8 @@ public class Character : MonoBehaviour
     private UICombate UICombate;
     public SistemaCombate SistemaCombate;
 
+    private Animator anim;
+
     void Start(){
         // TEST. En un futuro, constructor o algo
         cooldowns = new int[] { 0, 0, 0 };
@@ -54,6 +56,7 @@ public class Character : MonoBehaviour
         };
 
         UICombate = GameObject.Find("SkillsImages").GetComponent<UICombate>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     public void EmpiezaTurno(){
@@ -90,10 +93,11 @@ public class Character : MonoBehaviour
         // Devuelve true si puede moverse la distancia que se puede y la resta de los metros restantes
         bool puedeMoverse = distancia <= metrosRestantes;
         if (puedeMoverse){
+            //anim.SetFloat("Velocity", 1);
             metrosRestantes -= distancia;
             metrosRestantes = Math.Round(metrosRestantes, 1);
         }
-       return puedeMoverse;
+        return puedeMoverse;
     }
 
     public void Atacar(){
@@ -109,6 +113,7 @@ public class Character : MonoBehaviour
                     Habilidades.lanzar(this, a, habilidad);
                     cooldowns[habilidadSeleccionada] += habilidad.cooldown;
                     Debug.Log("Lanzando habilidad " + habilidad.name);
+                    anim.Play("Attack");
                     // Restamos los puntos que se usan
                     actPAtaques -= habilidad.coste;
                 }else{

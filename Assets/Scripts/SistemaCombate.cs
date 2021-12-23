@@ -18,6 +18,8 @@ public class SistemaCombate : MonoBehaviour
     public bool victoria = false;
     public bool gameover = false;
 
+    private RaycastHit last_hit;
+
     public void compruebaVictoria(){
         derrota = nAliados == 0;
         victoria = nEnemigos == 0;
@@ -53,11 +55,14 @@ public class SistemaCombate : MonoBehaviour
                         RaycastHit hit;
                         
                         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
-                            if(hit.transform.gameObject.name == "Suelo"){
+                            last_hit = hit;
+                            if (hit.transform.gameObject.name == "Suelo"){
                                 if (pjActual.GetComponent<Character>().Moverse(Vector3.Distance(hit.point, pjActual.transform.position))){
+                                    pjActual.GetComponentInChildren<Animator>().SetFloat("Velocity", 1);
                                     pjActual.GetComponent<NavMeshAgent>().destination = hit.point;
                                     UICombate.ActualizaDistancia();
                                 }
+                                
                             }
                             else{
                                 // Como pilla el objeto como tal, en plan, el modelo, tenemos que decirle que el objetivo es
@@ -76,16 +81,24 @@ public class SistemaCombate : MonoBehaviour
                         FinalizaTurno();
                     }
                     if (Input.GetKeyDown("1")){
+                        //pjActual.GetComponentInChildren<Animator>().Play("Attack");
                         pjActual.GetComponent<Character>().Atacar();
                     }
 
                 }
+
+                //Debug.Log("Pos pers: " + pjActual.transform.position);
+                //Debug.Log("Pos lhit: " + last_hit.point);
+
+                if (pjActual.transform.position[0] == last_hit.point[0] && pjActual.transform.position[2] == last_hit.point[2]) 
+                    pjActual.GetComponentInChildren<Animator>().SetFloat("Velocity", 0);
             }
             else{
                 Debug.Log("GAMEOVER/VICTORIA");
                 gameover = true;
             }
         }
+
 
     }
 }

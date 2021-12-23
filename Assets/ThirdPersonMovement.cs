@@ -22,7 +22,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     bool isTalking = false;
 
-    Animator animator;
+    private Animator animator;
 
 
     void Start()
@@ -58,12 +58,13 @@ public class ThirdPersonMovement : MonoBehaviour
                 verticalVelocity -= -gravity * Time.deltaTime;
                 animator.SetBool("OnGround", false);
             }
+            /*
             if (Input.GetKeyDown(KeyCode.Space) && (animator.GetCurrentAnimatorStateInfo(0).IsName("Move Blend")))
             {
                 verticalVelocity = jumpHeight;
                 animator.Play("Jump");
             }
-
+            */
 
             Vector3 moveVectorJump = new Vector3(0,verticalVelocity,0);
             controller.Move(moveVectorJump * Time.deltaTime);
@@ -104,12 +105,13 @@ public class ThirdPersonMovement : MonoBehaviour
             //Debug.Log(auxVel);
             animator.SetFloat("Velocity", auxVel);
 
-
+            /*
             if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetBool("OnGround"))
             {
                 //Debug.Log("Attack");
                 animator.Play("Attack");
             }
+            */
         }
         else
         {

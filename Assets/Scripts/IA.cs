@@ -13,9 +13,12 @@ public class IA : MonoBehaviour
     public String estado = "esperando";
     Vector3 destino;
 
+    private Animator anim;
+
     public void Start()
     {
         Personaje = this.transform.GetComponent<Character>();
+        anim = GetComponentInChildren<Animator>();
     }
 
 
@@ -88,10 +91,11 @@ public class IA : MonoBehaviour
                         Moverse();
                         break;
                     case "moviendose":
+                        anim.SetFloat("Velocity", 1);
                         if (Vector3.Distance(Personaje.transform.position, destino) < 1)
                         {
                             estado = "preparado";
-
+                            anim.SetFloat("Velocity", 0);
                         }
                         break;
                     case "preparado":
