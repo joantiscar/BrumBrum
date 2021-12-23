@@ -1,0 +1,212 @@
+fileFormatVersion: 2
+guid: b82f9cf35899ed24cb3ee5133f52485b
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bell_Tex_Lam
+    second: {fileID: 2100000, guid: de96016f6e459534f83f98516d6c6cfb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bell_bjelke_DELETE
+    second: {fileID: 2100000, guid: 0199d559ddfc4c744a64b0b7bfe516df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Char_Anatomy_Book_Metal_Texture
+    second: {fileID: 2100000, guid: 667073efe78700846a07cae81e8fe603, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chruch_Alter_Standard_Texture
+    second: {fileID: 2100000, guid: 3d76586974c660340a3cf3a441c1be8f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Church_Alter_Magic_Texture_01
+    second: {fileID: 2100000, guid: d6b26bf4422c22e4e957bd058650756f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Church_Center_Standard_Texture_01
+    second: {fileID: 2100000, guid: b696891f5476f7b4a953d2f80879784b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Church_Pillar_Texture_01
+    second: {fileID: 2100000, guid: 58856e3ee40bfd843a3047d33d04e9ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Church_Roof_Standard_Texture_01
+    second: {fileID: 2100000, guid: b5e8c5a83741726448d89b2db2a5e584, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Church_Roof_Top_Texture_01
+    second: {fileID: 2100000, guid: a9c6e06ee1681eb4e80c956603f8916a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Church_Stairs_Standard_Texture
+    second: {fileID: 2100000, guid: 5d3b45fe0db33e646976edacdecebd85, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Church_Top_OtherMaterial
+    second: {fileID: 2100000, guid: a97e2a427e6801942b8c34c43c838d93, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Church_Wall_Center_Texture
+    second: {fileID: 2100000, guid: 2e29cc6145f8ef5498615e5be1139071, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Church_Wall_Out_Texture_01
+    second: {fileID: 2100000, guid: 8ba035a8e0036b847a9d3ef128dae598, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Church_Wall_Standard_Texture_01
+    second: {fileID: 2100000, guid: 23be529979bb19b4da6a7390f020e57f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Church_Wall_wDoor_Texture_01
+    second: {fileID: 2100000, guid: e69ab2a425b5de9448b6573bc3eda1b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Church_WhiteWall_Roof_01
+    second: {fileID: 2100000, guid: cee920eca542d4d47aa2a75ca5365ca0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Church_White_Wall_DEL_01
+    second: {fileID: 2100000, guid: 4e7e243513ceede42a8eb922fc2b33f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Church_Window_CENTER_Texture_01
+    second: {fileID: 2100000, guid: ee0a2a46a687f704f962fe611621b6f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Doors_Texture
+    second: {fileID: 2100000, guid: d1735d13c47779b40a49e08e6b678769, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Windows_Texture_01
+    second: {fileID: 2100000, guid: f2c203d7c5aa3634bb1c784313d7b006, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 01817663c5a6f3d478ccd2d814e2642f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 314c08833d26c184fa6db9cee7bd1ee0, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
