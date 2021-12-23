@@ -16,6 +16,7 @@ public class UICombate : MonoBehaviour
     public Slider barraDistancia;
     public Slider barraHP;
     public Text LabelPP;
+    public Text TextDebug;
 
     public int habilidadSeleccionada = -1;
     Character pjActual;
@@ -83,8 +84,13 @@ public class UICombate : MonoBehaviour
         // HACER QUE HAYA UN POCO DE FEEDBACK EN LA UI
         if(h<_habilidades.Length){
             Debug.Log("Habilidad cambiada a: "+_habilidades[h].name);
+            TextDebug.text = "Habilidad cambiada a: "+_habilidades[h].name;
             pjActual.habilidadSeleccionada = h;
         }
+    }
+
+    public void actualizaPP(){
+        LabelPP.text = pjActual.actPAtaques.ToString();
     }
 
     public void ActualizaDistancia(){

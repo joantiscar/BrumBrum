@@ -120,28 +120,32 @@ public class Character : MonoBehaviour
         if (objetivo!=null && actPAtaques>=habilidad.coste){
             if (this.cooldowns[habilidadSeleccionada] == 0){ // Si la habilidad esta disponible...
                 Character a = objetivo.GetComponent<Character>();
-                Debug.Log("OBjetivo a atacar: " + objetivo.GetComponent<Character>().nombre);
+                Debug.Log("Objetivo a atacar: " + objetivo.GetComponent<Character>().nombre);
+                UICombate.TextDebug.text = "Objetivo a atacar: " + objetivo.GetComponent<Character>().nombre;
                 // Miramos si estamos a rango de la habilidad
                 if (Vector3.Distance(this.transform.position, objetivo.transform.position) <= habilidad.range){
                     StartCoroutine(RutinaAtacar(habilidad, a));
                     Habilidades.lanzar(this, a, habilidad);
                     cooldowns[habilidadSeleccionada] += habilidad.cooldown;
                     Debug.Log("Lanzando habilidad " + habilidad.name);
-                    
+                    UICombate.TextDebug.text = "Lanzando habilidad " + habilidad.name;
                     // Restamos los puntos que se usan
                     actPAtaques -= habilidad.coste;
+                    UICombate.actualizaPP();
 
                     anim.Play("Idle");
                 }else{
                     Debug.Log(habilidad.name + " fuera de rango");
+                    UICombate.TextDebug.text = habilidad.name + " fuera de rango";
                 }
             }else{
                 Debug.Log("Habilidad en enfriamiento");
+                UICombate.TextDebug.text = "Habilidad en enfriamiento";
             }
         }
         else{
             Debug.Log("No has seleccionado un enemigo o no tienes puntos de ataque!");
-
+            UICombate.TextDebug.text = "No has seleccionado un enemigo o no tienes puntos de ataque!";
         }
         
 

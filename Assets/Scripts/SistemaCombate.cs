@@ -82,8 +82,8 @@ public class SistemaCombate : MonoBehaviour
                     if (Input.GetKeyDown("space")){
                         FinalizaTurno();
                     }
-                    // No se puede atacar a no ser que esté quitecito
-                    if (Input.GetKeyDown("1") && pjActual.transform.position[0] == last_hit.point[0] && pjActual.transform.position[2] == last_hit.point[2]){
+                    
+                    if (Input.GetKeyDown("1")){
                         //pjActual.GetComponentInChildren<Animator>().Play("Attack");
                         pjActual.GetComponent<Character>().Atacar();
                     }
