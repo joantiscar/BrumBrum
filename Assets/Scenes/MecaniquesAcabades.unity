@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1882762, g: 0.19113812, b: 0.19109797, a: 1}
+  m_IndirectSpecularColor: {r: 0.18827605, g: 0.19113812, b: 0.1910977, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -857,7 +857,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &211283437
 Light:
   m_ObjectHideFlags: 0
@@ -1997,7 +1997,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &446147918
 Light:
   m_ObjectHideFlags: 0
@@ -5424,11 +5424,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5379171594840500326, guid: bbecb5d19d0b4b24d9f39fe1b0879bf9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000001280641
+      value: -0.0000000128064075
       objectReference: {fileID: 0}
     - target: {fileID: 5379171594840500326, guid: bbecb5d19d0b4b24d9f39fe1b0879bf9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000001606519
+      value: 0.0000000016065044
       objectReference: {fileID: 0}
     - target: {fileID: 5379171594840500327, guid: bbecb5d19d0b4b24d9f39fe1b0879bf9, type: 3}
       propertyPath: m_WorldUpOverride
@@ -5448,11 +5448,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5379171595319696150, guid: bbecb5d19d0b4b24d9f39fe1b0879bf9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008515345
+      value: -0.000000008515345
       objectReference: {fileID: 0}
     - target: {fileID: 5379171595319696150, guid: bbecb5d19d0b4b24d9f39fe1b0879bf9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000012262865
+      value: 0.0000000012262865
       objectReference: {fileID: 0}
     - target: {fileID: 5379171595530257039, guid: bbecb5d19d0b4b24d9f39fe1b0879bf9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5464,11 +5464,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5379171595530257039, guid: bbecb5d19d0b4b24d9f39fe1b0879bf9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000042771364
+      value: 0.0000000042771338
       objectReference: {fileID: 0}
     - target: {fileID: 5379171595530257039, guid: bbecb5d19d0b4b24d9f39fe1b0879bf9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 4.5807902e-10
+      value: -4.580787e-10
       objectReference: {fileID: 0}
     - target: {fileID: 5379171595650232789, guid: bbecb5d19d0b4b24d9f39fe1b0879bf9, type: 3}
       propertyPath: m_Text
@@ -6863,10 +6863,10 @@ Transform:
   - {fileID: 1599300400}
   - {fileID: 1655697104}
   - {fileID: 1095537111}
+  - {fileID: 2031358548}
   - {fileID: 381329568}
   - {fileID: 109988400}
   - {fileID: 1425617416}
-  - {fileID: 2031358548}
   m_Father: {fileID: 231194275}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7450,7 +7450,7 @@ Transform:
   - {fileID: 264199185}
   - {fileID: 1493577589}
   m_Father: {fileID: 1867908405}
-  m_RootOrder: 11
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &2036052128
 MeshCollider:

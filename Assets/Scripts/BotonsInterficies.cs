@@ -10,7 +10,7 @@ public class BotonsInterficies : MonoBehaviour
     }
 
     public void Inici(){ // Torna al menú inici
-        SceneManager.LoadScene("Inici");
+        SceneManager.LoadScene("MenuInici");
     }
 
     public void ComencaJoc(){
