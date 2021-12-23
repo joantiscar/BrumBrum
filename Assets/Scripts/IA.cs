@@ -61,6 +61,7 @@ public class IA : MonoBehaviour
 
     public bool PuedeAtacar()
     {
+        if (Personaje.SistemaCombate.nAliados == 0) return false;
         habilidadesUsables = new List<int>();
         for (int i = 0; i < Personaje.habilidadesDisponibles.Length; i++)
         {
