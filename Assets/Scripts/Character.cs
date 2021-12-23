@@ -100,6 +100,24 @@ public class Character : MonoBehaviour
         return puedeMoverse;
     }
 
+    
+
+    IEnumerator RutinaAtacar(Habilidad habilidad, Character a){
+        // Lanzamos la habilidad y la ponemos en cooldown
+        // Pero antes hacemos la animacion y esperamos a que termine
+        anim.Play("Attack");
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+
+        Habilidades.lanzar(this, a, habilidad);
+        cooldowns[habilidadSeleccionada] += habilidad.cooldown;
+        Debug.Log("Lanzando habilidad " + habilidad.name);
+        
+        // Restamos los puntos que se usan
+        actPAtaques -= habilidad.coste;
+
+        anim.Play("Idle");
+    }
+
     public void Atacar(){
         // Hay que mirar como hacer los hechizos de area (si los metemos)
         Habilidad habilidad = habilidadesDisponibles[habilidadSeleccionada];
@@ -109,13 +127,7 @@ public class Character : MonoBehaviour
                 Debug.Log("OBjetivo a atacar: " + objetivo.GetComponent<Character>().nombre);
                 // Miramos si estamos a rango de la habilidad
                 if (Vector3.Distance(this.transform.position, objetivo.transform.position) <= habilidad.range){
-                    // Lanzamos la habilidad y la ponemos en cooldown
-                    Habilidades.lanzar(this, a, habilidad);
-                    cooldowns[habilidadSeleccionada] += habilidad.cooldown;
-                    Debug.Log("Lanzando habilidad " + habilidad.name);
-                    anim.Play("Attack");
-                    // Restamos los puntos que se usan
-                    actPAtaques -= habilidad.coste;
+                    StartCoroutine(RutinaAtacar(habilidad, a));
                 }else{
                     Debug.Log(habilidad.name + " fuera de rango");
                 }
