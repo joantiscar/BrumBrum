@@ -71,7 +71,6 @@ public class SistemaCombate : MonoBehaviour
                                 // Como pilla el objeto como tal, en plan, el modelo, tenemos que decirle que el objetivo es
                                 // el gameObject del padre (Pj1 -> Modelo del personaje)
                                 GameObject objetivo = hit.collider.gameObject.transform.parent.gameObject;
-                                Debug.Log(objetivo.transform.GetChild(0).GetComponent<Renderer>().material.name);
                                 if(!objetivo.GetComponent<Character>().user_controlled){
                                     pjActual.GetComponent<Character>().objetivo = objetivo;
                                     objetivo.transform.GetChild(0).GetComponent<Renderer>().material.shader = Shader.Find("Outlined/Uniform");
@@ -83,7 +82,8 @@ public class SistemaCombate : MonoBehaviour
                     if (Input.GetKeyDown("space")){
                         FinalizaTurno();
                     }
-                    if (Input.GetKeyDown("1")){
+                    // No se puede atacar a no ser que esté quitecito
+                    if (Input.GetKeyDown("1") && pjActual.transform.position[0] == last_hit.point[0] && pjActual.transform.position[2] == last_hit.point[2]){
                         //pjActual.GetComponentInChildren<Animator>().Play("Attack");
                         pjActual.GetComponent<Character>().Atacar();
                     }

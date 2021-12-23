@@ -11,8 +11,8 @@ public class UICombate : MonoBehaviour
     private Color opaco = Color.white;
 
     private Habilidad[] _habilidades; // Una array con las habilidades actuales
-    private Transform cajaHabilidad;
-
+    
+    public Transform cajaHabilidad;
     public Slider barraDistancia;
     public Slider barraHP;
     public Text LabelPP;
@@ -23,7 +23,6 @@ public class UICombate : MonoBehaviour
     void Awake()
     {
         imgs = GetComponentsInChildren<Image>();
-        cajaHabilidad = transform.parent.Find("CajaSkill");
 
     }
 
@@ -71,6 +70,7 @@ public class UICombate : MonoBehaviour
             cajaHabilidad.gameObject.SetActive(true);
             cajaHabilidad.Find("Nombre").GetComponent<Text>().text = _habilidades[pos].name;
             cajaHabilidad.Find("Dano").GetComponent<Text>().text = _habilidades[pos].damage.ToString();
+            cajaHabilidad.Find("nCost").GetComponent<Text>().text = _habilidades[pos].coste.ToString() + " PP";
             cajaHabilidad.Find("Descripcion").GetComponent<Text>().text = _habilidades[pos].description;
         }
     }
