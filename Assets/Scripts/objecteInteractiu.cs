@@ -23,7 +23,7 @@ public class objecteInteractiu : MonoBehaviour
 
         //dialogues = GetComponent<GameObject>().GetComponent<Dialogue>();
 
-        texts = new Texts(dialogues.getCharacterName(), dialogues.getPlayerName(), dialogues.getName3(), dialogues.getName4(), dialogues.getDialogue(), dialogues.getPlayerDialogue(), dialogues.getDialogue3(), dialogues.getDialogue4(), dialogues.getDialogueOrder());
+        texts = new Texts(dialogues.getDesti(), dialogues.getCharacterName(), dialogues.getPlayerName(), dialogues.getName3(), dialogues.getName4(), dialogues.getDialogue(), dialogues.getPlayerDialogue(), dialogues.getDialogue3(), dialogues.getDialogue4(), dialogues.getDialogueOrder());
     }
 
 

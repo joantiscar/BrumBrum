@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class controlDialegs : MonoBehaviour
 {
@@ -188,6 +189,7 @@ public class controlDialegs : MonoBehaviour
         FindObjectOfType<ThirdPersonMovement>().isTalkKing();
         FindObjectOfType<Interaccio>().isTalkingStarted();
         FindObjectOfType<CameraSwitch>().isCameraOnGoing();
+        SceneManager.LoadScene (text.desti);
     }
 
     public void ActivateDialogue()

@@ -119,7 +119,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             animator.SetFloat("Velocity", 0);
             animator.Play("Move Blend");
-             Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
     }

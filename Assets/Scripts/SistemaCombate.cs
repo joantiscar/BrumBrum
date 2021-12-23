@@ -35,6 +35,8 @@ public class SistemaCombate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         for(int i=0;i<pjs.Length;i++){
             if(pjs[i].GetComponent<Character>().user_controlled) nAliados++;
             else nEnemigos++;

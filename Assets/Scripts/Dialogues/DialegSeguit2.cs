@@ -28,5 +28,6 @@ public class DialegSeguit2 : GameDialogue
         "Tenemos que aceptar la oferta.", 
         "Es posible que sea una trampa, pero esta vez creo que Zeth no miente. Debe tener algo en mente."};
         dialogueOrder = new int [] {0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 2, 1, 3, 3, 3/*, 1, 1*/};
+        desti = "CombatDemo";
     }
 }

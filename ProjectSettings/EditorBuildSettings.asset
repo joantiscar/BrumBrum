@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOver.unity
     guid: 4bd145c66844a3d4e9f5f095b6ca5803
   - enabled: 1
-    path: Assets/Scenes/CombateAnimado.unity
+    path: Assets/Scenes/CombatDemo.unity
     guid: d95eceff5a00c334cad9b4b82b90e53e
   - enabled: 1
     path: Assets/Scenes/MecaniquesAcabades.unity

@@ -13,7 +13,7 @@ public class GameDialogue : MonoBehaviour
     protected string playerName;
     protected string name3;
     protected string name4;
-    
+    protected string desti;
 
     public string getCharacterName()
     {
@@ -50,5 +50,9 @@ public class GameDialogue : MonoBehaviour
     public int[] getDialogueOrder()
     {
         return dialogueOrder;
+    }
+    public string getDesti()
+    {
+        return desti;
     }
 }
