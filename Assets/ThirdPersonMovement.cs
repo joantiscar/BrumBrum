@@ -37,6 +37,8 @@ public class ThirdPersonMovement : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundChek.position, groundDistance, groundMask);
 
         if(!isTalking){
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
 
             if(isGrounded)
             {
@@ -117,6 +119,8 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             animator.SetFloat("Velocity", 0);
             animator.Play("Move Blend");
+             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
     public void isTalkKing()
