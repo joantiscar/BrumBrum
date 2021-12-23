@@ -47,7 +47,7 @@ public class Character : MonoBehaviour
 
     private Animator anim;
 
-    void Start(){
+    void Awake(){
         // TEST. En un futuro, constructor o algo
         cooldowns = new int[] { 0, 0, 0 };
         habilidadesDisponibles = new Habilidad[] {
@@ -58,8 +58,11 @@ public class Character : MonoBehaviour
 
         UICombate = GameObject.Find("SkillsImages").GetComponent<UICombate>();
         anim = GetComponentInChildren<Animator>();
-
         hp = hpMax;
+        UICombate.adaptaUI(habilidadesDisponibles,this);
+        UICombate.actualizaPP();
+        UICombate.ActualizaDistancia();
+
     }
 
     public void EmpiezaTurno(){
@@ -77,6 +80,9 @@ public class Character : MonoBehaviour
             // Cambiamos todas las imagenes de las habilidades para adaptarse al personaje
             // Además también actualiza la barra de distancia
             UICombate.adaptaUI(habilidadesDisponibles,this);
+            UICombate.actualizaPP();
+            UICombate.ActualizaDistancia();
+
             objetivo = null;
         }
         else{

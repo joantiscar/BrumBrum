@@ -45,6 +45,10 @@ public class SistemaCombate : MonoBehaviour
 
         }
         pjActual.GetComponent<Character>().EmpiezaTurno();
+        UICombate.adaptaUI(pjActual.GetComponent<Character>().habilidadesDisponibles,pjActual.GetComponent<Character>());
+        UICombate.actualizaPP();
+        UICombate.ActualizaDistancia();
+
     }
 
     // Update is called once per frame
