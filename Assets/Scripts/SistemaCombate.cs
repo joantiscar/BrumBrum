@@ -97,7 +97,8 @@ public class SistemaCombate : MonoBehaviour
                     pjActual.GetComponentInChildren<Animator>().SetFloat("Velocity", 0);
             }
             else{
-                SceneManager.LoadScene ("GameOver");
+                if (derrota) SceneManager.LoadScene ("GameOver");
+                else SceneManager.LoadScene ("Victoria");
                 
             }
         }
