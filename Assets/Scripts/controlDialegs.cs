@@ -189,7 +189,7 @@ public class controlDialegs : MonoBehaviour
         FindObjectOfType<ThirdPersonMovement>().isTalkKing();
         FindObjectOfType<Interaccio>().isTalkingStarted();
         FindObjectOfType<CameraSwitch>().isCameraOnGoing();
-        SceneManager.LoadScene (text.desti);
+        if(text.desti != null) SceneManager.LoadScene (text.desti);
     }
 
     public void ActivateDialogue()

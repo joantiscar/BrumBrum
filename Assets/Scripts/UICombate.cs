@@ -13,7 +13,9 @@ public class UICombate : MonoBehaviour
     private Habilidad[] _habilidades; // Una array con las habilidades actuales
     private Transform cajaHabilidad;
 
-    private Slider barraDistancia;
+    public Slider barraDistancia;
+    public Slider barraHP;
+    public Text LabelPP;
 
     public int habilidadSeleccionada = -1;
     Character pjActual;
@@ -22,7 +24,6 @@ public class UICombate : MonoBehaviour
     {
         imgs = GetComponentsInChildren<Image>();
         cajaHabilidad = transform.parent.Find("CajaSkill");
-        barraDistancia = transform.parent.Find("Barra").GetComponent<Slider>();
 
     }
 
@@ -47,9 +48,19 @@ public class UICombate : MonoBehaviour
         _habilidades = habilidades;
         pjActual = pj;
 
+        Character pjScript = pjActual.GetComponent<Character>();
+
         // Actualiza la barra con el maximo de metros
-        barraDistancia.maxValue = (float) pjActual.GetComponent<Character>().metrosRestantes;
+        barraDistancia.maxValue = (float) pjScript.metrosRestantes;
         barraDistancia.value = barraDistancia.maxValue;
+
+        // Actualiza la barra con el HP
+        barraHP.maxValue = (float) pjScript.hpMax;
+        barraHP.value = (float) pjScript.hp;
+
+
+        // Actualiza el label de PP
+        LabelPP.text = pjActual.actPAtaques.ToString();
         
     }
 

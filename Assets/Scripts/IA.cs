@@ -93,7 +93,7 @@ public class IA : MonoBehaviour
                         break;
                     case "moviendose":
                         anim.SetFloat("Velocity", 1);
-                        if (Vector3.Distance(Personaje.transform.position, destino) < 1)
+                        if (Vector3.Distance(Personaje.transform.position, destino) < 1.5)
                         {
                             estado = "preparado";
                             anim.SetFloat("Velocity", 0);

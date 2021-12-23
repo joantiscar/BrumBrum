@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 using UnityEngine.UI;
 public class SistemaCombate : MonoBehaviour
@@ -96,8 +97,8 @@ public class SistemaCombate : MonoBehaviour
                     pjActual.GetComponentInChildren<Animator>().SetFloat("Velocity", 0);
             }
             else{
-                Debug.Log("GAMEOVER/VICTORIA");
-                gameover = true;
+                SceneManager.LoadScene ("GameOver");
+                
             }
         }
 

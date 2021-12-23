@@ -11,6 +11,7 @@ public class Character : MonoBehaviour
     public bool user_controlled = false;
 
     public int hp;
+    public int hpMax;
     public int attack;
     public int special_attack;
     public int defense;
@@ -57,6 +58,8 @@ public class Character : MonoBehaviour
 
         UICombate = GameObject.Find("SkillsImages").GetComponent<UICombate>();
         anim = GetComponentInChildren<Animator>();
+
+        hp = hpMax;
     }
 
     public void EmpiezaTurno(){
@@ -108,14 +111,7 @@ public class Character : MonoBehaviour
         anim.Play("Attack");
         yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0)[0].clip.length);
 
-        Habilidades.lanzar(this, a, habilidad);
-        cooldowns[habilidadSeleccionada] += habilidad.cooldown;
-        Debug.Log("Lanzando habilidad " + habilidad.name);
         
-        // Restamos los puntos que se usan
-        actPAtaques -= habilidad.coste;
-
-        anim.Play("Idle");
     }
 
     public void Atacar(){
@@ -128,6 +124,14 @@ public class Character : MonoBehaviour
                 // Miramos si estamos a rango de la habilidad
                 if (Vector3.Distance(this.transform.position, objetivo.transform.position) <= habilidad.range){
                     StartCoroutine(RutinaAtacar(habilidad, a));
+                    Habilidades.lanzar(this, a, habilidad);
+                    cooldowns[habilidadSeleccionada] += habilidad.cooldown;
+                    Debug.Log("Lanzando habilidad " + habilidad.name);
+                    
+                    // Restamos los puntos que se usan
+                    actPAtaques -= habilidad.coste;
+
+                    anim.Play("Idle");
                 }else{
                     Debug.Log(habilidad.name + " fuera de rango");
                 }
@@ -166,6 +170,8 @@ public class Character : MonoBehaviour
     {
         if (defense < damage) damage -= defense;
         if (elemental_resistance == element) damage /= 2;
+        Debug.Log(damage);
+
         hp -= damage;
         if (hp <= 0){
             morir();
@@ -216,7 +222,7 @@ public class Character : MonoBehaviour
         {
             switch(up_stat){
                 case "hp":
-                    hp += 5;
+                    hpMax += 5;
                     break;
                 case "attack":
                     attack += 5;
