@@ -18,6 +18,8 @@ public class UICombate : MonoBehaviour
     public Text LabelPP;
     public Text TextDebug;
 
+    public GameObject selected;
+
     public int habilidadSeleccionada = -1;
     Character pjActual;
 
@@ -82,11 +84,11 @@ public class UICombate : MonoBehaviour
     }
 
     public void seleccionarHabilidad(int h){
-        // HACER QUE HAYA UN POCO DE FEEDBACK EN LA UI
         if(h<_habilidades.Length){
             Debug.Log("Habilidad cambiada a: "+_habilidades[h].name);
             TextDebug.text = "Habilidad cambiada a: "+_habilidades[h].name;
             pjActual.habilidadSeleccionada = h;
+            selected.transform.position = imgs[h].transform.position;
         }
     }
 
