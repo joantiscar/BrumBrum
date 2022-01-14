@@ -29,7 +29,7 @@ public class UICombate : MonoBehaviour
 
     }
 
-    public void adaptaUI(Habilidad[] habilidades,Character pj){
+    public void adaptaUI(Habilidad[] habilidades,Character pj){ //Llamada cada vez que empieza el turno de un personaje
         // Cambia las imagenes de la barra de abajo por las del parametro habilidades
         foreach (Image img in imgs)
         {
@@ -66,6 +66,13 @@ public class UICombate : MonoBehaviour
         
     }
 
+    public void FinalizaTurno(){ // LLamada cada vez que acaba el turno de un personaje
+        // Restart la habilidad seleccionada
+        selected.SetActive(false);
+        pjActual.habilidadSeleccionada = -1;
+        habilidadSeleccionada = -1;
+    }
+
     public void muestraDescripcion(int pos){
         // Cuando se hace hover sobre una imagen, nos llega la pos en habilidades de la imagen
         if(pos<_habilidades.Length){
@@ -88,6 +95,7 @@ public class UICombate : MonoBehaviour
             Debug.Log("Habilidad cambiada a: "+_habilidades[h].name);
             TextDebug.text = "Habilidad cambiada a: "+_habilidades[h].name;
             pjActual.habilidadSeleccionada = h;
+            selected.SetActive(true);
             selected.transform.position = imgs[h].transform.position;
         }
     }

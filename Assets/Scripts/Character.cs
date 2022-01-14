@@ -59,9 +59,9 @@ public class Character : MonoBehaviour
         UICombate = GameObject.Find("SkillsImages").GetComponent<UICombate>();
         anim = GetComponentInChildren<Animator>();
         hp = hpMax;
-        UICombate.adaptaUI(habilidadesDisponibles,this);
-        UICombate.actualizaPP();
-        UICombate.ActualizaDistancia();
+        //UICombate.adaptaUI(habilidadesDisponibles,this);
+        // UICombate.actualizaPP();
+        // UICombate.ActualizaDistancia();
 
     }
 

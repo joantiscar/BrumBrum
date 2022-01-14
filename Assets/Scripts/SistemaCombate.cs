@@ -27,6 +27,7 @@ public class SistemaCombate : MonoBehaviour
     }
 
     public void FinalizaTurno(){
+        UICombate.FinalizaTurno();
         ordenActual++;
         if (ordenActual >= pjs.Length) ordenActual = 0;
         pjActual = pjs[ordenActual];
@@ -45,9 +46,12 @@ public class SistemaCombate : MonoBehaviour
 
         }
         pjActual.GetComponent<Character>().EmpiezaTurno();
-        UICombate.adaptaUI(pjActual.GetComponent<Character>().habilidadesDisponibles,pjActual.GetComponent<Character>());
-        UICombate.actualizaPP();
-        UICombate.ActualizaDistancia();
+        
+        // if(pjActual.GetComponent<Character>().user_controlled){
+        //     UICombate.adaptaUI(pjActual.GetComponent<Character>().habilidadesDisponibles,pjActual.GetComponent<Character>());
+        //     UICombate.actualizaPP();
+        //     UICombate.ActualizaDistancia();
+        // }
 
     }
 
@@ -86,11 +90,21 @@ public class SistemaCombate : MonoBehaviour
                     if (Input.GetKeyDown("space")){
                         FinalizaTurno();
                     }
-                    
-                    if (Input.GetKeyDown("1")){
+
+                    if (Input.GetKeyDown("a")){
                         //pjActual.GetComponentInChildren<Animator>().Play("Attack");
                         pjActual.GetComponent<Character>().Atacar();
                     }
+
+                    
+                    
+                    for(int i=1;i<7;i++){
+                        if (Input.GetKeyDown(i.ToString())){
+                            UICombate.seleccionarHabilidad(i-1);
+                        }
+                    }
+
+                    
 
                 }
 
