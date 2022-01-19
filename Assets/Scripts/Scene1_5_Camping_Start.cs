@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Escene1_Precamping_Start : MonoBehaviour
+public class Scene1_5_Camping_Start : MonoBehaviour
 {
 
     private GameObject npc_inicialDialogue;
@@ -15,7 +15,7 @@ public class Escene1_Precamping_Start : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        npc_inicialDialogue = GameObject.Find("NPC_InicialDialogue");
+        npc_inicialDialogue = GameObject.Find("NPC_Brute");
         objecteInt = npc_inicialDialogue.GetComponent<objecteInteractiu>();
 
         player = GameObject.FindGameObjectWithTag("Player");
@@ -30,32 +30,15 @@ public class Escene1_Precamping_Start : MonoBehaviour
             firstDialogueIsCalled = true;
             npc_inicialDialogue.GetComponent<objecteInteractiu>().Interactuate();
             player.GetComponent<Interaccio>().isTalkingStarted();
-            
+
             Destroy(npc_inicialDialogue.GetComponent<GameDialogue>());
-            npc_inicialDialogue.AddComponent<DialegSeguit1>();
-            
-            /*
-            npc_inicialDialogue.GetComponent<objecteInteractiu>().Start();
-            Debug.Log(objecteInt.dialogues);*/
+            npc_inicialDialogue.AddComponent<DialegHerc1>();
 
         }
         else if (!FindObjectOfType<controlDialegs>().animText.GetBool("Sign") && !secondDialogueIsCalled)
         {
-            /*
-            Destroy(npc_inicialDialogue.GetComponent<GameDialogue>());
-            npc_inicialDialogue.AddComponent<DialegSeguit1>();
-            */
             npc_inicialDialogue.GetComponent<objecteInteractiu>().Start();
-            //Debug.Log(objecteInt.dialogues);
-
             secondDialogueIsCalled = true;
-            npc_inicialDialogue.GetComponent<objecteInteractiu>().Interactuate();
-            player.GetComponent<Interaccio>().isTalkingStarted();
-
-            Destroy(npc_inicialDialogue.GetComponent<GameDialogue>());
-            Destroy(npc_inicialDialogue.GetComponent<objecteInteractiu>());
-            npc_inicialDialogue.transform.gameObject.tag = "Untagged";
         }
     }
-
 }
