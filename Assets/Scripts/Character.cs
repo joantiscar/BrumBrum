@@ -45,7 +45,7 @@ public class Character : MonoBehaviour
     private UICombate UICombate;
     public SistemaCombate SistemaCombate;
 
-    private Animator anim;
+    public Animator anim;
 
     void Awake(){
         // TEST. En un futuro, constructor o algo
@@ -109,13 +109,26 @@ public class Character : MonoBehaviour
         return puedeMoverse;
     }
 
+    public AnimationClip FindAnimation (Animator animator, string name) // Busca una animación name en el animator dado y te la da, incredibol
+    {
+        foreach (AnimationClip clip in animator.runtimeAnimatorController.animationClips)
+        {
+            Debug.Log(clip.name);
+            if (clip.name == name)
+            {
+                return clip;
+            }
+        }
+
+        return null;
+    }
     
 
-    IEnumerator RutinaAtacar(Habilidad habilidad, Character a){
+    IEnumerator RutinaAtacar(){
         // Lanzamos la habilidad y la ponemos en cooldown
         // Pero antes hacemos la animacion y esperamos a que termine
-        anim.Play("Attack");
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        anim.Play("Attack"); 
+        yield return new WaitForSeconds(FindAnimation(anim,"Attack").length);
 
         
     }
@@ -130,7 +143,7 @@ public class Character : MonoBehaviour
                 UICombate.TextDebug.text = "Objetivo a atacar: " + objetivo.GetComponent<Character>().nombre;
                 // Miramos si estamos a rango de la habilidad
                 if (Vector3.Distance(this.transform.position, objetivo.transform.position) <= habilidad.range){
-                    StartCoroutine(RutinaAtacar(habilidad, a));
+                    StartCoroutine(RutinaAtacar());
                     Habilidades.lanzar(this, a, habilidad);
                     cooldowns[habilidadSeleccionada] += habilidad.cooldown;
                     Debug.Log("Lanzando habilidad " + habilidad.name);
@@ -139,7 +152,7 @@ public class Character : MonoBehaviour
                     actPAtaques -= habilidad.coste;
                     UICombate.actualizaPP();
 
-                    anim.Play("Idle");
+                    anim.Play("Idle"); // Me da un warning State could not be found
                 }else{
                     Debug.Log(habilidad.name + " fuera de rango");
                     UICombate.TextDebug.text = habilidad.name + " fuera de rango";

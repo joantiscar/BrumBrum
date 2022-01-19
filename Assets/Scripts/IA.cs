@@ -13,6 +13,8 @@ public class IA : MonoBehaviour
     public String estado = "esperando";
     Vector3 destino;
 
+    private bool atacando = false;
+
     private Animator anim;
 
     public void Start()
@@ -78,6 +80,29 @@ public class IA : MonoBehaviour
     {
         estado = "empiezaTurno";
     }
+
+    public AnimationClip FindAnimation (Animator animator, string name) 
+    {
+        foreach (AnimationClip clip in animator.runtimeAnimatorController.animationClips)
+        {
+            Debug.Log(clip.name);
+            if (clip.name == name)
+            {
+                return clip;
+            }
+        }
+
+        return null;
+    }
+
+    IEnumerator RutinaAtacar(){
+        atacando = true;
+        yield return new WaitForSeconds(FindAnimation(Personaje.anim,"Attack").length);
+        atacando = false;
+        Debug.Log("AAAAA");
+        
+    }
+
     public void Update()
     {
         if(!Personaje.SistemaCombate.gameover){
@@ -106,6 +131,7 @@ public class IA : MonoBehaviour
                             Personaje.Atacar();
                             DefinirObjetivo();
                             estado = "atacando";
+                            StartCoroutine(RutinaAtacar());
                         }
                         else estado = "terminado";
                         break;
@@ -114,7 +140,7 @@ public class IA : MonoBehaviour
                         estado = "esperando";
                         break;
                     case "atacando":
-                        estado = "preparado";
+                        if(!atacando) estado = "preparado";
                         break;
                     case "esperando":
                         break;

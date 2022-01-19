@@ -5,7 +5,7 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Standing 2H Magic Attack 02
+    second: Attack
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -19,7 +19,13 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
+      copied configuration does not match position in animation file:\n\t'LeftUpLeg'
+      : position error = 38.401215 mm\n\t'LeftLeg' : position error = 30.173086 mm\n\t'LeftFoot'
+      : position error = 7.885846 mm\n\t'LeftToeBase' : position error = 39.937439
+      mm\n\t'RightUpLeg' : position error = 38.489174 mm\n\t'RightLeg' : position
+      error = 30.172590 mm\n\t'RightFoot' : position error = 7.884164 mm\n\t'RightToeBase'
+      : position error = 39.937443 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -35,7 +41,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Standing 2H Magic Attack 02
+      name: Attack
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0

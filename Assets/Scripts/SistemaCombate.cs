@@ -47,6 +47,7 @@ public class SistemaCombate : MonoBehaviour
         }
         pjActual.GetComponent<Character>().EmpiezaTurno();
         
+        // Antes esto era necesario pero ahora ya no??? Idk dejemoslo comentado por si las moscas
         // if(pjActual.GetComponent<Character>().user_controlled){
         //     UICombate.adaptaUI(pjActual.GetComponent<Character>().habilidadesDisponibles,pjActual.GetComponent<Character>());
         //     UICombate.actualizaPP();
