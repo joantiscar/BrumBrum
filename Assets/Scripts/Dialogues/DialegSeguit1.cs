@@ -8,7 +8,7 @@ public class DialegSeguit1 : GameDialogue
     {
         characterName = "Cyrus";
         playerName = "Irix";
-        dialogue = new string[] { "¿Qué hace este cobarde aquí?", 
+        dialogue = new string[] { "¿Qué hace esta cobarde aquí?", 
         "¡¿Y la defiende un ingenuo como tú?!", 
         "¡Que no fuiste capaz de atacarlo por tus necios recuerdos!", 
         "…",
