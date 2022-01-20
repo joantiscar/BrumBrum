@@ -22,8 +22,8 @@ public class controlDialegs : MonoBehaviour
     [SerializeField] TextMeshProUGUI playerResponse;
     [SerializeField] TextMeshProUGUI SeguitName;
     [SerializeField] TextMeshProUGUI SeguitText;
-    [SerializeField] UnityEngine.UIElements.Image FletxaAmunt;
-    [SerializeField] UnityEngine.UIElements.Image FletxaAbaix;
+    [SerializeField] UnityEngine.UI.Image FletxaAmunt;
+    [SerializeField] UnityEngine.UI.Image FletxaAbaix;
     
     bool isTalking = false;
     bool ended = true;
@@ -221,6 +221,13 @@ public class controlDialegs : MonoBehaviour
             switch (curResponseTracker)
             {
             case 0:
+                FletxaAmunt.enabled = false;
+                if (text.playerDialogue.Length - 1 > 0){
+                    FletxaAbaix.enabled = true;
+                }
+                else{
+                    FletxaAbaix.enabled = false;
+                }
                 playerResponse.text = text.playerDialogue[0];
                 if(Input.GetKeyDown(KeyCode.Return))
                 {
@@ -229,6 +236,13 @@ public class controlDialegs : MonoBehaviour
                 }
                 break;
             case 1:
+                FletxaAmunt.enabled = true;
+                if (text.playerDialogue.Length - 1 > 1){
+                    FletxaAbaix.enabled = true;
+                }
+                else{
+                    FletxaAbaix.enabled = false;
+                }
                 playerResponse.text = text.playerDialogue[1];
                 if(Input.GetKeyDown(KeyCode.Return))
                 {
@@ -237,6 +251,13 @@ public class controlDialegs : MonoBehaviour
                 }
                 break;
             case 2:
+                FletxaAmunt.enabled = true;
+                if (text.playerDialogue.Length - 1 > 2){
+                    FletxaAbaix.enabled = true;
+                }
+                else{
+                    FletxaAbaix.enabled = false;
+                }
                 playerResponse.text = text.playerDialogue[2];
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
@@ -245,6 +266,13 @@ public class controlDialegs : MonoBehaviour
                 }
                 break;
             case 3:
+                FletxaAmunt.enabled = true;
+                if (text.playerDialogue.Length - 1 > 3){
+                    FletxaAbaix.enabled = true;
+                }
+                else{
+                    FletxaAbaix.enabled = false;
+                }
                 playerResponse.text = text.playerDialogue[3];
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
@@ -253,6 +281,13 @@ public class controlDialegs : MonoBehaviour
                 }
                 break;
             case 4:
+                FletxaAmunt.enabled = true;
+                if (text.playerDialogue.Length - 1 > 4){
+                    FletxaAbaix.enabled = true;
+                }
+                else{
+                    FletxaAbaix.enabled = false;
+                }
                 playerResponse.text = text.playerDialogue[4];
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
@@ -261,6 +296,13 @@ public class controlDialegs : MonoBehaviour
                 }
                 break;
             case 5:
+                FletxaAmunt.enabled = true;
+                if (text.playerDialogue.Length - 1 > 5){
+                    FletxaAbaix.enabled = true;
+                }
+                else{
+                    FletxaAbaix.enabled = false;
+                }
                 playerResponse.text = text.playerDialogue[5];
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
@@ -269,6 +311,13 @@ public class controlDialegs : MonoBehaviour
                 }
                 break;
             case 6:
+                FletxaAmunt.enabled = true;
+                if (text.playerDialogue.Length - 1 > 6){
+                    FletxaAbaix.enabled = true;
+                }
+                else{
+                    FletxaAbaix.enabled = false;
+                }
                 playerResponse.text = text.playerDialogue[6];
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
@@ -277,6 +326,13 @@ public class controlDialegs : MonoBehaviour
                 }
                 break;
             case 7:
+                FletxaAmunt.enabled = true;
+                if (text.playerDialogue.Length - 1 > 7){
+                    FletxaAbaix.enabled = true;
+                }
+                else{
+                    FletxaAbaix.enabled = false;
+                }
                 playerResponse.text = text.playerDialogue[7];
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
@@ -285,6 +341,13 @@ public class controlDialegs : MonoBehaviour
                 }
                 break;
             case 8:
+                FletxaAmunt.enabled = true;
+                if (text.playerDialogue.Length - 1 > 8){
+                    FletxaAbaix.enabled = true;
+                }
+                else{
+                    FletxaAbaix.enabled = false;
+                }
                 playerResponse.text = text.playerDialogue[8];
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
@@ -293,6 +356,13 @@ public class controlDialegs : MonoBehaviour
                 }
                 break;
             case 9:
+                FletxaAmunt.enabled = true;
+                if (text.playerDialogue.Length - 1 > 9){
+                    FletxaAbaix.enabled = true;
+                }
+                else{
+                    FletxaAbaix.enabled = false;
+                }
                 playerResponse.text = text.playerDialogue[9];
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
