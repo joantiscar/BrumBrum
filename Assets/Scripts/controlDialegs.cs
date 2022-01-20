@@ -22,6 +22,8 @@ public class controlDialegs : MonoBehaviour
     [SerializeField] TextMeshProUGUI playerResponse;
     [SerializeField] TextMeshProUGUI SeguitName;
     [SerializeField] TextMeshProUGUI SeguitText;
+    [SerializeField] UnityEngine.UIElements.Image FletxaAmunt;
+    [SerializeField] UnityEngine.UIElements.Image FletxaAbaix;
     
     bool isTalking = false;
     bool ended = true;
