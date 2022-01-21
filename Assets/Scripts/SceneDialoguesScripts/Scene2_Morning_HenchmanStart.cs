@@ -50,6 +50,7 @@ public class Scene2_Morning_HenchmanStart : MonoBehaviour
         if (other.tag == "Player")
         {
             audioSource.volume = 0.4f;
+            player.GetComponent<AudioSource>().Stop();
 
             GameObject.Find("PlayerOnWorld").transform.position = new Vector3(100.5f, 0, 55);
             GameObject.Find("PlayerOnWorld").transform.rotation = Quaternion.Euler(0, 25, 0);

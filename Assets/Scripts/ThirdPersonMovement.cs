@@ -107,7 +107,7 @@ public class ThirdPersonMovement : MonoBehaviour
             //Debug.Log(auxVel);
             animator.SetFloat("Velocity", auxVel);
 
-            /*
+            // SONIDO DE LOS PASOS //
             if (auxVel > 0 && !GetComponent<AudioSource>().isPlaying)
             {
                 GetComponent<AudioSource>().time = 0f;
@@ -117,7 +117,7 @@ public class ThirdPersonMovement : MonoBehaviour
             {
                 GetComponent<AudioSource>().Stop();
             }
-            */
+            
 
             /*
             if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetBool("OnGround"))
