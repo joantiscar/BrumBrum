@@ -108,6 +108,18 @@ public class ThirdPersonMovement : MonoBehaviour
             animator.SetFloat("Velocity", auxVel);
 
             /*
+            if (auxVel > 0 && !GetComponent<AudioSource>().isPlaying)
+            {
+                GetComponent<AudioSource>().time = 0f;
+                GetComponent<AudioSource>().Play();
+            }
+            else if (auxVel <= 0)
+            {
+                GetComponent<AudioSource>().Stop();
+            }
+            */
+
+            /*
             if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetBool("OnGround"))
             {
                 //Debug.Log("Attack");
