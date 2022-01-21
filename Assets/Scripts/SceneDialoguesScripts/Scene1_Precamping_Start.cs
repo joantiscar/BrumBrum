@@ -28,34 +28,27 @@ public class Scene1_Precamping_Start : MonoBehaviour
         if (!firstDialogueIsCalled && objecteInt.dialogues != null)
         {
             firstDialogueIsCalled = true;
-            npc_inicialDialogue.GetComponent<objecteInteractiu>().Interactuate();
+            // npc_inicialDialogue.GetComponent<objecteInteractiu>().Interactuate();
+            objecteInt.Interactuate();
+
             player.GetComponent<Interaccio>().isTalkingStarted();
             
             Destroy(npc_inicialDialogue.GetComponent<GameDialogue>());
             npc_inicialDialogue.AddComponent<DialegSeguit1>();
-            
-            /*
-            npc_inicialDialogue.GetComponent<objecteInteractiu>().Start();
-            Debug.Log(objecteInt.dialogues);*/
-
         }
         else if (!FindObjectOfType<controlDialegs>().animText.GetBool("Sign") && !secondDialogueIsCalled)
         {
-            /*
-            Destroy(npc_inicialDialogue.GetComponent<GameDialogue>());
-            npc_inicialDialogue.AddComponent<DialegSeguit1>();
-            */
-            npc_inicialDialogue.GetComponent<objecteInteractiu>().Start();
-            //Debug.Log(objecteInt.dialogues);
-
+            objecteInt.Start();
             secondDialogueIsCalled = true;
-            npc_inicialDialogue.GetComponent<objecteInteractiu>().Interactuate();
+            objecteInt.Interactuate();
             player.GetComponent<Interaccio>().isTalkingStarted();
 
             Destroy(npc_inicialDialogue.GetComponent<GameDialogue>());
-            Destroy(npc_inicialDialogue.GetComponent<objecteInteractiu>());
+            //Destroy(npc_inicialDialogue.GetComponent<objecteInteractiu>());
+            Destroy(objecteInt);
             npc_inicialDialogue.transform.gameObject.tag = "Untagged";
-
+        }
+        else if (!FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit") && secondDialogueIsCalled) {
             Destroy(this.transform.gameObject);
         }
     }

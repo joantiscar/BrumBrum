@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Scene1_5_Camping_Start : MonoBehaviour
 {
-
     private GameObject npc_inicialDialogue;
     private objecteInteractiu objecteInt;
     private GameObject player;
@@ -19,7 +18,6 @@ public class Scene1_5_Camping_Start : MonoBehaviour
         objecteInt = npc_inicialDialogue.GetComponent<objecteInteractiu>();
 
         player = GameObject.FindGameObjectWithTag("Player");
-
     }
 
     // Update is called once per frame
@@ -28,7 +26,7 @@ public class Scene1_5_Camping_Start : MonoBehaviour
         if (!firstDialogueIsCalled && objecteInt.dialogues != null)
         {
             firstDialogueIsCalled = true;
-            npc_inicialDialogue.GetComponent<objecteInteractiu>().Interactuate();
+            objecteInt.Interactuate();
             player.GetComponent<Interaccio>().isTalkingStarted();
 
             Destroy(npc_inicialDialogue.GetComponent<GameDialogue>());
@@ -37,7 +35,7 @@ public class Scene1_5_Camping_Start : MonoBehaviour
         }
         else if (!FindObjectOfType<controlDialegs>().animText.GetBool("Sign") && !secondDialogueIsCalled)
         {
-            npc_inicialDialogue.GetComponent<objecteInteractiu>().Start();
+            objecteInt.Start();
             secondDialogueIsCalled = true;
         }
     }

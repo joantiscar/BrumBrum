@@ -20,14 +20,14 @@ public class DialegSeguit2 : GameDialogue
         "Si entráis os quedareis sin escapatoria, es cierto. ¿Pero qué son unos cuantos secuaces para el grupo que debe derrotar al Señor Oscuro?"};
         playerDialogue = new string[] {"¿Y por qué íbamos a creerte?", 
         "Lo más fácil es que sea una trampa.", 
-        "¿Pero qué haces?"/*, 
+        "¿Pero qué haces?", 
         "Mmm…", 
-        "Pensémoslo primero."*/};
+        "Pensémoslo primero."};
         dialogue3 = new string[] {"Está bien. Te acompañaremos."};
         dialogue4 = new string[] {"No, Cyrus. Irix tiene razón.", 
         "Tenemos que aceptar la oferta.", 
         "Es posible que sea una trampa, pero esta vez creo que Zeth no miente. Debe tener algo en mente."};
-        dialogueOrder = new int [] {0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 2, 1, 3, 3, 3/*, 1, 1*/};
-        desti = "CombatDemo";
+        dialogueOrder = new int [] {0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 2, 1, 3, 3, 3, 1, 1};
+        //desti = "CombatDemo";
     }
 }

@@ -188,7 +188,7 @@ public class controlDialegs : MonoBehaviour
         FindObjectOfType<CameraSwitch>().isCameraOnGoing();
     }
 
-        void CloseDialogueSeguit ()
+    void CloseDialogueSeguit ()
     {
         animSeguit.SetBool("Seguit", false);
         FindObjectOfType<ThirdPersonMovement>().isTalkKing();
