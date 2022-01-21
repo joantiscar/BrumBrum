@@ -11,11 +11,16 @@ public class Scene2_Morning_HenchmanStart : MonoBehaviour
     // private bool secondDialogueIsCalled = false;
 
     private GameObject characters;
+    private AudioSource audioSource;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GameObject.Find("Scenario_SecondScene").GetComponent<AudioSource>();
+        audioSource.time = 0.6f;
+        audioSource.Play();
+
         npc_inicialDialogue = GameObject.Find("NPC_Henchman");
         objecteInt = npc_inicialDialogue.GetComponent<objecteInteractiu>();
 
@@ -34,6 +39,9 @@ public class Scene2_Morning_HenchmanStart : MonoBehaviour
             firstDialogueIsCalled = false;
             objecteInt.Start();
         }
+        else if (!firstDialogueIsCalled && !FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit")) {
+            audioSource.volume = 1f;
+        }
     }
     
 
@@ -41,6 +49,8 @@ public class Scene2_Morning_HenchmanStart : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            audioSource.volume = 0.4f;
+
             GameObject.Find("PlayerOnWorld").transform.position = new Vector3(100.5f, 0, 55);
             GameObject.Find("PlayerOnWorld").transform.rotation = Quaternion.Euler(0, 25, 0);
             player.transform.position = new Vector3(100.5f, 3.65f, 55);

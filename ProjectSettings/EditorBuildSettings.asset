@@ -20,4 +20,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Victoria.unity
     guid: ae46c6d505f16174f8ac4cdc89777c75
+  - enabled: 1
+    path: Assets/Scenes/FinalScenes/Scene1_Precamping.unity
+    guid: 4bed567e433f50743adc5c039d8c17a4
+  - enabled: 1
+    path: Assets/Scenes/FinalScenes/Scene1-5_Camping.unity
+    guid: 79d90ddc67294b443809cbc9f3b686b9
+  - enabled: 1
+    path: Assets/Scenes/FinalScenes/Scene2_Morning.unity
+    guid: e782a81bc2264e8408ba8bc9225dda88
   m_configObjects: {}

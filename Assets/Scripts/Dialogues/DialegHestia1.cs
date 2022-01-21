@@ -8,10 +8,10 @@ public class DialegHestia1 : GameDialogue
     {
         characterName = "Hestia";
         dialogue = new string[] { "Te quiero, cielo. Verás como mañana lo conseguimos.", 
-        "¡Así me gusta!",
-        "¡¡¡Shhhhh!!! Dime, ¿quién tiene siempre la razón? ¡Yo! Pues ya está." };
-        playerDialogue = new string[] { "Así es, cariño.",
-        "No sé cómo irá..." };
+        "¡¡¡Shhhhh!!! Dime, ¿quién tiene siempre la razón? ¡Yo! Pues ya está.",
+        "¡Así me gusta!" };
+        playerDialogue = new string[] { "No sé cómo irá...",
+        "Así es, cariño." };
         dialogue3 = new string[] {};
         dialogue4 = new string[] {};
         dialogueOrder = new int[] {};

@@ -50,6 +50,7 @@ public class Scene1_Precamping_Start : MonoBehaviour
         }
         else if (!FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit") && secondDialogueIsCalled) {
             Destroy(this.transform.gameObject);
+            GameObject.Find("Scenario_FirstScene").GetComponent<AudioSource>().volume = 1;
         }
     }
 
