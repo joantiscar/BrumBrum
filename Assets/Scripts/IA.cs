@@ -81,23 +81,9 @@ public class IA : MonoBehaviour
         estado = "empiezaTurno";
     }
 
-    public AnimationClip FindAnimation (Animator animator, string name) 
-    {
-        foreach (AnimationClip clip in animator.runtimeAnimatorController.animationClips)
-        {
-            Debug.Log(clip.name);
-            if (clip.name == name)
-            {
-                return clip;
-            }
-        }
-
-        return null;
-    }
-
     IEnumerator RutinaAtacar(){
         atacando = true;
-        yield return new WaitForSeconds(FindAnimation(Personaje.anim,"Attack").length);
+        yield return new WaitForSeconds(Personaje.FindAnimation(Personaje.anim,"Attack").length);
         atacando = false;
         Debug.Log("AAAAA");
         
