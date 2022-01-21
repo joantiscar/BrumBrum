@@ -28,6 +28,9 @@ public class controlDialegs : MonoBehaviour
     bool isTalking = false;
     bool ended = true;
     int curResponseTracker = 0;
+    int actualAnswer = -1; 
+    bool [] respostes;
+    bool acabar = false;
 
     void Update()
     {
@@ -202,7 +205,7 @@ public class controlDialegs : MonoBehaviour
     private void ChangeDialogue (){
         if (ended)
         {
-            if(Input.GetKeyDown(KeyCode.DownArrow))
+            if(Input.GetKeyDown(KeyCode.DownArrow) && !acabar)
             {
                 curResponseTracker++;
                 if (curResponseTracker >= text.playerDialogue.Length - 1)
@@ -210,7 +213,7 @@ public class controlDialegs : MonoBehaviour
                     curResponseTracker = text.playerDialogue.Length - 1;
                 }
             }
-            else if(Input.GetKeyDown(KeyCode.UpArrow))
+            else if(Input.GetKeyDown(KeyCode.UpArrow) && !acabar)
             {
                 curResponseTracker--;
                 if(curResponseTracker < 0)
@@ -228,11 +231,27 @@ public class controlDialegs : MonoBehaviour
                 else{
                     FletxaAbaix.enabled = false;
                 }
+                if (respostes[0]){
+                    playerResponse.color = new Color32 (180, 180, 180, 255);
+                }
+                else {
+                    playerResponse.color = new Color32 (255, 255, 255, 255);
+                }
                 playerResponse.text = text.playerDialogue[0];
-                if(Input.GetKeyDown(KeyCode.Return))
+                if(Input.GetKeyDown(KeyCode.Return) && actualAnswer != 0)
                 {
+                    if (text.playerDialogue.Length - 1 == 0){
+                        acabar = true;
+                    }
+                    respostes [0] = true;
+                    playerResponse.color = new Color32 (180, 180, 180, 255);
+                    playerResponse.text = text.playerDialogue[0];
+                    actualAnswer = 0;
                     npcDialogueBox.text = text.dialogue[1];
                     StartCoroutine(showCaracters(text.dialogue[1]));
+                }
+                else if (Input.GetKeyDown(KeyCode.Return) && acabar) {
+                    EndDialogue();
                 }
                 break;
             case 1:
@@ -243,11 +262,27 @@ public class controlDialegs : MonoBehaviour
                 else{
                     FletxaAbaix.enabled = false;
                 }
+                if (respostes[1]){
+                    playerResponse.color = new Color32 (180, 180, 180, 255);
+                }
+                else {
+                    playerResponse.color = new Color32 (255, 255, 255, 255);
+                }
                 playerResponse.text = text.playerDialogue[1];
-                if(Input.GetKeyDown(KeyCode.Return))
+                if(Input.GetKeyDown(KeyCode.Return) && actualAnswer != 1)
                 {
+                    if (text.playerDialogue.Length - 1 == 1){
+                        acabar = true;
+                    }
+                    respostes [1] = true;
+                    playerResponse.color = new Color32 (180, 180, 180, 255);
+                    playerResponse.text = text.playerDialogue[1];
+                    actualAnswer = 1;
                     npcDialogueBox.text = text.dialogue[2];
                     StartCoroutine(showCaracters(text.dialogue[2]));
+                }
+                else if (Input.GetKeyDown(KeyCode.Return) && acabar) {
+                    EndDialogue();
                 }
                 break;
             case 2:
@@ -258,11 +293,27 @@ public class controlDialegs : MonoBehaviour
                 else{
                     FletxaAbaix.enabled = false;
                 }
+                if (respostes[2]){
+                    playerResponse.color = new Color32 (180, 180, 180, 255);
+                }
+                else {
+                    playerResponse.color = new Color32 (255, 255, 255, 255);
+                }
                 playerResponse.text = text.playerDialogue[2];
-                if (Input.GetKeyDown(KeyCode.Return))
+                if(Input.GetKeyDown(KeyCode.Return) && actualAnswer != 2)
                 {
+                    if (text.playerDialogue.Length - 1 == 2){
+                        acabar = true;
+                    }
+                    respostes [2] = true;
+                    playerResponse.color = new Color32 (180, 180, 180, 255);
+                    playerResponse.text = text.playerDialogue[2];
+                    actualAnswer = 2;
                     npcDialogueBox.text = text.dialogue[3];
                     StartCoroutine(showCaracters(text.dialogue[3]));
+                }
+                else if (Input.GetKeyDown(KeyCode.Return) && acabar) {
+                    EndDialogue();
                 }
                 break;
             case 3:
@@ -273,11 +324,27 @@ public class controlDialegs : MonoBehaviour
                 else{
                     FletxaAbaix.enabled = false;
                 }
+                if (respostes[3]){
+                    playerResponse.color = new Color32 (180, 180, 180, 255);
+                }
+                else {
+                    playerResponse.color = new Color32 (255, 255, 255, 255);
+                }
                 playerResponse.text = text.playerDialogue[3];
-                if (Input.GetKeyDown(KeyCode.Return))
+                if(Input.GetKeyDown(KeyCode.Return) && actualAnswer != 3)
                 {
+                    if (text.playerDialogue.Length - 1 == 3){
+                        acabar = true;
+                    }
+                    respostes [3] = true;
+                    playerResponse.color = new Color32 (180, 180, 180, 255);
+                    playerResponse.text = text.playerDialogue[3];
+                    actualAnswer = 3;
                     npcDialogueBox.text = text.dialogue[4];
                     StartCoroutine(showCaracters(text.dialogue[4]));
+                }
+                else if (Input.GetKeyDown(KeyCode.Return) && acabar) {
+                    EndDialogue();
                 }
                 break;
             case 4:
@@ -288,11 +355,27 @@ public class controlDialegs : MonoBehaviour
                 else{
                     FletxaAbaix.enabled = false;
                 }
+                if (respostes[4]){
+                    playerResponse.color = new Color32 (180, 180, 180, 255);
+                }
+                else {
+                    playerResponse.color = new Color32 (255, 255, 255, 255);
+                }
                 playerResponse.text = text.playerDialogue[4];
-                if (Input.GetKeyDown(KeyCode.Return))
+                if(Input.GetKeyDown(KeyCode.Return) && actualAnswer != 4)
                 {
+                    if (text.playerDialogue.Length - 1 == 4){
+                        acabar = true;
+                    }
+                    respostes [4] = true;
+                    playerResponse.color = new Color32 (180, 180, 180, 255);
+                    playerResponse.text = text.playerDialogue[4];
+                    actualAnswer = 4;
                     npcDialogueBox.text = text.dialogue[5];
                     StartCoroutine(showCaracters(text.dialogue[5]));
+                }
+                else if (Input.GetKeyDown(KeyCode.Return) && acabar) {
+                    EndDialogue();
                 }
                 break;
             case 5:
@@ -303,11 +386,27 @@ public class controlDialegs : MonoBehaviour
                 else{
                     FletxaAbaix.enabled = false;
                 }
+                if (respostes[5]){
+                    playerResponse.color = new Color32 (180, 180, 180, 255);
+                }
+                else {
+                    playerResponse.color = new Color32 (255, 255, 255, 255);
+                }
                 playerResponse.text = text.playerDialogue[5];
-                if (Input.GetKeyDown(KeyCode.Return))
+                if(Input.GetKeyDown(KeyCode.Return) && actualAnswer != 5)
                 {
+                    if (text.playerDialogue.Length - 1 == 5){
+                        acabar = true;
+                    }
+                    respostes [5] = true;
+                    playerResponse.color = new Color32 (180, 180, 180, 255);
+                    playerResponse.text = text.playerDialogue[5];
+                    actualAnswer = 5;
                     npcDialogueBox.text = text.dialogue[6];
                     StartCoroutine(showCaracters(text.dialogue[6]));
+                }
+                else if (Input.GetKeyDown(KeyCode.Return) && acabar) {
+                    EndDialogue();
                 }
                 break;
             case 6:
@@ -318,11 +417,27 @@ public class controlDialegs : MonoBehaviour
                 else{
                     FletxaAbaix.enabled = false;
                 }
+                if (respostes[6]){
+                    playerResponse.color = new Color32 (180, 180, 180, 255);
+                }
+                else {
+                    playerResponse.color = new Color32 (255, 255, 255, 255);
+                }
                 playerResponse.text = text.playerDialogue[6];
-                if (Input.GetKeyDown(KeyCode.Return))
+                if(Input.GetKeyDown(KeyCode.Return) && actualAnswer != 6)
                 {
+                    if (text.playerDialogue.Length - 1 == 6){
+                        acabar = true;
+                    }
+                    respostes [6] = true;
+                    playerResponse.color = new Color32 (180, 180, 180, 255);
+                    playerResponse.text = text.playerDialogue[6];
+                    actualAnswer = 6;
                     npcDialogueBox.text = text.dialogue[7];
                     StartCoroutine(showCaracters(text.dialogue[7]));
+                }
+                else if (Input.GetKeyDown(KeyCode.Return) && acabar) {
+                    EndDialogue();
                 }
                 break;
             case 7:
@@ -333,11 +448,27 @@ public class controlDialegs : MonoBehaviour
                 else{
                     FletxaAbaix.enabled = false;
                 }
+                if (respostes[7]){
+                    playerResponse.color = new Color32 (180, 180, 180, 255);
+                }
+                else {
+                    playerResponse.color = new Color32 (255, 255, 255, 255);
+                }
                 playerResponse.text = text.playerDialogue[7];
-                if (Input.GetKeyDown(KeyCode.Return))
+                if(Input.GetKeyDown(KeyCode.Return) && actualAnswer != 7)
                 {
+                    if (text.playerDialogue.Length - 1 == 7){
+                        acabar = true;
+                    }
+                    respostes [7] = true;
+                    playerResponse.color = new Color32 (180, 180, 180, 255);
+                    playerResponse.text = text.playerDialogue[7];
+                    actualAnswer = 7;
                     npcDialogueBox.text = text.dialogue[8];
                     StartCoroutine(showCaracters(text.dialogue[8]));
+                }
+                else if (Input.GetKeyDown(KeyCode.Return) && acabar) {
+                    EndDialogue();
                 }
                 break;
             case 8:
@@ -348,26 +479,53 @@ public class controlDialegs : MonoBehaviour
                 else{
                     FletxaAbaix.enabled = false;
                 }
+                if (respostes[8]){
+                    playerResponse.color = new Color32 (180, 180, 180, 255);
+                }
+                else {
+                    playerResponse.color = new Color32 (255, 255, 255, 255);
+                }
                 playerResponse.text = text.playerDialogue[8];
-                if (Input.GetKeyDown(KeyCode.Return))
+                if(Input.GetKeyDown(KeyCode.Return) && actualAnswer != 8)
                 {
+                    if (text.playerDialogue.Length - 1 == 8){
+                        acabar = true;
+                    }
+                    respostes [8] = true;
+                    playerResponse.color = new Color32 (180, 180, 180, 255);
+                    playerResponse.text = text.playerDialogue[8];
+                    actualAnswer = 8;
                     npcDialogueBox.text = text.dialogue[9];
                     StartCoroutine(showCaracters(text.dialogue[9]));
+                }
+                else if (Input.GetKeyDown(KeyCode.Return) && acabar) {
+                    EndDialogue();
                 }
                 break;
             case 9:
                 FletxaAmunt.enabled = true;
-                if (text.playerDialogue.Length - 1 > 9){
-                    FletxaAbaix.enabled = true;
+                FletxaAbaix.enabled = false;
+                if (respostes[9]){
+                    playerResponse.color = new Color32 (180, 180, 180, 255);
                 }
-                else{
-                    FletxaAbaix.enabled = false;
+                else {
+                    playerResponse.color = new Color32 (255, 255, 255, 255);
                 }
                 playerResponse.text = text.playerDialogue[9];
-                if (Input.GetKeyDown(KeyCode.Return))
+                if(Input.GetKeyDown(KeyCode.Return) && actualAnswer != 9)
                 {
+                    if (text.playerDialogue.Length - 1 == 9){
+                        acabar = true;
+                    }
+                    respostes [9] = true;
+                    playerResponse.color = new Color32 (180, 180, 180, 255);
+                    playerResponse.text = text.playerDialogue[9];
+                    actualAnswer = 9;
                     npcDialogueBox.text = text.dialogue[10];
                     StartCoroutine(showCaracters(text.dialogue[10]));
+                }
+                else if (Input.GetKeyDown(KeyCode.Return) && acabar) {
+                    EndDialogue();
                 }
                 break; 
             default:
@@ -386,6 +544,7 @@ public class controlDialegs : MonoBehaviour
         curResponseTracker = 0;
         npcName.text = text.name;
         npcDialogueBox.text = text.dialogue[0];
+        respostes = new bool [text.playerDialogue.Length];
         StartCoroutine(showCaracters(text.dialogue[0]));
     }
 
@@ -397,6 +556,10 @@ public class controlDialegs : MonoBehaviour
         npcDialogueBox.text = "";
         playerResponse.text = "";
         animDialeg.SetBool("Dialogue", false);
+        FletxaAmunt.enabled = false;
+        FletxaAbaix.enabled = false;
+        actualAnswer = -1; 
+        acabar = false;
         FindObjectOfType<ThirdPersonMovement>().isTalkKing();
         FindObjectOfType<Interaccio>().isTalkingStarted();
         FindObjectOfType<CameraSwitch>().isCameraOnGoing();
