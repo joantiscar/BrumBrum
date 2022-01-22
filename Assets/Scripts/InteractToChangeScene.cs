@@ -2,30 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class InteractToChangeScene : MonoBehaviour
 {
     [SerializeField]
-    private Text pickupText;
-    private bool pickUpAllowed;
+    private Text interactText;
+    private bool interactAllowed;
+    public string scene;
 
     private void Start()
     {
         //pickupText = GameObject.FindGameObjectWithTag("ItemText").GetComponent<Text>();
-        pickupText.gameObject.SetActive(false);
+        interactText.gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        if (pickUpAllowed && Input.GetKeyDown(KeyCode.E)) Pick();
+        if (interactAllowed && Input.GetKeyDown(KeyCode.E))
+        {
+            SceneManager.LoadScene(scene);
+        }
     }
     
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.name.Equals("Third Person Player"))
         {
-            pickupText.gameObject.SetActive(true);
-            pickUpAllowed = true;
+            interactText.gameObject.SetActive(true);
+            interactAllowed = true;
         }
     }
 
@@ -33,14 +39,9 @@ public class InteractToChangeScene : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("Third Person Player"))
         {
-            pickupText.gameObject.SetActive(false);
-            pickUpAllowed = false;
+            interactText.gameObject.SetActive(false);
+            interactAllowed = false;
         }
     }
 
-    private void Pick()
-    {
-        Destroy(gameObject);
-        pickupText.gameObject.SetActive(false);
-    }
 }

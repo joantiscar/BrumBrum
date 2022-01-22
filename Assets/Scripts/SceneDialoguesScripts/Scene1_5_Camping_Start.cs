@@ -14,6 +14,9 @@ public class Scene1_5_Camping_Start : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject.Find("Scenario_FirstHalfScene").GetComponent<AudioSource>().time = 3.5f;
+        GameObject.Find("Scenario_FirstHalfScene").GetComponent<AudioSource>().Play();
+
         npc_inicialDialogue = GameObject.Find("NPC_Brute");
         objecteInt = npc_inicialDialogue.GetComponent<objecteInteractiu>();
 
@@ -37,6 +40,11 @@ public class Scene1_5_Camping_Start : MonoBehaviour
         {
             objecteInt.Start();
             secondDialogueIsCalled = true;
+        }
+        else if (secondDialogueIsCalled && !FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit"))
+        {
+            GameObject.Find("Scenario_FirstHalfScene").GetComponent<AudioSource>().volume = 1;
+
         }
     }
 }

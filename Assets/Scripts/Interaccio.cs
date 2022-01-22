@@ -21,6 +21,7 @@ public class Interaccio : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.R) && !isRPressed)
             {
                 //Debug.Log("Interaccio: " + triggeringNpc.name);
+                GetComponent<AudioSource>().Stop();
                 GameObject.Find(triggeringNpc.name).GetComponent<objecteInteractiu>().Interactuate();
                 isTalkingStarted();
             }
