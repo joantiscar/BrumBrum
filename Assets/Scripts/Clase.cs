@@ -12,6 +12,8 @@ public class Clase{
     }
 
     public List<Dato> LevelupData = new List<Dato>{
-        new Dato(0, Habilidades.AtaqueConEspada)
+        new Dato(0, Habilidades.AtaqueConEspada),
+        new Dato(0, Habilidades.BolaDeFuego),
+        new Dato(0, Habilidades.Curacion)
     };
 }
