@@ -40,6 +40,36 @@ public class Character : MonoBehaviour
 
     public int exp_when_killed = 100;
 
+
+
+    // *********************************************
+    // *            Estados alterados              *
+    // *********************************************
+
+    bool aturdido = false;
+    bool envenenado = false;
+    bool quemado = false;
+    bool protegido = false;
+    bool contraataque = false;
+    bool sangrado = false;
+    bool miedo = false;
+    bool inmortal = false;
+
+    // *********************************************
+    // *            Buffs                          *
+    // *********************************************    
+   
+    bool inspirado = false;
+    bool bendecido = false;
+    bool resistenciaMiedo = false;
+    bool mejoraAtaque = false;
+    bool mejoraAtaqueEspecial = false;
+    bool mejoraDefensa = false;
+    bool mejoraDefensaEspecial = false;
+    bool mejoraVelocidad = false;
+
+
+
     public List<Habilidad> habilidadesDisponibles;
 
     public List<int> cooldowns;
@@ -48,8 +78,55 @@ public class Character : MonoBehaviour
     public SistemaCombate SistemaCombate;
 
     public Animator anim;
+    
+    public int ataqueActual(){
+        double final = this.attack;
+        if (mejoraAtaque) final *= 1.5;
+        if (inspirado) final *= 1.1;
+        if (quemado) final *= 0.5;
+
+        return Convert.ToInt32(final);
+    }
+
+    public int ataqueEspecialActual(){
+        double final = this.special_attack;
+        if (mejoraAtaqueEspecial) final *= 1.5;
+        if (inspirado) final *= 1.1;
+        if (sangrado) final *= 0.5;
+        return Convert.ToInt32(final);
+    }
+
+    public int defensaActual(){
+        double final = this.attack;
+        if (mejoraDefensa) final *= 1.5;
+        if (inspirado) final *= 1.1;
+        if (protegido) final *= 1.5;
+        if (envenenado) final *= 0.75;
+        return Convert.ToInt32(final);
+    }
+
+
+    public int defensaEspecialActual(){
+        double final = this.defense;
+        if (mejoraDefensaEspecial) final *= 1.5;
+        if (inspirado) final *= 1.1;
+        if (protegido) final *= 1.5;
+        if (envenenado) final *= 0.75;
+        return Convert.ToInt32(final);
+    }
+
+
+    public int velocidadActual(){
+        double final = this.velocity;
+        if (mejoraVelocidad) final *= 1.5;
+        if (inspirado) final *= 1.1;
+        if (envenenado) final *= 0.5;
+        return Convert.ToInt32(final);
+    }
+
 
     private GameObject circuloMov = null;
+    private GameObject circuloHab = null;
 
     void Awake(){
         // TEST. En un futuro, constructor o algo
@@ -62,9 +139,6 @@ public class Character : MonoBehaviour
         UICombate = GameObject.Find("SkillsImages").GetComponent<UICombate>();
         anim = GetComponentInChildren<Animator>();
         hp = hpMax;
-        //UICombate.adaptaUI(habilidadesDisponibles,this);
-        // UICombate.actualizaPP();
-        // UICombate.ActualizaDistancia();
 
     }
 
@@ -101,7 +175,30 @@ public class Character : MonoBehaviour
         }
     }
 
+    public void dibujaCirculoHab(){
+        destruirCirculoHab();
+        circuloHab = new GameObject(name = "Circle");
+        circuloHab.DrawCircle(habilidadesDisponibles[habilidadSeleccionada].range, .085f, Color.blue);
+        circuloHab.transform.position = new Vector3(transform.position.x,transform.position.y+0.5f,transform.position.z); 
+    }
+
+    public void destruirCirculoHab(){
+        if(circuloHab!=null){
+            Destroy(circuloHab);
+            circuloHab = null;
+        }
+    }
+
     public void EmpiezaTurno(){
+
+        // Primero miramos si estamos envenenados o quemados. De ser el caso perdemos vida
+
+        if (envenenado){
+            hp -= Convert.ToInt32(hpMax/20);
+        }else if (quemado){
+            hp -= Convert.ToInt32(hpMax/40);
+        }
+
         // Al empezar el turno reseteamos los metros, restamos 1 a los cooldowns y añadimos los puntos base a los actuales
         metrosRestantes = metrosMaximos;
 
@@ -124,6 +221,8 @@ public class Character : MonoBehaviour
         else{
             this.transform.GetComponent<IA>().HacerTurno();
         }
+
+        if (aturdido) SistemaCombate.FinalizaTurno();
         
         
     }
@@ -171,39 +270,30 @@ public class Character : MonoBehaviour
         
     }
 
+    public bool esSeleccionable(int h){
+        return actPAtaques>=habilidadesDisponibles[h].coste && cooldowns[h]==0;
+    }
+
     public void Atacar(){
         // Hay que mirar como hacer los hechizos de area (si los metemos)
         if(habilidadSeleccionada>=0){
             Habilidad habilidad = habilidadesDisponibles[habilidadSeleccionada];
-            if (objetivo!=null && actPAtaques>=habilidad.coste){
-                if (this.cooldowns[habilidadSeleccionada] == 0){ // Si la habilidad esta disponible...
-                    Character a = objetivo.GetComponent<Character>();
-                    Debug.Log("Objetivo a atacar: " + objetivo.GetComponent<Character>().nombre);
-                    UICombate.TextDebug.text = "Objetivo a atacar: " + objetivo.GetComponent<Character>().nombre;
-                    // Miramos si estamos a rango de la habilidad
-                    if (Vector3.Distance(this.transform.position, objetivo.transform.position) <= habilidad.range){
-                        StartCoroutine(RutinaAtacar());
-                        Habilidades.lanzar(this, a, habilidad);
-                        cooldowns[habilidadSeleccionada] += habilidad.cooldown;
-                        Debug.Log("Lanzando habilidad " + habilidad.name);
-                        UICombate.TextDebug.text = "Lanzando habilidad " + habilidad.name;
-                        // Restamos los puntos que se usan
-                        actPAtaques -= habilidad.coste;
-                        UICombate.actualizaPP();
+            if (objetivo!=null){
+                Character a = objetivo.GetComponent<Character>();
+                Debug.Log("Objetivo a atacar: " + objetivo.GetComponent<Character>().nombre);
+                UICombate.TextDebug.text = "Objetivo a atacar: " + objetivo.GetComponent<Character>().nombre;
+                
+                StartCoroutine(RutinaAtacar());
+                Habilidades.lanzar(this, a, habilidad);
+                cooldowns[habilidadSeleccionada] += habilidad.cooldown;
+                Debug.Log("Lanzando habilidad " + habilidad.name);
+                UICombate.TextDebug.text = "Lanzando habilidad " + habilidad.name;
+                // Restamos los puntos que se usan
+                actPAtaques -= habilidad.coste;
+                UICombate.actualizaPP();
 
-                        anim.Play("Idle"); // Me da un warning State could not be found
-                    }else{
-                        Debug.Log(habilidad.name + " fuera de rango");
-                        UICombate.TextDebug.text = habilidad.name + " fuera de rango";
-                    }
-                }else{
-                    Debug.Log("Habilidad en enfriamiento");
-                    UICombate.TextDebug.text = "Habilidad en enfriamiento";
-                }
-            }
-            else{
-                Debug.Log("No has seleccionado un enemigo o no tienes puntos de ataque!");
-                UICombate.TextDebug.text = "No has seleccionado un enemigo o no tienes puntos de ataque!";
+                anim.Play("Idle"); // Me da un warning State could not be found
+                    
             }
 
         }
@@ -241,6 +331,14 @@ public class Character : MonoBehaviour
         }
         return true;
     }
+
+    public bool recieveHeal(int ammount)
+    {
+        hp += ammount;
+        if (hp > hpMax) hp = hpMax;
+        return true;
+    }
+
     public bool takeHitSpecial(int damage, string element)
     {
         if (special_defense < damage) damage -= special_defense;
