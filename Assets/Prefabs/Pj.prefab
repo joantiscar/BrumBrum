@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   user_controlled: 0
   hp: 0
+  hpMax: 0
   attack: 0
   special_attack: 0
   defense: 0
@@ -61,6 +62,7 @@ MonoBehaviour:
   experience_max: 0
   upgrade_points: 0
   objetivo: {fileID: 0}
+  className: Clase
   metrosMaximos: 0
   metrosRestantes: 0
   habilidadSeleccionada: 0
@@ -70,6 +72,7 @@ MonoBehaviour:
   exp_when_killed: 0
   cooldowns: 
   SistemaCombate: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!195 &836169610404103505
 NavMeshAgent:
   m_ObjectHideFlags: 0

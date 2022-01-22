@@ -494,6 +494,7 @@ MonoBehaviour:
   derrota: 0
   victoria: 0
   gameover: 0
+  blocked: 0
 --- !u!4 &107014252
 Transform:
   m_ObjectHideFlags: 0

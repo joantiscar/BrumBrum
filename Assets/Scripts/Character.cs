@@ -21,11 +21,13 @@ public class Character : MonoBehaviour
     public string nombre = "PJ";
 
     public string elemental_resistance;
-    public int level;
+    public int level = 20;
     public int experience;
     public int experience_max;
     public int upgrade_points = 0;
     public GameObject objetivo;
+    public string className = "Clase";
+    private Clase clase;
 
     public double metrosMaximos = 10.0f;
     public double metrosRestantes = 10.0f;
@@ -38,9 +40,9 @@ public class Character : MonoBehaviour
 
     public int exp_when_killed = 100;
 
-    public Habilidad[] habilidadesDisponibles;
+    public List<Habilidad> habilidadesDisponibles;
 
-    public int[] cooldowns;
+    public List<int> cooldowns;
 
     private UICombate UICombate;
     public SistemaCombate SistemaCombate;
@@ -49,12 +51,11 @@ public class Character : MonoBehaviour
 
     void Awake(){
         // TEST. En un futuro, constructor o algo
-        cooldowns = new int[] { 0, 0, 0 };
-        habilidadesDisponibles = new Habilidad[] {
-            Habilidades.BolaDeFuego,
-            Habilidades.AtaqueConEspada,
-            Habilidades.EsquirlaDeHielo
-        };
+        cooldowns = new List<int>();
+        habilidadesDisponibles = new List<Habilidad>();
+
+
+        cargarHabilidadesDeClase();
 
         UICombate = GameObject.Find("SkillsImages").GetComponent<UICombate>();
         anim = GetComponentInChildren<Animator>();
@@ -65,11 +66,24 @@ public class Character : MonoBehaviour
 
     }
 
+
+    void cargarHabilidadesDeClase(){
+        Type t = Type.GetType(className);
+        clase = (Clase)Activator.CreateInstance(t);
+
+        for(int i = 0; i < clase.LevelupData.Count; i++){
+            if (level >= clase.LevelupData[i].nivel){
+                habilidadesDisponibles.Add(clase.LevelupData[i].habilidad);
+                cooldowns.Add(0);
+            }   
+        }
+    }
+
     public void EmpiezaTurno(){
         // Al empezar el turno reseteamos los metros, restamos 1 a los cooldowns y añadimos los puntos base a los actuales
         metrosRestantes = metrosMaximos;
 
-        for(int i = 0; i < cooldowns.Length; i++){
+        for(int i = 0; i < cooldowns.Count; i++){
             if (cooldowns[i] > 0) cooldowns[i]--;
         }
 

@@ -19,6 +19,9 @@ public class SistemaCombate : MonoBehaviour
     public bool victoria = false;
     public bool gameover = false;
 
+
+    public bool blocked = false;
+
     private RaycastHit last_hit;
     
     private bool moviendose = false;
@@ -65,7 +68,7 @@ public class SistemaCombate : MonoBehaviour
     {   
         if(!gameover){
             if(!derrota && !victoria){
-                if(pjActualPersonaje.user_controlled && !moviendose){
+                if(pjActualPersonaje.user_controlled && !moviendose && !blocked){
                     
                     if (Input.GetMouseButtonDown(0)) {
                         RaycastHit hit;
@@ -102,7 +105,11 @@ public class SistemaCombate : MonoBehaviour
                         pjActualPersonaje.Atacar();
                     }
 
-                    
+                    for(int i=1;i <= pjActual.GetComponent<Character>().habilidadesDisponibles.Count;i++){
+                        if (Input.GetKeyDown(i.ToString())){
+                            UICombate.seleccionarHabilidad(i-1);
+                        }
+                    }
 
                 }
 
@@ -116,12 +123,8 @@ public class SistemaCombate : MonoBehaviour
                 //Debug.Log("Pos pers: " + pjActual.transform.position);
                 //Debug.Log("Pos lhit: " + last_hit.point);
 
-
-                for(int i=1;i<7;i++){
-                    if (Input.GetKeyDown(i.ToString())){
-                        UICombate.seleccionarHabilidad(i-1);
-                    }
-                }
+                
+                
             }
             else{
                 if (derrota) SceneManager.LoadScene ("GameOver");
