@@ -100,14 +100,19 @@ public class UICombate : MonoBehaviour
         }
     }
 
+    public void deseleccionarHabilidad(){
+        selected.SetActive(false);
+        pjActual.habilidadSeleccionada = -1;
+    }
+
     public void actualizaPP(){
         LabelPP.text = pjActual.actPAtaques.ToString();
     }
 
     public void ActualizaDistancia(){
         // Actualizamos la GUI con la distancia
-        barraDistancia.value = (float) pjActual.GetComponent<Character>().metrosRestantes;
-        //labelDistancia.GetComponent<Text>().text = pjActual.GetComponent<Character>().metrosRestantes.ToString();
+        // barraDistancia.value = (float) pjActual.GetComponent<Character>().metrosRestantes;
+        pjActual.dibujaCirculoMov();
     }
 
 }

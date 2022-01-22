@@ -31,6 +31,7 @@ public class controlDialegs : MonoBehaviour
     int actualAnswer = -1; 
     bool [] respostes;
     bool acabar = false;
+    float waitTime = 0.02f;
 
     void Update()
     {
@@ -68,6 +69,7 @@ public class controlDialegs : MonoBehaviour
     public void NextSentence ()
     {
         if (ended){
+            waitTime = 0.02f;
             if(dialogueQueue.Count == 0)
             {
                 screenText.text = "";
@@ -79,6 +81,7 @@ public class controlDialegs : MonoBehaviour
             screenText.text = actualSentence;
             StartCoroutine(showCaracters(actualSentence));
         }
+        else { waitTime = 0f; }
     }
 
     public void ActivateSeguit ()
@@ -111,6 +114,7 @@ public class controlDialegs : MonoBehaviour
     {
         string actualSentence = "";
         if (ended){
+            waitTime = 0.02f;
             if(dialogueQueueOrder.Count == 0)
             {
                 Debug.Log ("He acabat");
@@ -147,6 +151,7 @@ public class controlDialegs : MonoBehaviour
             SeguitText.text = actualSentence;
             StartCoroutine(showCaracters(actualSentence));
         }
+        else { waitTime = 0f; }
     }
 
     IEnumerator showCaracters (string textToShow)
@@ -158,7 +163,7 @@ public class controlDialegs : MonoBehaviour
             foreach (char caracter in textToShow.ToCharArray())
             {
                 SeguitText.text += caracter;
-                yield return new WaitForSeconds(0.02f);
+                yield return new WaitForSeconds(waitTime);
             }
         }
         else if (text.playerDialogue.Length == 0){
@@ -166,7 +171,7 @@ public class controlDialegs : MonoBehaviour
             foreach (char caracter in textToShow.ToCharArray())
             {
                 screenText.text += caracter;
-                yield return new WaitForSeconds(0.02f);
+                yield return new WaitForSeconds(waitTime);
             }
         }
         else{
@@ -174,7 +179,7 @@ public class controlDialegs : MonoBehaviour
             foreach (char caracter in textToShow.ToCharArray())
             {
                 npcDialogueBox.text += caracter;
-                yield return new WaitForSeconds(0.02f);
+                yield return new WaitForSeconds(waitTime);
             }
         }
         ended = true;

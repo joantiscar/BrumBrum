@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Scene1_Precamping_Start : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Scene1_Precamping_Start : MonoBehaviour
     private GameObject player;
     private bool firstDialogueIsCalled = false;
     private bool secondDialogueIsCalled = false;
+    private bool fadeIn = false;
+    private Animator animAux;
 
 
     // Start is called before the first frame update
@@ -20,6 +23,7 @@ public class Scene1_Precamping_Start : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player");
 
+        animAux = player.GetComponentInChildren<Canvas>().GetComponentInChildren<Image>().GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -48,7 +52,14 @@ public class Scene1_Precamping_Start : MonoBehaviour
             Destroy(objecteInt);
             npc_inicialDialogue.transform.gameObject.tag = "Untagged";
         }
-        else if (!FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit") && secondDialogueIsCalled) {
+        else if (!FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit") && secondDialogueIsCalled && !fadeIn) {
+            animAux.SetBool("Fade", true);
+            fadeIn = true;
+        }
+        else if (fadeIn && animAux.GetCurrentAnimatorStateInfo(0).IsName("Default"))
+        {
+            animAux.SetBool("Fade", false);
+
             Destroy(this.transform.gameObject);
             GameObject.Find("Scenario_FirstScene").GetComponent<AudioSource>().volume = 1;
         }

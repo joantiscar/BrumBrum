@@ -33,7 +33,10 @@ public class SistemaCombate : MonoBehaviour
     }
 
     public void FinalizaTurno(){
-        UICombate.FinalizaTurno();
+        if(pjActualPersonaje.user_controlled){
+            UICombate.FinalizaTurno();
+            pjActualPersonaje.TerminaTurno();
+        }
         ordenActual++;
         if (ordenActual >= pjs.Length) ordenActual = 0;
         pjActual = pjs[ordenActual];
@@ -97,16 +100,18 @@ public class SistemaCombate : MonoBehaviour
                             }
                         }
                     }
-                    if (Input.GetKeyDown("space")){
+                    else if (Input.GetKeyDown("space")){
                         FinalizaTurno();
                     }
-
-                    if (Input.GetKeyDown("a")){
+                    else if (Input.GetKeyDown("a")){
                         //pjActual.GetComponentInChildren<Animator>().Play("Attack");
                         pjActualPersonaje.Atacar();
                     }
+                    else if(pjActualPersonaje.habilidadSeleccionada >= 0 && (Input.GetKeyDown("0") || Input.GetKeyDown("escape") || Input.GetMouseButtonDown(1))){
+                        UICombate.deseleccionarHabilidad();
+                    }
 
-                    for(int i=1;i <= pjActual.GetComponent<Character>().habilidadesDisponibles.Count;i++){
+                    for(int i=1;i <= pjActualPersonaje.habilidadesDisponibles.Count;i++){
                         if (Input.GetKeyDown(i.ToString())){
                             UICombate.seleccionarHabilidad(i-1);
                         }
