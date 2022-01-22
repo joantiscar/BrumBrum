@@ -32,10 +32,21 @@ public class controlDialegs : MonoBehaviour
     bool [] respostes;
     bool acabar = false;
     float waitTime = 0.02f;
+    bool iniciat = false;
 
     void Update()
     {
-        if (isTalking == true){
+        if (animText.GetBool("Sign") && iniciat){
+            if(Input.GetKeyDown(KeyCode.Return)){
+                NextSentence ();
+            }
+        }
+        else if (animSeguit.GetBool("Seguit") && iniciat){
+            if(Input.GetKeyDown(KeyCode.Return)){
+                NextSentenceSeguit ();
+            }
+        }
+        else if (isTalking == true){
             ChangeDialogue();
         }
     }
@@ -69,6 +80,7 @@ public class controlDialegs : MonoBehaviour
     public void NextSentence ()
     {
         if (ended){
+            iniciat = true;
             waitTime = 0.02f;
             if(dialogueQueue.Count == 0)
             {
@@ -114,6 +126,7 @@ public class controlDialegs : MonoBehaviour
     {
         string actualSentence = "";
         if (ended){
+            iniciat = true;
             waitTime = 0.02f;
             if(dialogueQueueOrder.Count == 0)
             {
@@ -187,6 +200,7 @@ public class controlDialegs : MonoBehaviour
 
     void CloseDialogue ()
     {
+        iniciat = false;
         animText.SetBool("Sign", false);
         FindObjectOfType<ThirdPersonMovement>().isTalkKing();
         FindObjectOfType<Interaccio>().isTalkingStarted();
@@ -195,6 +209,7 @@ public class controlDialegs : MonoBehaviour
 
     void CloseDialogueSeguit ()
     {
+        iniciat = false;
         animSeguit.SetBool("Seguit", false);
         FindObjectOfType<ThirdPersonMovement>().isTalkKing();
         FindObjectOfType<Interaccio>().isTalkingStarted();
