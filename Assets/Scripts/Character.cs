@@ -152,7 +152,6 @@ public class Character : MonoBehaviour
     {
         foreach (AnimationClip clip in animator.runtimeAnimatorController.animationClips)
         {
-            Debug.Log(clip.name);
             if (clip.name == name)
             {
                 return clip;
@@ -235,7 +234,6 @@ public class Character : MonoBehaviour
     {
         if (defense < damage) damage -= defense;
         if (elemental_resistance == element) damage /= 2;
-        Debug.Log(damage);
 
         hp -= damage;
         if (hp <= 0){
