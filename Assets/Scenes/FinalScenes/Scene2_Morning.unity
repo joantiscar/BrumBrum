@@ -801,7 +801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbecb5d19d0b4b24d9f39fe1b0879bf9, type: 3}
---- !u!1001 &2410831153575572739
+--- !u!1001 &1656687935054633267
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -855,6 +855,10 @@ PrefabInstance:
     - target: {fileID: 354183317143002989, guid: 17d2052680735334ea9e183b7d9bd7ed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223482274606647423, guid: 17d2052680735334ea9e183b7d9bd7ed, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.35
       objectReference: {fileID: 0}
     - target: {fileID: 5511869529773783804, guid: 17d2052680735334ea9e183b7d9bd7ed, type: 3}
       propertyPath: interactText
