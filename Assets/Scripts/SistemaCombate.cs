@@ -138,6 +138,7 @@ public class SistemaCombate : MonoBehaviour
                         RaycastHit hit;
                         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
                             GameObject objetivo = getCharacter(hit.collider.gameObject.transform);//hit.collider.gameObject.transform.parent.gameObject;
+                            // Miramos si esta a rango y seleccionamos solo personajes
                             if(objetivo!=null && objetivo.GetComponent<Character>() != null && Vector3.Distance(pjActual.transform.position, objetivo.transform.position) <= pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada].range){
                                 if(objetivo!=lastOutline){
                                     lastOutline = objetivo;

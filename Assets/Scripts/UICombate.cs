@@ -93,7 +93,8 @@ public class UICombate : MonoBehaviour
     }
 
     public void seleccionarHabilidad(int h){
-        if(h<_habilidades.Count && pjActual.cooldowns[h]==0 && !SistemaCombate.moviendose){
+        // Miramos si está en cooldown
+        if(h<_habilidades.Count && pjActual.esSeleccionable(h) && !SistemaCombate.moviendose){
 
             Debug.Log("Habilidad cambiada a: "+_habilidades[h].name);
             TextDebug.text = "Habilidad cambiada a: "+_habilidades[h].name;

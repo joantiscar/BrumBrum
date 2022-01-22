@@ -270,35 +270,30 @@ public class Character : MonoBehaviour
         
     }
 
+    public bool esSeleccionable(int h){
+        return actPAtaques>=habilidadesDisponibles[h].coste && cooldowns[h]==0;
+    }
+
     public void Atacar(){
         // Hay que mirar como hacer los hechizos de area (si los metemos)
         if(habilidadSeleccionada>=0){
             Habilidad habilidad = habilidadesDisponibles[habilidadSeleccionada];
-            if (objetivo!=null && actPAtaques>=habilidad.coste){
-                // if (this.cooldowns[habilidadSeleccionada] == 0){ // Si la habilidad esta disponible...
-                    Character a = objetivo.GetComponent<Character>();
-                    Debug.Log("Objetivo a atacar: " + objetivo.GetComponent<Character>().nombre);
-                    UICombate.TextDebug.text = "Objetivo a atacar: " + objetivo.GetComponent<Character>().nombre;
-                    // Miramos si estamos a rango de la habilidad
-                    // if (Vector3.Distance(this.transform.position, objetivo.transform.position) <= habilidad.range){
-                        StartCoroutine(RutinaAtacar());
-                        Habilidades.lanzar(this, a, habilidad);
-                        cooldowns[habilidadSeleccionada] += habilidad.cooldown;
-                        Debug.Log("Lanzando habilidad " + habilidad.name);
-                        UICombate.TextDebug.text = "Lanzando habilidad " + habilidad.name;
-                        // Restamos los puntos que se usan
-                        actPAtaques -= habilidad.coste;
-                        UICombate.actualizaPP();
+            if (objetivo!=null){
+                Character a = objetivo.GetComponent<Character>();
+                Debug.Log("Objetivo a atacar: " + objetivo.GetComponent<Character>().nombre);
+                UICombate.TextDebug.text = "Objetivo a atacar: " + objetivo.GetComponent<Character>().nombre;
+                
+                StartCoroutine(RutinaAtacar());
+                Habilidades.lanzar(this, a, habilidad);
+                cooldowns[habilidadSeleccionada] += habilidad.cooldown;
+                Debug.Log("Lanzando habilidad " + habilidad.name);
+                UICombate.TextDebug.text = "Lanzando habilidad " + habilidad.name;
+                // Restamos los puntos que se usan
+                actPAtaques -= habilidad.coste;
+                UICombate.actualizaPP();
 
-                        anim.Play("Idle"); // Me da un warning State could not be found
-                    // }else{
-                    //     Debug.Log(habilidad.name + " fuera de rango");
-                    //     UICombate.TextDebug.text = habilidad.name + " fuera de rango";
-                    // }
-                // }else{
-                //     Debug.Log("Habilidad en enfriamiento");
-                //     UICombate.TextDebug.text = "Habilidad en enfriamiento";
-                // }
+                anim.Play("Idle"); // Me da un warning State could not be found
+                    
             }
 
         }
