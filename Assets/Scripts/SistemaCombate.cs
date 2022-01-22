@@ -101,8 +101,8 @@ public class SistemaCombate : MonoBehaviour
                                     // Como pilla el objeto como tal, en plan, el modelo, tenemos que decirle que el objetivo es
                                     // el gameObject del padre (Pj1 -> Modelo del personaje)
                                     GameObject objetivo = hit.collider.gameObject.transform.parent.gameObject;
-                                    if((pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada].damages && !objetivo.GetComponent<Character>().user_controlled) ||
-                                       (!pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada].damages && objetivo.GetComponent<Character>().user_controlled)){
+                                    if(lastOutline!=null && (pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada].damages && !objetivo.GetComponent<Character>().user_controlled) ||
+                                       (pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada].heals && objetivo.GetComponent<Character>().user_controlled)){
                                         
                                         pjActualPersonaje.objetivo = objetivo;
                                         
@@ -117,7 +117,7 @@ public class SistemaCombate : MonoBehaviour
                                         lastOutline = null;
                                     }
                                     else{
-                                        Debug.Log("No puedes curar a un enemigo o atacar a un aliado!!");
+                                        Debug.Log("El enemigo ersta fuera de rango o no puedes curar a un enemigo o atacar a un aliado!!");
                                     }
 
                                 }
@@ -138,7 +138,7 @@ public class SistemaCombate : MonoBehaviour
                         RaycastHit hit;
                         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
                             GameObject objetivo = getCharacter(hit.collider.gameObject.transform);//hit.collider.gameObject.transform.parent.gameObject;
-                            if(objetivo!=null && objetivo.GetComponent<Character>() != null){
+                            if(objetivo!=null && objetivo.GetComponent<Character>() != null && Vector3.Distance(pjActual.transform.position, objetivo.transform.position) <= pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada].range){
                                 if(objetivo!=lastOutline){
                                     lastOutline = objetivo;
                                     Outline o = objetivo.GetComponent<Outline>();
