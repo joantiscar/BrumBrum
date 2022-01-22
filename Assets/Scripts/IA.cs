@@ -65,7 +65,7 @@ public class IA : MonoBehaviour
     {
         if (Personaje.SistemaCombate.nAliados == 0) return false;
         habilidadesUsables = new List<int>();
-        for (int i = 0; i < Personaje.habilidadesDisponibles.Length; i++)
+        for (int i = 0; i < Personaje.habilidadesDisponibles.Count; i++)
         {
             if (Personaje.cooldowns[i] == 0 && Personaje.habilidadesDisponibles[i].coste <= Personaje.actPAtaques
             && Vector3.Distance(Personaje.transform.position, Objetivo.transform.position) <= Personaje.habilidadesDisponibles[i].range)

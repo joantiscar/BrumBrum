@@ -21,40 +21,43 @@ public class Character : MonoBehaviour
     public string nombre = "PJ";
 
     public string elemental_resistance;
-    public int level;
+    public int level = 20;
     public int experience;
     public int experience_max;
     public int upgrade_points = 0;
     public GameObject objetivo;
+    public string className = "Clase";
+    private Clase clase;
 
     public double metrosMaximos = 10.0f;
     public double metrosRestantes = 10.0f;
 
     // Puntos para usar una habilidad: a los actuales se le suma base cada turno hasta que llegue a max
-    public int habilidadSeleccionada = 0;
+    public int habilidadSeleccionada = -1;
     public int basePAtaques = 5;
     public int maxPAtaques = 10;
     public int actPAtaques = 0;
 
     public int exp_when_killed = 100;
 
-    public Habilidad[] habilidadesDisponibles;
+    public List<Habilidad> habilidadesDisponibles;
 
-    public int[] cooldowns;
+    public List<int> cooldowns;
 
     private UICombate UICombate;
     public SistemaCombate SistemaCombate;
 
     public Animator anim;
 
+    private GameObject circuloMov = null;
+
     void Awake(){
         // TEST. En un futuro, constructor o algo
-        cooldowns = new int[] { 0, 0, 0 };
-        habilidadesDisponibles = new Habilidad[] {
-            Habilidades.BolaDeFuego,
-            Habilidades.AtaqueConEspada,
-            Habilidades.EsquirlaDeHielo
-        };
+        cooldowns = new List<int>();
+        habilidadesDisponibles = new List<Habilidad>();
+
+
+        cargarHabilidadesDeClase();
 
         UICombate = GameObject.Find("SkillsImages").GetComponent<UICombate>();
         anim = GetComponentInChildren<Animator>();
@@ -65,11 +68,44 @@ public class Character : MonoBehaviour
 
     }
 
+    void Update(){
+        if(circuloMov!=null){
+            if(metrosRestantes<=0.5f) destruirCirculoMov();
+            else circuloMov.transform.position = new Vector3(transform.position.x,transform.position.y+0.5f,transform.position.z);
+        }
+    }
+
+
+    void cargarHabilidadesDeClase(){
+        Type t = Type.GetType(className);
+        clase = (Clase)Activator.CreateInstance(t);
+
+        for(int i = 0; i < clase.LevelupData.Count; i++){
+            if (level >= clase.LevelupData[i].nivel){
+                habilidadesDisponibles.Add(clase.LevelupData[i].habilidad);
+                cooldowns.Add(0);
+            }   
+        }
+    }
+
+    public void dibujaCirculoMov(){
+        destruirCirculoMov();
+        circuloMov = new GameObject(name = "Circle");
+        circuloMov.DrawCircle((float)metrosRestantes, .075f, Color.green);
+    }
+
+    public void destruirCirculoMov(){
+        if(circuloMov!=null){
+            Destroy(circuloMov);
+            circuloMov = null;
+        }
+    }
+
     public void EmpiezaTurno(){
         // Al empezar el turno reseteamos los metros, restamos 1 a los cooldowns y añadimos los puntos base a los actuales
         metrosRestantes = metrosMaximos;
 
-        for(int i = 0; i < cooldowns.Length; i++){
+        for(int i = 0; i < cooldowns.Count; i++){
             if (cooldowns[i] > 0) cooldowns[i]--;
         }
 
@@ -95,6 +131,9 @@ public class Character : MonoBehaviour
     public void TerminaTurno(){
         if (!user_controlled){
             SistemaCombate.FinalizaTurno();
+        }
+        else{
+            destruirCirculoMov();
         }
     }
 
@@ -135,36 +174,39 @@ public class Character : MonoBehaviour
 
     public void Atacar(){
         // Hay que mirar como hacer los hechizos de area (si los metemos)
-        Habilidad habilidad = habilidadesDisponibles[habilidadSeleccionada];
-        if (objetivo!=null && actPAtaques>=habilidad.coste){
-            if (this.cooldowns[habilidadSeleccionada] == 0){ // Si la habilidad esta disponible...
-                Character a = objetivo.GetComponent<Character>();
-                Debug.Log("Objetivo a atacar: " + objetivo.GetComponent<Character>().nombre);
-                UICombate.TextDebug.text = "Objetivo a atacar: " + objetivo.GetComponent<Character>().nombre;
-                // Miramos si estamos a rango de la habilidad
-                if (Vector3.Distance(this.transform.position, objetivo.transform.position) <= habilidad.range){
-                    StartCoroutine(RutinaAtacar());
-                    Habilidades.lanzar(this, a, habilidad);
-                    cooldowns[habilidadSeleccionada] += habilidad.cooldown;
-                    Debug.Log("Lanzando habilidad " + habilidad.name);
-                    UICombate.TextDebug.text = "Lanzando habilidad " + habilidad.name;
-                    // Restamos los puntos que se usan
-                    actPAtaques -= habilidad.coste;
-                    UICombate.actualizaPP();
+        if(habilidadSeleccionada>=0){
+            Habilidad habilidad = habilidadesDisponibles[habilidadSeleccionada];
+            if (objetivo!=null && actPAtaques>=habilidad.coste){
+                if (this.cooldowns[habilidadSeleccionada] == 0){ // Si la habilidad esta disponible...
+                    Character a = objetivo.GetComponent<Character>();
+                    Debug.Log("Objetivo a atacar: " + objetivo.GetComponent<Character>().nombre);
+                    UICombate.TextDebug.text = "Objetivo a atacar: " + objetivo.GetComponent<Character>().nombre;
+                    // Miramos si estamos a rango de la habilidad
+                    if (Vector3.Distance(this.transform.position, objetivo.transform.position) <= habilidad.range){
+                        StartCoroutine(RutinaAtacar());
+                        Habilidades.lanzar(this, a, habilidad);
+                        cooldowns[habilidadSeleccionada] += habilidad.cooldown;
+                        Debug.Log("Lanzando habilidad " + habilidad.name);
+                        UICombate.TextDebug.text = "Lanzando habilidad " + habilidad.name;
+                        // Restamos los puntos que se usan
+                        actPAtaques -= habilidad.coste;
+                        UICombate.actualizaPP();
 
-                    anim.Play("Idle"); // Me da un warning State could not be found
+                        anim.Play("Idle"); // Me da un warning State could not be found
+                    }else{
+                        Debug.Log(habilidad.name + " fuera de rango");
+                        UICombate.TextDebug.text = habilidad.name + " fuera de rango";
+                    }
                 }else{
-                    Debug.Log(habilidad.name + " fuera de rango");
-                    UICombate.TextDebug.text = habilidad.name + " fuera de rango";
+                    Debug.Log("Habilidad en enfriamiento");
+                    UICombate.TextDebug.text = "Habilidad en enfriamiento";
                 }
-            }else{
-                Debug.Log("Habilidad en enfriamiento");
-                UICombate.TextDebug.text = "Habilidad en enfriamiento";
             }
-        }
-        else{
-            Debug.Log("No has seleccionado un enemigo o no tienes puntos de ataque!");
-            UICombate.TextDebug.text = "No has seleccionado un enemigo o no tienes puntos de ataque!";
+            else{
+                Debug.Log("No has seleccionado un enemigo o no tienes puntos de ataque!");
+                UICombate.TextDebug.text = "No has seleccionado un enemigo o no tienes puntos de ataque!";
+            }
+
         }
         
 

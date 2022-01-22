@@ -19,6 +19,9 @@ public class SistemaCombate : MonoBehaviour
     public bool victoria = false;
     public bool gameover = false;
 
+
+    public bool blocked = false;
+
     private RaycastHit last_hit;
     
     private bool moviendose = false;
@@ -30,10 +33,14 @@ public class SistemaCombate : MonoBehaviour
     }
 
     public void FinalizaTurno(){
-        UICombate.FinalizaTurno();
+        if(pjActualPersonaje.user_controlled){
+            UICombate.FinalizaTurno();
+            pjActualPersonaje.TerminaTurno();
+        }
         ordenActual++;
         if (ordenActual >= pjs.Length) ordenActual = 0;
         pjActual = pjs[ordenActual];
+        pjActualPersonaje = pjActual.GetComponent<Character>();
         pjActualPersonaje.EmpiezaTurno();
     }
 
@@ -65,7 +72,7 @@ public class SistemaCombate : MonoBehaviour
     {   
         if(!gameover){
             if(!derrota && !victoria){
-                if(pjActualPersonaje.user_controlled && !moviendose){
+                if(pjActualPersonaje.user_controlled && !moviendose && !blocked){
                     
                     if (Input.GetMouseButtonDown(0)) {
                         RaycastHit hit;
@@ -93,16 +100,22 @@ public class SistemaCombate : MonoBehaviour
                             }
                         }
                     }
-                    if (Input.GetKeyDown("space")){
+                    else if (Input.GetKeyDown("space")){
                         FinalizaTurno();
                     }
-
-                    if (Input.GetKeyDown("a")){
+                    else if (Input.GetKeyDown("a")){
                         //pjActual.GetComponentInChildren<Animator>().Play("Attack");
                         pjActualPersonaje.Atacar();
                     }
+                    else if(pjActualPersonaje.habilidadSeleccionada >= 0 && (Input.GetKeyDown("0") || Input.GetKeyDown("escape") || Input.GetMouseButtonDown(1))){
+                        UICombate.deseleccionarHabilidad();
+                    }
 
-                    
+                    for(int i=1;i <= pjActualPersonaje.habilidadesDisponibles.Count;i++){
+                        if (Input.GetKeyDown(i.ToString())){
+                            UICombate.seleccionarHabilidad(i-1);
+                        }
+                    }
 
                 }
 
@@ -116,12 +129,8 @@ public class SistemaCombate : MonoBehaviour
                 //Debug.Log("Pos pers: " + pjActual.transform.position);
                 //Debug.Log("Pos lhit: " + last_hit.point);
 
-
-                for(int i=1;i<7;i++){
-                    if (Input.GetKeyDown(i.ToString())){
-                        UICombate.seleccionarHabilidad(i-1);
-                    }
-                }
+                
+                
             }
             else{
                 if (derrota) SceneManager.LoadScene ("GameOver");
