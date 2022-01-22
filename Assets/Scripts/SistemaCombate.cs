@@ -37,6 +37,7 @@ public class SistemaCombate : MonoBehaviour
         ordenActual++;
         if (ordenActual >= pjs.Length) ordenActual = 0;
         pjActual = pjs[ordenActual];
+        pjActualPersonaje = pjActual.GetComponent<Character>();
         pjActualPersonaje.EmpiezaTurno();
     }
 
