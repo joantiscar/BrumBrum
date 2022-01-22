@@ -28,7 +28,7 @@ public class SistemaCombate : MonoBehaviour
     public bool moviendose = false;
     private Character pjActualPersonaje;
 
-    public GameObject lastOutline;
+    public GameObject lastOutline; // es basicamente el objetivo
 
     public void compruebaVictoria(){
         derrota = nAliados == 0;
@@ -101,8 +101,7 @@ public class SistemaCombate : MonoBehaviour
                                     // Como pilla el objeto como tal, en plan, el modelo, tenemos que decirle que el objetivo es
                                     // el gameObject del padre (Pj1 -> Modelo del personaje)
                                     GameObject objetivo = hit.collider.gameObject.transform.parent.gameObject;
-                                    if(lastOutline!=null && (pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada].damages && !objetivo.GetComponent<Character>().user_controlled) ||
-                                       (pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada].heals && objetivo.GetComponent<Character>().user_controlled)){
+                                    if(lastOutline!=null){
                                         
                                         pjActualPersonaje.objetivo = objetivo;
                                         
@@ -134,27 +133,36 @@ public class SistemaCombate : MonoBehaviour
                         if(Input.GetKeyDown("0") || Input.GetKeyDown("escape") || Input.GetMouseButtonDown(1)){
                             UICombate.deseleccionarHabilidad();
                             apuntando = false;
+                            //lastOutline = null;
                         }
-                        RaycastHit hit;
-                        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
-                            GameObject objetivo = getCharacter(hit.collider.gameObject.transform);//hit.collider.gameObject.transform.parent.gameObject;
-                            // Miramos si esta a rango y seleccionamos solo personajes
-                            if(objetivo!=null && objetivo.GetComponent<Character>() != null && Vector3.Distance(pjActual.transform.position, objetivo.transform.position) <= pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada].range){
-                                if(objetivo!=lastOutline){
-                                    lastOutline = objetivo;
-                                    Outline o = objetivo.GetComponent<Outline>();
-                                    o.outlineWidth = 3.7f;
-                                    o.UpdateMaterialProperties();
+                        else{
+
+                            RaycastHit hit;
+                            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
+                                GameObject objetivo = getCharacter(hit.collider.gameObject.transform);//hit.collider.gameObject.transform.parent.gameObject;
+                                
+                                // Miramos si esta a rango y si es un enemigo y tenemos una habilidad de atacar o un aliado y de curar/bufar y seleccionamos solo personajes
+                                // FALTA BUFOS!!
+                                if(objetivo!=null && objetivo.GetComponent<Character>() != null 
+                                && Vector3.Distance(pjActual.transform.position, objetivo.transform.position) <= pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada].range // en rango
+                                && (pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada].damages && !objetivo.GetComponent<Character>().user_controlled) ||
+                                    (pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada].heals && objetivo.GetComponent<Character>().user_controlled)){
+                                        if(objetivo!=lastOutline){
+                                            lastOutline = objetivo;
+                                            Outline o = objetivo.GetComponent<Outline>();
+                                            o.outlineWidth = 3.7f;
+                                            o.UpdateMaterialProperties();
+                                        }
                                 }
-                            }
-                            else if(lastOutline!=null){
-                                Outline o = lastOutline.GetComponent<Outline>();
-                                o.outlineWidth = 0;
-                                o.UpdateMaterialProperties();
-                                lastOutline = null;
+                                else if(lastOutline!=null){
+                                    Outline o = lastOutline.GetComponent<Outline>();
+                                    o.outlineWidth = 0;
+                                    o.UpdateMaterialProperties();
+                                    lastOutline = null;
+
+                                }
 
                             }
-
                         }
 
                     }
