@@ -50,6 +50,7 @@ public class Character : MonoBehaviour
     public Animator anim;
 
     private GameObject circuloMov = null;
+    private GameObject circuloHab = null;
 
     void Awake(){
         // TEST. En un futuro, constructor o algo
@@ -98,6 +99,20 @@ public class Character : MonoBehaviour
         if(circuloMov!=null){
             Destroy(circuloMov);
             circuloMov = null;
+        }
+    }
+
+    public void dibujaCirculoHab(){
+        destruirCirculoHab();
+        circuloHab = new GameObject(name = "Circle");
+        circuloHab.DrawCircle(habilidadesDisponibles[habilidadSeleccionada].range, .085f, Color.blue);
+        circuloHab.transform.position = new Vector3(transform.position.x,transform.position.y+0.5f,transform.position.z); 
+    }
+
+    public void destruirCirculoHab(){
+        if(circuloHab!=null){
+            Destroy(circuloHab);
+            circuloHab = null;
         }
     }
 

@@ -85,7 +85,6 @@ public class IA : MonoBehaviour
         atacando = true;
         yield return new WaitForSeconds(Personaje.FindAnimation(Personaje.anim,"Attack").length);
         atacando = false;
-        Debug.Log("AAAAA");
         
     }
 

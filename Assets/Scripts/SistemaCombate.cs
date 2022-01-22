@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 public class SistemaCombate : MonoBehaviour
 {
 
@@ -19,13 +20,15 @@ public class SistemaCombate : MonoBehaviour
     public bool victoria = false;
     public bool gameover = false;
 
-
+    public bool apuntando = false;
     public bool blocked = false;
 
     private RaycastHit last_hit;
     
-    private bool moviendose = false;
+    public bool moviendose = false;
     private Character pjActualPersonaje;
+
+    public GameObject lastOutline;
 
     public void compruebaVictoria(){
         derrota = nAliados == 0;
@@ -49,22 +52,27 @@ public class SistemaCombate : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
         for(int i=0;i<pjs.Length;i++){
             if(pjs[i].GetComponent<Character>().user_controlled) nAliados++;
             else nEnemigos++;
             pjs[i].GetComponent<Character>().SistemaCombate = this;
 
+            Outline o = pjs[i].AddComponent<Outline>();
+            o.outlineWidth = 0;
+            o.outlineColor = Color.red;
+
         }
         pjActualPersonaje = pjActual.GetComponent<Character>();
         pjActualPersonaje.EmpiezaTurno();
         
-        // Antes esto era necesario pero ahora ya no??? Idk dejemoslo comentado por si las moscas
-        // if(pjActualPersonaje.user_controlled){
-        //     UICombate.adaptaUI(pjActualPersonaje.habilidadesDisponibles,pjActualPersonaje);
-        //     UICombate.actualizaPP();
-        //     UICombate.ActualizaDistancia();
-        // }
+    
+    }
 
+    GameObject getCharacter(Transform t){
+        if(t.parent == null || t.gameObject.GetComponent<Character>()!=null) return t.gameObject;
+        if(t.parent != null) return getCharacter(t.parent);
+        return null;
     }
 
     // Update is called once per frame
@@ -79,7 +87,7 @@ public class SistemaCombate : MonoBehaviour
                         
                         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
                             last_hit = hit;
-                            if (hit.transform.gameObject.name == "Suelo"){
+                            if (!apuntando && hit.transform.gameObject.name == "Suelo"){ // Si no estás en modo apuntar con la habilidad, moverse
                                 if (pjActualPersonaje.Moverse(Vector3.Distance(hit.point, pjActual.transform.position))){
                                     pjActual.GetComponentInChildren<Animator>().SetFloat("Velocity", 1);
                                     moviendose = true;
@@ -89,26 +97,65 @@ public class SistemaCombate : MonoBehaviour
                                 
                             }
                             else{
-                                // Como pilla el objeto como tal, en plan, el modelo, tenemos que decirle que el objetivo es
-                                // el gameObject del padre (Pj1 -> Modelo del personaje)
-                                GameObject objetivo = hit.collider.gameObject.transform.parent.gameObject;
-                                if(!objetivo.GetComponent<Character>().user_controlled){
-                                    pjActualPersonaje.objetivo = objetivo;
-                                    objetivo.transform.GetChild(0).GetComponent<Renderer>().material.shader = Shader.Find("Outlined/Uniform");
+                                if(apuntando){
+                                    // Como pilla el objeto como tal, en plan, el modelo, tenemos que decirle que el objetivo es
+                                    // el gameObject del padre (Pj1 -> Modelo del personaje)
+                                    GameObject objetivo = hit.collider.gameObject.transform.parent.gameObject;
+                                    if((pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada].damages && !objetivo.GetComponent<Character>().user_controlled) ||
+                                       (!pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada].damages && objetivo.GetComponent<Character>().user_controlled)){
+                                        
+                                        pjActualPersonaje.objetivo = objetivo;
+                                        
+                                        pjActualPersonaje.Atacar();
+
+                                        UICombate.deseleccionarHabilidad();
+                                        apuntando = false;
+                                        
+                                        Outline o = lastOutline.GetComponent<Outline>();
+                                        o.outlineWidth = 0;
+                                        o.UpdateMaterialProperties();
+                                        lastOutline = null;
+                                    }
+                                    else{
+                                        Debug.Log("No puedes curar a un enemigo o atacar a un aliado!!");
+                                    }
+
                                 }
-                                else Debug.Log("No puedes tenerte a ti mismo o un aliado como objetivo!! De momento...");
                             }
                         }
                     }
                     else if (Input.GetKeyDown("space")){
                         FinalizaTurno();
                     }
-                    else if (Input.GetKeyDown("a")){
-                        //pjActual.GetComponentInChildren<Animator>().Play("Attack");
-                        pjActualPersonaje.Atacar();
-                    }
-                    else if(pjActualPersonaje.habilidadSeleccionada >= 0 && (Input.GetKeyDown("0") || Input.GetKeyDown("escape") || Input.GetMouseButtonDown(1))){
-                        UICombate.deseleccionarHabilidad();
+                    // else if (Input.GetKeyDown("a")){
+                    //     pjActualPersonaje.Atacar();
+                    // }
+                    else if(apuntando){
+                        if(Input.GetKeyDown("0") || Input.GetKeyDown("escape") || Input.GetMouseButtonDown(1)){
+                            UICombate.deseleccionarHabilidad();
+                            apuntando = false;
+                        }
+                        RaycastHit hit;
+                        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
+                            GameObject objetivo = getCharacter(hit.collider.gameObject.transform);//hit.collider.gameObject.transform.parent.gameObject;
+                            if(objetivo!=null && objetivo.GetComponent<Character>() != null){
+                                if(objetivo!=lastOutline){
+                                    lastOutline = objetivo;
+                                    Outline o = objetivo.GetComponent<Outline>();
+                                    o.outlineWidth = 3.7f;
+                                    o.UpdateMaterialProperties();
+                                }
+                            }
+                            else if(lastOutline!=null){
+                                Outline o = lastOutline.GetComponent<Outline>();
+                                o.outlineWidth = 0;
+                                o.UpdateMaterialProperties();
+                                lastOutline = null;
+
+                            }
+
+                        }
+
                     }
 
                     for(int i=1;i <= pjActualPersonaje.habilidadesDisponibles.Count;i++){

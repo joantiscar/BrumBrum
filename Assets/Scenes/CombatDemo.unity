@@ -494,6 +494,7 @@ MonoBehaviour:
   derrota: 0
   victoria: 0
   gameover: 0
+  apuntando: 0
   blocked: 0
 --- !u!4 &107014252
 Transform:
@@ -3572,6 +3573,7 @@ MonoBehaviour:
   TextDebug: {fileID: 1995714272}
   selected: {fileID: 514892819}
   habilidadSeleccionada: -1
+  SistemaCombate: {fileID: 107014251}
 --- !u!1 &1302348000 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1281361910879397993, guid: 4ba79c3062809fe408551373cfdfb7ea, type: 3}
