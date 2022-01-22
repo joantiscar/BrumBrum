@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 public class Clase{
 
-    public struct Dato {
+    public struct Dato { // que buen daaaatoooo
         public int nivel;
         public Habilidad habilidad;
         public Dato(int n, Habilidad h)
