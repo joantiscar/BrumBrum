@@ -960,6 +960,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
+      propertyPath: hp
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: hpMax
       value: 300
       objectReference: {fileID: 0}
@@ -977,7 +981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: metrosMaximos
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: special_attack
@@ -985,7 +989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: metrosRestantes
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: user_controlled

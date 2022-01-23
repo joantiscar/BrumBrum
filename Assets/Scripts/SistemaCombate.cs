@@ -168,6 +168,7 @@ public class SistemaCombate : MonoBehaviour
                     }
 
                     for(int i=1;i <= pjActualPersonaje.habilidadesDisponibles.Count;i++){
+                        
                         if (Input.GetKeyDown(i.ToString())){
                             UICombate.seleccionarHabilidad(i-1);
                         }
