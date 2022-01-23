@@ -225,6 +225,7 @@ public class controlDialegs : MonoBehaviour
     private void ChangeDialogue (){
         if (ended)
         {
+            waitTime = 0.02f;
             if(Input.GetKeyDown(KeyCode.DownArrow) && !acabar)
             {
                 curResponseTracker++;
@@ -556,6 +557,9 @@ public class controlDialegs : MonoBehaviour
             {
                 EndDialogue();
             }
+        }
+        else if (Input.GetKeyDown(KeyCode.Return)){
+            waitTime = 0f;
         }
     }
     private void StartConversation()
