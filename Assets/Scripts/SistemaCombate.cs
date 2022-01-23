@@ -47,10 +47,13 @@ public class SistemaCombate : MonoBehaviour
     }
 
     public void deshabilitarOutline(){
-        Outline o = lastOutline.GetComponent<Outline>();
-        o.outlineWidth = 0;
-        o.UpdateMaterialProperties();
-        lastOutline = null;
+        if(lastOutline!=null){
+
+            Outline o = lastOutline.GetComponent<Outline>();
+            o.outlineWidth = 0;
+            o.UpdateMaterialProperties();
+            lastOutline = null;
+        }
     }
 
     // Start is called before the first frame update
@@ -88,8 +91,8 @@ public class SistemaCombate : MonoBehaviour
             if(!derrota && !victoria){
                 if(pjActualPersonaje.user_controlled && !moviendose && !blocked){
                     
+                    RaycastHit hit;
                     if (Input.GetMouseButtonDown(0)) {
-                        RaycastHit hit;
                         
                         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
                             last_hit = hit;
@@ -129,31 +132,35 @@ public class SistemaCombate : MonoBehaviour
                     else if (Input.GetKeyDown("space")){
                         FinalizaTurno();
                     }
-                    // else if (Input.GetKeyDown("a")){
-                    //     pjActualPersonaje.Atacar();
-                    // }
                     else if(apuntando){
                         if(Input.GetKeyDown("0") || Input.GetKeyDown("escape") || Input.GetMouseButtonDown(1)){
                             UICombate.deseleccionarHabilidad();
                             apuntando = false;
                             deshabilitarOutline();
                         }
-                        else{
 
-                            RaycastHit hit;
-                            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
-                                GameObject objetivo = getCharacter(hit.collider.gameObject.transform);//hit.collider.gameObject.transform.parent.gameObject;
-                                
-                                // Miramos si esta a rango y si es un enemigo y tenemos una habilidad de atacar o un aliado y de curar/bufar y seleccionamos solo personajes
-                                // FALTA BUFOS!!
-                                if(objetivo!=null && objetivo.GetComponent<Character>() != null 
-                                && Vector3.Distance(pjActual.transform.position, objetivo.transform.position) <= pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada].range // en rango
-                                && (pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada].damages && !objetivo.GetComponent<Character>().user_controlled) ||
-                                    (pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada].heals && objetivo.GetComponent<Character>().user_controlled)){
+                    }
+                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
+                        GameObject objetivo = getCharacter(hit.collider.gameObject.transform);//hit.collider.gameObject.transform.parent.gameObject;
+                        
+                        // Miramos si esta a rango y si es un enemigo y tenemos una habilidad de atacar o un aliado y de curar/bufar y seleccionamos solo personajes
+                        // FALTA BUFOS!!
+                        if(objetivo!=null){
+                            if(apuntando){
+                                Habilidad h = pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada];
+                                if(objetivo.GetComponent<Character>() != null 
+                                && Vector3.Distance(pjActual.transform.position, objetivo.transform.position) <= h.range // en rango
+                                && (h.targetEnemy && !objetivo.GetComponent<Character>().user_controlled) ||
+                                  (!h.targetEnemy && objetivo.GetComponent<Character>().user_controlled)){
                                         if(objetivo!=lastOutline){
                                             lastOutline = objetivo;
                                             Outline o = objetivo.GetComponent<Outline>();
                                             o.outlineWidth = 3.7f;
+                                            if(h.heals){
+                                                o.outlineColor = new Color(0.72f, 1, 0.21f);
+                                            }else if(h.damages){
+                                                o.outlineColor = Color.red;
+                                            }
                                             o.UpdateMaterialProperties();
                                         }
                                 }
@@ -163,9 +170,10 @@ public class SistemaCombate : MonoBehaviour
                                 }
 
                             }
+                            // Vida del personaje, estado alterado...
                         }
-
                     }
+                    else deshabilitarOutline();
 
                     for(int i=1;i <= pjActualPersonaje.habilidadesDisponibles.Count;i++){
                         if (Input.GetKeyDown(i.ToString())){
