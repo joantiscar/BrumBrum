@@ -8,6 +8,7 @@ public class DialegSeguit5 : GameDialogue
     {
         characterName = "Irix";
         playerName = "Hestia";
+        name3 = "";
         dialogue = new string[] { "Debo matarlo.", 
         "Cariño, sabes mejor que nadie que debo hacer esto.",
         "Hemos fracasado en la misión. El mundo ya está condenado.",

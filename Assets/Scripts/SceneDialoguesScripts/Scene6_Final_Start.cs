@@ -9,6 +9,8 @@ public class Scene6_Final_Start : MonoBehaviour
     private objecteInteractiu objecteInt;
     private GameObject player;
     private bool firstDialogueIsCalled = false;
+    private bool secondDialogueIsCalled = false;
+
 
     private Animator imageAnimator;
     private bool interacted = false;
@@ -44,14 +46,19 @@ public class Scene6_Final_Start : MonoBehaviour
             interacted = true;
             imageAnimator.SetBool("Fade", true);
 
-            Destroy(npc_inicialDialogue.GetComponent<CapsuleCollider>());
+            //Destroy(npc_inicialDialogue.GetComponent<CapsuleCollider>());
             Destroy(npc_inicialDialogue.GetComponent<DialegSeguit5>());
             Destroy(objecteInt);
         }
         else if (interacted && imageAnimator.GetCurrentAnimatorStateInfo(0).IsName("Default"))
         {
-            imageAnimator.SetBool("Fade", false);
-            GameObject.Find("Scenario_SixthScene").GetComponent<AudioSource>().volume = 1;
+            secondDialogueIsCalled = true;
+            //imageAnimator.SetBool("Fade", false);
+            //GameObject.Find("Scenario_SixthScene").GetComponent<AudioSource>().volume = 1;
+        }
+        else if (secondDialogueIsCalled)
+        {
+
         }
     }
 }
