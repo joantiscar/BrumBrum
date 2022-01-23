@@ -33,6 +33,7 @@ public class controlDialegs : MonoBehaviour
     bool acabar = false;
     float waitTime = 0.02f;
     bool iniciat = false;
+    bool dialeg_acabat = false;
 
     void Update()
     {
@@ -49,11 +50,20 @@ public class controlDialegs : MonoBehaviour
         else if (isTalking == true){
             ChangeDialogue();
         }
+        if (dialeg_acabat && animText.GetCurrentAnimatorStateInfo(0).IsName("Default") && animDialeg.GetCurrentAnimatorStateInfo(0).IsName("Default") 
+            && animSeguit.GetCurrentAnimatorStateInfo(0).IsName("Default")){
+            FindObjectOfType<ThirdPersonMovement>().isTalkKing();
+            FindObjectOfType<Interaccio>().isTalkingStarted();
+            FindObjectOfType<CameraSwitch>().isCameraOnGoing();
+            dialeg_acabat = false;
+        }
     }
     public void ActivateDialogues(Texts textObjecte)
     {
-        FindObjectOfType<ThirdPersonMovement>().isTalkKing();
-        FindObjectOfType<CameraSwitch>().isCameraOnGoing();
+        if (!dialeg_acabat){
+            FindObjectOfType<ThirdPersonMovement>().isTalkKing();
+            FindObjectOfType<CameraSwitch>().isCameraOnGoing();
+        }
         text = textObjecte;
         //text = new Texts(textObjecte.name, textObjecte.dialogue, textObjecte.playerDialogue);
         if (text.order.Length > 0){
@@ -130,7 +140,6 @@ public class controlDialegs : MonoBehaviour
             waitTime = 0.02f;
             if(dialogueQueueOrder.Count == 0)
             {
-                Debug.Log ("He acabat");
                 SeguitName.text = "";
                 SeguitText.text = "";
                 CloseDialogueSeguit();
@@ -139,25 +148,21 @@ public class controlDialegs : MonoBehaviour
             int actual = dialogueQueueOrder.Dequeue();
             if (actual == 0)
             {
-                Debug.Log ("NPC");
                 SeguitName.text = text.name;
                 actualSentence = dialogueQueueNPC.Dequeue();
             }
             else if (actual == 1)
             {
-                Debug.Log ("Player");
                 SeguitName.text = text.namePlayer;
                 actualSentence = dialogueQueuePlayer.Dequeue();
             }
             else if (actual == 2)
             {
-                Debug.Log ("Extra1");
                 SeguitName.text = text.name1;
                 actualSentence = dialogueQueueExtra1.Dequeue();
             }
             else if (actual == 3)
             {
-                Debug.Log ("Extra2");
                 SeguitName.text = text.name2;
                 actualSentence = dialogueQueueExtra2.Dequeue();
             }
@@ -202,18 +207,14 @@ public class controlDialegs : MonoBehaviour
     {
         iniciat = false;
         animText.SetBool("Sign", false);
-        FindObjectOfType<ThirdPersonMovement>().isTalkKing();
-        FindObjectOfType<Interaccio>().isTalkingStarted();
-        FindObjectOfType<CameraSwitch>().isCameraOnGoing();
+        dialeg_acabat = true;
     }
 
     void CloseDialogueSeguit ()
     {
         iniciat = false;
         animSeguit.SetBool("Seguit", false);
-        FindObjectOfType<ThirdPersonMovement>().isTalkKing();
-        FindObjectOfType<Interaccio>().isTalkingStarted();
-        FindObjectOfType<CameraSwitch>().isCameraOnGoing();
+        dialeg_acabat = true;
         if(text.desti != null) SceneManager.LoadScene (text.desti);
     }
 
@@ -580,12 +581,10 @@ public class controlDialegs : MonoBehaviour
         npcDialogueBox.text = "";
         playerResponse.text = "";
         animDialeg.SetBool("Dialogue", false);
+        dialeg_acabat = true;
         FletxaAmunt.enabled = false;
         FletxaAbaix.enabled = false;
         actualAnswer = -1; 
         acabar = false;
-        FindObjectOfType<ThirdPersonMovement>().isTalkKing();
-        FindObjectOfType<Interaccio>().isTalkingStarted();
-        FindObjectOfType<CameraSwitch>().isCameraOnGoing();
     }
 }
