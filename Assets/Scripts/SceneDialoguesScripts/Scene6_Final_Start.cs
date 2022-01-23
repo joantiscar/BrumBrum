@@ -9,9 +9,12 @@ public class Scene6_Final_Start : MonoBehaviour
     private objecteInteractiu objecteInt;
     private GameObject player;
     private bool firstDialogueIsCalled = false;
+    private bool secondDialogueIsCalled = false;
+
 
     private Animator imageAnimator;
     private bool interacted = false;
+    private bool final = false;
 
 
     // Start is called before the first frame update
@@ -35,23 +38,37 @@ public class Scene6_Final_Start : MonoBehaviour
             firstDialogueIsCalled = true;
             objecteInt.Interactuate();
             player.GetComponent<Interaccio>().isTalkingStarted();
-        }
-        else if (!FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit") /*&& !secondDialogueIsCalled*/ && !interacted)
-        {
-            //GameObject.Find("Scenario_FourthScene").GetComponent<AudioSource>().volume = 1;
-            //Destroy(npc_inicialDialogue.transform.parent.gameObject);
 
+            Destroy(npc_inicialDialogue.GetComponent<DialegSeguit5>());
+            npc_inicialDialogue.AddComponent<Narrado1_5>();
+        }
+        else if (!FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit") /*&& !secondDialogueIsCalled*/ && !interacted && !secondDialogueIsCalled)
+        {
+            objecteInt.Start();
             interacted = true;
             imageAnimator.SetBool("Fade", true);
-
-            Destroy(npc_inicialDialogue.GetComponent<CapsuleCollider>());
-            Destroy(npc_inicialDialogue.GetComponent<DialegSeguit5>());
-            Destroy(objecteInt);
         }
-        else if (interacted && imageAnimator.GetCurrentAnimatorStateInfo(0).IsName("Default"))
+        else if (interacted && imageAnimator.GetCurrentAnimatorStateInfo(0).IsName("Default") && !secondDialogueIsCalled)
         {
+            secondDialogueIsCalled = true;
+            interacted = false;
+            objecteInt.Interactuate();
+            player.GetComponent<Interaccio>().isTalkingStarted();
+        }
+        else if (secondDialogueIsCalled && !FindObjectOfType<controlDialegs>().animText.GetBool("Sign") && !interacted)
+        {
+            interacted = true;
+        }
+        else if (secondDialogueIsCalled && interacted && !FindObjectOfType<controlDialegs>().animText.GetBool("Sign") && !final)
+        {
+            final = true;
             imageAnimator.SetBool("Fade", false);
             GameObject.Find("Scenario_SixthScene").GetComponent<AudioSource>().volume = 1;
+
+            //Destroy(npc_inicialDialogue.GetComponent<CapsuleCollider>());
+            Destroy(npc_inicialDialogue.GetComponent<Narrado1_5>());
+            Destroy(objecteInt);
+            npc_inicialDialogue.tag = "Untagged";
         }
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class InteractToChangeScene : MonoBehaviour
 {
@@ -48,6 +47,9 @@ public class InteractToChangeScene : MonoBehaviour
             case "Scene5_Flight_Part2":
                 interactText.text = "Pulsa E para salir del castillo";
             break;
+            case "Scene6_Final":
+                interactText.text = "Pulsa E para acabar con Zeth";
+            break;
         }
     }
 
@@ -88,7 +90,13 @@ public class InteractToChangeScene : MonoBehaviour
         else if (interacted && imageAnimator.GetCurrentAnimatorStateInfo(0).IsName("Default"))
         {
             //Debug.Log("canvia ara");
-            SceneManager.LoadScene(scene);
+            if (scene == "Scene6_Final_2")
+            {
+                SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+                Destroy(GameObject.Find("InicialDialogue_SixthScene"));
+                GameObject.Find("Scenario_SixthScene").GetComponent<AudioSource>().volume = 0.3f;
+            }
+            else SceneManager.LoadScene(scene);
         }
     }
     

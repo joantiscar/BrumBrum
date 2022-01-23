@@ -176,6 +176,7 @@ public class SistemaCombate : MonoBehaviour
                     else deshabilitarOutline();
 
                     for(int i=1;i <= pjActualPersonaje.habilidadesDisponibles.Count;i++){
+                        
                         if (Input.GetKeyDown(i.ToString())){
                             UICombate.seleccionarHabilidad(i-1);
                         }

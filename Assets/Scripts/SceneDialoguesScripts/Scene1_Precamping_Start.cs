@@ -24,6 +24,8 @@ public class Scene1_Precamping_Start : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         animAux = player.GetComponentInChildren<Canvas>().GetComponentInChildren<Image>().GetComponent<Animator>();
+
+        animAux.SetBool("Fade", true);
     }
 
     // Update is called once per frame
@@ -32,9 +34,7 @@ public class Scene1_Precamping_Start : MonoBehaviour
         if (!firstDialogueIsCalled && objecteInt.dialogues != null)
         {
             firstDialogueIsCalled = true;
-            // npc_inicialDialogue.GetComponent<objecteInteractiu>().Interactuate();
             objecteInt.Interactuate();
-
             player.GetComponent<Interaccio>().isTalkingStarted();
             
             Destroy(npc_inicialDialogue.GetComponent<GameDialogue>());
@@ -42,13 +42,14 @@ public class Scene1_Precamping_Start : MonoBehaviour
         }
         else if (!FindObjectOfType<controlDialegs>().animText.GetBool("Sign") && !secondDialogueIsCalled)
         {
+            animAux.SetBool("Fade", false);
+
             objecteInt.Start();
             secondDialogueIsCalled = true;
             objecteInt.Interactuate();
             player.GetComponent<Interaccio>().isTalkingStarted();
 
             Destroy(npc_inicialDialogue.GetComponent<GameDialogue>());
-            //Destroy(npc_inicialDialogue.GetComponent<objecteInteractiu>());
             Destroy(objecteInt);
             npc_inicialDialogue.transform.gameObject.tag = "Untagged";
         }
