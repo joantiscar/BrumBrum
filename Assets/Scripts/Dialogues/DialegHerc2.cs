@@ -11,7 +11,7 @@ public class DialegHerc2 : GameDialogue
         "Ha sido un honor pelear a tu lado.",
         "Gracias hermano."};
         playerDialogue = new string[] { "Dime.",
-        "Ha sido un honor pelear al tu lado."};
+        "También lo ha sido pelear al tuyo."};
         dialogue3 = new string[] {};
         dialogue4 = new string[] {};
         dialogueOrder = new int[] {};

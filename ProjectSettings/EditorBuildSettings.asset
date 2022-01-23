@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalScenes/Scene5_Flight_Part2.unity
     guid: 611defcd902da7243833820b3a7fb391
+  - enabled: 1
+    path: Assets/Scenes/FinalScenes/Scene6_Final.unity
+    guid: d96a18433f1c23a46835c8c640791345
   m_configObjects: {}

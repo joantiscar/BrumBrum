@@ -45,6 +45,9 @@ public class InteractToChangeScene : MonoBehaviour
             case "Scene3_Castle":
                 interactText.text = "Pulsa E para entrar a la sala del trono";
             break;
+            case "Scene5_Flight_Part2":
+                interactText.text = "Pulsa E para salir del castillo";
+            break;
         }
     }
 
