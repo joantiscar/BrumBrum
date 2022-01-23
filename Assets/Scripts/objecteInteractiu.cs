@@ -7,7 +7,6 @@ public class objecteInteractiu : MonoBehaviour
     //public Texts texts;
     private Texts texts;
     public GameDialogue dialogues;
-    GameObject player;
 
     public void Start()
     {
@@ -30,7 +29,6 @@ public class objecteInteractiu : MonoBehaviour
 
     public void Interactuate()
     {
-        GameObject.FindGameObjectWithTag("Player");
         FindObjectOfType<controlDialegs>().ActivateDialogues(this.texts);
     }
 }

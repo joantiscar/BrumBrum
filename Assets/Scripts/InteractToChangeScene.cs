@@ -118,4 +118,13 @@ public class InteractToChangeScene : MonoBehaviour
         }
     }
 
+    public void NoInteraction (){
+        interactText.gameObject.SetActive(false);
+        interactAllowed = false;
+    }
+
+    public void YesInteraction (){
+        interactText.gameObject.SetActive(true);
+        interactAllowed = true;
+    }
 }
