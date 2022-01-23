@@ -90,7 +90,13 @@ public class InteractToChangeScene : MonoBehaviour
         else if (interacted && imageAnimator.GetCurrentAnimatorStateInfo(0).IsName("Default"))
         {
             //Debug.Log("canvia ara");
-            SceneManager.LoadScene(scene);
+            if (scene == "Scene6_Final_2")
+            {
+                SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+                Destroy(GameObject.Find("InicialDialogue_SixthScene"));
+                GameObject.Find("Scenario_SixthScene").GetComponent<AudioSource>().volume = 0.3f;
+            }
+            else SceneManager.LoadScene(scene);
         }
     }
     
