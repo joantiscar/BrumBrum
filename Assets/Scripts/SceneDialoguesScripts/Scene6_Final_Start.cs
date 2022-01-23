@@ -41,7 +41,6 @@ public class Scene6_Final_Start : MonoBehaviour
 
             Destroy(npc_inicialDialogue.GetComponent<DialegSeguit5>());
             npc_inicialDialogue.AddComponent<Narrado1_5>();
-            Debug.Log("k1");
         }
         else if (!FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit") /*&& !secondDialogueIsCalled*/ && !interacted && !secondDialogueIsCalled)
         {
@@ -58,7 +57,6 @@ public class Scene6_Final_Start : MonoBehaviour
         }
         else if (secondDialogueIsCalled && !FindObjectOfType<controlDialegs>().animText.GetBool("Sign") && !interacted)
         {
-            Debug.Log("yass");
             interacted = true;
         }
         else if (secondDialogueIsCalled && interacted && !FindObjectOfType<controlDialegs>().animText.GetBool("Sign") && !final)
@@ -67,9 +65,10 @@ public class Scene6_Final_Start : MonoBehaviour
             imageAnimator.SetBool("Fade", false);
             GameObject.Find("Scenario_SixthScene").GetComponent<AudioSource>().volume = 1;
 
-            Destroy(npc_inicialDialogue.GetComponent<CapsuleCollider>());
+            //Destroy(npc_inicialDialogue.GetComponent<CapsuleCollider>());
             Destroy(npc_inicialDialogue.GetComponent<Narrado1_5>());
             Destroy(objecteInt);
+            npc_inicialDialogue.tag = "Untagged";
         }
     }
 }

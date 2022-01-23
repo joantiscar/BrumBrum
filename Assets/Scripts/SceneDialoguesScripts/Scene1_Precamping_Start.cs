@@ -34,7 +34,6 @@ public class Scene1_Precamping_Start : MonoBehaviour
         if (!firstDialogueIsCalled && objecteInt.dialogues != null)
         {
             firstDialogueIsCalled = true;
-            // npc_inicialDialogue.GetComponent<objecteInteractiu>().Interactuate();
             objecteInt.Interactuate();
             player.GetComponent<Interaccio>().isTalkingStarted();
             
@@ -51,7 +50,6 @@ public class Scene1_Precamping_Start : MonoBehaviour
             player.GetComponent<Interaccio>().isTalkingStarted();
 
             Destroy(npc_inicialDialogue.GetComponent<GameDialogue>());
-            //Destroy(npc_inicialDialogue.GetComponent<objecteInteractiu>());
             Destroy(objecteInt);
             npc_inicialDialogue.transform.gameObject.tag = "Untagged";
         }

@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class InteractToChangeScene : MonoBehaviour
 {
@@ -47,6 +46,9 @@ public class InteractToChangeScene : MonoBehaviour
             break;
             case "Scene5_Flight_Part2":
                 interactText.text = "Pulsa E para salir del castillo";
+            break;
+            case "Scene6_Final":
+                interactText.text = "Pulsa E para acabar con Zeth";
             break;
         }
     }
