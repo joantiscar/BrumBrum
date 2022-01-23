@@ -8,7 +8,7 @@ public class Habilidades                                                        
     public static Habilidad EsquirlaDeHielo = new Habilidad("Esquirla de hielo", "El usuario lanza una esquirla de hielo hacia su oponente", "ice", 2, 2, 10, 1.0f, 0.0f, true, false, true);
     public static Habilidad AtaqueConEspada = new Habilidad("Ataque con espada", "Ataque con espada", "physical", 0, 1, 10, 0.25f);
     public static Habilidad ColmilloVenenoso = new Habilidad("Colmillo venenoso", "El usuario lanza un proyecitl venenoso hacia su oponente", "poison", 2, 2 , 10, 0.75f, 0.0f);
-    public static Habilidad Curacion = new Habilidad("Curacion", "El usuario canaliza energia divina para sanar a un aliado", "holy", 2, 2 , 30, 1.0f, 0.0f, false, true, true);
+    public static Habilidad Curacion = new Habilidad("Curacion", "El usuario canaliza energia divina para sanar a un aliado", "holy", 2, 2 , 30, 1.0f, 0.0f, false, true, true,false);
     
 
 

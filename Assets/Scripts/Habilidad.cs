@@ -14,12 +14,13 @@ public class Habilidad
     public float radius = 0.0f;
     public bool damages = true;
     public bool heals = true;
+    public bool targetEnemy = true;
     public bool special = false;
     public bool aoe = false;
     
 
     public Habilidad(string a_name, string a_description, string a_type, int a_cooldown, int a_coste, int a_damage, 
-    float a_range, float a_radius = 0.0f, bool a_damages = true, bool a_heals = false, bool a_special = false){
+    float a_range, float a_radius = 0.0f, bool a_damages = true, bool a_heals = false, bool a_special = false, bool a_targetEnemy = true){
         name = a_name;
         description = a_description;
         type = a_type;
@@ -31,5 +32,6 @@ public class Habilidad
         damages = a_damages;
         heals = a_heals;
         special = a_special;
+        targetEnemy = a_targetEnemy;
     }
 }

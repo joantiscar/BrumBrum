@@ -976,6 +976,10 @@ PrefabInstance:
       value: Paco
       objectReference: {fileID: 0}
     - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
+      propertyPath: maxPAtaques
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: basePAtaques
       value: 5
       objectReference: {fileID: 0}
