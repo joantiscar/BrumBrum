@@ -17,6 +17,7 @@ public class Scene4_Throne_Start : MonoBehaviour
         objecteInt = npc_inicialDialogue.GetComponent<objecteInteractiu>();
 
         player = GameObject.FindGameObjectWithTag("Player");
+        player.isStatic = false;
     }
 
     // Update is called once per frame

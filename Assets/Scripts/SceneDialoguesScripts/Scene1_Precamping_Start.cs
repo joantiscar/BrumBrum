@@ -22,6 +22,7 @@ public class Scene1_Precamping_Start : MonoBehaviour
         objecteInt = npc_inicialDialogue.GetComponent<objecteInteractiu>();
 
         player = GameObject.FindGameObjectWithTag("Player");
+        player.isStatic = false;
 
         animAux = player.GetComponentInChildren<Canvas>().GetComponentInChildren<Image>().GetComponent<Animator>();
 

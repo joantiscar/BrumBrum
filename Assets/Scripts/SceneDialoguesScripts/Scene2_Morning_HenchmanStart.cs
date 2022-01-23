@@ -27,6 +27,7 @@ public class Scene2_Morning_HenchmanStart : MonoBehaviour
         objecteInt = npc_inicialDialogue.GetComponent<objecteInteractiu>();
 
         player = GameObject.FindGameObjectWithTag("Player");
+        player.isStatic = false;
 
         characters = GameObject.Find("HenchmanDialogueCharacters_Scene2");
         characters.SetActive(false);

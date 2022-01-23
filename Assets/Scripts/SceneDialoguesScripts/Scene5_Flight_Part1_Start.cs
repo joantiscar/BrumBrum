@@ -22,6 +22,7 @@ public class Scene5_Flight_Part1_Start : MonoBehaviour
         objecteInt = npc_inicialDialogue.GetComponent<objecteInteractiu>();
 
         player = GameObject.FindGameObjectWithTag("Player");
+        player.isStatic = false;
 
         imageAnimator = player.GetComponentInChildren<Canvas>().GetComponentInChildren<Image>().GetComponent<Animator>();
     }

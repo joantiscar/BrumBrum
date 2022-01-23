@@ -11,6 +11,7 @@ public class InteractToChangeScene : MonoBehaviour
     private bool interactAllowed;
     private bool interacted = false;
     public string scene;
+    private bool wasActive = false;
 
     private Animator imageAnimator;
     //private Animator fadeInanimator;
@@ -106,6 +107,7 @@ public class InteractToChangeScene : MonoBehaviour
         {
             interactText.gameObject.SetActive(true);
             interactAllowed = true;
+            wasActive = true;
         }
     }
 
@@ -115,6 +117,7 @@ public class InteractToChangeScene : MonoBehaviour
         {
             interactText.gameObject.SetActive(false);
             interactAllowed = false;
+            wasActive = false;
         }
     }
 
@@ -122,9 +125,10 @@ public class InteractToChangeScene : MonoBehaviour
         interactText.gameObject.SetActive(false);
         interactAllowed = false;
     }
-
     public void YesInteraction (){
-        interactText.gameObject.SetActive(true);
-        interactAllowed = true;
+        if (wasActive){
+            interactText.gameObject.SetActive(true);
+            interactAllowed = true;
+        }
     }
 }

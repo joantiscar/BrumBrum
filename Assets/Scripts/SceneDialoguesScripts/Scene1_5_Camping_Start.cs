@@ -21,6 +21,7 @@ public class Scene1_5_Camping_Start : MonoBehaviour
         objecteInt = npc_inicialDialogue.GetComponent<objecteInteractiu>();
 
         player = GameObject.FindGameObjectWithTag("Player");
+        player.isStatic = false;
     }
 
     // Update is called once per frame

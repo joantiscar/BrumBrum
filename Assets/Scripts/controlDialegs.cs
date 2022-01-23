@@ -52,17 +52,21 @@ public class controlDialegs : MonoBehaviour
         }
         if (dialeg_acabat && animText.GetCurrentAnimatorStateInfo(0).IsName("Default") && animDialeg.GetCurrentAnimatorStateInfo(0).IsName("Default") 
             && animSeguit.GetCurrentAnimatorStateInfo(0).IsName("Default")){
-            GameObject.FindObjectOfType<InteractToChangeScene>().YesInteraction();
             FindObjectOfType<ThirdPersonMovement>().isTalkKing();
             FindObjectOfType<Interaccio>().isTalkingStarted();
             FindObjectOfType<CameraSwitch>().isCameraOnGoing();
             dialeg_acabat = false;
+            if (GameObject.FindObjectOfType<InteractToChangeScene>() != null){
+                GameObject.FindObjectOfType<InteractToChangeScene>().YesInteraction();
+            }
         }
     }
     public void ActivateDialogues(Texts textObjecte)
     { 
         if (!dialeg_acabat){
-            GameObject.FindObjectOfType<InteractToChangeScene>().NoInteraction();
+            if (GameObject.FindObjectOfType<InteractToChangeScene>() != null){
+                GameObject.FindObjectOfType<InteractToChangeScene>().NoInteraction();
+            }
             FindObjectOfType<ThirdPersonMovement>().isTalkKing();
             FindObjectOfType<CameraSwitch>().isCameraOnGoing();
         }

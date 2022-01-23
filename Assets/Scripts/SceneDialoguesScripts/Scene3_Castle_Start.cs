@@ -17,6 +17,7 @@ public class Scene3_Castle_Start : MonoBehaviour
         objecteInt = npc_inicialDialogue.GetComponent<objecteInteractiu>();
 
         player = GameObject.FindGameObjectWithTag("Player");
+        player.isStatic = false;
     }
 
     // Update is called once per frame
