@@ -47,8 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b19c81eb3955c4e4a88f646786c70894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  user_controlled: 0
-  hp: 0
+  level: 0
+  experience: 0
+  experience_max: 0
+  upgrade_points: 0
   hpMax: 0
   attack: 0
   special_attack: 0
@@ -57,20 +59,18 @@ MonoBehaviour:
   velocity: 0
   nombre: 
   elemental_resistance: 
-  level: 0
-  experience: 0
-  experience_max: 0
-  upgrade_points: 0
+  metrosMaximos: 2.5
   objetivo: {fileID: 0}
   className: Clase
-  metrosMaximos: 0
   metrosRestantes: 0
-  habilidadSeleccionada: 0
+  hp: 0
+  habilidadSeleccionada: -1
   basePAtaques: 5
   maxPAtaques: 10
   actPAtaques: 0
-  exp_when_killed: 0
   cooldowns: 
+  user_controlled: 0
+  exp_when_killed: 0
   SistemaCombate: {fileID: 0}
   anim: {fileID: 0}
 --- !u!195 &836169610404103505

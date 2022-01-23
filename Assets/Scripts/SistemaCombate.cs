@@ -77,8 +77,8 @@ public class SistemaCombate : MonoBehaviour
     
     }
 
-    GameObject getCharacter(Transform t){ // Se supone que encuentra el gameobject que tiene el Character y te lo devuelve, pero lo escribí una noche tonta
-        if(t.parent == null || t.gameObject.GetComponent<Character>()!=null) return t.gameObject;
+    GameObject getCharacter(Transform t){ // Se supone que encuentra el gameobject en la jerarquia que tiene el Character y te lo devuelve, pero lo escribí una noche tonta
+        if(t.gameObject.GetComponent<Character>()!=null) return t.gameObject;
         if(t.parent != null) return getCharacter(t.parent);
         return null;
     }
@@ -141,8 +141,8 @@ public class SistemaCombate : MonoBehaviour
                                 Habilidad h = pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada];
                                 if(objetivo.GetComponent<Character>() != null 
                                    && Vector3.Distance(pjActual.transform.position, objetivo.transform.position) <= h.range // en rango
-                                   && (h.targetEnemy && !objetivo.GetComponent<Character>().user_controlled) ||
-                                      (!h.targetEnemy && objetivo.GetComponent<Character>().user_controlled)){ // miramos el targetenemy y si apunta a un enemigo on no
+                                   && ((h.targetEnemy && !objetivo.GetComponent<Character>().user_controlled) ||
+                                      (!h.targetEnemy && objetivo.GetComponent<Character>().user_controlled))){ // miramos el targetenemy y si apunta a un enemigo on no
                                             
                                         // Miramos que el objetivo del ray y el ultimo objetivo mirado no sean el mismo para ir más rápido
                                         if(objetivo!=lastOutline){
@@ -168,8 +168,9 @@ public class SistemaCombate : MonoBehaviour
                             // -- Vida del personaje, estado alterado... -- Ruby
 
                         }
+                        else deshabilitarOutline(); // Le estamos dando a algo que no es un Character
                     }
-                    else deshabilitarOutline();
+                    else deshabilitarOutline(); // Le estamos dando a algun sitio no válido
 
                     // Vamos mirando las teclas de 1 a n habilidades para seleccionar una habilidad
                     for(int i=1;i <= pjActualPersonaje.habilidadesDisponibles.Count;i++){
