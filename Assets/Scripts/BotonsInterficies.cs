@@ -9,7 +9,7 @@ public class BotonsInterficies : MonoBehaviour
         SceneManager.LoadScene("CombatDemo");
     }
 
-    public void Inici(){ // Torna al menú inici
+    public void Inici(){ // Torna al menu inici
         SceneManager.LoadScene("MenuInici");
     }
 
