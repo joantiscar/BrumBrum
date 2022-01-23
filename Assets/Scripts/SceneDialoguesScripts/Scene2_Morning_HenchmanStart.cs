@@ -21,6 +21,7 @@ public class Scene2_Morning_HenchmanStart : MonoBehaviour
         audioSource = GameObject.Find("Scenario_SecondScene").GetComponent<AudioSource>();
         audioSource.time = 0.6f;
         audioSource.Play();
+        GameObject.Find("Scenario_SecondScene").GetComponent<RandomCombat>().SetAble();
 
         npc_inicialDialogue = GameObject.Find("Secuaz");
         objecteInt = npc_inicialDialogue.GetComponent<objecteInteractiu>();
@@ -42,6 +43,7 @@ public class Scene2_Morning_HenchmanStart : MonoBehaviour
         }
         else if (!firstDialogueIsCalled && !FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit")) {
             audioSource.volume = 1f;
+            GameObject.Find("Scenario_SecondScene").GetComponent<RandomCombat>().SetAble();
         }
     }
     
@@ -51,6 +53,7 @@ public class Scene2_Morning_HenchmanStart : MonoBehaviour
         if (other.tag == "Player")
         {
             audioSource.volume = 0.4f;
+            GameObject.Find("Scenario_SecondScene").GetComponent<RandomCombat>().SetDisable();
             player.GetComponent<AudioSource>().Stop();
 
             GameObject.Find("PlayerOnWorld").transform.position = new Vector3(100.5f, 0, 55);

@@ -43,6 +43,7 @@ public class Scene1_5_Camping_Start : MonoBehaviour
         else if (secondDialogueIsCalled && !FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit"))
         {
             GameObject.Find("Scenario_FirstHalfScene").GetComponent<AudioSource>().volume = 1;
+            GameObject.Find("Scenario_FirstHalfScene").GetComponent<RandomCombat>().SetAble();
         }
     }
 }
