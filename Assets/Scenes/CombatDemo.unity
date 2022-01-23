@@ -494,7 +494,6 @@ MonoBehaviour:
   victoria: 0
   gameover: 0
   apuntando: 0
-  blocked: 0
   moviendose: 0
   lastOutline: {fileID: 0}
 --- !u!4 &107014252
@@ -985,7 +984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: metrosMaximos
-      value: 2
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: special_attack
