@@ -8,7 +8,9 @@ public class Narrador2 : GameDialogue
     {
         characterName = "";
         playerName = "";
-        dialogue = new string[] { "Tuvo que pasar un siglo exacto hasta que la semilla de la vida renació.", 
+        dialogue = new string[] { "Irix acabó de clavar la espada en el pecho de Zeth.",
+        "El mundo entero se oscureció.",
+        "Tuvo que pasar un siglo exacto hasta que la semilla de la vida renació.", 
         "Eso fue lo que dio inicio a un nuevo mundo, esta vez sin divisiones entre las razas racionales, tan solo humanos.", 
         "O eso se supone.",
         "Han pasado miles de años desde el denominado Renacer, y seguimos sin conocer otras razas capaces de hablar.",
