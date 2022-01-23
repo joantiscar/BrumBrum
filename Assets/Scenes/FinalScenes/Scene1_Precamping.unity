@@ -324,17 +324,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &685320756 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4603186941468780060, guid: 9d4cd693c6451a3459382e6ca56f94ac, type: 3}
-  m_PrefabInstance: {fileID: 1423431544}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1320497176
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,7 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3b68738b796f14ea8a0aab32b79048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupText: {fileID: 1550454661}
+  pickupText: {fileID: 0}
   cofre: {fileID: 0}
 --- !u!54 &1320497178
 Rigidbody:
@@ -596,11 +585,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4603186940287500560, guid: 9d4cd693c6451a3459382e6ca56f94ac, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008515345
+      value: 0.000000008515345
       objectReference: {fileID: 0}
     - target: {fileID: 4603186940287500560, guid: 9d4cd693c6451a3459382e6ca56f94ac, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000012262865
+      value: -0.0000000012262865
       objectReference: {fileID: 0}
     - target: {fileID: 4603186940483596896, guid: 9d4cd693c6451a3459382e6ca56f94ac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -724,6 +713,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d4cd693c6451a3459382e6ca56f94ac, type: 3}
+--- !u!114 &1423431545 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7406819634234572286, guid: 9d4cd693c6451a3459382e6ca56f94ac, type: 3}
+  m_PrefabInstance: {fileID: 1423431544}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1428249020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,17 +1136,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbecb5d19d0b4b24d9f39fe1b0879bf9, type: 3}
---- !u!114 &1550454661 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5379171593872063514, guid: bbecb5d19d0b4b24d9f39fe1b0879bf9, type: 3}
-  m_PrefabInstance: {fileID: 1522865972}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1562269276 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7727542204414901999, guid: ef75ba2a5f84cbc4681c3dc929256528, type: 3}
@@ -1164,7 +1153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2698b64728ea83044acf5fd822160c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: {fileID: 685320756}
+  interactText: {fileID: 1423431545}
   scene: Scene1-5_Camping
 --- !u!135 &1562269279
 SphereCollider:

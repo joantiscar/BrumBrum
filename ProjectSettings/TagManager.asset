@@ -8,6 +8,7 @@ TagManager:
   - CameraPlayer
   - CameraDialog
   - Cofre
+  - Cartell
   layers:
   - Default
   - TransparentFX

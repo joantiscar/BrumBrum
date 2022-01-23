@@ -17,7 +17,7 @@ public class Scene1_5_Camping_Start : MonoBehaviour
         GameObject.Find("Scenario_FirstHalfScene").GetComponent<AudioSource>().time = 3.5f;
         GameObject.Find("Scenario_FirstHalfScene").GetComponent<AudioSource>().Play();
 
-        npc_inicialDialogue = GameObject.Find("NPC_Brute");
+        npc_inicialDialogue = GameObject.Find("Herc");
         objecteInt = npc_inicialDialogue.GetComponent<objecteInteractiu>();
 
         player = GameObject.FindGameObjectWithTag("Player");

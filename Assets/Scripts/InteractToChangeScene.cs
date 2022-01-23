@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class InteractToChangeScene : MonoBehaviour
 {
-    [SerializeField]
-    private Text interactText;
+    [SerializeField] TextMeshProUGUI interactText;
     private bool interactAllowed;
     private bool interacted = false;
     public string scene;
@@ -21,6 +21,7 @@ public class InteractToChangeScene : MonoBehaviour
     {
         //pickupText = GameObject.FindGameObjectWithTag("ItemText").GetComponent<Text>();
         interactText.gameObject.SetActive(false);
+        interactText.text = "";
 
         //image = GameObject.Find("PlayerOnWorld").GetComponentInChildren<>
         imageAnimator = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Canvas>().GetComponentInChildren<Image>().GetComponent<Animator>();
@@ -31,6 +32,20 @@ public class InteractToChangeScene : MonoBehaviour
 
         //fadeInanimator = new Animator();
         //fadeInanimator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("FadeInAnimatorController");
+        switch (SceneManager.GetActiveScene().name){
+            case "Scene1_Precamping":
+                interactText.text = "Pulsa E para acampar";
+            break;
+            case "Scene1-5_Camping":
+                interactText.text = "Pulsa E para descansar";
+            break;
+            case "Scene2_Morning":
+                interactText.text = "Pulsa E para entrar al castillo";
+            break;
+            case "Scene3_Castle":
+                interactText.text = "Pulsa E para entrar a la sala del trono";
+            break;
+        }
     }
 
     private void Update()

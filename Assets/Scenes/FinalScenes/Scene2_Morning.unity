@@ -223,6 +223,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3582329016601145001, guid: 9d4cd693c6451a3459382e6ca56f94ac, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582329016601145001, guid: 9d4cd693c6451a3459382e6ca56f94ac, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3641916091418900958, guid: 9d4cd693c6451a3459382e6ca56f94ac, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -419,6 +427,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7406819634234572286, guid: 9d4cd693c6451a3459382e6ca56f94ac, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7406819634234572286, guid: 9d4cd693c6451a3459382e6ca56f94ac, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8450835592987188618, guid: 9d4cd693c6451a3459382e6ca56f94ac, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -429,15 +445,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d4cd693c6451a3459382e6ca56f94ac, type: 3}
---- !u!114 &1301555082 stripped
+--- !u!114 &213255266 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4603186941468780060, guid: 9d4cd693c6451a3459382e6ca56f94ac, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7406819634234572286, guid: 9d4cd693c6451a3459382e6ca56f94ac, type: 3}
   m_PrefabInstance: {fileID: 213255265}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1656687935054633267
@@ -495,6 +511,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1156841445722857681, guid: 17d2052680735334ea9e183b7d9bd7ed, type: 3}
+      propertyPath: m_Name
+      value: Secuaz
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443262312078251949, guid: 17d2052680735334ea9e183b7d9bd7ed, type: 3}
+      propertyPath: m_TagString
+      value: Cartell
+      objectReference: {fileID: 0}
     - target: {fileID: 5223482274606647423, guid: 17d2052680735334ea9e183b7d9bd7ed, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.35
@@ -506,6 +530,6 @@ PrefabInstance:
     - target: {fileID: 5511869529773783804, guid: 17d2052680735334ea9e183b7d9bd7ed, type: 3}
       propertyPath: interactText
       value: 
-      objectReference: {fileID: 1301555082}
+      objectReference: {fileID: 213255266}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17d2052680735334ea9e183b7d9bd7ed, type: 3}

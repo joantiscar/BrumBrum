@@ -22,7 +22,7 @@ public class Scene2_Morning_HenchmanStart : MonoBehaviour
         audioSource.time = 0.6f;
         audioSource.Play();
 
-        npc_inicialDialogue = GameObject.Find("NPC_Henchman");
+        npc_inicialDialogue = GameObject.Find("Secuaz");
         objecteInt = npc_inicialDialogue.GetComponent<objecteInteractiu>();
 
         player = GameObject.FindGameObjectWithTag("Player");
