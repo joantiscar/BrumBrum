@@ -16,7 +16,6 @@ public class UICombate : MonoBehaviour
     public Slider barraDistancia;
     public Slider barraHP;
     public Text LabelPP;
-    public Text TextDebug;
 
     public GameObject selected;
 
@@ -55,8 +54,8 @@ public class UICombate : MonoBehaviour
         Character pjScript = pjActual.GetComponent<Character>();
 
         // Actualiza la barra con el maximo de metros
-        barraDistancia.maxValue = (float) pjScript.metrosRestantes;
-        barraDistancia.value = barraDistancia.maxValue;
+        // barraDistancia.maxValue = (float) pjScript.metrosRestantes;
+        // barraDistancia.value = barraDistancia.maxValue;
 
         // Actualiza la barra con el HP
         barraHP.maxValue = (float) pjScript.hpMax;
@@ -97,7 +96,6 @@ public class UICombate : MonoBehaviour
         if(h<_habilidades.Count && pjActual.esSeleccionable(h) && !SistemaCombate.moviendose){
 
             Debug.Log("Habilidad cambiada a: "+_habilidades[h].name);
-            TextDebug.text = "Habilidad cambiada a: "+_habilidades[h].name;
 
             pjActual.habilidadSeleccionada = h;
 

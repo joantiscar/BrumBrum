@@ -281,18 +281,16 @@ public class Character : MonoBehaviour
             if (objetivo!=null){
                 Character a = objetivo.GetComponent<Character>();
                 Debug.Log("Objetivo a atacar: " + objetivo.GetComponent<Character>().nombre);
-                UICombate.TextDebug.text = "Objetivo a atacar: " + objetivo.GetComponent<Character>().nombre;
                 
                 StartCoroutine(RutinaAtacar());
                 Habilidades.lanzar(this, a, habilidad);
                 cooldowns[habilidadSeleccionada] += habilidad.cooldown;
                 Debug.Log("Lanzando habilidad " + habilidad.name);
-                UICombate.TextDebug.text = "Lanzando habilidad " + habilidad.name;
                 // Restamos los puntos que se usan
                 actPAtaques -= habilidad.coste;
                 UICombate.actualizaPP();
 
-                anim.Play("Idle"); // Me da un warning State could not be found
+                // anim.Play("Idle"); // Me da un warning State could not be found
                     
             }
 

@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 public class SistemaCombate : MonoBehaviour
 {
 
@@ -45,6 +44,13 @@ public class SistemaCombate : MonoBehaviour
         pjActual = pjs[ordenActual];
         pjActualPersonaje = pjActual.GetComponent<Character>();
         pjActualPersonaje.EmpiezaTurno();
+    }
+
+    public void deshabilitarOutline(){
+        Outline o = lastOutline.GetComponent<Outline>();
+        o.outlineWidth = 0;
+        o.UpdateMaterialProperties();
+        lastOutline = null;
     }
 
     // Start is called before the first frame update
@@ -110,10 +116,7 @@ public class SistemaCombate : MonoBehaviour
                                         UICombate.deseleccionarHabilidad();
                                         apuntando = false;
                                         
-                                        Outline o = lastOutline.GetComponent<Outline>();
-                                        o.outlineWidth = 0;
-                                        o.UpdateMaterialProperties();
-                                        lastOutline = null;
+                                        deshabilitarOutline();
                                     }
                                     else{
                                         Debug.Log("El enemigo ersta fuera de rango o no puedes curar a un enemigo o atacar a un aliado!!");
@@ -133,7 +136,7 @@ public class SistemaCombate : MonoBehaviour
                         if(Input.GetKeyDown("0") || Input.GetKeyDown("escape") || Input.GetMouseButtonDown(1)){
                             UICombate.deseleccionarHabilidad();
                             apuntando = false;
-                            //lastOutline = null;
+                            deshabilitarOutline();
                         }
                         else{
 
@@ -155,10 +158,7 @@ public class SistemaCombate : MonoBehaviour
                                         }
                                 }
                                 else if(lastOutline!=null){
-                                    Outline o = lastOutline.GetComponent<Outline>();
-                                    o.outlineWidth = 0;
-                                    o.UpdateMaterialProperties();
-                                    lastOutline = null;
+                                    deshabilitarOutline();
 
                                 }
 
