@@ -7,6 +7,8 @@ TagManager:
   - NPC
   - CameraPlayer
   - CameraDialog
+  - Cofre
+  - Cartell
   layers:
   - Default
   - TransparentFX

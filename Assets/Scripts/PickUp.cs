@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PickUp : MonoBehaviour
 {
-    [SerializeField]
-    private Text pickupText;
+    [SerializeField] TextMeshProUGUI pickupText;
     private bool pickUpAllowed;
+    public LootCofres cofre;
 
     private void Start()
     {
         //pickupText = GameObject.FindGameObjectWithTag("ItemText").GetComponent<Text>();
         pickupText.gameObject.SetActive(false);
+        if (this.tag == "Cofre"){
+            pickupText.text = "Pulsa E para abrir cofre";
+        }
+        else{
+            pickupText.text = "Pulsa E para interactuar";
+        }
     }
 
     private void Update()
@@ -40,6 +47,10 @@ public class PickUp : MonoBehaviour
 
     private void Pick()
     {
+        if (this.tag == "Cofre"){
+            cofre = transform.gameObject.GetComponent<LootCofres>();
+            cofre.getLoot();
+        }
         Destroy(gameObject);
         pickupText.gameObject.SetActive(false);
     }

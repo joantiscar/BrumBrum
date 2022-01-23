@@ -30,17 +30,6 @@ public class objecteInteractiu : MonoBehaviour
 
     public void Interactuate()
     {
-
-        //texts = new Texts(transform.gameObject.name, dialogues.getDialogue(), dialogues.getPlayerDialogue());
-        //Debug.Log(texts.dialogue[0]);
-
-        /*
-        texts.name = transform.gameObject.name;
-        texts.dialogue = dialogues.getDialogue().Clone() as string[];
-        texts.playerDialogue = dialogues.getPlayerDialogue().Clone() as string[];
-        */
-
-
         FindObjectOfType<controlDialegs>().ActivateDialogues(this.texts);
     }
 }

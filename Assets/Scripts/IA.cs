@@ -65,7 +65,7 @@ public class IA : MonoBehaviour
     {
         if (Personaje.SistemaCombate.nAliados == 0) return false;
         habilidadesUsables = new List<int>();
-        for (int i = 0; i < Personaje.habilidadesDisponibles.Length; i++)
+        for (int i = 0; i < Personaje.habilidadesDisponibles.Count; i++)
         {
             if (Personaje.cooldowns[i] == 0 && Personaje.habilidadesDisponibles[i].coste <= Personaje.actPAtaques
             && Vector3.Distance(Personaje.transform.position, Objetivo.transform.position) <= Personaje.habilidadesDisponibles[i].range)
@@ -81,25 +81,10 @@ public class IA : MonoBehaviour
         estado = "empiezaTurno";
     }
 
-    public AnimationClip FindAnimation (Animator animator, string name) 
-    {
-        foreach (AnimationClip clip in animator.runtimeAnimatorController.animationClips)
-        {
-            Debug.Log(clip.name);
-            if (clip.name == name)
-            {
-                return clip;
-            }
-        }
-
-        return null;
-    }
-
     IEnumerator RutinaAtacar(){
         atacando = true;
-        yield return new WaitForSeconds(FindAnimation(Personaje.anim,"Attack").length);
+        yield return new WaitForSeconds(Personaje.FindAnimation(Personaje.anim,"Attack").length);
         atacando = false;
-        Debug.Log("AAAAA");
         
     }
 

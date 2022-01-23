@@ -20,4 +20,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Victoria.unity
     guid: ae46c6d505f16174f8ac4cdc89777c75
+  - enabled: 1
+    path: Assets/Scenes/FinalScenes/Scene1_Precamping.unity
+    guid: 4bed567e433f50743adc5c039d8c17a4
+  - enabled: 1
+    path: Assets/Scenes/FinalScenes/Scene1-5_Camping.unity
+    guid: 79d90ddc67294b443809cbc9f3b686b9
+  - enabled: 1
+    path: Assets/Scenes/FinalScenes/Scene2_Morning.unity
+    guid: e782a81bc2264e8408ba8bc9225dda88
+  - enabled: 1
+    path: Assets/Scenes/FinalScenes/Scene3_Castle.unity
+    guid: 9f48f2b1da28e6f41919b79f3e001cd0
+  - enabled: 1
+    path: Assets/Scenes/FinalScenes/Scene4_Throne.unity
+    guid: 87050502852f6334386b01fb923b5454
+  - enabled: 1
+    path: Assets/Scenes/FinalScenes/Scene5_Flight_Part1.unity
+    guid: b0efb0ee4b6cc9545b20eb18c73b2e9d
+  - enabled: 1
+    path: Assets/Scenes/FinalScenes/Scene5_Flight_Part2.unity
+    guid: 611defcd902da7243833820b3a7fb391
   m_configObjects: {}
