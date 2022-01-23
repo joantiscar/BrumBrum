@@ -38,7 +38,7 @@ public class Interaccio : MonoBehaviour
     {
         if(other.tag == "NPC")
         {
-            npcText.text = "Pula R para hablar con " + other.name;
+            npcText.text = "Pulsa R para hablar con " + other.name;
             triggering = true;
             triggeringNpc = other.gameObject;
         }
