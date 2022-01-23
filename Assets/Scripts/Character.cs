@@ -307,8 +307,9 @@ public class Character : MonoBehaviour
     }
 
     void Update(){
+        // Hacemos que el circulo de movimiento se mueva con el personaje, solo si no es null
         if(circuloMov!=null){
-            if(metrosRestantes<=0.5f) destruirCirculoMov();
+            if(metrosRestantes<=0.5f) destruirCirculoMov(); // Además, si es tricky clicar porque queda poco, es más fácil quitar el círculo y ya
             else circuloMov.transform.position = new Vector3(transform.position.x,transform.position.y+0.5f,transform.position.z);
         }
     }

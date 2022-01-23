@@ -17,7 +17,7 @@ public class UICombate : MonoBehaviour
     public Slider barraHP;
     public Text LabelPP;
 
-    public GameObject selected;
+    public GameObject selected; // El cuadrito que muestra el seleccionado
 
     public int habilidadSeleccionada = -1;
     Character pjActual;
@@ -53,10 +53,6 @@ public class UICombate : MonoBehaviour
 
         Character pjScript = pjActual.GetComponent<Character>();
 
-        // Actualiza la barra con el maximo de metros
-        // barraDistancia.maxValue = (float) pjScript.metrosRestantes;
-        // barraDistancia.value = barraDistancia.maxValue;
-
         // Actualiza la barra con el HP
         barraHP.maxValue = (float) pjScript.hpMax;
         barraHP.value = (float) pjScript.hp;
@@ -67,7 +63,7 @@ public class UICombate : MonoBehaviour
         
     }
 
-    public void FinalizaTurno(){ // LLamada cada vez que acaba el turno de un personaje
+    public void FinalizaTurno(){ // Llamada cada vez que acaba el turno de un personaje
         // Restart la habilidad seleccionada
         selected.SetActive(false);
         pjActual.habilidadSeleccionada = -1;
@@ -92,7 +88,7 @@ public class UICombate : MonoBehaviour
     }
 
     public void seleccionarHabilidad(int h){
-        // Miramos si está en cooldown
+        // Miramos si nos han pasado una h dentro de los valores adecuados, si es seleccionable y si no se esta moviendo el personaje
         if(h<_habilidades.Count && pjActual.esSeleccionable(h) && !SistemaCombate.moviendose){
 
             Debug.Log("Habilidad cambiada a: "+_habilidades[h].name);
@@ -123,7 +119,6 @@ public class UICombate : MonoBehaviour
 
     public void ActualizaDistancia(){
         // Actualizamos la GUI con la distancia
-        // barraDistancia.value = (float) pjActual.GetComponent<Character>().metrosRestantes;
         pjActual.dibujaCirculoMov();
     }
 

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Habilidades                                                                                                                                    // 0  true    false  false
-{                                                                                                                           // cooldown coste damage range radius damages heals special
-    public static Habilidad BolaDeFuego = new Habilidad("Bola de fuego", "El usuario lanza una bola de fuego hacia su oponente", "fire", 4, 5, 20, 2, 0.75f, true, false, true);
-    public static Habilidad EsquirlaDeHielo = new Habilidad("Esquirla de hielo", "El usuario lanza una esquirla de hielo hacia su oponente", "ice", 2, 2, 10, 1.0f, 0.0f, true, false, true);
-    public static Habilidad AtaqueConEspada = new Habilidad("Ataque con espada", "Ataque con espada", "physical", 0, 1, 10, 0.25f);
-    public static Habilidad ColmilloVenenoso = new Habilidad("Colmillo venenoso", "El usuario lanza un proyecitl venenoso hacia su oponente", "poison", 2, 2 , 10, 0.75f, 0.0f);
-    public static Habilidad Curacion = new Habilidad("Curacion", "El usuario canaliza energia divina para sanar a un aliado", "holy", 2, 2 , 30, 1.0f, 0.0f, false, true, true,false);
+public class Habilidades                                                                                                                                    // 0  true    false  false    true
+{                                                                                                                           // cooldown coste damage range radius damages heals special targetEnemy
+    public static Habilidad BolaDeFuego = new Habilidad("Bola de fuego", "El usuario lanza una bola de fuego hacia su oponente", "fire", 4, 4, 20, 3f, 0.75f, true, false, true);
+    public static Habilidad EsquirlaDeHielo = new Habilidad("Esquirla de hielo", "El usuario lanza una esquirla de hielo hacia su oponente", "ice", 2, 2, 10, 2f, 0.0f, true, false, true);
+    public static Habilidad AtaqueConEspada = new Habilidad("Ataque con espada", "Ataque con espada", "physical", 0, 1, 10, 2f);
+    public static Habilidad ColmilloVenenoso = new Habilidad("Colmillo venenoso", "El usuario lanza un proyectil venenoso hacia su oponente", "poison", 2, 2 , 10, 2f, 0.0f);
+    public static Habilidad Curacion = new Habilidad("Curacion", "El usuario canaliza energia divina para sanar a un aliado", "holy", 2, 2 , 30, 2.15f, 0.0f, false, true, true,false);
     
 
 
