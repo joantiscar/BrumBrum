@@ -8,6 +8,7 @@ public class PickUp : MonoBehaviour
     [SerializeField]
     private Text pickupText;
     private bool pickUpAllowed;
+    public LootCofres cofre;
 
     private void Start()
     {
@@ -40,6 +41,10 @@ public class PickUp : MonoBehaviour
 
     private void Pick()
     {
+        if (this.tag == "Cofre"){
+            cofre = transform.gameObject.GetComponent<LootCofres>();
+            cofre.getLoot();
+        }
         Destroy(gameObject);
         pickupText.gameObject.SetActive(false);
     }

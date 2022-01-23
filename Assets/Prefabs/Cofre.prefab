@@ -10424,9 +10424,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7336186459793757716}
   - component: {fileID: 7760925286763388883}
+  - component: {fileID: 5757060135542494947}
+  - component: {fileID: 4158201558183205526}
+  - component: {fileID: 8511970736121747645}
   m_Layer: 0
   m_Name: Cofre
-  m_TagString: Untagged
+  m_TagString: Cofre
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10460,6 +10463,44 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.52459556, y: 0.7307104, z: 0.3813153}
   m_Center: {x: 0.0039916527, y: -0.0004545632, z: 0.18802376}
+--- !u!114 &5757060135542494947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7963646291953175726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b865be784f8624481f11636ebc78e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4158201558183205526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7963646291953175726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac3b68738b796f14ea8a0aab32b79048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupText: {fileID: 0}
+--- !u!135 &8511970736121747645
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7963646291953175726}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7999235685147512366
 GameObject:
   m_ObjectHideFlags: 0
