@@ -322,7 +322,6 @@ public class Character : MonoBehaviour
         reducirTurnosBuffsDebuffsYEstadosAlterados();
         // Primero miramos si estamos envenenados o quemados. De ser el caso perdemos vida
         
-        
 
         if (envenenado){
             hp -= Convert.ToInt32(hpMax/20);
@@ -340,10 +339,9 @@ public class Character : MonoBehaviour
         actPAtaques += basePAtaques;
         if(actPAtaques>maxPAtaques) actPAtaques=maxPAtaques;
 
+        // Cambiamos todas las imagenes de las habilidades para adaptarse al personaje
+        UICombate.adaptaUI(habilidadesDisponibles,this);
         if(user_controlled){
-            // Cambiamos todas las imagenes de las habilidades para adaptarse al personaje
-            // Además también actualiza la barra de distancia
-            UICombate.adaptaUI(habilidadesDisponibles,this);
             UICombate.actualizaPP();
             UICombate.ActualizaDistancia();
 
@@ -420,7 +418,7 @@ public class Character : MonoBehaviour
                 Debug.Log("Lanzando habilidad " + habilidad.name);
                 // Restamos los puntos que se usan
                 actPAtaques -= habilidad.coste;
-                UICombate.actualizaPP();
+                if(user_controlled)UICombate.actualizaPP();
 
                 // anim.Play("Idle"); // Me da un warning State could not be found
                     
