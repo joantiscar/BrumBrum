@@ -9,7 +9,7 @@ public class Scene2_Morning_HenchmanStart : MonoBehaviour
     private objecteInteractiu objecteInt;
     private GameObject player;
     private bool firstDialogueIsCalled = false;
-    // private bool secondDialogueIsCalled = false;
+    private bool firstDialogueNextFrame = false;
 
     private GameObject characters;
     private AudioSource audioSource;
@@ -27,7 +27,6 @@ public class Scene2_Morning_HenchmanStart : MonoBehaviour
         objecteInt = npc_inicialDialogue.GetComponent<objecteInteractiu>();
 
         player = GameObject.FindGameObjectWithTag("Player");
-        player.isStatic = false;
 
         characters = GameObject.Find("HenchmanDialogueCharacters_Scene2");
         characters.SetActive(false);
@@ -37,13 +36,19 @@ public class Scene2_Morning_HenchmanStart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player.isStatic)
+        {
+            player.isStatic = false;
+        }
+
         if (!FindObjectOfType<controlDialegs>().animText.GetBool("Sign") && firstDialogueIsCalled)
         {
             firstDialogueIsCalled = false;
             objecteInt.Start();
+            firstDialogueNextFrame = true;
         }
-        else if (!firstDialogueIsCalled && !FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit")) {
-            audioSource.volume = 1f;
+        else if (!firstDialogueIsCalled && !FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit") && firstDialogueNextFrame) {
+            audioSource.volume = 0.6f;
             GameObject.Find("Scenario_SecondScene").GetComponent<RandomCombat>().SetAble();
         }
     }
@@ -53,7 +58,7 @@ public class Scene2_Morning_HenchmanStart : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            audioSource.volume = 0.4f;
+            audioSource.volume = 0.2f;
             GameObject.Find("Scenario_SecondScene").GetComponent<RandomCombat>().SetDisable();
             player.GetComponent<AudioSource>().Stop();
 

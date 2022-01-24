@@ -9,6 +9,7 @@ public class Scene1_5_Camping_Start : MonoBehaviour
     private GameObject player;
     private bool firstDialogueIsCalled = false;
     private bool secondDialogueIsCalled = false;
+    private bool secondDialoguenextFrame = false;
 
 
     // Start is called before the first frame update
@@ -41,9 +42,10 @@ public class Scene1_5_Camping_Start : MonoBehaviour
             objecteInt.Start();
             secondDialogueIsCalled = true;
         }
-        else if (secondDialogueIsCalled && !FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit"))
+        else if (secondDialogueIsCalled && !FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit") && !secondDialoguenextFrame)
         {
-            GameObject.Find("Scenario_FirstHalfScene").GetComponent<AudioSource>().volume = 1;
+            secondDialoguenextFrame = true;
+            GameObject.Find("Scenario_FirstHalfScene").GetComponent<AudioSource>().volume = 0.6f;
             GameObject.Find("Scenario_FirstHalfScene").GetComponent<RandomCombat>().SetAble();
         }
     }
