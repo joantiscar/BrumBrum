@@ -1126,6 +1126,10 @@ PrefabInstance:
       value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
+      propertyPath: level
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: attack
       value: 1
       objectReference: {fileID: 0}
@@ -1136,6 +1140,10 @@ PrefabInstance:
     - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: velocity
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
+      propertyPath: className
+      value: Clase
       objectReference: {fileID: 0}
     - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: maxPAtaques

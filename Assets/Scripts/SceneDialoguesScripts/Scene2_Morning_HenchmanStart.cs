@@ -21,7 +21,7 @@ public class Scene2_Morning_HenchmanStart : MonoBehaviour
         audioSource = GameObject.Find("Scenario_SecondScene").GetComponent<AudioSource>();
         audioSource.time = 0.6f;
         audioSource.Play();
-        GameObject.Find("Scenario_SecondScene").GetComponent<RandomCombat>().SetAble();
+        GameObject.FindObjectOfType<RandomCombat>().SetAble();
 
         npc_inicialDialogue = GameObject.Find("Secuaz");
         objecteInt = npc_inicialDialogue.GetComponent<objecteInteractiu>();
