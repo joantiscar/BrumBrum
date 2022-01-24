@@ -43,7 +43,10 @@ public class SistemaCombate : MonoBehaviour
             deshabilitarOutline();
         }
         ordenActual++;
-        if (ordenActual >= pjs.Length)ordenActual = 0; // Recalcular orden??
+        if (ordenActual >= pjs.Length){
+            ordenActual = 0;
+            recalculaOrden(); // Por si acaso le ha cambiado la velocidad a alguien
+        }
         pjActual = pjs[ordenActual];
         pjActualPersonaje = pjActual.GetComponent<Character>();
         pjActualPersonaje.EmpiezaTurno();
@@ -63,6 +66,12 @@ public class SistemaCombate : MonoBehaviour
                     return Character2.GetComponent<Character>().velocidadActual().CompareTo(Character1.GetComponent<Character>().velocidadActual());
                   });
         return pjs[0];
+    }
+
+    public bool enRango(GameObject caster, GameObject objetivo, Habilidad h){
+        float distancia = Vector3.Distance(caster.transform.position, objetivo.transform.position);
+        float radio = objetivo.GetComponentInChildren<CapsuleCollider>().radius; // Lo tenemos en cuenta por si acasito el modelo queda dentro pero la posicion no
+        return distancia-radio <= h.range && distancia+radio >= h.range;
     }
 
     // Start is called before the first frame update
@@ -128,6 +137,7 @@ public class SistemaCombate : MonoBehaviour
                                 // Habría que quitar lo de "Suelo" for future progress...?
                                 if (!apuntando && hit.transform.gameObject.name == "Suelo"){ // Si no estás en modo apuntar con la habilidad, moverse
                                     if (pjActualPersonaje.Moverse(Vector3.Distance(hit.point, pjActual.transform.position))){
+                                        pjActual.transform.LookAt(hit.point);
                                         pjActual.GetComponentInChildren<Animator>().SetFloat("Velocity", 1);
                                         moviendose = true;
                                         pjActual.GetComponent<NavMeshAgent>().destination = hit.point;
@@ -165,7 +175,7 @@ public class SistemaCombate : MonoBehaviour
                             if(apuntando){
                                 Habilidad h = pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada];
                                 if(objetivo.GetComponent<Character>() != null 
-                                   && Vector3.Distance(pjActual.transform.position, objetivo.transform.position) <= h.range // en rango
+                                   && enRango(pjActual,objetivo,h) // en rango
                                    && ((h.targetEnemy && !objetivo.GetComponent<Character>().user_controlled) ||
                                       (!h.targetEnemy && objetivo.GetComponent<Character>().user_controlled))){ // miramos el targetenemy y si apunta a un enemigo on no
                                             

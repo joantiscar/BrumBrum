@@ -491,6 +491,8 @@ public class Character : MonoBehaviour
         if(habilidadSeleccionada>=0){
             Habilidad habilidad = habilidadesDisponibles[habilidadSeleccionada];
             if (objetivo!=null){
+                this.transform.LookAt(objetivo.transform);
+
                 Character objetivoPJ = objetivo.GetComponent<Character>();
                 Debug.Log("Objetivo a atacar: " + objetivo.GetComponent<Character>().nombre);
                 
