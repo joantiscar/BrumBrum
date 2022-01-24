@@ -14,12 +14,6 @@ public class PickUp : MonoBehaviour
     {
         //pickupText = GameObject.FindGameObjectWithTag("ItemText").GetComponent<Text>();
         pickupText.gameObject.SetActive(false);
-        if (this.tag == "Cofre"){
-            pickupText.text = "Pulsa E para abrir cofre";
-        }
-        else{
-            pickupText.text = "Pulsa E para interactuar";
-        }
     }
 
     private void Update()
@@ -29,6 +23,12 @@ public class PickUp : MonoBehaviour
     
     private void OnTriggerEnter(Collider collision)
     {
+        if (this.tag == "Cofre"){
+            pickupText.text = "Pulsa E para abrir cofre";
+        }
+        else{
+            pickupText.text = "Pulsa E para interactuar";
+        }
         if(collision.gameObject.name.Equals("Third Person Player"))
         {
             pickupText.gameObject.SetActive(true);

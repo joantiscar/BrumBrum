@@ -32,26 +32,6 @@ public class InteractToChangeScene : MonoBehaviour
 
         //fadeInanimator = new Animator();
         //fadeInanimator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("FadeInAnimatorController");
-        switch (SceneManager.GetActiveScene().name){
-            case "Scene1_Precamping":
-                interactText.text = "Pulsa E para acampar";
-            break;
-            case "Scene1-5_Camping":
-                interactText.text = "Pulsa E para descansar";
-            break;
-            case "Scene2_Morning":
-                interactText.text = "Pulsa E para entrar al castillo";
-            break;
-            case "Scene3_Castle":
-                interactText.text = "Pulsa E para entrar a la sala del trono";
-            break;
-            case "Scene5_Flight_Part2":
-                interactText.text = "Pulsa E para salir del castillo";
-            break;
-            case "Scene6_Final":
-                interactText.text = "Pulsa E para acabar con Zeth";
-            break;
-        }
     }
 
     private void Update()
@@ -103,6 +83,26 @@ public class InteractToChangeScene : MonoBehaviour
     
     private void OnTriggerEnter(Collider collision)
     {
+        switch (SceneManager.GetActiveScene().name){
+            case "Scene1_Precamping":
+                interactText.text = "Pulsa E para acampar";
+            break;
+            case "Scene1-5_Camping":
+                interactText.text = "Pulsa E para descansar";
+            break;
+            case "Scene2_Morning":
+                interactText.text = "Pulsa E para entrar al castillo";
+            break;
+            case "Scene3_Castle":
+                interactText.text = "Pulsa E para entrar a la sala del trono";
+            break;
+            case "Scene5_Flight_Part2":
+                interactText.text = "Pulsa E para salir del castillo";
+            break;
+            case "Scene6_Final":
+                interactText.text = "Pulsa E para acabar con Zeth";
+            break;
+        }
         if (collision.gameObject.name.Equals("Third Person Player"))
         {
             interactText.gameObject.SetActive(true);
