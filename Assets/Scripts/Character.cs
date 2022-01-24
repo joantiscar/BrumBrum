@@ -364,6 +364,7 @@ public class Character : MonoBehaviour
         }
         else{
             destruirCirculoMov();
+            destruirCirculoHab();
         }
     }
 

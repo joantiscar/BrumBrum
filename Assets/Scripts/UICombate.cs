@@ -151,6 +151,11 @@ public class UICombate : MonoBehaviour
         cajaDatos.Find("Nombre").GetComponent<Text>().text = c.nombre;
         cajaDatos.Find("HP").GetComponent<Text>().text = c.hp.ToString() + " HP";
         cajaDatos.Find("Estado").GetComponent<Text>().text = "Ningun estado alterado\n (TEXTO DEBUG)";
+
+        // Actualiza la barra con el HP
+        Slider barra = cajaDatos.Find("Barra").GetComponent<Slider>();
+        barra.maxValue = (float) c.hpMax;
+        barra.value = (float) c.hp;
     }
 
     public void escondeDatos(){

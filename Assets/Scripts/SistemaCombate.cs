@@ -39,6 +39,7 @@ public class SistemaCombate : MonoBehaviour
         if(pjActualPersonaje.user_controlled){
             UICombate.FinalizaTurno();
             pjActualPersonaje.TerminaTurno();
+            deshabilitarOutline();
         }
         ordenActual++;
         if (ordenActual >= pjs.Length) ordenActual = 0;
