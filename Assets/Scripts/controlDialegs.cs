@@ -34,6 +34,7 @@ public class controlDialegs : MonoBehaviour
     float waitTime = 0.02f;
     bool iniciat = false;
     bool dialeg_acabat = false;
+    bool on_going = false;
 
     void Update()
     {
@@ -96,6 +97,7 @@ public class controlDialegs : MonoBehaviour
     public void NextSentence ()
     {
         if (ended){
+            on_going = true;
             iniciat = true;
             waitTime = 0.02f;
             if(dialogueQueue.Count == 0)
@@ -109,7 +111,10 @@ public class controlDialegs : MonoBehaviour
             screenText.text = actualSentence;
             StartCoroutine(showCaracters(actualSentence));
         }
-        else { waitTime = 0f; }
+        else if (on_going){ 
+            waitTime = 0f; 
+            on_going = false;
+        }
     }
 
     public void ActivateSeguit ()
@@ -142,6 +147,7 @@ public class controlDialegs : MonoBehaviour
     {
         string actualSentence = "";
         if (ended){
+            on_going = true;
             iniciat = true;
             waitTime = 0.02f;
             if(dialogueQueueOrder.Count == 0)
@@ -175,7 +181,10 @@ public class controlDialegs : MonoBehaviour
             SeguitText.text = actualSentence;
             StartCoroutine(showCaracters(actualSentence));
         }
-        else { waitTime = 0f; }
+        else if (on_going){ 
+            waitTime = 0f; 
+            on_going = false;
+        }
     }
 
     IEnumerator showCaracters (string textToShow)
@@ -232,6 +241,7 @@ public class controlDialegs : MonoBehaviour
     private void ChangeDialogue (){
         if (ended)
         {
+            on_going = true;
             waitTime = 0.02f;
             if(Input.GetKeyDown(KeyCode.DownArrow) && !acabar)
             {
@@ -565,8 +575,9 @@ public class controlDialegs : MonoBehaviour
                 EndDialogue();
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Return)){
+        else if (Input.GetKeyDown(KeyCode.Return) && on_going){
             waitTime = 0f;
+            on_going = false;
         }
     }
     private void StartConversation()
