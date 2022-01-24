@@ -6,16 +6,19 @@ using UnityEngine;
 public class Pause : MonoBehaviour
 {
     bool paused = false;
-
+    bool esq_used = false;
     void Update(){
-        pause();
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape)){
             paused = togglePause();
+            esq_used = true;
+        }
+        else esq_used = false;
+        pause();
     }
     //void OnGUI(){}
     void pause()
      {
-         if(paused)
+         if(paused && !esq_used)
          {
              if(Input.GetKeyDown(KeyCode.Escape))
                  paused = togglePause();
