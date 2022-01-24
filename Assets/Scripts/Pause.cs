@@ -15,10 +15,11 @@ public class Pause : MonoBehaviour
         menu = this.transform.GetChild(1).transform.GetChild(2).transform.GetChild(4).gameObject;
     }
     void Update(){
-        if(Input.GetKeyDown(KeyCode.Escape) && !paused){
+        if(Input.GetKeyDown(KeyCode.Z) && !paused){
             paused = togglePause();
             esq_used = true;
-
+            Singleton.toggleMenu();
+            FindObjectOfType<ThirdPersonMovement>().isTalkKing();
             menu.SetActive(true);
         }
         else esq_used = false;
@@ -29,9 +30,11 @@ public class Pause : MonoBehaviour
      {
          if(paused && !esq_used)
          {
-             if(Input.GetKeyDown(KeyCode.Escape)){
+             if(Input.GetKeyDown(KeyCode.Z)){
                 menu.SetActive(false);
                 paused = togglePause();
+                FindObjectOfType<ThirdPersonMovement>().isTalkKing();
+                Singleton.toggleMenu();
              }
          }
      }

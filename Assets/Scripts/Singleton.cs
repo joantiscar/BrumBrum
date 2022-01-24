@@ -1,25 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class Singleton : MonoBehaviour {
+public class Singleton {
 
     private static Singleton _instance;
+    public bool _menu = false;
 
-    void Awake(){
-
+    public static Singleton instance (){
         if (_instance == null){
-
-            _instance = this;
-            DontDestroyOnLoad(this.gameObject);
-
-            //Rest of your Awake code
-
-        } else {
-            Destroy(this);
+            _instance = new Singleton();
         }
+        return _instance;
     }
 
-    //Rest of your class code
+    public static void toggleMenu (){
+        instance()._menu = !instance()._menu;
+    }
 
+    public static bool menu (){
+        return instance()._menu;
+    }
+    
+    public static void agefirPocions (int n){
+        //a
+    }
+
+    public static void restarPocions (int n){
+        //a
+    }
+    
+    public static void guanyarExp (int n){
+        //b
+    }
 }

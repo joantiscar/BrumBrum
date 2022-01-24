@@ -15,22 +15,24 @@ public class Interaccio : MonoBehaviour
     
     void Update()
     {
-        if(triggering)
-        {
-            if(!isRPressed) npcText.gameObject.SetActive(true);
-            else npcText.gameObject.SetActive(false);
-
-            if(Input.GetKeyDown(KeyCode.R) && !isRPressed)
+        if (!Singleton.menu()){
+            if(triggering)
             {
-                //Debug.Log("Interaccio: " + triggeringNpc.name);
-                GetComponent<AudioSource>().Stop();
-                GameObject.Find(triggeringNpc.name).GetComponent<objecteInteractiu>().Interactuate();
-                isTalkingStarted();
+                if(!isRPressed) npcText.gameObject.SetActive(true);
+                else npcText.gameObject.SetActive(false);
+
+                if(Input.GetKeyDown(KeyCode.R) && !isRPressed)
+                {
+                    //Debug.Log("Interaccio: " + triggeringNpc.name);
+                    GetComponent<AudioSource>().Stop();
+                    GameObject.Find(triggeringNpc.name).GetComponent<objecteInteractiu>().Interactuate();
+                    isTalkingStarted();
+                }
             }
-        }
-        else 
-        {
-            npcText.gameObject.SetActive(false);
+            else 
+            {
+                npcText.gameObject.SetActive(false);
+            }
         }
     }
 

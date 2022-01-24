@@ -36,48 +36,50 @@ public class InteractToChangeScene : MonoBehaviour
 
     private void Update()
     {
-        if (interactAllowed && Input.GetKeyDown(KeyCode.E))
-        {
-            //player.GetComponent<Canvas>().GetComponent<Image>()
-            //
-            interacted = true;
-            //Debug.Log(image.GetComponent<Animator>().runtimeAnimatorController);
-
-            //Destroy(image.GetComponent<Animator>());
-
-
-
-            //image.GetComponent<Animator>().runtimeAnimatorController = null;
-            //image.GetComponent<Animator>().runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load("Assets/Animacions/FadeInAnimatorController.controller", typeof(RuntimeAnimatorController));
-
-            //image.GetComponent<Animator>().runtimeAnimatorController = (Instantiate(Resources.Load("FadeInAnimatorController")) as RuntimeAnimatorController);
-
-
-            //Debug.Log(image.GetComponent<Animator>().runtimeAnimatorController);
-
-
-
-            //Debug.Log(fadeInanimator.runtimeAnimatorController);
-            //image.GetComponent<Animator>().runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("FadeInAnimatorController");
-            //Debug.Log(image.GetComponent<Animator>().runtimeAnimatorController);
-
-
-
-            imageAnimator.SetBool("Fade", true);
-
-
-            //SceneManager.LoadScene(scene);
-        }
-        else if (interacted && imageAnimator.GetCurrentAnimatorStateInfo(0).IsName("Default"))
-        {
-            //Debug.Log("canvia ara");
-            if (scene == "Scene6_Final_2")
+        if (!Singleton.menu()){
+            if (interactAllowed && Input.GetKeyDown(KeyCode.E))
             {
-                SceneManager.LoadScene(scene, LoadSceneMode.Additive);
-                Destroy(GameObject.Find("InicialDialogue_SixthScene"));
-                GameObject.Find("Scenario_SixthScene").GetComponent<AudioSource>().volume = 0.3f;
+                //player.GetComponent<Canvas>().GetComponent<Image>()
+                //
+                interacted = true;
+                //Debug.Log(image.GetComponent<Animator>().runtimeAnimatorController);
+
+                //Destroy(image.GetComponent<Animator>());
+
+
+
+                //image.GetComponent<Animator>().runtimeAnimatorController = null;
+                //image.GetComponent<Animator>().runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load("Assets/Animacions/FadeInAnimatorController.controller", typeof(RuntimeAnimatorController));
+
+                //image.GetComponent<Animator>().runtimeAnimatorController = (Instantiate(Resources.Load("FadeInAnimatorController")) as RuntimeAnimatorController);
+
+
+                //Debug.Log(image.GetComponent<Animator>().runtimeAnimatorController);
+
+
+
+                //Debug.Log(fadeInanimator.runtimeAnimatorController);
+                //image.GetComponent<Animator>().runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("FadeInAnimatorController");
+                //Debug.Log(image.GetComponent<Animator>().runtimeAnimatorController);
+
+
+
+                imageAnimator.SetBool("Fade", true);
+
+
+                //SceneManager.LoadScene(scene);
             }
-            else SceneManager.LoadScene(scene);
+            else if (interacted && imageAnimator.GetCurrentAnimatorStateInfo(0).IsName("Default"))
+            {
+                //Debug.Log("canvia ara");
+                if (scene == "Scene6_Final_2")
+                {
+                    SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+                    Destroy(GameObject.Find("InicialDialogue_SixthScene"));
+                    GameObject.Find("Scenario_SixthScene").GetComponent<AudioSource>().volume = 0.3f;
+                }
+                else SceneManager.LoadScene(scene);
+            }
         }
     }
     

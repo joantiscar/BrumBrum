@@ -38,18 +38,20 @@ public class controlDialegs : MonoBehaviour
 
     void Update()
     {
-        if (animText.GetBool("Sign") && iniciat){
-            if(Input.GetKeyDown(KeyCode.Return)){
-                NextSentence ();
+        if (!Singleton.menu()){
+            if (animText.GetBool("Sign") && iniciat){
+                if(Input.GetKeyDown(KeyCode.Return)){
+                    NextSentence ();
+                }
             }
-        }
-        else if (animSeguit.GetBool("Seguit") && iniciat){
-            if(Input.GetKeyDown(KeyCode.Return)){
-                NextSentenceSeguit ();
+            else if (animSeguit.GetBool("Seguit") && iniciat){
+                if(Input.GetKeyDown(KeyCode.Return)){
+                    NextSentenceSeguit ();
+                }
             }
-        }
-        else if (isTalking == true){
-            ChangeDialogue();
+            else if (isTalking == true){
+                ChangeDialogue();
+            }
         }
         if (dialeg_acabat && animText.GetCurrentAnimatorStateInfo(0).IsName("Default") && animDialeg.GetCurrentAnimatorStateInfo(0).IsName("Default") 
             && animSeguit.GetCurrentAnimatorStateInfo(0).IsName("Default")){

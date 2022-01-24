@@ -18,7 +18,9 @@ public class PickUp : MonoBehaviour
 
     private void Update()
     {
-        if(pickUpAllowed && Input.GetKeyDown(KeyCode.E))Pick();
+        if (!Singleton.menu()){
+            if(pickUpAllowed && Input.GetKeyDown(KeyCode.E))Pick();
+        }
     }
     
     private void OnTriggerEnter(Collider collision)
