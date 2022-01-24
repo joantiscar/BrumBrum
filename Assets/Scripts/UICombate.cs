@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
 public class UICombate : MonoBehaviour
@@ -13,7 +14,7 @@ public class UICombate : MonoBehaviour
     private List<Habilidad> _habilidades; // Una array con las habilidades actuales
     
     public Transform cajaHabilidad;
-    public Slider barraDistancia;
+    public Transform cajaDatos;
     public Slider barraHP;
     public Text LabelPP;
 
@@ -28,6 +29,11 @@ public class UICombate : MonoBehaviour
     {
         imgs = GetComponentsInChildren<Image>();
 
+    }
+
+    void Start(){
+        cajaDatos.gameObject.SetActive(false);
+        cajaHabilidad.gameObject.SetActive(false);
     }
 
     public void adaptaUI(List<Habilidad> habilidades,Character pj){ //Llamada cada vez que empieza el turno de un personaje
@@ -74,12 +80,19 @@ public class UICombate : MonoBehaviour
         // Cuando se hace hover sobre una imagen, nos llega la pos en habilidades de la imagen
         if(pos<_habilidades.Count){
             habilidadSeleccionada = pos;
+            Habilidad h = _habilidades[pos];
             cajaHabilidad.gameObject.SetActive(true);
-            cajaHabilidad.Find("Nombre").GetComponent<Text>().text = _habilidades[pos].name;
-            cajaHabilidad.Find("Dano").GetComponent<Text>().text = _habilidades[pos].damage.ToString();
+            cajaHabilidad.Find("Nombre").GetComponent<Text>().text = h.name;
+            cajaHabilidad.Find("Dano").GetComponent<Text>().text = h.damage.ToString();
             cajaHabilidad.Find("Cooldown").GetComponent<Text>().text = pjActual.cooldowns[pos].ToString();
-            cajaHabilidad.Find("nCost").GetComponent<Text>().text = _habilidades[pos].coste.ToString() + " PP";
-            cajaHabilidad.Find("Descripcion").GetComponent<Text>().text = _habilidades[pos].description;
+            cajaHabilidad.Find("nCost").GetComponent<Text>().text = h.coste.ToString() + " PP";
+            cajaHabilidad.Find("Descripcion").GetComponent<Text>().text = h.description;
+            if(h.heals){
+                cajaHabilidad.Find("LabelDano").GetComponent<Text>().text = "Cura:";
+            }
+            else{
+                cajaHabilidad.Find("LabelDano").GetComponent<Text>().text = "Daño:";
+            }
         }
     }
 
@@ -120,6 +133,33 @@ public class UICombate : MonoBehaviour
     public void ActualizaDistancia(){
         // Actualizamos la GUI con la distancia
         pjActual.dibujaCirculoMov();
+    }
+
+    public void mostrarDatos(GameObject personaje){
+        cajaDatos.gameObject.SetActive(true);
+
+        Camera cam = GameObject.Find("UICamera").GetComponent<Camera>();
+        RectTransform rect = cajaDatos.gameObject.GetComponent<RectTransform>();
+        // RectTransform canvas = this.transform.parent.parent.gameObject.GetComponent<RectTransform>();
+
+        // Vector2 anchoredPos;
+        // RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas,Input.mousePosition,cam,out anchoredPos);
+
+        // rect.anchoredPosition = anchoredPos;
+
+        Vector3 nuevaPos = cam.WorldToScreenPoint(personaje.transform.position);
+        rect.anchoredPosition = new Vector2(nuevaPos.x-100,nuevaPos.y);
+
+
+        Character c = personaje.GetComponent<Character>();
+
+        cajaDatos.Find("Nombre").GetComponent<Text>().text = c.nombre;
+        cajaDatos.Find("HP").GetComponent<Text>().text = c.hp.ToString();
+        cajaDatos.Find("Estado").GetComponent<Text>().text = "";
+    }
+
+    public void escondeDatos(){
+        cajaDatos.gameObject.SetActive(false);
     }
 
 }

@@ -28,6 +28,7 @@ public class SistemaCombate : MonoBehaviour
     private Character pjActualPersonaje;
 
     public GameObject lastOutline; // es basicamente el objetivo al que se atacará o curará
+    public GameObject ultimoMirado; // el ultimo gameobject del que hemos mirado los datos
 
     public void compruebaVictoria(){
         derrota = nAliados == 0;
@@ -165,12 +166,26 @@ public class SistemaCombate : MonoBehaviour
 
                             }
 
-                            // -- Vida del personaje, estado alterado... -- Ruby
+                            if(ultimoMirado!=objetivo){
+                                UICombate.mostrarDatos(objetivo);
+                                ultimoMirado = objetivo;
+
+                            }
+                            // else UICombate.escondeDatos();
 
                         }
-                        else deshabilitarOutline(); // Le estamos dando a algo que no es un Character
+                        else{
+                            deshabilitarOutline(); // Le estamos dando a algo que no es un Character
+                            UICombate.escondeDatos();
+                            ultimoMirado = null;
+                        }
                     }
-                    else deshabilitarOutline(); // Le estamos dando a algun sitio no válido
+                    else{
+                        deshabilitarOutline(); // Le estamos dando a algun sitio no válido
+                        UICombate.escondeDatos();
+                        ultimoMirado = null;
+
+                    }
 
                     // Vamos mirando las teclas de 1 a n habilidades para seleccionar una habilidad
                     for(int i=1;i <= pjActualPersonaje.habilidadesDisponibles.Count;i++){

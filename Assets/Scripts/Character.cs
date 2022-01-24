@@ -244,7 +244,7 @@ public class Character : MonoBehaviour
 
     public void dibujaCirculoMov(){
         destruirCirculoMov();
-        circuloMov = new GameObject(name = "Circle");
+        circuloMov = new GameObject();
         circuloMov.DrawCircle((float)metrosRestantes, .075f, Color.green);
     }
 
@@ -257,7 +257,7 @@ public class Character : MonoBehaviour
 
     public void dibujaCirculoHab(){
         destruirCirculoHab();
-        circuloHab = new GameObject(name = "Circle");
+        circuloHab = new GameObject();
         circuloHab.DrawCircle(habilidadesDisponibles[habilidadSeleccionada].range, .085f, Color.blue);
         circuloHab.transform.position = new Vector3(transform.position.x,transform.position.y+0.5f,transform.position.z); 
     }
