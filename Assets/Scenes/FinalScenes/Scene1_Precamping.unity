@@ -190,6 +190,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cofre (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Range
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
 --- !u!4 &111058622 stripped
@@ -273,6 +289,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cofre (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Range
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
 --- !u!4 &197633659 stripped
@@ -346,6 +378,22 @@ PrefabInstance:
     - target: {fileID: 7963646291953175726, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
       propertyPath: m_Name
       value: Cofre (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Range
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Intensity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
@@ -630,6 +678,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cofre (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Range
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
 --- !u!4 &699662209 stripped
@@ -707,6 +771,22 @@ PrefabInstance:
     - target: {fileID: 7963646291953175726, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
       propertyPath: m_Name
       value: Cofre
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Range
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Intensity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
@@ -786,6 +866,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cofre (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Range
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
 --- !u!4 &1055939303 stripped
@@ -864,6 +960,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cofre (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Range
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
 --- !u!4 &1098281445 stripped
@@ -941,6 +1053,22 @@ PrefabInstance:
     - target: {fileID: 7963646291953175726, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
       propertyPath: m_Name
       value: Cofre (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_DrawHalo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
@@ -1142,6 +1270,22 @@ PrefabInstance:
     - target: {fileID: 7963646291953175726, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
       propertyPath: m_Name
       value: Cofre (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Range
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Intensity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
@@ -2097,6 +2241,22 @@ PrefabInstance:
     - target: {fileID: 7963646291953175726, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
       propertyPath: m_Name
       value: Cofre (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Range
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701704906918640878, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
+      propertyPath: m_Intensity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fed08fd8422c32148a8c7b1516c815cf, type: 3}
