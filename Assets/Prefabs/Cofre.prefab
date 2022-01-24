@@ -10520,6 +10520,7 @@ GameObject:
   - component: {fileID: 5757060135542494947}
   - component: {fileID: 4158201558183205526}
   - component: {fileID: 8511970736121747645}
+  - component: {fileID: 2002168674595587946}
   m_Layer: 6
   m_Name: Cofre
   m_TagString: Cofre
@@ -10596,6 +10597,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2002168674595587946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7963646291953175726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d50b70e8ffcabd1429345f5f5904d507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7999235685147512366
 GameObject:
   m_ObjectHideFlags: 0

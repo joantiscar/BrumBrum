@@ -1,16 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class RandomCombat : MonoBehaviour
 {
     public float probability;
-    public bool able;
+    private bool able;
     private bool inCombat;
     private string battleScene;
+    private bool fadeIn = false;
+
+    public int waitTill;
+    private int waiting = 0;
 
     private GameObject scene;
+    private Animator imageAnimator;
 
 
     // Start is called before the first frame update
@@ -22,19 +28,32 @@ public class RandomCombat : MonoBehaviour
         probability /= 10;
 
         scene = GameObject.Find("MovementScene");
+
+
+        imageAnimator = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Canvas>().GetComponentInChildren<Image>().GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (able && thereIsCombat() && !inCombat)
+        if (!inCombat && waiting > 0)
         {
-            Debug.Log("There is combat");
+            waiting--;
+        }
+
+        if (able && thereIsCombat() && !inCombat && waiting <= 0 && 
+            (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D)))
+        {
+            waiting = waitTill;
+
+            //Debug.Log("There is combat");
             //battle = SceneManager.LoadScene("CombatDemo");
             inCombat = true;
-            scene.SetActive(false);
+            //scene.SetActive(false);
+
             //SceneManager.LoadScene("CombatDemo", LoadSceneMode.Additive);
 
+            /*
             if (SceneManager.GetActiveScene().name == "Scene3_Castle")
             {
                 SceneManager.LoadScene("CombatScene_CombatCastleScenario", LoadSceneMode.Additive);
@@ -45,7 +64,28 @@ public class RandomCombat : MonoBehaviour
                 SceneManager.LoadScene("CombatScene_CombatForestScenario", LoadSceneMode.Additive);
                 battleScene = "CombatScene_CombatForestScenario";
             }
-            
+            */
+
+            fadeIn = true;
+            imageAnimator.SetBool("Fade", true);
+
+
+
+        }
+        else if (inCombat && fadeIn && imageAnimator.GetCurrentAnimatorStateInfo(0).IsName("Default"))
+        {
+            if (SceneManager.GetActiveScene().name == "Scene3_Castle")
+            {
+                SceneManager.LoadScene("CombatScene_CombatCastleScenario", LoadSceneMode.Additive);
+                battleScene = "CombatScene_CombatCastleScenario";
+            }
+            else
+            {
+                SceneManager.LoadScene("CombatScene_CombatForestScenario", LoadSceneMode.Additive);
+                battleScene = "CombatScene_CombatForestScenario";
+            }
+
+            scene.SetActive(false);
         }
         if (inCombat && Input.GetKeyDown(KeyCode.Z))
         {
