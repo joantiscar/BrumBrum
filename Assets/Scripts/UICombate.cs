@@ -138,24 +138,19 @@ public class UICombate : MonoBehaviour
     public void mostrarDatos(GameObject personaje){
         cajaDatos.gameObject.SetActive(true);
 
-        Camera cam = GameObject.Find("UICamera").GetComponent<Camera>();
         RectTransform rect = cajaDatos.gameObject.GetComponent<RectTransform>();
-        // RectTransform canvas = this.transform.parent.parent.gameObject.GetComponent<RectTransform>();
 
-        // Vector2 anchoredPos;
-        // RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas,Input.mousePosition,cam,out anchoredPos);
-
-        // rect.anchoredPosition = anchoredPos;
-
-        Vector3 nuevaPos = cam.WorldToScreenPoint(personaje.transform.position);
-        rect.anchoredPosition = new Vector2(nuevaPos.x-100,nuevaPos.y);
-
+        // Movemos la cajita a las coordenadas equivalentes world - pantalla
+        Vector3 nuevaPos = Camera.main.WorldToScreenPoint(personaje.transform.position);
+        // nuevaPos.x += rect.rect.height/2; // No sé como ajustar bien la x
+        nuevaPos.y += rect.rect.height + 20; // Eh pero la y increible
+        rect.anchoredPosition = nuevaPos;
 
         Character c = personaje.GetComponent<Character>();
 
         cajaDatos.Find("Nombre").GetComponent<Text>().text = c.nombre;
-        cajaDatos.Find("HP").GetComponent<Text>().text = c.hp.ToString();
-        cajaDatos.Find("Estado").GetComponent<Text>().text = "";
+        cajaDatos.Find("HP").GetComponent<Text>().text = c.hp.ToString() + " HP";
+        cajaDatos.Find("Estado").GetComponent<Text>().text = "Ningun estado alterado\n (TEXTO DEBUG)";
     }
 
     public void escondeDatos(){

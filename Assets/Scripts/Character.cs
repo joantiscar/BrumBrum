@@ -46,7 +46,7 @@ public class Character : MonoBehaviour
     public int defense;
 	public int special_defense;
 	public int velocity;
-    public string nombre = "PJ";
+    public string nombre = "SinNombre";
     public string elemental_resistance;
     public double metrosMaximos = 10.0f;
     public GameObject objetivo;
