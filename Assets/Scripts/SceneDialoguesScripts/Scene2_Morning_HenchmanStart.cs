@@ -49,7 +49,6 @@ public class Scene2_Morning_HenchmanStart : MonoBehaviour
         }
         else if (!firstDialogueIsCalled && !FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit") && firstDialogueNextFrame) {
             audioSource.volume = 0.6f;
-            GameObject.Find("Scenario_SecondScene").GetComponent<RandomCombat>().SetAble();
         }
     }
     

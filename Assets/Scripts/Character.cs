@@ -46,7 +46,7 @@ public class Character : MonoBehaviour
     public int defense;
 	public int special_defense;
 	public int velocity;
-    public string nombre = "PJ";
+    public string nombre = "SinNombre";
     public string elemental_resistance;
     public double metrosMaximos = 10.0f;
     public GameObject objetivo;
@@ -244,7 +244,7 @@ public class Character : MonoBehaviour
 
     public void dibujaCirculoMov(){
         destruirCirculoMov();
-        circuloMov = new GameObject(name = "Circle");
+        circuloMov = new GameObject();
         circuloMov.DrawCircle((float)metrosRestantes, .075f, Color.green);
     }
 
@@ -257,7 +257,7 @@ public class Character : MonoBehaviour
 
     public void dibujaCirculoHab(){
         destruirCirculoHab();
-        circuloHab = new GameObject(name = "Circle");
+        circuloHab = new GameObject();
         circuloHab.DrawCircle(habilidadesDisponibles[habilidadSeleccionada].range, .085f, Color.blue);
         circuloHab.transform.position = new Vector3(transform.position.x,transform.position.y+0.5f,transform.position.z); 
     }
@@ -425,6 +425,7 @@ public class Character : MonoBehaviour
         }
         else{
             destruirCirculoMov();
+            destruirCirculoHab();
         }
     }
 
