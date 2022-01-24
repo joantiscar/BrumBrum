@@ -165,61 +165,77 @@ public class SistemaCombate : MonoBehaviour
                         }
                     }
 
-                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
-                        GameObject objetivo = getCharacter(hit.collider.gameObject.transform);
-                        
-                        // Miramos si esta a rango y si es un enemigo y tenemos una habilidad de atacar o un aliado y de curar/bufar y seleccionamos solo personajes
-                        // FALTA BUFOS!!
-                        if(objetivo!=null){
+                    if(apuntando){
+                        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
 
-                            if(apuntando){
+                            GameObject objetivo = getCharacter(hit.collider.gameObject.transform);
+                            
+                            // Miramos si esta a rango y si es un enemigo y tenemos una habilidad de atacar o un aliado y de curar/bufar y seleccionamos solo personajes
+                            // FALTA BUFOS!!
+                            if(objetivo!=null){
+
                                 Habilidad h = pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada];
-                                if(objetivo.GetComponent<Character>() != null 
-                                   && enRango(pjActual,objetivo,h) // en rango
-                                   && ((h.targetEnemy && !objetivo.GetComponent<Character>().user_controlled) ||
-                                      (!h.targetEnemy && objetivo.GetComponent<Character>().user_controlled))){ // miramos el targetenemy y si apunta a un enemigo on no
-                                            
-                                        // Miramos que el objetivo del ray y el ultimo objetivo mirado no sean el mismo para ir más rápido
-                                        if(objetivo!=lastOutline){
-                                            lastOutline = objetivo;
-                                            Outline o = objetivo.GetComponent<Outline>();
-                                            o.outlineWidth = 3.7f;
-                                            // Si cura, hago el circulo verde, sino, rojo
-                                            if(h.heals){
-                                                o.outlineColor = new Color(0.72f, 1, 0.21f);
-                                            }else if(h.damages){
-                                                o.outlineColor = Color.red;
+
+                                if(h.radius!=0.0f){ // HABILIDAD EN AREA
+                                    
+
+                                }
+                                else{ // HABILIDAD NORMAL
+                                    if(enRango(pjActual,objetivo,h) // en rango
+                                    && ((h.targetEnemy && !objetivo.GetComponent<Character>().user_controlled) ||
+                                        (!h.targetEnemy && objetivo.GetComponent<Character>().user_controlled))){ // miramos el targetenemy y si apunta a un enemigo on no
+                                                
+                                            // Miramos que el objetivo del ray y el ultimo objetivo mirado no sean el mismo para ir más rápido
+                                            if(objetivo!=lastOutline){
+                                                lastOutline = objetivo;
+                                                Outline o = objetivo.GetComponent<Outline>();
+                                                o.outlineWidth = 3.7f;
+                                                // Si cura, hago el circulo verde, sino, rojo
+                                                if(h.heals){
+                                                    o.outlineColor = new Color(0.72f, 1, 0.21f);
+                                                }else if(h.damages){
+                                                    o.outlineColor = Color.red;
+                                                }
+                                                o.UpdateMaterialProperties();
                                             }
-                                            o.UpdateMaterialProperties();
-                                        }
+                                    }
+                                    else if(lastOutline!=null){
+                                        deshabilitarOutline();
+
+                                    }
                                 }
-                                else if(lastOutline!=null){
-                                    deshabilitarOutline();
-
-                                }
-
                             }
-
-                            // Mostramos los datos del personaje, da igual en qué modo estemos, ni si está en rango...
-                            if(ultimoMirado!=objetivo){
-                                UICombate.mostrarDatos(objetivo);
-                                ultimoMirado = objetivo;
-
+                            else{
+                                deshabilitarOutline(); // Le estamos dando a algo que no es un Character
+                                // ultimoMirado = null;
+                                // UICombate.escondeDatos();
                             }
-
                         }
                         else{
-                            deshabilitarOutline(); // Le estamos dando a algo que no es un Character
+                            deshabilitarOutline(); // Le estamos dando a algun sitio no válido
+
+                        }
+                    }
+
+                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
+                        GameObject objetivo = getCharacter(hit.collider.gameObject.transform);
+
+                        // Mostramos los datos del personaje, da igual en qué modo estemos, ni si está en rango...
+                        if(objetivo!=null && ultimoMirado!=objetivo){
+                            UICombate.mostrarDatos(objetivo);
+                            ultimoMirado = objetivo;
+                        }
+                        else if(objetivo==null){ // No es un personaje objetivo
                             UICombate.escondeDatos();
                             ultimoMirado = null;
                         }
                     }
-                    else{
-                        deshabilitarOutline(); // Le estamos dando a algun sitio no válido
+                    else{ // Le damos a un sitio no válido, como el fondo (igual esto luego no sirve)
                         UICombate.escondeDatos();
                         ultimoMirado = null;
 
                     }
+
 
                     
 
