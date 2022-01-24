@@ -46,7 +46,6 @@ public class Scene1_5_Camping_Start : MonoBehaviour
         {
             secondDialoguenextFrame = true;
             GameObject.Find("Scenario_FirstHalfScene").GetComponent<AudioSource>().volume = 0.6f;
-            GameObject.Find("Scenario_FirstHalfScene").GetComponent<RandomCombat>().SetAble();
         }
     }
 }
