@@ -73,7 +73,6 @@ public class SistemaCombate : MonoBehaviour
 
         pjActual = recalculaOrden();
         pjActualPersonaje = pjActual.GetComponent<Character>();
-        if(pjActualPersonaje.user_controlled) UICombate.habilitarUI(true);
 
         for(int i=0;i<pjs.Length;i++){
             if(pjs[i].GetComponent<Character>().user_controlled) nAliados++;

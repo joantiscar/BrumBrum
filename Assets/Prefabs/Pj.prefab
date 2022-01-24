@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b19c81eb3955c4e4a88f646786c70894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
+  level: 1
   experience: 0
   experience_max: 0
   upgrade_points: 0
@@ -65,8 +65,8 @@ MonoBehaviour:
   metrosRestantes: 0
   hp: 0
   habilidadSeleccionada: -1
-  basePAtaques: 5
-  maxPAtaques: 10
+  basePAtaques: 4
+  maxPAtaques: 8
   actPAtaques: 0
   cooldowns: 
   user_controlled: 0

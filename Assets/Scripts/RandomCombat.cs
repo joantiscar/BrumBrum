@@ -7,13 +7,13 @@ using UnityEngine.SceneManagement;
 public class RandomCombat : MonoBehaviour
 {
     public float probability;
-    private bool able;
+    public bool able;
     private bool inCombat;
     private string battleScene;
     private bool fadeIn = false;
 
     public int waitTill;
-    private int waiting = 0;
+    public int waiting = 0;
 
     private GameObject scene;
     private Animator imageAnimator;
@@ -27,6 +27,8 @@ public class RandomCombat : MonoBehaviour
         inCombat = false;
         probability /= 10;
 
+        waiting = waitTill;
+
         scene = GameObject.Find("MovementScene");
 
 
@@ -36,14 +38,14 @@ public class RandomCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Singleton.menu()){
+        if (!Singleton.menu()) {
             if (!inCombat && waiting > 0)
             {
                 waiting--;
             }
 
-            if (able && thereIsCombat() && !inCombat && waiting <= 0 && 
-                (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D)))
+            if (able && thereIsCombat() && !inCombat && waiting <= 0 &&
+                (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
             {
                 waiting = waitTill;
 
@@ -69,12 +71,12 @@ public class RandomCombat : MonoBehaviour
 
                 fadeIn = true;
                 imageAnimator.SetBool("Fade", true);
-
-
-
             }
             else if (inCombat && fadeIn && imageAnimator.GetCurrentAnimatorStateInfo(0).IsName("Default"))
             {
+                
+                SceneManager.LoadScene("CombatDemo", LoadSceneMode.Additive); battleScene = "CombatDemo";
+                /*
                 if (SceneManager.GetActiveScene().name == "Scene3_Castle")
                 {
                     SceneManager.LoadScene("CombatScene_CombatCastleScenario", LoadSceneMode.Additive);
@@ -84,7 +86,7 @@ public class RandomCombat : MonoBehaviour
                 {
                     SceneManager.LoadScene("CombatScene_CombatForestScenario", LoadSceneMode.Additive);
                     battleScene = "CombatScene_CombatForestScenario";
-                }
+                }*/
 
                 scene.SetActive(false);
             }
@@ -94,6 +96,9 @@ public class RandomCombat : MonoBehaviour
                 scene.SetActive(true);
                 Destroy(GameObject.Find("New Game Object"));
                 SceneManager.UnloadSceneAsync(battleScene);
+
+                //imageAnimator.SetBool("Fade", false);
+                //imageAnimator.Play("FadeOut");
             }
         }
     }
