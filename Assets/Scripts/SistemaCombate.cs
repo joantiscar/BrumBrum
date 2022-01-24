@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class SistemaCombate : MonoBehaviour
 {
 
     public GameObject[] pjs;
-    public GameObject pjActual;
+    private GameObject pjActual;
     public UICombate UICombate;
 
     private int ordenActual = 0;
@@ -28,7 +29,7 @@ public class SistemaCombate : MonoBehaviour
     private Character pjActualPersonaje;
 
     public GameObject lastOutline; // es basicamente el objetivo al que se atacará o curará
-    public GameObject ultimoMirado; // el ultimo gameobject del que hemos mirado los datos
+    private GameObject ultimoMirado; // el ultimo gameobject del que hemos mirado los datos
 
     public void compruebaVictoria(){
         derrota = nAliados == 0;
@@ -42,7 +43,7 @@ public class SistemaCombate : MonoBehaviour
             deshabilitarOutline();
         }
         ordenActual++;
-        if (ordenActual >= pjs.Length) ordenActual = 0;
+        if (ordenActual >= pjs.Length)ordenActual = 0; // Recalcular orden??
         pjActual = pjs[ordenActual];
         pjActualPersonaje = pjActual.GetComponent<Character>();
         pjActualPersonaje.EmpiezaTurno();
@@ -57,11 +58,22 @@ public class SistemaCombate : MonoBehaviour
         }
     }
 
+    public GameObject recalculaOrden(){
+        Array.Sort(pjs, delegate(GameObject Character1, GameObject Character2) {
+                    return Character2.GetComponent<Character>().velocidadActual().CompareTo(Character1.GetComponent<Character>().velocidadActual());
+                  });
+        return pjs[0];
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        pjActual = recalculaOrden();
+        pjActualPersonaje = pjActual.GetComponent<Character>();
+        if(pjActualPersonaje.user_controlled) UICombate.habilitarUI(true);
 
         for(int i=0;i<pjs.Length;i++){
             if(pjs[i].GetComponent<Character>().user_controlled) nAliados++;
@@ -73,7 +85,8 @@ public class SistemaCombate : MonoBehaviour
             o.outlineColor = Color.red;
 
         }
-        pjActualPersonaje = pjActual.GetComponent<Character>();
+
+
         pjActualPersonaje.EmpiezaTurno();
         
     

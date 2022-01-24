@@ -92,7 +92,6 @@ public class IA : MonoBehaviour
     {
         if(!Personaje.SistemaCombate.gameover){
 
-            // Debug.Log(estado);
             if (estado != "esperando")
             {
                 switch (estado)

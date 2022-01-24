@@ -34,38 +34,54 @@ public class UICombate : MonoBehaviour
     void Start(){
         cajaDatos.gameObject.SetActive(false);
         cajaHabilidad.gameObject.SetActive(false);
+        // habilitarUI(false);
+    }
+
+    public void habilitarUI(bool habilitar){
+        barraHP.gameObject.transform.parent.gameObject.SetActive(habilitar);
+        LabelPP.gameObject.transform.parent.gameObject.SetActive(habilitar);
+        this.gameObject.SetActive(habilitar);
+        this.transform.parent.Find("FondoSkills").gameObject.SetActive(habilitar);
     }
 
     public void adaptaUI(List<Habilidad> habilidades,Character pj){ //Llamada cada vez que empieza el turno de un personaje
-        // Cambia las imagenes de la barra de abajo por las del parametro habilidades
-        foreach (Image img in imgs)
-        {
-            img.color = opaco;
+        if(pj.user_controlled){
+            Debug.Log("aaaaaaaaaa");
+            habilitarUI(true);
+
+            // Cambia las imagenes de la barra de abajo por las del parametro habilidades
+            foreach (Image img in imgs)
+            {
+                img.color = opaco;
+            }
+            int i;
+            for(i=0;i<habilidades.Count;i++)
+            {
+                string nombre = habilidades[i].name;
+                // Usamos el nombre de la habilidad para saber qué imagen usar
+                // EL PATH TIENE QUE ESTAR EN RESOURCES/... PORFA HACEDLE CASO A ESTO SI LO TOCAIS EN ALGUN MOMENTO SANKIU VERY MUCH
+                imgs[i].sprite = Resources.Load<Sprite>(nombre);
+            }
+            while(i<imgs.Length){
+                imgs[i].color = transparente;
+                i++;
+            }
+            _habilidades = habilidades;
+            pjActual = pj;
+
+            // Actualiza la barra con el HP
+            barraHP.maxValue = (float) pj.hpMax;
+            barraHP.value = (float) pj.hp;
+
+
+            // Actualiza el label de PP
+            LabelPP.text = pjActual.actPAtaques.ToString();
+
+            
         }
-        int i;
-        for(i=0;i<habilidades.Count;i++)
-        {
-            string nombre = habilidades[i].name;
-            // Usamos el nombre de la habilidad para saber qué imagen usar
-            // EL PATH TIENE QUE ESTAR EN RESOURCES/... PORFA HACEDLE CASO A ESTO SI LO TOCAIS EN ALGUN MOMENTO SANKIU VERY MUCH
-            imgs[i].sprite = Resources.Load<Sprite>(nombre);
+        else{
+            habilitarUI(false);
         }
-        while(i<imgs.Length){
-            imgs[i].color = transparente;
-            i++;
-        }
-        _habilidades = habilidades;
-        pjActual = pj;
-
-        Character pjScript = pjActual.GetComponent<Character>();
-
-        // Actualiza la barra con el HP
-        barraHP.maxValue = (float) pjScript.hpMax;
-        barraHP.value = (float) pjScript.hp;
-
-
-        // Actualiza el label de PP
-        LabelPP.text = pjActual.actPAtaques.ToString();
         
     }
 
