@@ -231,12 +231,33 @@ public class Character : MonoBehaviour
     private GameObject circuloHab = null;
 
     void cargarHabilidadesDeClase(){
-        Type t = Type.GetType(className);
-        clase = (Clase)Activator.CreateInstance(t);
+        switch(className){
+            case "Clase":
+                clase = new Clase();
+                break;
+            case "Curandero":
+                clase = new Curandero();
+                break;
+            case "Guerrero":
+                clase = new Guerrero();
+                break;
+            case "Mago":
+                clase = new Mago();
+                break;
+            case "Paladin":
+                clase = new Paladin();
+                break;
+            case "Luchador":
+                clase = new Luchador();
+                break;
 
-        for(int i = 0; i < clase.LevelupData.Count; i++){
-            if (level >= clase.LevelupData[i].nivel){
-                habilidadesDisponibles.Add(clase.LevelupData[i].habilidad);
+        }
+        Debug.Log(className);
+        List<Clase.Dato> dades = clase.LevelupData();
+        for(int i = 0; i < dades.Count; i++){
+            Debug.Log(dades[i].habilidad.name);
+            if (level >= dades[i].nivel){
+                habilidadesDisponibles.Add(dades[i].habilidad);
                 cooldowns.Add(0);
             }   
         }
