@@ -40,10 +40,12 @@ public class LootCofres : MonoBehaviour
                 loot = Random.Range(0, 2);
                 if (loot == 0){
                     quantitat = Random.Range(1, 3);
+                    Singleton.afegirPocions(quantitat);
                     Debug.Log(quantitat + " pocions");
                 }
                 else {
                     Debug.Log ("50 d'experiencia");
+                    Singleton.guanyarExp(50);
                 }
             break;
             case 1:
@@ -51,10 +53,12 @@ public class LootCofres : MonoBehaviour
                 loot = Random.Range(0, 2);
                 if (loot == 0){
                     quantitat = Random.Range(2, 4);
+                    Singleton.afegirPocions(quantitat);
                     Debug.Log(quantitat + " pocions");
                 }
                 else {
                     Debug.Log ("100 d'experiencia");
+                    Singleton.guanyarExp(100);
                 }
             break;
             case 2:
@@ -62,10 +66,12 @@ public class LootCofres : MonoBehaviour
                 loot = Random.Range(0, 2);
                 if (loot == 0){
                     quantitat = Random.Range(3, 5);
+                    Singleton.afegirPocions(quantitat);
                     Debug.Log(quantitat + " pocions");
                 }
                 else {
                     Debug.Log ("150 d'experiencia");
+                    Singleton.guanyarExp(150);
                 }
             break;
             case 3:
@@ -73,10 +79,12 @@ public class LootCofres : MonoBehaviour
                 loot = Random.Range(0, 2);
                 if (loot == 0){
                     quantitat = Random.Range(4, 6);
+                    Singleton.afegirPocions(quantitat);
                     Debug.Log(quantitat + " pocions");
                 }
                 else {
                     Debug.Log ("200 d'experiencia");
+                    Singleton.guanyarExp(200);
                 }
             break;
         }
