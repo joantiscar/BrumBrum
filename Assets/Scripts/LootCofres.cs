@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class LootCofres : MonoBehaviour
 {
-    int escena;
+    private int escena;
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GameObject.Find("Loot").GetComponent<AudioSource>();
+
         switch (SceneManager.GetActiveScene().name){
             case "Scene1_Precamping":
                 escena = 0;
@@ -28,6 +32,8 @@ public class LootCofres : MonoBehaviour
     public void getLoot() {
         int loot;
         int quantitat;
+        audioSource.Play();
+
         switch (escena){
             case 0:
                 Debug.Log(escena);
