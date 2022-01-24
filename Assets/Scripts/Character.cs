@@ -158,6 +158,12 @@ public class Character : MonoBehaviour
         this.miedo = true;
         this.turnosMiedo += 3;
     }
+    bool furia = false;
+    int turnosFuria = 0;
+    public void enfurecer(){
+        this.furia = true;
+        this.turnosFuria += 3;
+    }
     bool inmortal = false;
     int turnosInmortal = 0;
     public void inmortalizar(){
@@ -180,12 +186,6 @@ public class Character : MonoBehaviour
     public void bendecir() {
         bendecido = true;
         turnosBendecido += 3; 
-    }
-    bool resistenciaMiedo = false;
-    int turnosResistenciaMiedo = 0;
-    public void resistencirMiedo() {
-        resistenciaMiedo = true;
-        turnosResistenciaMiedo += 3; 
     }
     bool mejoraAtaque = false;
     int turnosMejoraAtaque = 0;
@@ -287,13 +287,34 @@ public class Character : MonoBehaviour
 
 
     void reducirTurnosBuffsDebuffsYEstadosAlterados(){
-
+        turnosAturdido--; if (turnosAturdido == 0) aturdido = false;
+        turnosEnvenenado--; if (turnosEnvenenado == 0) envenenado = false;
+        turnosQuemado--; if (turnosQuemado == 0) quemado = false;
+        turnosCongelado--; if (turnosCongelado == 0) congelado = false;
+        turnosSangrado--; if (turnosSangrado == 0) sangrado = false;
+        turnosMiedo--; if (turnosMiedo == 0) miedo = false;
+        turnosProtegido--; if (turnosProtegido == 0) protegido = false;
+        turnosContraataque--; if (turnosContraataque == 0) contraataque = false;
+        turnosFuria--; if (turnosFuria == 0) furia = false;
+        turnosInmortal--; if (turnosInmortal == 0) inmortal = false;
+        turnosInspirado--; if (turnosInspirado == 0) inspirado = false;
+        turnosBendecido--; if (turnosBendecido == 0) bendecido = false;
+        turnosMejoraAtaque--; if (turnosMejoraAtaque == 0) mejoraAtaque = false;
+        turnosMejoraAtaqueEspecial--; if (turnosMejoraAtaqueEspecial == 0) mejoraAtaqueEspecial = false;
+        turnosMejoraDefensa--; if (turnosMejoraDefensa == 0) mejoraDefensa = false;
+        turnosMejoraDefensaEspecial--; if (turnosMejoraDefensaEspecial == 0) mejoraDefensaEspecial = false;
+        turnosMejoraVelocidad--; if (turnosMejoraVelocidad == 0) mejoraVelocidad = false;
     }
 
 
 
     void Awake(){
         // TEST. En un futuro, constructor o algo
+        iniciarEstado();
+
+    }
+
+    public void iniciarEstado(){
         cooldowns = new List<int>();
         habilidadesDisponibles = new List<Habilidad>();
 
@@ -302,8 +323,48 @@ public class Character : MonoBehaviour
 
         UICombate = GameObject.Find("SkillsImages").GetComponent<UICombate>();
         anim = GetComponentInChildren<Animator>();
-        hp = hpMax;
+        renacer(true);
+    }
 
+    public void renacer(bool completo = false){
+        hp = hpMax;
+        turnosAturdido = 0;
+        aturdido = false;
+        turnosEnvenenado = 0;
+        envenenado = false;
+        turnosQuemado = 0;
+        quemado = false;
+        turnosCongelado = 0;
+        congelado = false;
+        turnosSangrado = 0;
+        sangrado = false;
+        turnosMiedo = 0;
+        furia = false;
+        turnosFuria = 0;
+        if (completo){
+            turnosProtegido = 0;
+            protegido = false;
+            turnosContraataque = 0;
+            contraataque = false;
+            miedo = false;
+            turnosInmortal = 0;
+            inmortal = false;
+            turnosInspirado = 0;
+            inspirado = false;
+            turnosBendecido = 0;
+            bendecido = false;
+            turnosMejoraAtaque = 0;
+            mejoraAtaque = false;
+            turnosMejoraAtaqueEspecial = 0;
+            mejoraAtaqueEspecial = false;
+            turnosMejoraDefensa = 0;
+            mejoraDefensa = false;
+            turnosMejoraDefensaEspecial = 0;
+            mejoraDefensaEspecial = false;
+            turnosMejoraVelocidad = 0;
+            mejoraVelocidad = false;
+        }
+        
     }
 
     void Update(){
