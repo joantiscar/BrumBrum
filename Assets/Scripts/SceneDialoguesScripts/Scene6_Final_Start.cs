@@ -10,7 +10,7 @@ public class Scene6_Final_Start : MonoBehaviour
     private GameObject player;
     private bool firstDialogueIsCalled = false;
     private bool secondDialogueIsCalled = false;
-
+    private bool secondDialogueNextFrame = false;
 
     private Animator imageAnimator;
     private bool interacted = false;
@@ -49,7 +49,16 @@ public class Scene6_Final_Start : MonoBehaviour
             interacted = true;
             imageAnimator.SetBool("Fade", true);
         }
-        else if (interacted && imageAnimator.GetCurrentAnimatorStateInfo(0).IsName("Default") && !secondDialogueIsCalled)
+        else if (interacted && imageAnimator.GetCurrentAnimatorStateInfo(0).IsName("Default") && !secondDialogueIsCalled && !secondDialogueNextFrame)
+        {
+            //secondDialogueIsCalled = true;
+            //interacted = false;
+            //objecteInt.Interactuate();
+            //player.GetComponent<Interaccio>().isTalkingStarted();
+
+            secondDialogueNextFrame = true;
+        }
+        else if (interacted && imageAnimator.GetCurrentAnimatorStateInfo(0).IsName("Default") && !secondDialogueIsCalled && secondDialogueNextFrame)
         {
             secondDialogueIsCalled = true;
             interacted = false;

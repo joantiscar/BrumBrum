@@ -63,7 +63,7 @@ public class Scene1_Precamping_Start : MonoBehaviour
             animAux.SetBool("Fade", false);
 
             Destroy(this.transform.gameObject);
-            GameObject.Find("Scenario_FirstScene").GetComponent<AudioSource>().volume = 1;
+            GameObject.Find("Scenario_FirstScene").GetComponent<AudioSource>().volume = 0.5f;
             GameObject.Find("Scenario_FirstScene").GetComponent<RandomCombat>().SetAble();
         }
     }

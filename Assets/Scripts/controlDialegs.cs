@@ -62,7 +62,7 @@ public class controlDialegs : MonoBehaviour
         }
     }
     public void ActivateDialogues(Texts textObjecte)
-    { 
+    {
         if (!dialeg_acabat){
             if (GameObject.FindObjectOfType<InteractToChangeScene>() != null){
                 GameObject.FindObjectOfType<InteractToChangeScene>().NoInteraction();
