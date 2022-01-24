@@ -11,7 +11,7 @@ public class Habilidades                                                        
     public static Habilidad Rezar = new Habilidad("Rezar", "Realiza una plegaria para recuperar salud", "none", 3, 2, 40, 0.0001f, 0.0f, false, true, true, false);
     public static Habilidad Devocion = new Habilidad("Devoción", "Reza a su dios para mejorar las estadísticas de un aliado", "none", 4, 2, 0, 1.0f, 0.0f, false, false, false, false);
     public static Habilidad GolpeDeEscudo = new Habilidad("Golpe de escudo", "Golpea a un enemigo con su escudo para aturdirlo", "physical", 3, 3, 10, 1.5f);
-    public static Habilidad CastigoDivino = new Habilidad("Castigo divino", "Canaliza la energia de su divinidad en su arma para hacer arder a sus enemigos", "physical", 4, 4, 80, 1.5f);
+    public static Habilidad CastigoDivino = new Habilidad("Castigo divino", "Canaliza la energía de su divinidad en su arma para hacer arder a sus enemigos", "physical", 4, 4, 80, 1.5f);
     // Mago                                                                                         
     public static Habilidad BolaDeFuego = new Habilidad("Bola de fuego", "Lanza una bola de fuego hacia su oponente", "fire", 4, 4, 20, 3f, 0.75f, true, false, true);
     public static Habilidad EsquirlaDeHielo = new Habilidad("Esquirla de hielo", "Lanza una esquirla de hielo hacia su oponente", "ice", 2, 2, 10, 2f, 0.0f, true, false, true);
@@ -20,18 +20,18 @@ public class Habilidades                                                        
     public static Habilidad Meteorito = new Habilidad("Meteorito", "Hace que caiga un meteorito del cielo sobre sus rivales", "fire", 6, 4, 100, 3.0f, 1.5f, true, false, true);
 
     // Curandero
-    public static Habilidad Curacion = new Habilidad("Curación", "Canaliza energia divina para sanar a un aliado", "none", 2, 2 , 30, 2.15f, 0.0f, false, true, true, false);
+    public static Habilidad Curacion = new Habilidad("Curación", "Canaliza energía divina para sanar a un aliado", "none", 2, 2 , 30, 2.15f, 0.0f, false, true, true, false);
     public static Habilidad Purificacion = new Habilidad("Purificación", "Elimina los estados alterados de un aliado", "none", 3, 2 , 0, 2.15f, 0.0f, false, false, false,false);
     public static Habilidad Bendicion = new Habilidad("Bendición", "Da a un aliado la bendición de los dioses, mejorando todas sus estadísticas", "none", 3, 2 , 0, 2.15f, 0.0f, false, false, false, false);
-    public static Habilidad AuraDeCuracion = new Habilidad("Aura de curación", "Canaliza energia divina para sanar a todos los aliados en un área", "none", 3, 4 , 20, 1.5f, 1.5f, false, true, true, false);
+    public static Habilidad AuraDeCuracion = new Habilidad("Aura de curación", "Canaliza energía divina para sanar a todos los aliados en un área", "none", 3, 4 , 20, 1.5f, 1.5f, false, true, true, false);
     public static Habilidad Renacer = new Habilidad("Renacer", "Provoca el renacimiento de un aliado, devolviendo asi su salud al maximo y curando todos sus estados alterados", "none", 4, 8 , 999999, 1.5f, 0.0f, false, true, true, false);
 
     // Guerrero
     public static Habilidad TajoCruzado = new Habilidad("Tajo cruzado", "Ataque perpendicular con dos espadas", "physical", 2, 2, 40, 1.5f);
-    public static Habilidad FragorDeLaBatalla = new Habilidad("Fragor de la batalla", "Aprecia la grandiosidad del combate que esta por venir y mejora sus estadisticas ofensivas", "none", 2, 2, 0, 0.001f, 0.0f, false, false, false, false);
+    public static Habilidad FragorDeLaBatalla = new Habilidad("Fragor de la batalla", "Aprecia la grandiosidad del combate que está por venir y mejora sus estadísticas ofensivas", "none", 2, 2, 0, 0.001f, 0.0f, false, false, false, false);
     public static Habilidad Remolino = new Habilidad("Remolino", "Beyblade Beyblade!", "physical", 3, 4, 50, 0.001f, 1.5f, true, false, false, false);
     public static Habilidad Furia = new Habilidad("Furia", "Entra en furia, aumentando el daño pero disminuyendo las defensas", "none", 4, 2, 0, 0.001f, 0.0f, false, false, false, false);
-    public static Habilidad Masacre = new Habilidad("Masacre", "Ataca a bocajarro a un enemigo hasta quedarse sin energias, inflingiendo muchisimo daño", "none", 4, 8, 200, 1.5f, 0.0f, true, false, false, false);
+    public static Habilidad Masacre = new Habilidad("Masacre", "Ataca a bocajarro a un enemigo hasta quedarse sin energías, inflingiendo muchisimo daño", "none", 4, 8, 200, 1.5f, 0.0f, true, false, false, false);
 
     // Luchador
 
@@ -40,7 +40,7 @@ public class Habilidades                                                        
     public static Habilidad LanzamientoDeRoca = new Habilidad("Lanzamiento de roca", "Lanza una roca enorme hacia un enemigo", "physical", 3, 3, 80, 2.0f, 0.0f, true, false, false, false);
     public static Habilidad PalmadaSonica = new Habilidad("Palmada sonica", "Da una palmada de fuerza incalculable, emanando potentes ondas de sonido que dañan a los enemigos", "sound", 3, 3, 80, 0.001f, 1.5f, true, false, false, false);
     public static Habilidad Terremoto = new Habilidad("Terremoto", "Pisa el suelo con toda su fuerza, creando una onda expansiva que daña a los enemigos encima de este", "physical", 4, 4, 0, 0.001f, 2.0f, true, false, false, false);
-    public static Habilidad PunetazoDeUnaPulgada = new Habilidad("Puñetazo de una pulgada", "Lanza un potente puñezado al pecho del rival, matandolo instantaneamente si no tiene suficiente salud", "none", 4, 8, 200, 1.0f, 0.0f, true, false, false, false);
+    public static Habilidad PunetazoDeUnaPulgada = new Habilidad("Puñetazo de una pulgada", "Lanza un potente puñetazo al pecho del rival, matándolo instantáneamente si no tiene suficiente salud", "none", 4, 8, 200, 1.0f, 0.0f, true, false, false, false);
 
 
 
@@ -111,11 +111,5 @@ public class Habilidades                                                        
             }
         }
     }
-    public static void lanzarAOE(Character caster, Vector3 center, Habilidad habilidad){
-        Collider[] hitColliders = Physics.OverlapSphere(center, habilidad.radius);
-        foreach (var hitCollider in hitColliders)
-        {
-            Debug.Log(hitCollider.gameObject.GetComponent<Character>().nombre);
-        }
-    }
+    
 }

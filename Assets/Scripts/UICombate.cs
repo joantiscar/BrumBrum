@@ -22,6 +22,7 @@ public class UICombate : MonoBehaviour
 
     public int habilidadSeleccionada = -1;
     Character pjActual;
+    GameObject pjDatosActual;
 
     public SistemaCombate SistemaCombate;
 
@@ -34,7 +35,6 @@ public class UICombate : MonoBehaviour
     void Start(){
         cajaDatos.gameObject.SetActive(false);
         cajaHabilidad.gameObject.SetActive(false);
-        // habilitarUI(false);
     }
 
     public void habilitarUI(bool habilitar){
@@ -46,7 +46,6 @@ public class UICombate : MonoBehaviour
 
     public void adaptaUI(List<Habilidad> habilidades,Character pj){ //Llamada cada vez que empieza el turno de un personaje
         if(pj.user_controlled){
-            Debug.Log("aaaaaaaaaa");
             habilitarUI(true);
 
             // Cambia las imagenes de la barra de abajo por las del parametro habilidades
@@ -80,6 +79,7 @@ public class UICombate : MonoBehaviour
             
         }
         else{
+            escondeDatos();
             habilitarUI(false);
         }
         
@@ -154,6 +154,8 @@ public class UICombate : MonoBehaviour
     public void mostrarDatos(GameObject personaje){
         cajaDatos.gameObject.SetActive(true);
 
+        pjDatosActual = personaje;
+
         RectTransform rect = cajaDatos.gameObject.GetComponent<RectTransform>();
 
         // Movemos la cajita a las coordenadas equivalentes world - pantalla
@@ -176,6 +178,13 @@ public class UICombate : MonoBehaviour
 
     public void escondeDatos(){
         cajaDatos.gameObject.SetActive(false);
+        pjDatosActual = null;
+    }
+
+    public void actualizaDatos(){
+        if(cajaDatos.gameObject.activeSelf){
+            cajaDatos.Find("Barra").GetComponent<Slider>().value = (float) pjDatosActual.GetComponent<Character>().hp;
+        }
     }
 
 }

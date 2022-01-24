@@ -491,11 +491,11 @@ public class Character : MonoBehaviour
         if(habilidadSeleccionada>=0){
             Habilidad habilidad = habilidadesDisponibles[habilidadSeleccionada];
             if (objetivo!=null){
-                Character a = objetivo.GetComponent<Character>();
+                Character objetivoPJ = objetivo.GetComponent<Character>();
                 Debug.Log("Objetivo a atacar: " + objetivo.GetComponent<Character>().nombre);
                 
                 StartCoroutine(RutinaAtacar());
-                Habilidades.lanzar(this, a, habilidad);
+                Habilidades.lanzar(this, objetivoPJ, habilidad);
                 cooldowns[habilidadSeleccionada] += habilidad.cooldown;
                 Debug.Log("Lanzando habilidad " + habilidad.name);
                 // Restamos los puntos que se usan

@@ -19,7 +19,7 @@ public class Singleton {
         return instance()._menu;
     }
     
-    public static void agefirPocions (int n){
+    public static void afegirPocions (int n){
         //a
     }
 

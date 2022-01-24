@@ -583,7 +583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: velocity
-      value: 9
+      value: 99
       objectReference: {fileID: 0}
     - target: {fileID: 6261801634384945873, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: metrosMaximos
@@ -2447,7 +2447,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4704254521307833417, guid: 5fa0028c1e63a6b42ab5f7409448c1cc, type: 3}
   m_PrefabInstance: {fileID: 832430859}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &862911671
+--- !u!136 &862911673
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
