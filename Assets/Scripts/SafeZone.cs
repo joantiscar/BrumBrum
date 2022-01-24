@@ -18,9 +18,7 @@ public class SafeZone : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("Third Person Player"))
         {
-            Debug.Log(randomCombat.able);
             randomCombat.SetDisable();
-            Debug.Log(randomCombat.able);
         }
     }
 
@@ -28,9 +26,7 @@ public class SafeZone : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("Third Person Player"))
         {
-            Debug.Log(randomCombat.able);
             randomCombat.SetAble();
-            Debug.Log(randomCombat.able);
         }
     }
 }
