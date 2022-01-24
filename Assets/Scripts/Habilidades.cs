@@ -62,7 +62,6 @@ public class Habilidades                                                        
             if (habilidad.special) hits = objetivo.takeHitSpecial(caster.ataqueEspecialActual() + habilidad.damage, habilidad.type);
             else hits = objetivo.takeHit(caster.ataqueActual() + habilidad.damage, habilidad.type);
             if (hits){
-                int number;
                 switch(habilidad.name){
                     
                     case "Bola de fuego":
