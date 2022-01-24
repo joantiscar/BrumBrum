@@ -9,6 +9,7 @@ TagManager:
   - CameraDialog
   - Cofre
   - Cartell
+  - ItemText
   layers:
   - Default
   - TransparentFX
