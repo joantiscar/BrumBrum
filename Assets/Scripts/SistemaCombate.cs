@@ -159,14 +159,14 @@ public class SistemaCombate : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(centro, h.radius);
         List<GameObject> aux = new List<GameObject>(objetivosArea);
         foreach(var obj in aux){
-            if(Array.IndexOf(colliders,obj.GetComponentInChildren<Collider>())==-1){
+            if(Array.IndexOf(colliders,obj.GetComponentInChildren<Collider>())==-1){ // Si un objetivo ya no está en los colliders, lo quitamos
                 deshabilitarOutline(obj);
                 objetivosArea.Remove(obj);
             }
         }
         foreach(var col in colliders){
             GameObject obj = getCharacter(col.transform);
-            if(obj!=null){
+            if(obj!=null && !objetivosArea.Contains(obj)){
                 Character c = obj.GetComponent<Character>();
                 if((h.targetEnemy && !c.user_controlled) || (!h.targetEnemy && c.user_controlled)){ // Si es un personaje válido, lo añadimos
                     objetivosArea.Add(obj);
@@ -198,7 +198,7 @@ public class SistemaCombate : MonoBehaviour
                 if(pjActualPersonaje.user_controlled){
                     
                     RaycastHit hit;
-                    bool hitDado = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100); // Asi solo se hace una vez y no 3
+                    bool hitDado = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100); // Asi solo se hace una vez y no 3, nos dice si le hemos dado a algo
 
                     // INPUTS
                     if(!moviendose){ // No podemos hacer inputs si nos estamos moviendo
@@ -253,11 +253,7 @@ public class SistemaCombate : MonoBehaviour
                         else if(apuntando && (Input.GetKeyDown("0") || Input.GetKeyDown("escape") || Input.GetMouseButtonDown(1))){
                             UICombate.deseleccionarHabilidad();
                             apuntando = false;
-                            foreach(var obj in objetivosArea){
-                                deshabilitarOutline(obj);
-
-                            }
-                            deshabilitarOutline(lastOutline);
+                            deshabilitarTodosOutline();
                             destruirCirculoArea();
                         }
                         else if (Input.GetKeyDown("q") && Singleton.instance().pocions > 0){
@@ -292,6 +288,7 @@ public class SistemaCombate : MonoBehaviour
 
                                 }else{ // el ratón está fuera, quitamos el circulo
                                     destruirCirculoArea();
+                                    deshabilitarTodosOutline();
                                 }
                             } 
                             else if(h.radius==0.0f && objetivo!=null){ // HABILIDAD NORMAL
