@@ -510,7 +510,7 @@ public class Character : MonoBehaviour
     public void pocion(){
         if (Singleton.instance().pocions > 0 && actPAtaques > 0){
             Habilidades.lanzar(this, this, Habilidades.Pocion);
-            UICombate.mostrarMissatge("Llençant poció");
+            UICombate.mostrarMissatge("Poción usada");
             actPAtaques--;
         }
     }
@@ -547,7 +547,7 @@ public class Character : MonoBehaviour
             }
 
             cooldowns[habilidadSeleccionada] += habilidad.cooldown;
-            UICombate.mostrarMissatge(this.nombre + " llença " + habilidad.name);
+            UICombate.mostrarMissatge(this.nombre + " lanzó " + habilidad.name);
             // Restamos los puntos que se usan
             actPAtaques -= habilidad.coste;
             if(user_controlled)UICombate.actualizaPP();

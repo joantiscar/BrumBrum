@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 using System;
 public class UICombate : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class UICombate : MonoBehaviour
     public Transform cajaDatos;
     public Slider barraHP;
     public Text LabelPP;
-    public Text TextLabel;
+    public TextMeshPro TextLabel;
     public GameObject TextBackground;
 
     public GameObject selected; // El cuadrito que muestra el seleccionado
@@ -45,7 +46,6 @@ public class UICombate : MonoBehaviour
     }
 
     void ActualitzarCartell(){
-        Debug.Log(missatges.Count);
         if (missatges.Count == 0){
             TextLabel.gameObject.SetActive(false);
             TextBackground.SetActive(false);
