@@ -45,7 +45,6 @@ public class SistemaCombate : MonoBehaviour
             pjActualPersonaje.TerminaTurno();
             foreach(var obj in objetivosArea){
                 deshabilitarOutline(obj);
-
             }
             deshabilitarOutline(lastOutline);
         }
@@ -139,12 +138,14 @@ public class SistemaCombate : MonoBehaviour
 
     public void personajesEnArea(Habilidad h, Vector3 centro){ // Consigue los objetivos y los highlightea
         Collider[] colliders = Physics.OverlapSphere(centro, h.radius);
-        foreach(var obj in objetivosArea){
+        List<GameObject> aux = new List<GameObject>(objetivosArea);
+        foreach(var obj in aux){
             if(Array.IndexOf(colliders,obj.GetComponentInChildren<Collider>())==-1){
                 deshabilitarOutline(obj);
                 objetivosArea.Remove(obj);
             }
         }
+        // objetivosArea = aux;
         foreach(var col in colliders){
             GameObject obj = getCharacter(col.transform);
             if(obj!=null){
@@ -184,17 +185,27 @@ public class SistemaCombate : MonoBehaviour
                     if(!moviendose){ // No podemos hacer inputs si nos estamos moviendo
 
                         if (Input.GetMouseButtonDown(0)) { // Clic izquierdo hace varias cosas dependiendo del modo
-                            if(apuntando && lastOutline!=null){  // Si en modo habilidad y hay un objetivo en el punto de mira, atacamos y volemos a modo moverse
-                                    
-                                pjActualPersonaje.objetivo = lastOutline;
-                                
-                                pjActualPersonaje.Atacar();
+                            if(apuntando){// Si en modo habilidad y hay un objetivo en el punto de mira, atacamos y volemos a modo moverse
+                                if(lastOutline!=null){  // Habilidad normal
+                                    pjActualPersonaje.objetivo = lastOutline;
+
+                                    deshabilitarOutline(lastOutline);
+                                }
+                                else{ // En area
+                                    // TODO
+
+                                    //pjActualPersonaje.objetivo = lastOutline; // NO SE SABE
+
+                                    foreach(var obj in objetivosArea){
+                                        deshabilitarOutline(obj);
+                                    }
+                                    destruirCirculoArea();
+                                }
+                                pjActualPersonaje.Atacar(); // MODIFICARLO, NO...?
 
                                 UICombate.deseleccionarHabilidad();
                                 apuntando = false;
-                                
-                                deshabilitarOutline(lastOutline);
-                            }
+                            }  
                             else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) { // Casteamos el ray a ver donde se ha clicado
 
                                 last_hit = hit;
@@ -241,7 +252,7 @@ public class SistemaCombate : MonoBehaviour
                             GameObject objetivo = getCharacter(hit.collider.gameObject.transform);
                             Habilidad h = pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada];
 
-                            if(h.radius!=0.0f){ // HABILIDAD EN AREA
+                            if(h.radius>0.0f){ // HABILIDAD EN AREA
                                 if(ratonDentro(pjActual.transform.position,h,hit.point)){
                                     // Dibujamos el circulo o lo movemos, pero que se muestra, seguro
                                     if(circuloArea==null)dibujaCirculoArea(h,hit.point);  // si queremos que el circulo solo este en el suelo, cambiar el if y añadir && objetivo!=null 
@@ -253,8 +264,7 @@ public class SistemaCombate : MonoBehaviour
                                     destruirCirculoArea();
                                 }
                             } 
-                            else if(h.radius>0.0f && objetivo!=null){ // HABILIDAD NORMAL
-                                
+                            else if(h.radius==0.0f && objetivo!=null){ // HABILIDAD NORMAL
                                 // Miramos si esta a rango y si es un enemigo y tenemos una habilidad de atacar o un aliado y de curar/bufar y seleccionamos solo personajes
                                 if(enRango(pjActual,objetivo,h) // en rango
                                 && ((h.targetEnemy && !objetivo.GetComponent<Character>().user_controlled) ||
@@ -275,7 +285,6 @@ public class SistemaCombate : MonoBehaviour
                             else{
                                 deshabilitarOutline(lastOutline); // Le estamos dando a algo que no es un Character
                                 lastOutline = null;
-
                             }
                         }
                         else{
