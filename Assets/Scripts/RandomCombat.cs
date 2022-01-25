@@ -48,6 +48,7 @@ public class RandomCombat : MonoBehaviour
                 //Debug.Log("There is combat");
                 //battle = SceneManager.LoadScene("CombatDemo");
                 inCombat = true;
+                Singleton.enCombate = true;
                 //scene.SetActive(false);
 
                 //SceneManager.LoadScene("CombatDemo", LoadSceneMode.Additive);
@@ -87,6 +88,8 @@ public class RandomCombat : MonoBehaviour
             if (inCombat && Input.GetKeyDown(KeyCode.X))
             {
                 inCombat = false;
+                Singleton.enCombate = false;
+
                 scene.SetActive(true);
                 Destroy(GameObject.Find("New Game Object"));
                 SceneManager.UnloadSceneAsync(battleScene);
@@ -101,11 +104,13 @@ public class RandomCombat : MonoBehaviour
     {
         bool combat = false;
 
+
         float num = Random.Range(0f, 99f);
         //Debug.Log(num);
         if (num <= probability)
         {
             combat = true;
+
         }
 
         return combat;
@@ -124,6 +129,8 @@ public class RandomCombat : MonoBehaviour
     public void ExitCombat()
     {
         inCombat = false;
+        Singleton.enCombate = false;
+
         scene.SetActive(true);
         Destroy(GameObject.Find("New Game Object"));
         SceneManager.UnloadSceneAsync(battleScene);

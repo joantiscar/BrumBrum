@@ -7,6 +7,7 @@ public class Singleton {
     public bool _menu = false;
     public Character[] pjs;
     public int pocions = 10;
+    public static bool enCombate = false;
 
     private GameObject guarrada0 = new GameObject();
     private GameObject guarrada1 = new GameObject();
