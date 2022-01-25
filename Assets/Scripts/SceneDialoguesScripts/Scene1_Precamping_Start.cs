@@ -64,7 +64,10 @@ public class Scene1_Precamping_Start : MonoBehaviour
 
             Destroy(this.transform.gameObject);
             GameObject.Find("Scenario_FirstScene").GetComponent<AudioSource>().volume = 0.5f;
-            GameObject.Find("Scenario_FirstScene").GetComponent<RandomCombat>().SetAble();
+
+            RandomCombat ran = GameObject.FindObjectOfType<RandomCombat>();
+            ran.SetAble();
+            ran.waiting = ran.waitTill;
         }
     }
 

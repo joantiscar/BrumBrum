@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3500817066759301352}
   - component: {fileID: 1551798079434539923}
   - component: {fileID: 6965975827870038991}
-  - component: {fileID: 5677137363386587854}
   m_Layer: 0
   m_Name: Mago
   m_TagString: Untagged
@@ -60,6 +59,7 @@ MonoBehaviour:
   elemental_resistance: 
   metrosMaximos: 2.5
   objetivo: {fileID: 0}
+  objetivos: []
   className: Clase
   metrosRestantes: 0
   hp: 0
@@ -94,20 +94,6 @@ NavMeshAgent:
   m_BaseOffset: -0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!64 &5677137363386587854
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9081532495188966257}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1001 &5844298876730637111
 PrefabInstance:
   m_ObjectHideFlags: 0

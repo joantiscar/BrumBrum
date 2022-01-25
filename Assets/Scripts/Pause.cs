@@ -9,35 +9,22 @@ public class Pause : MonoBehaviour
 {
     bool paused = false;
     bool esq_used = false;
+    bool resume = false;
     GameObject menu;
+    GameObject options;
 
     void Start(){
         menu = this.transform.GetChild(1).transform.GetChild(2).transform.GetChild(4).gameObject;
+        options = this.transform.GetChild(1).transform.GetChild(2).transform.GetChild(5).gameObject;
     }
     void Update(){
-        if(Input.GetKeyDown(KeyCode.Z) && !paused){
+        if(Input.GetKeyDown(KeyCode.Escape) && !paused){
             paused = togglePause();
-            esq_used = true;
             Singleton.toggleMenu();
             FindObjectOfType<ThirdPersonMovement>().isTalkKing();
             menu.SetActive(true);
         }
-        else esq_used = false;
-        pause();
     }
-    //void OnGUI(){}
-    void pause()
-     {
-         if(paused && !esq_used)
-         {
-             if(Input.GetKeyDown(KeyCode.Z)){
-                menu.SetActive(false);
-                paused = togglePause();
-                FindObjectOfType<ThirdPersonMovement>().isTalkKing();
-                Singleton.toggleMenu();
-             }
-         }
-     }
 
     bool togglePause(){
         if(Time.timeScale == 0f){
@@ -48,5 +35,35 @@ public class Pause : MonoBehaviour
             Time.timeScale = 0f;
             return(true);    
         }
+    }
+
+    public void opciones (){
+        menu.SetActive(false);
+        options.SetActive(true);
+    }
+    public void renaudarPartida (){
+        menu.SetActive(false);
+        paused = togglePause();
+        FindObjectOfType<ThirdPersonMovement>().isTalkKing();
+        Singleton.toggleMenu();
+    }
+    public void salirPartida (){
+        Debug.Log ("MenuPrincipal");
+    }
+    public void salirJuego(){
+        Debug.Log ("Adioh");
+    }
+    public void manualUsuario(){
+        Debug.Log ("Controls");
+    }
+    public void volverMenu(){
+        menu.SetActive(true);
+        options.SetActive(false);
+    }
+    public void senibilidadRaton(){
+        Debug.Log ("Desplegar Sensibilitat");
+    }
+    public void nivelSonido(){
+        Debug.Log ("Desplegar Sonido");
     }
 }
