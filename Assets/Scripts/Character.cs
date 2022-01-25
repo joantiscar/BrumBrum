@@ -536,7 +536,6 @@ public class Character : MonoBehaviour
                     Habilidades.lanzar(this, objetivoPJ, habilidad);
 
                 }
-                objetivos.Clear();
             }
             else{
                 Debug.Log("Algo falla");
