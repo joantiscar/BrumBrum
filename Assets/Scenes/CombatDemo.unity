@@ -260,69 +260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0941627274cd1a048891072ec18b3a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pjs:
-  - {fileID: 7774856675458184084}
-  - {fileID: 288513744}
-  - {fileID: 2124541067}
-  - {fileID: 1744181374}
-  - {fileID: 1664725900}
-  - {fileID: 1024850899}
-  - {fileID: 179104359}
-  UICombate: {fileID: 1257770915}
-  nEnemigos: 0
-  nAliados: 0
-  derrota: 0
-  victoria: 0
-  gameover: 0
-  apuntando: 0
-  moviendose: 0
-  pjActualPersonaje: {fileID: 0}
---- !u!4 &107014252
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 107014250}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.885967, y: 0.72, z: 1.1053369}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &112784691
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 112784692}
-  m_Layer: 0
-  m_Name: UI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &112784692
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 112784691}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 200, y: 200, z: 200}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 679639494}
-  - {fileID: 938461076}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &155912197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1386,6 +1323,10 @@ PrefabInstance:
       propertyPath: UICombate
       value: 
       objectReference: {fileID: 1257770915}
+    - target: {fileID: 7157379173561198294, guid: a276c917969f8514796d0998f569b481, type: 3}
+      propertyPath: pjs.Array.size
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7157379173561198294, guid: a276c917969f8514796d0998f569b481, type: 3}
       propertyPath: pjs.Array.data[0]
       value: 

@@ -50,7 +50,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  pjActual: {fileID: 0}
   UICombate: {fileID: 0}
   nEnemigos: 0
   nAliados: 0
@@ -59,3 +59,4 @@ MonoBehaviour:
   gameover: 0
   apuntando: 0
   moviendose: 0
+  pjActualPersonaje: {fileID: 0}

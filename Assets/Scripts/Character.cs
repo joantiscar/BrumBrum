@@ -224,9 +224,9 @@ public class Character : MonoBehaviour
         mejoraDefensa = true;
         turnosMejoraDefensa += 3; 
     }
-    bool mejoraDefensaEspecial = false;
-    int turnosMejoraDefensaEspecial = 0;
-    public void mejorarDefensaEspeciak() {
+    public bool mejoraDefensaEspecial = false;
+    public int turnosMejoraDefensaEspecial = 0;
+    public void mejorarDefensaEspecial() {
         mejoraDefensaEspecial = true;
         turnosMejoraDefensaEspecial += 3; 
     }
@@ -244,7 +244,7 @@ public class Character : MonoBehaviour
     // *********************************************
 
 
-    private UICombate UICombate;
+    public UICombate UICombate;
 
     private GameObject circuloMov = null;
     private GameObject circuloHab = null;
@@ -358,7 +358,6 @@ public class Character : MonoBehaviour
 
         cargarHabilidadesDeClase();
 
-        if(Singleton.enCombate) UICombate = GameObject.Find("SkillsImages").GetComponent<UICombate>();
         anim = GetComponentInChildren<Animator>();
         renacer(true);
     }
@@ -528,6 +527,7 @@ public class Character : MonoBehaviour
             }
             else if(habilidad.radius>0.0f && objetivos.Count!=0){ // en area
                 this.transform.LookAt(objetivos[0].transform);
+                Debug.Log(objetivos.Count);
 
                 foreach(var obj in objetivos){
                     Character objetivoPJ = obj.GetComponent<Character>();
