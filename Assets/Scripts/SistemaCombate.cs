@@ -69,10 +69,7 @@ public class SistemaCombate : MonoBehaviour
 
     public GameObject recalculaOrden(){
 
-        pjs.Sort((p1,p2)=>p1.GetComponent<Character>().velocidadActual().CompareTo(p2.GetComponent<Character>().velocidadActual()));
-        // Array.Sort(pjs, delegate(GameObject Character1, GameObject Character2) {
-        //             return Character2.GetComponent<Character>().velocidadActual().CompareTo(Character1.GetComponent<Character>().velocidadActual());
-        //           });
+        pjs.Sort((p1,p2)=>p2.GetComponent<Character>().velocidadActual().CompareTo(p1.GetComponent<Character>().velocidadActual()));
         return pjs[0];
     }
 
@@ -92,16 +89,14 @@ public class SistemaCombate : MonoBehaviour
         pjs[4].GetComponent<Character>().copy(Singleton.instance().pjs[4]);
     }
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
+    public void Empezar(){
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
+        cargarProtas();
         pjActual = recalculaOrden();
         pjActualPersonaje = pjActual.GetComponent<Character>();
-        cargarProtas();
+
         for(int i=0;i<pjs.Count;i++){
             if(pjs[i].GetComponent<Character>().user_controlled) nAliados++;
             else nEnemigos++;
@@ -117,7 +112,12 @@ public class SistemaCombate : MonoBehaviour
         pjActualPersonaje.EmpiezaTurno();
         
         objetivosArea = new List<GameObject>();
-    
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        Empezar();
     }
 
     GameObject getCharacter(Transform t){ // Se supone que encuentra el gameobject en la jerarquia que tiene el Character y te lo devuelve, pero lo escribí una noche tonta
@@ -206,7 +206,6 @@ public class SistemaCombate : MonoBehaviour
                                     deshabilitarOutline(lastOutline);
                                 }
                                 else{ // En area
-                                    // TODO
 
                                     //pjActualPersonaje.objetivo = lastOutline; // NO SE SABE
 
@@ -340,6 +339,8 @@ public class SistemaCombate : MonoBehaviour
                     pjActual.transform.position[0] >= last_hit.point[0] - 0.2 && pjActual.transform.position[0] <= last_hit.point[0] + 0.2 && 
                     pjActual.transform.position[2] >= last_hit.point[2] - 0.2 && pjActual.transform.position[2] <= last_hit.point[2] + 0.2) {
                     pjActual.GetComponentInChildren<Animator>().SetFloat("Velocity", 0);
+                    pjActual.GetComponent<NavMeshAgent>().isStopped = true;
+                    pjActual.GetComponent<NavMeshAgent>().isStopped = false;
                     moviendose = false;
                 }                
                 

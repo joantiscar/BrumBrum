@@ -20,6 +20,7 @@ public class IA : MonoBehaviour
     public void Start()
     {
         Personaje = this.transform.GetComponent<Character>();
+        Debug.Log(Personaje.gameObject.name);
         anim = GetComponentInChildren<Animator>();
     }
 
@@ -48,10 +49,10 @@ public class IA : MonoBehaviour
             Vector3 posObjetivo = Objetivo.transform.position;
             if (Vector3.Distance(posActual, posObjetivo) < distancia)
             {
-                distancia = Vector3.Distance(posActual, posObjetivo) - 1;
+                distancia = Vector3.Distance(posActual, posObjetivo) - Objetivo.gameObject.GetComponentInChildren<CapsuleCollider>().radius-0.1;
             }
             destino = Vector3.MoveTowards(posActual, posObjetivo, (float)distancia);
-            Personaje.transform.gameObject.GetComponent<NavMeshAgent>().destination = destino;
+            this.gameObject.GetComponent<NavMeshAgent>().destination = destino;
             estado = "moviendose";
         }
         else
@@ -106,14 +107,17 @@ public class IA : MonoBehaviour
                         {
                             estado = "preparado";
                             anim.SetFloat("Velocity", 0);
+                            this.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
+                            this.gameObject.GetComponent<NavMeshAgent>().isStopped = false;
                         }
                         break;
                     case "preparado":
                         if (PuedeAtacar())
                         {
                             Personaje.habilidadSeleccionada = habilidadesUsables[r.Next(habilidadesUsables.Count)];
-                            Personaje.Atacar();
                             DefinirObjetivo();
+                            Personaje.objetivo = Objetivo.gameObject;
+                            Personaje.Atacar();
                             estado = "atacando";
                             StartCoroutine(RutinaAtacar());
                         }
@@ -133,6 +137,7 @@ public class IA : MonoBehaviour
                         break;
 
                 }
+                // Debug.Log(estado);
             }
         }
     }

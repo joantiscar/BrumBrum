@@ -643,6 +643,7 @@ public class Character : MonoBehaviour
         this.velocity = c.velocity;
         this.level = c.level;
         this.className = c.className;
+        this.nombre = c.nombre;
         this.elemental_resistance = c.elemental_resistance;
         this.user_controlled = c.user_controlled;
     }

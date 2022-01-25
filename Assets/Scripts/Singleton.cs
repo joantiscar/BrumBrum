@@ -48,7 +48,7 @@ public class Singleton {
     public void iniciarPjs(){
         pjs = new Character[5];
 
-        // Guerrero
+        // Luchador
         guarrada0.AddComponent<Character>();
         Character pj0 = guarrada0.GetComponent<Character>();
         pj0.nombre = "Luchador";
@@ -83,13 +83,13 @@ public class Singleton {
         Character pj2 = guarrada2.GetComponent<Character>();
         pj2.nombre = "Mago";
         pj2.className = "Mago";
-        pj1.level = 10;
-        pj1.attack = 7;
-        pj1.special_attack = 15;
-        pj1.defense = 7;
-        pj1.special_defense = 15;
-        pj1.velocity = 13;
-        pj1.hpMax = 40;
+        pj2.level = 10;
+        pj2.attack = 7;
+        pj2.special_attack = 15;
+        pj2.defense = 7;
+        pj2.special_defense = 15;
+        pj2.velocity = 300;
+        pj2.hpMax = 40;
         pj2.elemental_resistance = "ice";
         pj2.user_controlled = true;
 
@@ -98,13 +98,13 @@ public class Singleton {
         Character pj3 = guarrada3.GetComponent<Character>();
         pj3.nombre = "Curandero";
         pj3.className = "Curandero";
-        pj1.level = 10;
-        pj1.attack = 5;
-        pj1.special_attack = 20;
-        pj1.defense = 5;
-        pj1.special_defense = 20;
-        pj1.velocity = 20;
-        pj1.hpMax = 35;
+        pj3.level = 10;
+        pj3.attack = 5;
+        pj3.special_attack = 20;
+        pj3.defense = 5;
+        pj3.special_defense = 20;
+        pj3.velocity = 20;
+        pj3.hpMax = 35;
         pj3.elemental_resistance = "holy";
         pj3.user_controlled = true;
 
@@ -113,13 +113,13 @@ public class Singleton {
         Character pj4 = guarrada4.GetComponent<Character>();
         pj4.nombre = "Guerrero";
         pj4.className = "Guerrero";
-        pj1.level = 10;
-        pj1.attack = 15;
-        pj1.special_attack = 8;
-        pj1.defense = 15;
-        pj1.special_defense = 8;
-        pj1.velocity = 7;
-        pj1.hpMax = 60;
+        pj4.level = 10;
+        pj4.attack = 15;
+        pj4.special_attack = 8;
+        pj4.defense = 15;
+        pj4.special_defense = 8;
+        pj4.velocity = 7;
+        pj4.hpMax = 60;
         pj4.elemental_resistance = "physical";
         pj4.user_controlled = true;
 
