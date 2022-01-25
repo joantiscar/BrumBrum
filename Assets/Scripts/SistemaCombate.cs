@@ -85,7 +85,6 @@ public class SistemaCombate : MonoBehaviour
 
 
     void cargarProtas(){
-        Debug.Log(Singleton.instance().pjs[0].nombre);
         pjs[0].GetComponent<Character>().copy(Singleton.instance().pjs[0]);
         pjs[1].GetComponent<Character>().copy(Singleton.instance().pjs[1]);
         pjs[2].GetComponent<Character>().copy(Singleton.instance().pjs[2]);

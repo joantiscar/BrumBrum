@@ -17,13 +17,15 @@ public class UICombate : MonoBehaviour
     public Transform cajaDatos;
     public Slider barraHP;
     public Text LabelPP;
+    public Text TextLabel;
+    public GameObject TextBackground;
 
     public GameObject selected; // El cuadrito que muestra el seleccionado
 
     public int habilidadSeleccionada = -1;
     Character pjActual;
     GameObject pjDatosActual;
-
+    private List<string> missatges = new List<string>();
     public SistemaCombate SistemaCombate;
 
     void Awake()
@@ -35,7 +37,27 @@ public class UICombate : MonoBehaviour
     void Start(){
         cajaDatos.gameObject.SetActive(false);
         cajaHabilidad.gameObject.SetActive(false);
+        LabelPP.text = pjActual.actPAtaques.ToString();
+        TextLabel.text = "";
+
+        InvokeRepeating("ActualitzarCartell", 0f, 3f);
+
     }
+
+    void ActualitzarCartell(){
+        Debug.Log(missatges.Count);
+        if (missatges.Count == 0){
+            TextLabel.gameObject.SetActive(false);
+            TextBackground.SetActive(false);
+        }else {
+            TextLabel.gameObject.SetActive(true);
+            TextBackground.SetActive(true);
+            TextLabel.text = missatges[0];
+            missatges.RemoveAt(0);
+        }
+    }
+
+
 
     public void habilitarUI(bool habilitar){
         barraHP.gameObject.transform.parent.gameObject.SetActive(habilitar);
@@ -187,6 +209,10 @@ public class UICombate : MonoBehaviour
         if(cajaDatos.gameObject.activeSelf){
             cajaDatos.Find("Barra").GetComponent<Slider>().value = (float) pjDatosActual.GetComponent<Character>().hp;
         }
+    }
+
+    public void mostrarMissatge(string missatge){
+        missatges.Add(missatge);
     }
 
 }
