@@ -492,11 +492,16 @@ public class Character : MonoBehaviour
     IEnumerator RutinaAtacar(){
         // Lanzamos la habilidad y la ponemos en cooldown
         // Pero antes hacemos la animacion y esperamos a que termine
-        anim.Play("Attack"); 
-        yield return new WaitForSeconds(FindAnimation(anim,"Attack").length);
+        string animName = "Attack";
+        if (habilidadesDisponibles[habilidadSeleccionada].special || habilidadesDisponibles[habilidadSeleccionada].heals || !habilidadesDisponibles[habilidadSeleccionada].targetEnemy){
+            animName = "Heal";
+        }
+        anim.Play(animName); 
+        yield return new WaitForSeconds(FindAnimation(anim,animName).length);
 
         
     }
+
 
     public bool esSeleccionable(int h){
         return actPAtaques>=habilidadesDisponibles[h].coste && cooldowns[h]==0;
@@ -559,6 +564,8 @@ public class Character : MonoBehaviour
         if (defense < damage) damage -= defense;
         if (elemental_resistance == element) damage /= 2;
 
+        anim.Play("Hit"); 
+
         hp -= damage;
         if (hp <= 0 && inmortal) hp = 1;
         if (hp <= 0){
@@ -578,6 +585,7 @@ public class Character : MonoBehaviour
     {
         if (special_defense < damage) damage -= special_defense;
         if (elemental_resistance == element) damage /= 2;
+        anim.Play("Hit");
         hp -= damage;
         if (hp <= 0){
             morir();

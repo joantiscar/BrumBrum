@@ -229,7 +229,7 @@ public class SistemaCombate : MonoBehaviour
                                     last_hit = hit;
 
                                     // Habría que quitar lo de "Suelo" for future progress...?
-                                    if (!apuntando && hit.transform.gameObject.name == "Suelo"){ // Si no estás en modo apuntar con la habilidad, moverse
+                                    if (!apuntando && hit.transform.gameObject.name.StartsWith("Suelo")){ // Si no estás en modo apuntar con la habilidad, moverse
                                         if (pjActualPersonaje.Moverse(Vector3.Distance(hit.point, pjActual.transform.position))){
                                             pjActual.transform.LookAt(hit.point);
                                             pjActual.GetComponentInChildren<Animator>().SetFloat("Velocity", 1);
