@@ -194,7 +194,7 @@ public class SistemaCombate : MonoBehaviour
     {   
         if(!gameover){
             if(!derrota && !victoria){
-                if(pjActualPersonaje.user_controlled){
+                if(pjActualPersonaje.user_controlled && !Singleton.menu()){
                     
                     RaycastHit hit;
                     bool hitDado = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100); // Asi solo se hace una vez y no 3, nos dice si le hemos dado a algo
