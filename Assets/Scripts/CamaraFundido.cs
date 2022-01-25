@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CamaraFundido : MonoBehaviour
 {
-    Canvas canvas;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        // canvas = this.transform.GetChild(0);
+        
     }
 
     // Update is called once per frame
