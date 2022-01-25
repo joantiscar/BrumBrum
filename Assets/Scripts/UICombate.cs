@@ -180,18 +180,11 @@ public class UICombate : MonoBehaviour
 
         pjDatosActual = personaje;
 
-        RectTransform rect = cajaDatos.gameObject.GetComponent<RectTransform>();
-
-        // Movemos la cajita a las coordenadas equivalentes world - pantalla
-        Vector3 nuevaPos = Camera.main.WorldToScreenPoint(personaje.transform.position);
-        // nuevaPos.x += rect.rect.height/2; // No sé como ajustar bien la x
-        nuevaPos.y += rect.rect.height + 20; // Eh pero la y increible
-        rect.anchoredPosition = nuevaPos;
-
         Character c = personaje.GetComponent<Character>();
 
         cajaDatos.Find("Nombre").GetComponent<Text>().text = c.nombre;
         cajaDatos.Find("HP").GetComponent<Text>().text = c.hp.ToString() + " HP";
+        cajaDatos.Find("Nivel").GetComponent<Text>().text = "Lvl "+c.level.ToString();
         cajaDatos.Find("Estado").GetComponent<Text>().text = "Ningun estado alterado\n (TEXTO DEBUG)";
 
         // Actualiza la barra con el HP
