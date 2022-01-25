@@ -77,14 +77,18 @@ public class Character : MonoBehaviour
     public int ataqueActual(){
         double final = this.attack;
         if (mejoraAtaque) final *= 1.5;
+        if (furia) final *= 2;
         if (inspirado) final *= 1.1;
-        if (quemado) final *= 0.5;
+        if (bendecido) final *= 1.1;
+        if (quemado) final *= 0.75;
+        if (miedo) final *= 0.75;
         return Convert.ToInt32(final);
     }
     public int ataqueEspecialActual(){
         double final = this.special_attack;
         if (mejoraAtaqueEspecial) final *= 1.5;
         if (inspirado) final *= 1.1;
+        if (bendecido) final *= 1.1;
         if (sangrado) final *= 0.5;
         return Convert.ToInt32(final);
     }
@@ -92,23 +96,31 @@ public class Character : MonoBehaviour
         double final = this.attack;
         if (mejoraDefensa) final *= 1.5;
         if (inspirado) final *= 1.1;
+        if (bendecido) final *= 1.1;
+        if (contraataque) final *= 1.5;
         if (protegido) final *= 1.5;
         if (envenenado) final *= 0.75;
+        if (furia) final *= 0.75;
+        if (congelado) final *= 0.75;
         return Convert.ToInt32(final);
     }
     public int defensaEspecialActual(){
         double final = this.defense;
         if (mejoraDefensaEspecial) final *= 1.5;
         if (inspirado) final *= 1.1;
+        if (bendecido) final *= 1.1;
         if (protegido) final *= 1.5;
         if (envenenado) final *= 0.75;
+        if (furia) final *= 0.75;
         return Convert.ToInt32(final);
     }
     public int velocidadActual(){
         double final = this.velocity;
         if (mejoraVelocidad) final *= 1.5;
         if (inspirado) final *= 1.1;
+        if (bendecido) final *= 1.1;
         if (envenenado) final *= 0.5;
+        if (congelado) final *= 0.5;
         return Convert.ToInt32(final);
     }
 
@@ -534,6 +546,7 @@ public class Character : MonoBehaviour
         if (elemental_resistance == element) damage /= 2;
 
         hp -= damage;
+        if (hp <= 0 && inmortal) hp = 1;
         if (hp <= 0){
             morir();
         }
