@@ -551,6 +551,7 @@ MonoBehaviour:
   gameover: 0
   apuntando: 0
   moviendose: 0
+  pjActualPersonaje: {fileID: 0}
 --- !u!4 &107014252
 Transform:
   m_ObjectHideFlags: 0
@@ -1389,6 +1390,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1990894391509111474, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2442400643512786858, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: m_Name
       value: Pj4
@@ -1423,7 +1428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5834205930977296183, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.47
+      value: 3.58
       objectReference: {fileID: 0}
     - target: {fileID: 5834205930977296183, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1431,7 +1436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5834205930977296183, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.32
+      value: -3.42
       objectReference: {fileID: 0}
     - target: {fileID: 5834205930977296183, guid: 795a5cc43243fbc4cbd023c32e84636b, type: 3}
       propertyPath: m_LocalRotation.w
