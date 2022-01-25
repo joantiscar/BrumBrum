@@ -106,6 +106,7 @@ public class SistemaCombate : MonoBehaviour
             else nEnemigos++;
             pjs[i].GetComponent<Character>().SistemaCombate = this;
             pjs[i].GetComponent<Character>().iniciarEstado();
+            pjs[i].GetComponent<Character>().UICombate = this.UICombate;
 
             Outline o = pjs[i].AddComponent<Outline>();
             o.outlineWidth = 0;
