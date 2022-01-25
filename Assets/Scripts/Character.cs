@@ -358,7 +358,7 @@ public class Character : MonoBehaviour
 
         cargarHabilidadesDeClase();
 
-        UICombate = GameObject.Find("SkillsImages").GetComponent<UICombate>();
+        if(Singleton.enCombate) UICombate = GameObject.Find("SkillsImages").GetComponent<UICombate>();
         anim = GetComponentInChildren<Animator>();
         renacer(true);
     }
