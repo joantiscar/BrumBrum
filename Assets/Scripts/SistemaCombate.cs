@@ -258,6 +258,7 @@ public class SistemaCombate : MonoBehaviour
                             }
                             if (Input.GetKeyDown("q") && Singleton.instance().pocions > 0){
                                 pjActualPersonaje.pocion();
+                                UICombate.actualizaPP();
                             }
                         }
                     }
