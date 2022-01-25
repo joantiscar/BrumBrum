@@ -260,8 +260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0941627274cd1a048891072ec18b3a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-=======
   pjs:
   - {fileID: 7774856675458184084}
   - {fileID: 288513744}
@@ -325,7 +323,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> 79eed9f94660cf20eafc5bcbdcff7a171e6b1ac4
 --- !u!1001 &155912197
 PrefabInstance:
   m_ObjectHideFlags: 0
