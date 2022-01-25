@@ -1,5 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 89f1eacbfed16034191fcebff27a3d77
+timeCreated: 1484171297
+licenseType: Pro
+=======
 guid: e540b6a19d4b6cd499c7dbecfaccd546
+>>>>>>> 30b125204cfe8ca125043b75ef2daeb238bbd548
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
