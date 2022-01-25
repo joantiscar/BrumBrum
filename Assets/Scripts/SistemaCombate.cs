@@ -26,7 +26,7 @@ public class SistemaCombate : MonoBehaviour
 
     private RaycastHit last_hit; // Es la última posición donde se ha clicado, lo usamos para ver si ha llegado o no al destino
     
-    private Character pjActualPersonaje;
+    public Character pjActualPersonaje;
 
     private GameObject lastOutline; // es basicamente el objetivo al que se atacará o curará
     private List<GameObject> objetivosArea; // lo mismo pero para en area
@@ -43,10 +43,7 @@ public class SistemaCombate : MonoBehaviour
         if(pjActualPersonaje.user_controlled){
             UICombate.FinalizaTurno();
             pjActualPersonaje.TerminaTurno();
-            foreach(var obj in objetivosArea){
-                deshabilitarOutline(obj);
-            }
-            deshabilitarOutline(lastOutline);
+            deshabilitarTodosOutline();
         }
         ordenActual++;
         if (ordenActual >= pjs.Count){
@@ -56,6 +53,13 @@ public class SistemaCombate : MonoBehaviour
         pjActual = pjs[ordenActual];
         pjActualPersonaje = pjActual.GetComponent<Character>();
         pjActualPersonaje.EmpiezaTurno();
+    }
+
+    public void deshabilitarTodosOutline(){
+        foreach(var obj in objetivosArea){
+                deshabilitarOutline(obj);
+        }
+        deshabilitarOutline(lastOutline);
     }
 
     public void deshabilitarOutline(GameObject pj){
@@ -159,7 +163,6 @@ public class SistemaCombate : MonoBehaviour
                 objetivosArea.Remove(obj);
             }
         }
-        // objetivosArea = aux;
         foreach(var col in colliders){
             GameObject obj = getCharacter(col.transform);
             if(obj!=null){
@@ -178,9 +181,9 @@ public class SistemaCombate : MonoBehaviour
         Outline o = pj.GetComponent<Outline>();
         o.outlineWidth = 3.7f;
         // Si cura, hago el circulo verde, sino, rojo
-        if(h.heals){
+        if(!h.targetEnemy){
             o.outlineColor = new Color(0.72f, 1, 0.21f);
-        }else if(h.damages){
+        }else if(h.targetEnemy){
             o.outlineColor = Color.red;
         }
         o.UpdateMaterialProperties();
@@ -194,45 +197,52 @@ public class SistemaCombate : MonoBehaviour
                 if(pjActualPersonaje.user_controlled){
                     
                     RaycastHit hit;
+                    bool hitDado = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100); // Asi solo se hace una vez y no 3
 
                     // INPUTS
                     if(!moviendose){ // No podemos hacer inputs si nos estamos moviendo
 
                         if (Input.GetMouseButtonDown(0)) { // Clic izquierdo hace varias cosas dependiendo del modo
-                            if(apuntando){// Si en modo habilidad y hay un objetivo en el punto de mira, atacamos y volemos a modo moverse
-                                if(lastOutline!=null){  // Habilidad normal
-                                    pjActualPersonaje.objetivo = lastOutline;
+                            if(hitDado){
+                                if(apuntando){// Si en modo habilidad y hay un objetivo en el punto de mira, atacamos y volemos a modo moverse
+                                    if(pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada].radius==0.0f && lastOutline!=null){  // Habilidad normal
+                                        pjActualPersonaje.objetivo = lastOutline;
+                                        pjActualPersonaje.Atacar();
 
-                                    deshabilitarOutline(lastOutline);
-                                }
-                                else{ // En area
-
-                                    //pjActualPersonaje.objetivo = lastOutline; // NO SE SABE
-
-                                    foreach(var obj in objetivosArea){
-                                        deshabilitarOutline(obj);
+                                        deshabilitarOutline(lastOutline);
+                                        lastOutline = null;
                                     }
+                                    else if(objetivosArea.Count!=0){ // En area
+
+                                        pjActualPersonaje.objetivos = objetivosArea;
+                                        pjActualPersonaje.Atacar();
+
+                                        foreach(var obj in objetivosArea){
+                                            deshabilitarOutline(obj);
+                                        }
+
+                                        objetivosArea.Clear();
+                                    }
+
+                                    UICombate.deseleccionarHabilidad();
                                     destruirCirculoArea();
-                                }
-                                pjActualPersonaje.Atacar(); // MODIFICARLO, NO...?
+                                    apuntando = false;
+                                }  
+                                else{ // Casteamos el ray a ver donde se ha clicado
 
-                                UICombate.deseleccionarHabilidad();
-                                apuntando = false;
-                            }  
-                            else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) { // Casteamos el ray a ver donde se ha clicado
+                                    last_hit = hit;
 
-                                last_hit = hit;
-
-                                // Habría que quitar lo de "Suelo" for future progress...?
-                                if (!apuntando && hit.transform.gameObject.name == "Suelo"){ // Si no estás en modo apuntar con la habilidad, moverse
-                                    if (pjActualPersonaje.Moverse(Vector3.Distance(hit.point, pjActual.transform.position))){
-                                        pjActual.transform.LookAt(hit.point);
-                                        pjActual.GetComponentInChildren<Animator>().SetFloat("Velocity", 1);
-                                        moviendose = true;
-                                        pjActual.GetComponent<NavMeshAgent>().destination = hit.point;
-                                        UICombate.ActualizaDistancia();
+                                    // Habría que quitar lo de "Suelo" for future progress...?
+                                    if (!apuntando && hit.transform.gameObject.name == "Suelo"){ // Si no estás en modo apuntar con la habilidad, moverse
+                                        if (pjActualPersonaje.Moverse(Vector3.Distance(hit.point, pjActual.transform.position))){
+                                            pjActual.transform.LookAt(hit.point);
+                                            pjActual.GetComponentInChildren<Animator>().SetFloat("Velocity", 1);
+                                            moviendose = true;
+                                            pjActual.GetComponent<NavMeshAgent>().destination = hit.point;
+                                            UICombate.ActualizaDistancia();
+                                        }
+                                        
                                     }
-                                    
                                 }
                             }
                         }
@@ -249,21 +259,24 @@ public class SistemaCombate : MonoBehaviour
                             deshabilitarOutline(lastOutline);
                             destruirCirculoArea();
                         }
+                        else if (Input.GetKeyDown("q") && Singleton.instance().pocions > 0){
+                            pjActualPersonaje.pocion();
+                            UICombate.actualizaPP();
+                        }
                         else{
                             // Vamos mirando las teclas de 1 a n habilidades para seleccionar una habilidad
                             for(int i=1;i <= pjActualPersonaje.habilidadesDisponibles.Count;i++){
                                 if (Input.GetKeyDown(i.ToString())){
                                     UICombate.seleccionarHabilidad(i-1);
+                                    
+
                                 }
-                            }
-                            if (Input.GetKeyDown("q") && Singleton.instance().pocions > 0){
-                                pjActualPersonaje.pocion();
                             }
                         }
                     }
 
                     if(apuntando){
-                        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
+                        if (hitDado) {
 
                             GameObject objetivo = getCharacter(hit.collider.gameObject.transform);
                             Habilidad h = pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada];
@@ -310,7 +323,7 @@ public class SistemaCombate : MonoBehaviour
                         }
                     }
 
-                    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
+                    if (hitDado) {
                         GameObject objetivo = getCharacter(hit.collider.gameObject.transform);
 
                         // Mostramos los datos del personaje, da igual en qué modo estemos, ni si está en rango...

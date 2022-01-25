@@ -20,7 +20,6 @@ public class IA : MonoBehaviour
     public void Start()
     {
         Personaje = this.transform.GetComponent<Character>();
-        Debug.Log(Personaje.gameObject.name);
         anim = GetComponentInChildren<Animator>();
     }
 
@@ -116,7 +115,15 @@ public class IA : MonoBehaviour
                         {
                             Personaje.habilidadSeleccionada = habilidadesUsables[r.Next(habilidadesUsables.Count)];
                             DefinirObjetivo();
-                            Personaje.objetivo = Objetivo.gameObject;
+                            // DE MOMENTO????
+                            if(Personaje.habilidadesDisponibles[Personaje.habilidadSeleccionada].radius>0.0f){ // en area
+                                Personaje.objetivos.Clear();
+                                Personaje.objetivos.Add(Objetivo.gameObject);
+                            }
+                            else{ // normal
+                                Personaje.objetivo = Objetivo.gameObject;
+
+                            }
                             Personaje.Atacar();
                             estado = "atacando";
                             StartCoroutine(RutinaAtacar());

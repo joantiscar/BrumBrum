@@ -56,6 +56,7 @@ public class Character : MonoBehaviour
     public string elemental_resistance = "none";
     public double metrosMaximos = 10.0f;
     public GameObject objetivo;
+    public List<GameObject> objetivos;
     public string className = "Clase";
     private Clase clase;
 
@@ -346,7 +347,6 @@ public class Character : MonoBehaviour
 
 
     void Awake(){
-        // TEST. En un futuro, constructor o algo
         iniciarEstado();
 
     }
@@ -354,7 +354,7 @@ public class Character : MonoBehaviour
     public void iniciarEstado(){
         cooldowns = new List<int>();
         habilidadesDisponibles = new List<Habilidad>();
-
+        objetivos = new List<GameObject>();
 
         cargarHabilidadesDeClase();
 
@@ -444,6 +444,7 @@ public class Character : MonoBehaviour
             UICombate.ActualizaDistancia();
 
             objetivo = null;
+            objetivos = null;
         }
         else{
             this.transform.GetComponent<IA>().HacerTurno();
@@ -511,26 +512,41 @@ public class Character : MonoBehaviour
     }
 
     public void Atacar(){
-        // Hay que mirar como hacer los hechizos de area (si los metemos)
         if(habilidadSeleccionada>=0){
             Habilidad habilidad = habilidadesDisponibles[habilidadSeleccionada];
-            if (objetivo!=null){
+            StartCoroutine(RutinaAtacar());
+            if (habilidad.radius==0.0f && objetivo!=null){ // habilidad normal
                 this.transform.LookAt(objetivo.transform);
 
-                Character objetivoPJ = objetivo.GetComponent<Character>();
-                Debug.Log("Objetivo a atacar: " + objetivo.GetComponent<Character>().nombre);
-                
-                StartCoroutine(RutinaAtacar());
-                Habilidades.lanzar(this, objetivoPJ, habilidad);
-                cooldowns[habilidadSeleccionada] += habilidad.cooldown;
-                Debug.Log("Lanzando habilidad " + habilidad.name);
-                // Restamos los puntos que se usan
-                actPAtaques -= habilidad.coste;
-                if(user_controlled)UICombate.actualizaPP();
 
-                // anim.Play("Idle"); // Me da un warning State could not be found
+                Character objetivoPJ = objetivo.GetComponent<Character>();
+                Debug.Log("Objetivo a atacar: " + objetivoPJ.nombre);
+                
+                Habilidades.lanzar(this, objetivoPJ, habilidad);
+                objetivo = null;
                     
             }
+            else if(habilidad.radius>0.0f && objetivos.Count!=0){ // en area
+                this.transform.LookAt(objetivos[0].transform);
+
+                foreach(var obj in objetivos){
+                    Character objetivoPJ = obj.GetComponent<Character>();
+                    Debug.Log("Objetivo a atacar: " + objetivoPJ.nombre);
+                    
+                    Habilidades.lanzar(this, objetivoPJ, habilidad);
+
+                }
+                objetivos.Clear();
+            }
+            else{
+                Debug.Log("Algo falla");
+            }
+
+            cooldowns[habilidadSeleccionada] += habilidad.cooldown;
+            Debug.Log("Lanzando habilidad " + habilidad.name);
+            // Restamos los puntos que se usan
+            actPAtaques -= habilidad.coste;
+            if(user_controlled)UICombate.actualizaPP();
 
         }
         
