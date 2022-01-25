@@ -53,4 +53,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CombatScenes/CombatScene_CombatCastleScenario.unity
     guid: bfc1c699c23507e429b4689df20483f7
+  - enabled: 1
+    path: Assets/Scenes/CombatScenes/CombatScene_CombatFinal.unity
+    guid: a3fca736937d2fd45bb7f17d34bfab40
   m_configObjects: {}

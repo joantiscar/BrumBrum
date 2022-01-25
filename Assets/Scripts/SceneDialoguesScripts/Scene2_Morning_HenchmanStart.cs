@@ -58,7 +58,7 @@ public class Scene2_Morning_HenchmanStart : MonoBehaviour
         if (other.tag == "Player")
         {
             audioSource.volume = 0.2f;
-            GameObject.Find("Scenario_SecondScene").GetComponent<RandomCombat>().SetDisable();
+            GameObject.FindObjectOfType<RandomCombat>().SetDisable();
             player.GetComponent<AudioSource>().Stop();
 
             GameObject.Find("PlayerOnWorld").transform.position = new Vector3(100.5f, 0, 55);
