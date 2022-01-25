@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class Pause : MonoBehaviour
 {
     bool paused = false;
-    bool esq_used = false;
     bool resume = false;
     public bool enCombate = false;
     public GameObject menu;
@@ -40,21 +40,21 @@ public class Pause : MonoBehaviour
         }
     }
 
-    public void opciones (){
+public void opciones (){
         menu.SetActive(false);
         options.SetActive(true);
     }
     public void renaudarPartida (){
         menu.SetActive(false);
         paused = togglePause();
-        if(!enCombate) FindObjectOfType<ThirdPersonMovement>().isTalkKing();
+        FindObjectOfType<ThirdPersonMovement>().isTalkKing();
         Singleton.toggleMenu();
     }
     public void salirPartida (){
-        Debug.Log ("MenuPrincipal");
+        SceneManager.LoadScene("MenuInici");
     }
     public void salirJuego(){
-        Debug.Log ("Adioh");
+        Application.Quit();
     }
     public void manualUsuario(){
         Debug.Log ("Controls");
