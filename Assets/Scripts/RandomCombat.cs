@@ -120,4 +120,12 @@ public class RandomCombat : MonoBehaviour
     {
         able = false;
     }
+
+    public void ExitCombat()
+    {
+        inCombat = false;
+        scene.SetActive(true);
+        Destroy(GameObject.Find("New Game Object"));
+        SceneManager.UnloadSceneAsync(battleScene);
+    }
 }

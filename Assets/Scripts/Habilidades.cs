@@ -37,7 +37,6 @@ public class Habilidades                                                        
     public static Habilidad Masacre = new Habilidad("Masacre", "Ataca a bocajarro a un enemigo hasta quedarse sin energías, inflingiendo muchisimo daño", "none", 4, 8, 200, 1.5f, 0.0f, true, false, false, false);
 
     // Luchador
-
     public static Habilidad Punetazo = new Habilidad("Puñetazo", "Ataque con los puños", "physical", 0, 2, 10, 1.3f);
     public static Habilidad Partenueces = new Habilidad("Partenueces", "Ataque a las partes del contrincante", "physical", 2, 2, 30, 1.3f, 0.0f, true, false, false, false);
     public static Habilidad LanzamientoDeRoca = new Habilidad("Lanzamiento de roca", "Lanza una roca enorme hacia un enemigo", "physical", 3, 3, 40, 2.0f, 0.0f, true, false, false, false);

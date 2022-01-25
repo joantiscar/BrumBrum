@@ -347,8 +347,11 @@ public class SistemaCombate : MonoBehaviour
                 
             }
             else{
-                if (derrota) SceneManager.LoadScene ("GameOver");
-                else SceneManager.LoadScene ("Victoria");
+                if (derrota) SceneManager.LoadScene("GameOver");
+                else
+                {
+                    SceneManager.LoadScene("Victoria");
+                }
                 
             }
         }
