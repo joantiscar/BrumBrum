@@ -22,16 +22,12 @@ public class RandomCombat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //battle = null;
         able = false;
         inCombat = false;
         probability /= 10;
-
         waiting = waitTill;
 
         scene = GameObject.Find("MovementScene");
-
-
         imageAnimator = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Canvas>().GetComponentInChildren<Image>().GetComponent<Animator>();
     }
 
@@ -74,9 +70,7 @@ public class RandomCombat : MonoBehaviour
             }
             else if (inCombat && fadeIn && imageAnimator.GetCurrentAnimatorStateInfo(0).IsName("Default"))
             {
-                
-                SceneManager.LoadScene("CombatDemo", LoadSceneMode.Additive); battleScene = "CombatDemo";
-                /*
+                //SceneManager.LoadScene("CombatDemo", LoadSceneMode.Additive); battleScene = "CombatDemo";
                 if (SceneManager.GetActiveScene().name == "Scene3_Castle")
                 {
                     SceneManager.LoadScene("CombatScene_CombatCastleScenario", LoadSceneMode.Additive);
@@ -86,11 +80,11 @@ public class RandomCombat : MonoBehaviour
                 {
                     SceneManager.LoadScene("CombatScene_CombatForestScenario", LoadSceneMode.Additive);
                     battleScene = "CombatScene_CombatForestScenario";
-                }*/
+                }
 
                 scene.SetActive(false);
             }
-            if (inCombat && Input.GetKeyDown(KeyCode.Z))
+            if (inCombat && Input.GetKeyDown(KeyCode.X))
             {
                 inCombat = false;
                 scene.SetActive(true);
