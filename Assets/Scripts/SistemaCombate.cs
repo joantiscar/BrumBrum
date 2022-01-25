@@ -28,8 +28,11 @@ public class SistemaCombate : MonoBehaviour
     
     private Character pjActualPersonaje;
 
-    public GameObject lastOutline; // es basicamente el objetivo al que se atacará o curará
+    private GameObject lastOutline; // es basicamente el objetivo al que se atacará o curará
+    private List<GameObject> objetivos; // lo mismo pero para en area
     private GameObject ultimoMirado; // el ultimo gameobject del que hemos mirado los datos
+
+    private GameObject circuloArea;
 
     public void compruebaVictoria(){
         derrota = nAliados == 0;
@@ -94,9 +97,9 @@ public class SistemaCombate : MonoBehaviour
 
         }
 
-
         pjActualPersonaje.EmpiezaTurno();
         
+        objetivos = new List<GameObject>();
     
     }
 
@@ -104,6 +107,30 @@ public class SistemaCombate : MonoBehaviour
         if(t.gameObject.GetComponent<Character>()!=null) return t.gameObject;
         if(t.parent != null) return getCharacter(t.parent);
         return null;
+    }
+
+    public void destruirCirculoArea(){
+        if(circuloArea!=null){
+            Destroy(circuloArea);
+            circuloArea = null;
+
+        }
+    }
+
+    public void dibujaCirculoArea(Habilidad h,Vector3 pos){ // Dibuja el circulo de la habilidad h en area en la posición pos
+        destruirCirculoArea();
+        circuloArea = new GameObject();
+        circuloArea.DrawCircle(h.radius, .085f, new Color(1, 0, 0.48f));
+        circuloArea.transform.position = new Vector3(pos.x,pos.y+0.05f,pos.z); // un poquito mas arriba
+    }
+
+    public void mueveCirculo(Vector3 pos){
+        circuloArea.transform.position = new Vector3(pos.x,pos.y+0.05f,pos.z);
+    }
+
+    public bool ratonDentro(Vector3 posCaster, Habilidad h, Vector3 posRaton){ // true si el ratón está dentro del área delimitada por la posicion del caster y el rango de la habilidad
+        float distancia = Vector3.Distance(posCaster, posRaton);
+        return distancia <= h.range;
     }
 
     // Update is called once per frame
@@ -154,6 +181,7 @@ public class SistemaCombate : MonoBehaviour
                             UICombate.deseleccionarHabilidad();
                             apuntando = false;
                             deshabilitarOutline();
+                            destruirCirculoArea();
                         }
                         else{
                             // Vamos mirando las teclas de 1 a n habilidades para seleccionar una habilidad
@@ -169,51 +197,49 @@ public class SistemaCombate : MonoBehaviour
                         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
 
                             GameObject objetivo = getCharacter(hit.collider.gameObject.transform);
-                            
-                            // Miramos si esta a rango y si es un enemigo y tenemos una habilidad de atacar o un aliado y de curar/bufar y seleccionamos solo personajes
-                            // FALTA BUFOS!!
-                            if(objetivo!=null){
+                            Habilidad h = pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada];
 
-                                Habilidad h = pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada];
+                            if(h.radius!=0.0f){ // HABILIDAD EN AREA
+                                if(ratonDentro(pjActual.transform.position,h,hit.point)){
+                                    if(circuloArea==null)dibujaCirculoArea(h,hit.point);  // si queremos que el circulo solo este en el suelo, cambiar el if y añadir && objetivo!=null 
+                                    else mueveCirculo(hit.point);
 
-                                if(h.radius!=0.0f){ // HABILIDAD EN AREA
-                                    
-
+                                }else{
+                                    destruirCirculoArea();
                                 }
-                                else{ // HABILIDAD NORMAL
-                                    if(enRango(pjActual,objetivo,h) // en rango
-                                    && ((h.targetEnemy && !objetivo.GetComponent<Character>().user_controlled) ||
-                                        (!h.targetEnemy && objetivo.GetComponent<Character>().user_controlled))){ // miramos el targetenemy y si apunta a un enemigo on no
-                                                
-                                            // Miramos que el objetivo del ray y el ultimo objetivo mirado no sean el mismo para ir más rápido
-                                            if(objetivo!=lastOutline){
-                                                lastOutline = objetivo;
-                                                Outline o = objetivo.GetComponent<Outline>();
-                                                o.outlineWidth = 3.7f;
-                                                // Si cura, hago el circulo verde, sino, rojo
-                                                if(h.heals){
-                                                    o.outlineColor = new Color(0.72f, 1, 0.21f);
-                                                }else if(h.damages){
-                                                    o.outlineColor = Color.red;
-                                                }
-                                                o.UpdateMaterialProperties();
+                            } 
+                            else if(h.radius>0.0f && objetivo!=null){ // HABILIDAD NORMAL
+                                
+                                // Miramos si esta a rango y si es un enemigo y tenemos una habilidad de atacar o un aliado y de curar/bufar y seleccionamos solo personajes
+                                if(enRango(pjActual,objetivo,h) // en rango
+                                && ((h.targetEnemy && !objetivo.GetComponent<Character>().user_controlled) ||
+                                    (!h.targetEnemy && objetivo.GetComponent<Character>().user_controlled))){ // miramos el targetenemy y si apunta a un enemigo on no
+                                            
+                                        // Miramos que el objetivo del ray y el ultimo objetivo mirado no sean el mismo para ir más rápido
+                                        if(objetivo!=lastOutline){
+                                            lastOutline = objetivo;
+                                            Outline o = objetivo.GetComponent<Outline>();
+                                            o.outlineWidth = 3.7f;
+                                            // Si cura, hago el circulo verde, sino, rojo
+                                            if(h.heals){
+                                                o.outlineColor = new Color(0.72f, 1, 0.21f);
+                                            }else if(h.damages){
+                                                o.outlineColor = Color.red;
                                             }
-                                    }
-                                    else if(lastOutline!=null){
-                                        deshabilitarOutline();
+                                            o.UpdateMaterialProperties();
+                                        }
+                                }
+                                else if(lastOutline!=null){
+                                    deshabilitarOutline();
 
-                                    }
                                 }
                             }
                             else{
                                 deshabilitarOutline(); // Le estamos dando a algo que no es un Character
-                                // ultimoMirado = null;
-                                // UICombate.escondeDatos();
                             }
                         }
                         else{
                             deshabilitarOutline(); // Le estamos dando a algun sitio no válido
-
                         }
                     }
 
