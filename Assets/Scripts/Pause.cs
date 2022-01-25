@@ -53,4 +53,17 @@ public class Pause : MonoBehaviour
     public void salirJuego(){
         Debug.Log ("Adioh");
     }
+    public void manualUsuario(){
+        Debug.Log ("Controls");
+    }
+    public void volverMenu(){
+        menu.SetActive(true);
+        options.SetActive(false);
+    }
+    public void senibilidadRaton(){
+        Debug.Log ("Desplegar Sensibilitat");
+    }
+    public void nivelSonido(){
+        Debug.Log ("Desplegar Sonido");
+    }
 }
