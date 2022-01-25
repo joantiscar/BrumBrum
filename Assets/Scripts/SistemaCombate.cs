@@ -56,7 +56,6 @@ public class SistemaCombate : MonoBehaviour
     }
 
     public void deshabilitarTodosOutline(){
-        Debug.Log("Hay "+objetivosArea.Count+" que deshabilitar");
         foreach(var obj in objetivosArea){
             deshabilitarOutline(obj);
         }
@@ -217,8 +216,6 @@ public class SistemaCombate : MonoBehaviour
 
                                         pjActualPersonaje.objetivos = objetivosArea;
                                         pjActualPersonaje.Atacar();
-
-                                        Debug.Log("EN AREA ATACO");
 
                                         deshabilitarTodosOutline();
                                     }
