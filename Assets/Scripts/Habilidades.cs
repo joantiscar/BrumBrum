@@ -14,6 +14,7 @@ public class Habilidades                                                        
     public static Habilidad Devocion = new Habilidad("Devoción", "Reza a su dios para mejorar las estadísticas de un aliado", "none", 4, 2, 0, 1.0f, 0.0f, false, false, false, false);
     public static Habilidad GolpeDeEscudo = new Habilidad("Golpe de escudo", "Golpea a un enemigo con su escudo para aturdirlo", "physical", 3, 3, 10, 1.5f);
     public static Habilidad CastigoDivino = new Habilidad("Castigo divino", "Canaliza la energía de su divinidad en su arma para hacer arder a sus enemigos", "physical", 4, 4, 80, 1.5f);
+    
     // Mago                                                                                         
     public static Habilidad BolaDeFuego = new Habilidad("Bola de fuego", "Lanza una bola de fuego hacia su oponente", "fire", 4, 4, 20, 3f, 0.75f, true, false, true);
     public static Habilidad EsquirlaDeHielo = new Habilidad("Esquirla de hielo", "Lanza una esquirla de hielo hacia su oponente", "ice", 2, 2, 10, 2f, 0.0f, true, false, true);
