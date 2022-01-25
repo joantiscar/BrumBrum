@@ -29,7 +29,7 @@ public class SistemaCombate : MonoBehaviour
     private Character pjActualPersonaje;
 
     private GameObject lastOutline; // es basicamente el objetivo al que se atacará o curará
-    private List<GameObject> objetivos; // lo mismo pero para en area
+    private List<GameObject> objetivosArea; // lo mismo pero para en area
     private GameObject ultimoMirado; // el ultimo gameobject del que hemos mirado los datos
 
     private GameObject circuloArea;
@@ -43,7 +43,11 @@ public class SistemaCombate : MonoBehaviour
         if(pjActualPersonaje.user_controlled){
             UICombate.FinalizaTurno();
             pjActualPersonaje.TerminaTurno();
-            deshabilitarOutline();
+            foreach(var obj in objetivosArea){
+                deshabilitarOutline(obj);
+
+            }
+            deshabilitarOutline(lastOutline);
         }
         ordenActual++;
         if (ordenActual >= pjs.Length){
@@ -55,12 +59,12 @@ public class SistemaCombate : MonoBehaviour
         pjActualPersonaje.EmpiezaTurno();
     }
 
-    public void deshabilitarOutline(){
-        if(lastOutline!=null){
-            Outline o = lastOutline.GetComponent<Outline>();
+    public void deshabilitarOutline(GameObject pj){
+        if(pj!=null){
+            Debug.Log(pj.name);
+            Outline o = pj.GetComponent<Outline>();
             o.outlineWidth = 0;
             o.UpdateMaterialProperties();
-            lastOutline = null;
         }
     }
 
@@ -99,7 +103,7 @@ public class SistemaCombate : MonoBehaviour
 
         pjActualPersonaje.EmpiezaTurno();
         
-        objetivos = new List<GameObject>();
+        objetivosArea = new List<GameObject>();
     
     }
 
@@ -133,6 +137,40 @@ public class SistemaCombate : MonoBehaviour
         return distancia <= h.range;
     }
 
+    public void personajesEnArea(Habilidad h, Vector3 centro){ // Consigue los objetivos y los highlightea
+        Collider[] colliders = Physics.OverlapSphere(centro, h.radius);
+        foreach(var obj in objetivosArea){
+            if(Array.IndexOf(colliders,obj.GetComponentInChildren<Collider>())==-1){
+                deshabilitarOutline(obj);
+                objetivosArea.Remove(obj);
+            }
+        }
+        foreach(var col in colliders){
+            GameObject obj = getCharacter(col.transform);
+            if(obj!=null){
+                Character c = obj.GetComponent<Character>();
+                if((h.targetEnemy && !c.user_controlled) || (!h.targetEnemy && c.user_controlled)){ // Si es un personaje válido, lo añadimos
+                    objetivosArea.Add(obj);
+                    highlightPersonaje(h, c.gameObject);
+                }
+            }
+        }
+        
+    }
+
+    public void highlightPersonaje(Habilidad h, GameObject pj){ // Le da un outline al personaje
+        
+        Outline o = pj.GetComponent<Outline>();
+        o.outlineWidth = 3.7f;
+        // Si cura, hago el circulo verde, sino, rojo
+        if(h.heals){
+            o.outlineColor = new Color(0.72f, 1, 0.21f);
+        }else if(h.damages){
+            o.outlineColor = Color.red;
+        }
+        o.UpdateMaterialProperties();
+    }
+
     // Update is called once per frame
     void Update()
     {   
@@ -155,7 +193,7 @@ public class SistemaCombate : MonoBehaviour
                                 UICombate.deseleccionarHabilidad();
                                 apuntando = false;
                                 
-                                deshabilitarOutline();
+                                deshabilitarOutline(lastOutline);
                             }
                             else if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) { // Casteamos el ray a ver donde se ha clicado
 
@@ -180,7 +218,11 @@ public class SistemaCombate : MonoBehaviour
                         else if(apuntando && (Input.GetKeyDown("0") || Input.GetKeyDown("escape") || Input.GetMouseButtonDown(1))){
                             UICombate.deseleccionarHabilidad();
                             apuntando = false;
-                            deshabilitarOutline();
+                            foreach(var obj in objetivosArea){
+                                deshabilitarOutline(obj);
+
+                            }
+                            deshabilitarOutline(lastOutline);
                             destruirCirculoArea();
                         }
                         else{
@@ -201,10 +243,13 @@ public class SistemaCombate : MonoBehaviour
 
                             if(h.radius!=0.0f){ // HABILIDAD EN AREA
                                 if(ratonDentro(pjActual.transform.position,h,hit.point)){
+                                    // Dibujamos el circulo o lo movemos, pero que se muestra, seguro
                                     if(circuloArea==null)dibujaCirculoArea(h,hit.point);  // si queremos que el circulo solo este en el suelo, cambiar el if y añadir && objetivo!=null 
                                     else mueveCirculo(hit.point);
+                                    
+                                    personajesEnArea(h,hit.point); // Obtenemos los personajes y además los objetivos
 
-                                }else{
+                                }else{ // el ratón está fuera, quitamos el circulo
                                     destruirCirculoArea();
                                 }
                             } 
@@ -218,28 +263,25 @@ public class SistemaCombate : MonoBehaviour
                                         // Miramos que el objetivo del ray y el ultimo objetivo mirado no sean el mismo para ir más rápido
                                         if(objetivo!=lastOutline){
                                             lastOutline = objetivo;
-                                            Outline o = objetivo.GetComponent<Outline>();
-                                            o.outlineWidth = 3.7f;
-                                            // Si cura, hago el circulo verde, sino, rojo
-                                            if(h.heals){
-                                                o.outlineColor = new Color(0.72f, 1, 0.21f);
-                                            }else if(h.damages){
-                                                o.outlineColor = Color.red;
-                                            }
-                                            o.UpdateMaterialProperties();
+                                            highlightPersonaje(h,lastOutline);
                                         }
                                 }
                                 else if(lastOutline!=null){
-                                    deshabilitarOutline();
+                                    deshabilitarOutline(lastOutline);
+                                    lastOutline = null;
 
                                 }
                             }
                             else{
-                                deshabilitarOutline(); // Le estamos dando a algo que no es un Character
+                                deshabilitarOutline(lastOutline); // Le estamos dando a algo que no es un Character
+                                lastOutline = null;
+
                             }
                         }
                         else{
-                            deshabilitarOutline(); // Le estamos dando a algun sitio no válido
+                            deshabilitarOutline(lastOutline); // Le estamos dando a algun sitio no válido
+                            lastOutline = null;
+
                         }
                     }
 
