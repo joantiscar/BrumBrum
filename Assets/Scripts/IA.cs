@@ -27,7 +27,7 @@ public class IA : MonoBehaviour
     public void DefinirObjetivo()
     {
         Vector3 posActual = Personaje.transform.transform.position;
-        for (int i = 0; i < Personaje.SistemaCombate.pjs.Length; i++)
+        for (int i = 0; i < Personaje.SistemaCombate.pjs.Count; i++)
         {
             if (Personaje.SistemaCombate.pjs[i].GetComponent<Character>().user_controlled)
             {

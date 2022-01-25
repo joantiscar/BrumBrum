@@ -5,9 +5,15 @@ using System;
 public class Character : MonoBehaviour
 {
    
+    public Character(){
+        this.experience = INICIAL_MAX_EXPERIENCE * (level - 1);
+        for (int i = 2; i < level; i++)
+            this.experience += PLUS_EXPERIENCE * (i - 1);
+    }
+
     public Character(int hp, int attack, int special_attack, int defense, int special_defense, int velocity, int level=1, string elemental_resistance="none")
     {
-        this.hp = hp;
+        this.hpMax = hp;
         this.attack = attack;
         this.special_attack = special_attack;
         this.defense = defense;
@@ -29,7 +35,7 @@ public class Character : MonoBehaviour
     public const int LEVEL_MAX = 99;
     public const int PLUS_EXPERIENCE = 4;
     public const int INICIAL_MAX_EXPERIENCE = 10;
-    public int level = 20;
+    public int level = 1;
     public int experience;
     public int experience_max;
     public int upgrade_points = 0;
@@ -40,14 +46,14 @@ public class Character : MonoBehaviour
     // *            Stats                          *
     // *********************************************
 
-    public int hpMax;
-    public int attack;
-    public int special_attack;
-    public int defense;
-	public int special_defense;
-	public int velocity;
+    public int hpMax = 20;
+    public int attack = 5;
+    public int special_attack = 5;
+    public int defense = 5;
+	public int special_defense = 5;
+	public int velocity = 5;
     public string nombre = "SinNombre";
-    public string elemental_resistance;
+    public string elemental_resistance = "none";
     public double metrosMaximos = 10.0f;
     public GameObject objetivo;
     public string className = "Clase";
@@ -60,11 +66,11 @@ public class Character : MonoBehaviour
 
     
     public double metrosRestantes = 10.0f;
-    public int hp;
+    public int hp = 20;
     // Puntos para usar una habilidad: a los actuales se le suma base cada turno hasta que llegue a max
     public int habilidadSeleccionada = -1;
-    public int basePAtaques = 5;
-    public int maxPAtaques = 10;
+    public int basePAtaques = 4;
+    public int maxPAtaques = 8;
     public int actPAtaques = 0;
     public List<Habilidad> habilidadesDisponibles;
     public List<int> cooldowns;
@@ -252,10 +258,8 @@ public class Character : MonoBehaviour
                 break;
 
         }
-        Debug.Log(className);
         List<Clase.Dato> dades = clase.LevelupData();
         for(int i = 0; i < dades.Count; i++){
-            Debug.Log(dades[i].habilidad.name);
             if (level >= dades[i].nivel){
                 habilidadesDisponibles.Add(dades[i].habilidad);
                 cooldowns.Add(0);
@@ -297,7 +301,7 @@ public class Character : MonoBehaviour
 
     public bool user_controlled = false;
     
-    public int exp_when_killed = 100;
+    public int exp_when_killed = 0;
 
     public SistemaCombate SistemaCombate;
 
@@ -486,6 +490,14 @@ public class Character : MonoBehaviour
         return actPAtaques>=habilidadesDisponibles[h].coste && cooldowns[h]==0;
     }
 
+    public void pocion(){
+        if (Singleton.instance().pocions > 0 && actPAtaques > 0){
+            Habilidades.lanzar(this, this, Habilidades.Pocion);
+            Debug.Log("Usando pocion");
+            actPAtaques--;
+        }
+    }
+
     public void Atacar(){
         // Hay que mirar como hacer los hechizos de area (si los metemos)
         if(habilidadSeleccionada>=0){
@@ -552,6 +564,7 @@ public class Character : MonoBehaviour
         Debug.Log(nombre + ": Aaaaaa que me muero.");
         if(user_controlled) SistemaCombate.nAliados--;
         else SistemaCombate.nEnemigos--;
+        if (exp_when_killed > 0) Singleton.guanyarExp(exp_when_killed);
         SistemaCombate.compruebaVictoria();
         Destroy(this.gameObject);
     }
@@ -582,19 +595,19 @@ public class Character : MonoBehaviour
                     hpMax += 5;
                     break;
                 case "attack":
-                    attack += 5;
+                    attack += 1;
                     break;
                 case "special_attack":
-                    special_attack += 5;
+                    special_attack += 1;
                     break;
                 case "defense":
-                    defense += 5;
+                    defense += 1;
                     break;
                 case "special_defense":
-                    special_defense += 5;
+                    special_defense += 1;
                     break;
                 case "velocity":
-                    velocity += 5;
+                    velocity += 1;
                     break;
                 default:
                     hp += 5;
@@ -605,6 +618,20 @@ public class Character : MonoBehaviour
 
             Debug.Log("points used on " + up_stat);
         }
+    }
+
+
+    public void copy(Character c){
+        this.hpMax = c.hpMax;
+        this.attack = c.attack;
+        this.special_attack = c.special_attack;
+        this.defense = c.defense;
+        this.special_defense = c.special_defense;
+        this.velocity = c.velocity;
+        this.level = c.level;
+        this.className = c.className;
+        this.elemental_resistance = c.elemental_resistance;
+        this.user_controlled = c.user_controlled;
     }
 
 

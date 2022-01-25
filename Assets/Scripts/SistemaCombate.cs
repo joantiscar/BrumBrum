@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class SistemaCombate : MonoBehaviour
 {
 
-    public GameObject[] pjs;
+    public List<GameObject> pjs = new List<GameObject>();
     private GameObject pjActual;
     public UICombate UICombate;
 
@@ -49,7 +49,7 @@ public class SistemaCombate : MonoBehaviour
             deshabilitarOutline(lastOutline);
         }
         ordenActual++;
-        if (ordenActual >= pjs.Length){
+        if (ordenActual >= pjs.Count){
             ordenActual = 0;
             recalculaOrden(); // Por si acaso le ha cambiado la velocidad a alguien
         }
@@ -68,9 +68,11 @@ public class SistemaCombate : MonoBehaviour
     }
 
     public GameObject recalculaOrden(){
-        Array.Sort(pjs, delegate(GameObject Character1, GameObject Character2) {
-                    return Character2.GetComponent<Character>().velocidadActual().CompareTo(Character1.GetComponent<Character>().velocidadActual());
-                  });
+
+        pjs.Sort((p1,p2)=>p1.GetComponent<Character>().velocidadActual().CompareTo(p2.GetComponent<Character>().velocidadActual()));
+        // Array.Sort(pjs, delegate(GameObject Character1, GameObject Character2) {
+        //             return Character2.GetComponent<Character>().velocidadActual().CompareTo(Character1.GetComponent<Character>().velocidadActual());
+        //           });
         return pjs[0];
     }
 
@@ -80,6 +82,17 @@ public class SistemaCombate : MonoBehaviour
         return distancia-radio <= h.range && distancia+radio >= h.range;
     }
 
+
+    void cargarProtas(){
+        Debug.Log(Singleton.instance().pjs[0].nombre);
+        pjs[0].GetComponent<Character>().copy(Singleton.instance().pjs[0]);
+        pjs[1].GetComponent<Character>().copy(Singleton.instance().pjs[1]);
+        pjs[2].GetComponent<Character>().copy(Singleton.instance().pjs[2]);
+        pjs[3].GetComponent<Character>().copy(Singleton.instance().pjs[3]);
+        pjs[4].GetComponent<Character>().copy(Singleton.instance().pjs[4]);
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -88,11 +101,12 @@ public class SistemaCombate : MonoBehaviour
 
         pjActual = recalculaOrden();
         pjActualPersonaje = pjActual.GetComponent<Character>();
-
-        for(int i=0;i<pjs.Length;i++){
+        cargarProtas();
+        for(int i=0;i<pjs.Count;i++){
             if(pjs[i].GetComponent<Character>().user_controlled) nAliados++;
             else nEnemigos++;
             pjs[i].GetComponent<Character>().SistemaCombate = this;
+            pjs[i].GetComponent<Character>().iniciarEstado();
 
             Outline o = pjs[i].AddComponent<Outline>();
             o.outlineWidth = 0;
@@ -242,6 +256,9 @@ public class SistemaCombate : MonoBehaviour
                                 if (Input.GetKeyDown(i.ToString())){
                                     UICombate.seleccionarHabilidad(i-1);
                                 }
+                            }
+                            if (Input.GetKeyDown("q") && Singleton.instance().pocions > 0){
+                                pjActualPersonaje.pocion();
                             }
                         }
                     }
