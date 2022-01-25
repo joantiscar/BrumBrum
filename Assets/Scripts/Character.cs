@@ -492,8 +492,12 @@ public class Character : MonoBehaviour
     IEnumerator RutinaAtacar(){
         // Lanzamos la habilidad y la ponemos en cooldown
         // Pero antes hacemos la animacion y esperamos a que termine
-        anim.Play("Attack"); 
-        yield return new WaitForSeconds(FindAnimation(anim,"Attack").length);
+        string animName = "Attack";
+        if (habilidadesDisponibles[habilidadSeleccionada].special || habilidadesDisponibles[habilidadSeleccionada].heals || !habilidadesDisponibles[habilidadSeleccionada].targetEnemy){
+            animName = "Cast";
+        }
+        anim.Play(animName); 
+        yield return new WaitForSeconds(FindAnimation(anim,animName).length);
 
         
     }
