@@ -43,10 +43,7 @@ public class SistemaCombate : MonoBehaviour
         if(pjActualPersonaje.user_controlled){
             UICombate.FinalizaTurno();
             pjActualPersonaje.TerminaTurno();
-            foreach(var obj in objetivosArea){
-                deshabilitarOutline(obj);
-            }
-            deshabilitarOutline(lastOutline);
+            deshabilitarTodosOutline();
         }
         ordenActual++;
         if (ordenActual >= pjs.Count){
@@ -58,9 +55,15 @@ public class SistemaCombate : MonoBehaviour
         pjActualPersonaje.EmpiezaTurno();
     }
 
+    public void deshabilitarTodosOutline(){
+        foreach(var obj in objetivosArea){
+                deshabilitarOutline(obj);
+        }
+        deshabilitarOutline(lastOutline);
+    }
+
     public void deshabilitarOutline(GameObject pj){
         if(pj!=null){
-            Debug.Log(pj.name);
             Outline o = pj.GetComponent<Outline>();
             o.outlineWidth = 0;
             o.UpdateMaterialProperties();
@@ -178,9 +181,9 @@ public class SistemaCombate : MonoBehaviour
         Outline o = pj.GetComponent<Outline>();
         o.outlineWidth = 3.7f;
         // Si cura, hago el circulo verde, sino, rojo
-        if(h.heals){
+        if(!h.targetEnemy){
             o.outlineColor = new Color(0.72f, 1, 0.21f);
-        }else if(h.damages){
+        }else if(h.targetEnemy){
             o.outlineColor = Color.red;
         }
         o.UpdateMaterialProperties();
@@ -249,16 +252,18 @@ public class SistemaCombate : MonoBehaviour
                             deshabilitarOutline(lastOutline);
                             destruirCirculoArea();
                         }
+                        else if (Input.GetKeyDown("q") && Singleton.instance().pocions > 0){
+                            pjActualPersonaje.pocion();
+                            UICombate.actualizaPP();
+                        }
                         else{
                             // Vamos mirando las teclas de 1 a n habilidades para seleccionar una habilidad
                             for(int i=1;i <= pjActualPersonaje.habilidadesDisponibles.Count;i++){
                                 if (Input.GetKeyDown(i.ToString())){
                                     UICombate.seleccionarHabilidad(i-1);
+                                    
+
                                 }
-                            }
-                            if (Input.GetKeyDown("q") && Singleton.instance().pocions > 0){
-                                pjActualPersonaje.pocion();
-                                UICombate.actualizaPP();
                             }
                         }
                     }

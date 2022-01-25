@@ -129,6 +129,8 @@ public class UICombate : MonoBehaviour
 
             pjActual.destruirCirculoMov();
             pjActual.dibujaCirculoHab();
+            SistemaCombate.destruirCirculoArea();
+            SistemaCombate.deshabilitarTodosOutline();
 
             SistemaCombate.apuntando = true;
 
