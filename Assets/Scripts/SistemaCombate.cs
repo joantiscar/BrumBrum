@@ -10,7 +10,7 @@ public class SistemaCombate : MonoBehaviour
 {
 
     public List<GameObject> pjs = new List<GameObject>();
-    private GameObject pjActual;
+    public GameObject pjActual;
     public UICombate UICombate;
 
     private int ordenActual = 0;
@@ -362,12 +362,37 @@ public class SistemaCombate : MonoBehaviour
                 if (derrota) SceneManager.LoadScene("GameOver");
                 else
                 {
-                    SceneManager.LoadScene("Victoria");
+                    //SceneManager.LoadScene("Victoria");
+
+
+                    string currentScene = SceneManager.GetActiveScene().name;
+                    // Debug.Log(currentScene);
+
+                    
+                    if (currentScene == "CombatScene_CombatFinal")
+                    {
+                        SceneManager.LoadScene("Scene5_Flight_Part1");
+                    }
+                    else
+                    {
+                        GameObject.FindObjectOfType<RandomCombat>().ExitCombat();
+                    }
+                    
+
                 }
-                
+
             }
+
         }
 
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            GameObject.FindObjectOfType<SistemaCombate>().derrota = true;
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            GameObject.FindObjectOfType<SistemaCombate>().victoria = true;
+        }
 
     }
 }

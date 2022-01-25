@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class RandomCombat : MonoBehaviour
 {
-    public float probability;
+    public float probability = 0.5f;
     public bool able;
     private bool inCombat;
     private string battleScene;
     private bool fadeIn = false;
 
-    public int waitTill;
+    public int waitTill = 500;
     public int waiting = 0;
 
     private GameObject scene;
@@ -28,7 +28,10 @@ public class RandomCombat : MonoBehaviour
         waiting = waitTill;
 
         scene = GameObject.Find("MovementScene");
-        imageAnimator = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Canvas>().GetComponentInChildren<Image>().GetComponent<Animator>();
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if(player!=null)
+            imageAnimator = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Canvas>().GetComponentInChildren<Image>().GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -96,6 +99,15 @@ public class RandomCombat : MonoBehaviour
 
                 //imageAnimator.SetBool("Fade", false);
                 //imageAnimator.Play("FadeOut");
+                ExitCombat();
+            }
+            if (inCombat && Input.GetKeyDown(KeyCode.O))
+            {
+                GameObject.FindObjectOfType<SistemaCombate>().derrota = true;
+            }
+            if (inCombat && Input.GetKeyDown(KeyCode.P))
+            {
+                GameObject.FindObjectOfType<SistemaCombate>().victoria = true;
             }
         }
     }
@@ -132,7 +144,29 @@ public class RandomCombat : MonoBehaviour
         Singleton.enCombate = false;
 
         scene.SetActive(true);
-        Destroy(GameObject.Find("New Game Object"));
+
+
+        SistemaCombate sistema = FindObjectOfType<SistemaCombate>();
+        GameObject pjAct = sistema.pjActual;
+
+        sistema.destruirCirculoArea();
+        pjAct.GetComponent<Character>().destruirCirculoHab();
+        pjAct.GetComponent<Character>().destruirCirculoMov();
+
+        /*
+        Character[] chars = FindObjectsOfType<Character>();
+
+        foreach(Character c in chars)
+        {
+            Debug.Log(c.hpMax);
+        }
+        */
+
+
+        //Destroy(GameObject.Find("New Game Object"));
         SceneManager.UnloadSceneAsync(battleScene);
+
+        //imageAnimator.SetBool("Fade", false);
+        //imageAnimator.Play("FadeOut");
     }
 }
