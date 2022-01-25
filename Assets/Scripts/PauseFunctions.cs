@@ -16,4 +16,16 @@ public class PauseFunctions : MonoBehaviour
     public void salirJuego (){
         FindObjectOfType<Pause>().salirJuego();
     }
+    public void manualUsuario(){
+        FindObjectOfType<Pause>().manualUsuario();
+    }
+    public void volverMenu(){
+        FindObjectOfType<Pause>().volverMenu();
+    }
+    public void senibilidadRaton(){
+        FindObjectOfType<Pause>().senibilidadRaton();
+    }
+    public void nivelSonido(){
+        FindObjectOfType<Pause>().nivelSonido();
+    }
 }

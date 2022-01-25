@@ -639,6 +639,7 @@ GameObject:
   - component: {fileID: 5901079538280398918}
   - component: {fileID: 8247436021327738991}
   - component: {fileID: 2366450687422264240}
+  - component: {fileID: 5203103982467904279}
   m_Layer: 5
   m_Name: ButSupEsq
   m_TagString: Untagged
@@ -747,7 +748,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8247436021327738991}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5203103982467904279}
+        m_TargetAssemblyTypeName: PauseFunctions, Assembly-CSharp
+        m_MethodName: senibilidadRaton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5203103982467904279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264366714152627775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed23a7d265f63c640a5d84824da2f62e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1350908304034517411
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,6 +1344,7 @@ GameObject:
   - component: {fileID: 5435522621492539218}
   - component: {fileID: 4251425246410935352}
   - component: {fileID: 3240555416574769673}
+  - component: {fileID: 3901901210726306484}
   m_Layer: 5
   m_Name: ButDownEsq
   m_TagString: Untagged
@@ -1427,7 +1453,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4251425246410935352}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3901901210726306484}
+        m_TargetAssemblyTypeName: PauseFunctions, Assembly-CSharp
+        m_MethodName: manualUsuario
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3901901210726306484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2662897122557841222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed23a7d265f63c640a5d84824da2f62e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2750161169008856377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,6 +1490,7 @@ GameObject:
   - component: {fileID: 8715344268138898445}
   - component: {fileID: 5551162203405730425}
   - component: {fileID: 4069765752190647021}
+  - component: {fileID: 6153052391046754130}
   m_Layer: 5
   m_Name: ButDownDret
   m_TagString: Untagged
@@ -1548,7 +1599,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5551162203405730425}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6153052391046754130}
+        m_TargetAssemblyTypeName: PauseFunctions, Assembly-CSharp
+        m_MethodName: volverMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6153052391046754130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2750161169008856377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed23a7d265f63c640a5d84824da2f62e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2829034226627041643
 GameObject:
   m_ObjectHideFlags: 0
@@ -2218,6 +2293,7 @@ GameObject:
   - component: {fileID: 1124777900970595973}
   - component: {fileID: 5968784147158284569}
   - component: {fileID: 4590840151576814150}
+  - component: {fileID: 4640808970593254159}
   m_Layer: 5
   m_Name: ButSupDret
   m_TagString: Untagged
@@ -2326,7 +2402,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5968784147158284569}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4640808970593254159}
+        m_TargetAssemblyTypeName: PauseFunctions, Assembly-CSharp
+        m_MethodName: nivelSonido
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4640808970593254159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4266891496336846338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed23a7d265f63c640a5d84824da2f62e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4310556733044033749
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,7 +2545,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4603186940095289487}
-  m_LocalRotation: {x: -0.097465545, y: 0.09785439, z: 0.0096301725, w: 0.99036974}
+  m_LocalRotation: {x: -0.097465545, y: 0.0978544, z: 0.009630173, w: 0.99036974}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
