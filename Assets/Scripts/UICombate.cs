@@ -37,7 +37,7 @@ public class UICombate : MonoBehaviour
     void Start(){
         cajaDatos.gameObject.SetActive(false);
         cajaHabilidad.gameObject.SetActive(false);
-        LabelPP.text = pjActual.actPAtaques.ToString();
+        // LabelPP.text = pjActual.actPAtaques.ToString();
         TextLabel.text = "";
 
         InvokeRepeating("ActualitzarCartell", 0f, 3f);
