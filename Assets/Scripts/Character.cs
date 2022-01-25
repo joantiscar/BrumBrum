@@ -492,11 +492,16 @@ public class Character : MonoBehaviour
     IEnumerator RutinaAtacar(){
         // Lanzamos la habilidad y la ponemos en cooldown
         // Pero antes hacemos la animacion y esperamos a que termine
-        anim.Play("Attack"); 
-        yield return new WaitForSeconds(FindAnimation(anim,"Attack").length);
+        string animName = "Attack";
+        if (habilidadesDisponibles[habilidadSeleccionada].special || habilidadesDisponibles[habilidadSeleccionada].heals || !habilidadesDisponibles[habilidadSeleccionada].targetEnemy){
+            animName = "Heal";
+        }
+        anim.Play(animName); 
+        yield return new WaitForSeconds(FindAnimation(anim,animName).length);
 
         
     }
+
 
     public bool esSeleccionable(int h){
         return actPAtaques>=habilidadesDisponibles[h].coste && cooldowns[h]==0;
@@ -505,7 +510,7 @@ public class Character : MonoBehaviour
     public void pocion(){
         if (Singleton.instance().pocions > 0 && actPAtaques > 0){
             Habilidades.lanzar(this, this, Habilidades.Pocion);
-            Debug.Log("Usando pocion");
+            UICombate.mostrarMissatge("Poción usada");
             actPAtaques--;
         }
     }
@@ -527,7 +532,6 @@ public class Character : MonoBehaviour
             }
             else if(habilidad.radius>0.0f && objetivos.Count!=0){ // en area
                 this.transform.LookAt(objetivos[0].transform);
-                Debug.Log(objetivos.Count);
 
                 foreach(var obj in objetivos){
                     Character objetivoPJ = obj.GetComponent<Character>();
@@ -536,14 +540,13 @@ public class Character : MonoBehaviour
                     Habilidades.lanzar(this, objetivoPJ, habilidad);
 
                 }
-                objetivos.Clear();
             }
             else{
                 Debug.Log("Algo falla");
             }
 
             cooldowns[habilidadSeleccionada] += habilidad.cooldown;
-            Debug.Log("Lanzando habilidad " + habilidad.name);
+            UICombate.mostrarMissatge(this.nombre + " lanzó " + habilidad.name);
             // Restamos los puntos que se usan
             actPAtaques -= habilidad.coste;
             if(user_controlled)UICombate.actualizaPP();
@@ -560,6 +563,8 @@ public class Character : MonoBehaviour
     {
         if (defense < damage) damage -= defense;
         if (elemental_resistance == element) damage /= 2;
+
+        anim.Play("Hit"); 
 
         hp -= damage;
         if (hp <= 0 && inmortal) hp = 1;
@@ -580,6 +585,7 @@ public class Character : MonoBehaviour
     {
         if (special_defense < damage) damage -= special_defense;
         if (elemental_resistance == element) damage /= 2;
+        anim.Play("Hit");
         hp -= damage;
         if (hp <= 0){
             morir();

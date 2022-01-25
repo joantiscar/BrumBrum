@@ -57,14 +57,14 @@ public class SistemaCombate : MonoBehaviour
 
     public void deshabilitarTodosOutline(){
         foreach(var obj in objetivosArea){
-                deshabilitarOutline(obj);
+            deshabilitarOutline(obj);
         }
+        objetivosArea.Clear();
         deshabilitarOutline(lastOutline);
     }
 
     public void deshabilitarOutline(GameObject pj){
         if(pj!=null){
-            Debug.Log(pj.name);
             Outline o = pj.GetComponent<Outline>();
             o.outlineWidth = 0;
             o.UpdateMaterialProperties();
@@ -80,12 +80,11 @@ public class SistemaCombate : MonoBehaviour
     public bool enRango(GameObject caster, GameObject objetivo, Habilidad h){
         float distancia = Vector3.Distance(caster.transform.position, objetivo.transform.position);
         float radio = objetivo.GetComponentInChildren<CapsuleCollider>().radius; // Lo tenemos en cuenta por si acasito el modelo queda dentro pero la posicion no
-        return distancia-radio <= h.range && distancia+radio >= h.range;
+        return distancia-radio <= h.range;// && distancia+radio >= h.range;
     }
 
 
     void cargarProtas(){
-        Debug.Log(Singleton.instance().pjs[0].nombre);
         pjs[0].GetComponent<Character>().copy(Singleton.instance().pjs[0]);
         pjs[1].GetComponent<Character>().copy(Singleton.instance().pjs[1]);
         pjs[2].GetComponent<Character>().copy(Singleton.instance().pjs[2]);
@@ -195,7 +194,7 @@ public class SistemaCombate : MonoBehaviour
     {   
         if(!gameover){
             if(!derrota && !victoria){
-                if(pjActualPersonaje.user_controlled){
+                if(pjActualPersonaje.user_controlled && !Singleton.menu()){
                     
                     RaycastHit hit;
                     bool hitDado = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100); // Asi solo se hace una vez y no 3, nos dice si le hemos dado a algo
@@ -218,11 +217,7 @@ public class SistemaCombate : MonoBehaviour
                                         pjActualPersonaje.objetivos = objetivosArea;
                                         pjActualPersonaje.Atacar();
 
-                                        foreach(var obj in objetivosArea){
-                                            deshabilitarOutline(obj);
-                                        }
-
-                                        objetivosArea.Clear();
+                                        deshabilitarTodosOutline();
                                     }
 
                                     UICombate.deseleccionarHabilidad();
@@ -234,7 +229,7 @@ public class SistemaCombate : MonoBehaviour
                                     last_hit = hit;
 
                                     // Habría que quitar lo de "Suelo" for future progress...?
-                                    if (!apuntando && hit.transform.gameObject.name == "Suelo"){ // Si no estás en modo apuntar con la habilidad, moverse
+                                    if (!apuntando && hit.transform.gameObject.name.StartsWith("Suelo")){ // Si no estás en modo apuntar con la habilidad, moverse
                                         if (pjActualPersonaje.Moverse(Vector3.Distance(hit.point, pjActual.transform.position))){
                                             pjActual.transform.LookAt(hit.point);
                                             pjActual.GetComponentInChildren<Animator>().SetFloat("Velocity", 1);
@@ -288,33 +283,38 @@ public class SistemaCombate : MonoBehaviour
 
                                 }else{ // el ratón está fuera, quitamos el circulo
                                     destruirCirculoArea();
-                                    deshabilitarTodosOutline();
+                                    if(objetivosArea.Count!=0)deshabilitarTodosOutline();
                                 }
                             } 
-                            else if(h.radius==0.0f && objetivo!=null){ // HABILIDAD NORMAL
-                                // Miramos si esta a rango y si es un enemigo y tenemos una habilidad de atacar o un aliado y de curar/bufar y seleccionamos solo personajes
-                                if(enRango(pjActual,objetivo,h) // en rango
-                                && ((h.targetEnemy && !objetivo.GetComponent<Character>().user_controlled) ||
-                                    (!h.targetEnemy && objetivo.GetComponent<Character>().user_controlled))){ // miramos el targetenemy y si apunta a un enemigo on no
-                                            
-                                        // Miramos que el objetivo del ray y el ultimo objetivo mirado no sean el mismo para ir más rápido
-                                        if(objetivo!=lastOutline){
-                                            lastOutline = objetivo;
-                                            highlightPersonaje(h,lastOutline);
-                                        }
-                                }
-                                else if(lastOutline!=null){
-                                    deshabilitarOutline(lastOutline);
-                                    lastOutline = null;
+                            else if(h.radius==0.0f){ // HABILIDAD NORMAL
+                                if(objetivo!=null){
 
+                                    // Miramos si esta a rango y si es un enemigo y tenemos una habilidad de atacar o un aliado y de curar/bufar y seleccionamos solo personajes
+                                    if(enRango(pjActual,objetivo,h) // en rango
+                                    && ((h.targetEnemy && !objetivo.GetComponent<Character>().user_controlled) ||
+                                        (!h.targetEnemy && objetivo.GetComponent<Character>().user_controlled))){ // miramos el targetenemy y si apunta a un enemigo on no
+                                            
+                                            // Miramos que el objetivo del ray y el ultimo objetivo mirado no sean el mismo para ir más rápido
+                                            if(objetivo!=lastOutline){
+                                                lastOutline = objetivo;
+                                                highlightPersonaje(h,lastOutline);
+                                            }
+                                    }
+                                    else if(lastOutline!=null){
+                                        deshabilitarOutline(lastOutline);
+                                        lastOutline = null;
+
+                                    }
                                 }
-                            }
-                            else{
-                                deshabilitarOutline(lastOutline); // Le estamos dando a algo que no es un Character
-                                lastOutline = null;
+                                else{
+                                    deshabilitarOutline(lastOutline); // Le estamos dando a algo que no es un Character
+                                    lastOutline = null;
+                                }
                             }
                         }
                         else{
+                            destruirCirculoArea();
+                            if(objetivosArea.Count!=0)deshabilitarTodosOutline();
                             deshabilitarOutline(lastOutline); // Le estamos dando a algun sitio no válido
                             lastOutline = null;
 
@@ -364,7 +364,6 @@ public class SistemaCombate : MonoBehaviour
 
 
                     string currentScene = SceneManager.GetActiveScene().name;
-                    // Debug.Log(currentScene);
 
                     
                     if (currentScene == "CombatScene_CombatFinal")

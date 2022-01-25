@@ -89,7 +89,7 @@ public class Singleton {
         pj2.special_attack = 15;
         pj2.defense = 7;
         pj2.special_defense = 15;
-        pj2.velocity = 300;
+        pj2.velocity = 15;
         pj2.hpMax = 40;
         pj2.elemental_resistance = "ice";
         pj2.user_controlled = true;

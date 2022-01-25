@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 using System;
 public class UICombate : MonoBehaviour
 {
@@ -17,13 +18,15 @@ public class UICombate : MonoBehaviour
     public Transform cajaDatos;
     public Slider barraHP;
     public Text LabelPP;
+    public TextMeshPro TextLabel;
+    public GameObject TextBackground;
 
     public GameObject selected; // El cuadrito que muestra el seleccionado
 
     public int habilidadSeleccionada = -1;
     Character pjActual;
     GameObject pjDatosActual;
-
+    private List<string> missatges = new List<string>();
     public SistemaCombate SistemaCombate;
 
     void Awake()
@@ -35,7 +38,26 @@ public class UICombate : MonoBehaviour
     void Start(){
         cajaDatos.gameObject.SetActive(false);
         cajaHabilidad.gameObject.SetActive(false);
+        // LabelPP.text = pjActual.actPAtaques.ToString();
+        TextLabel.text = "";
+
+        InvokeRepeating("ActualitzarCartell", 0f, 3f);
+
     }
+
+    void ActualitzarCartell(){
+        if (missatges.Count == 0){
+            TextLabel.gameObject.SetActive(false);
+            TextBackground.SetActive(false);
+        }else {
+            TextLabel.gameObject.SetActive(true);
+            TextBackground.SetActive(true);
+            TextLabel.text = missatges[0];
+            missatges.RemoveAt(0);
+        }
+    }
+
+
 
     public void habilitarUI(bool habilitar){
         barraHP.gameObject.transform.parent.gameObject.SetActive(habilitar);
@@ -158,18 +180,11 @@ public class UICombate : MonoBehaviour
 
         pjDatosActual = personaje;
 
-        RectTransform rect = cajaDatos.gameObject.GetComponent<RectTransform>();
-
-        // Movemos la cajita a las coordenadas equivalentes world - pantalla
-        Vector3 nuevaPos = Camera.main.WorldToScreenPoint(personaje.transform.position);
-        // nuevaPos.x += rect.rect.height/2; // No sé como ajustar bien la x
-        nuevaPos.y += rect.rect.height + 20; // Eh pero la y increible
-        rect.anchoredPosition = nuevaPos;
-
         Character c = personaje.GetComponent<Character>();
 
         cajaDatos.Find("Nombre").GetComponent<Text>().text = c.nombre;
         cajaDatos.Find("HP").GetComponent<Text>().text = c.hp.ToString() + " HP";
+        cajaDatos.Find("Nivel").GetComponent<Text>().text = "Lvl "+c.level.ToString();
         cajaDatos.Find("Estado").GetComponent<Text>().text = "Ningun estado alterado\n (TEXTO DEBUG)";
 
         // Actualiza la barra con el HP
@@ -187,6 +202,10 @@ public class UICombate : MonoBehaviour
         if(cajaDatos.gameObject.activeSelf){
             cajaDatos.Find("Barra").GetComponent<Slider>().value = (float) pjDatosActual.GetComponent<Character>().hp;
         }
+    }
+
+    public void mostrarMissatge(string missatge){
+        missatges.Add(missatge);
     }
 
 }
