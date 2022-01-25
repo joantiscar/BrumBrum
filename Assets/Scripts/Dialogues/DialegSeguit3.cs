@@ -22,5 +22,6 @@ public class DialegSeguit3 : GameDialogue
         dialogue4 = new string[] {"Tranquilo. No te adelantes. No queremos acabar como la otra vez.",
         "¡Luchemos todos juntos!"};
         dialogueOrder = new int [] {0, 1, 0, 0, 0, 2, 0, 0, 2, 3, 3};
+        desti = "CombatScene_CombatFinal";
     }
 }

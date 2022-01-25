@@ -34,6 +34,10 @@ public class LootCofres : MonoBehaviour
         int quantitat;
         audioSource.Play();
 
+        RandomCombat ran = GameObject.FindObjectOfType<RandomCombat>();
+        ran.SetAble();
+        ran.waiting = ran.waitTill;
+
         switch (escena){
             case 0:
                 Debug.Log(escena);
