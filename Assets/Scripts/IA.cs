@@ -20,7 +20,6 @@ public class IA : MonoBehaviour
     public void Start()
     {
         Personaje = this.transform.GetComponent<Character>();
-        Debug.Log(Personaje.gameObject.name);
         anim = GetComponentInChildren<Animator>();
     }
 
