@@ -42,6 +42,7 @@ public class UICombate : MonoBehaviour
 
     public void muestraOrden(){
         int i=0;
+        Debug.Log(SistemaCombate.pjs.Count);
         foreach(var nombre in nombres){
             nombre.text=SistemaCombate.pjs[i].GetComponent<Character>().nombre;
             i++;
@@ -66,8 +67,6 @@ public class UICombate : MonoBehaviour
 
 
         InvokeRepeating("ActualitzarCartell", 0f, 0.5f);
-
-        muestraOrden();
 
     }
 
@@ -103,7 +102,6 @@ public class UICombate : MonoBehaviour
             habilitarUI(true);
 
             pjActual = pj;
-
 
             // Cambia las imagenes de la barra de abajo por las del parametro habilidades
             foreach (Image img in imgs)
