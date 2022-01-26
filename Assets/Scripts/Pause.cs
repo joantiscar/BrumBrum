@@ -24,23 +24,25 @@ public class Pause : MonoBehaviour
     public GameObject So;
     public GameObject SliderSo;
 
-    void Start(){
+    /*void Start(){
         if(menu==null && options==null){
             menu = this.transform.GetChild(1).transform.GetChild(2).transform.GetChild(4).gameObject;
             options = this.transform.GetChild(1).transform.GetChild(2).transform.GetChild(5).gameObject;
         }
-    }
+    }*/
     void Update(){
         if(Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "MenuInici" && 
             SceneManager.GetActiveScene().name != "GameOver" && SceneManager.GetActiveScene().name != "Victoria"){
             paused = togglePause();
             Singleton.toggleMenu();
-            if(!enCombate) FindObjectOfType<ThirdPersonMovement>().isTalkKing();
+            if(!enCombate && !Singleton.dialegs()) FindObjectOfType<ThirdPersonMovement>().isTalkKing();
             if (paused){
                 menu.SetActive(true);
             }
             else {
                 menu.SetActive(false);
+                options.SetActive(false);
+                controls.SetActive(false);
             }
         }
         if ((sensibilitat || so) && ended){

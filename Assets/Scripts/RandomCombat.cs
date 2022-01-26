@@ -14,6 +14,7 @@ public class RandomCombat : MonoBehaviour
 
     public int waitTill = 500;
     public int waiting = 0;
+    public GameObject ThirdPersonCamera;
 
     private GameObject scene;
     private Animator imageAnimator;
@@ -140,7 +141,8 @@ public class RandomCombat : MonoBehaviour
 
     public void ExitCombat()
     {
-        FindObjectOfType<CameraSwitch>().isCameraOnGoing();
+        ThirdPersonCamera.SetActive(false);
+        ThirdPersonCamera.SetActive(true);
         inCombat = false;
         Singleton.enCombate = false;
 
