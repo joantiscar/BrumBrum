@@ -150,6 +150,9 @@ public class UICombate : MonoBehaviour
 
             selected.SetActive(true);
             selected.transform.position = imgs[h].transform.position;
+            selected.GetComponent<EventTrigger>().triggers[0].callback.AddListener((data) => { muestraDescripcion(h); });
+            // Debug.Log(selected.GetComponent<EventTrigger>().triggers[0].callback);
+
 
             pjActual.destruirCirculoMov();
             pjActual.dibujaCirculoHab();

@@ -148,7 +148,7 @@ public class IA : MonoBehaviour
                 }
                
             }
-             Debug.Log(estado);
+            //  Debug.Log(estado);
         }
     }
 }
