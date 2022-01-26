@@ -90,7 +90,7 @@ public class Singleton {
         // Luchador
         guarrada0.AddComponent<Character>();
         Character pj0 = guarrada0.GetComponent<Character>();
-        pj0.nombre = "Luchador";
+        pj0.nombre = "Herc";
         pj0.className = "Luchador";
         pj0.level = 10;
         pj0.attack = 20;
@@ -105,7 +105,7 @@ public class Singleton {
         // Pala
         guarrada1.AddComponent<Character>();
         Character pj1 = guarrada1.GetComponent<Character>();
-        pj1.nombre = "Paladin";
+        pj1.nombre = "Irix";
         pj1.className = "Paladin";
         pj1.level = 10;
         pj1.attack = 10;
@@ -120,7 +120,7 @@ public class Singleton {
         // Mago
         guarrada2.AddComponent<Character>();
         Character pj2 = guarrada2.GetComponent<Character>();
-        pj2.nombre = "Mago";
+        pj2.nombre = "Áine";
         pj2.className = "Mago";
         pj2.level = 10;
         pj2.attack = 7;
@@ -135,7 +135,7 @@ public class Singleton {
         // Curandero
         guarrada3.AddComponent<Character>();
         Character pj3 = guarrada3.GetComponent<Character>();
-        pj3.nombre = "Curandero";
+        pj3.nombre = "Hestia";
         pj3.className = "Curandero";
         pj3.level = 10;
         pj3.attack = 5;
@@ -150,7 +150,7 @@ public class Singleton {
         // Guerrero
         guarrada4.AddComponent<Character>();
         Character pj4 = guarrada4.GetComponent<Character>();
-        pj4.nombre = "Guerrero";
+        pj4.nombre = "Cyrus";
         pj4.className = "Guerrero";
         pj4.level = 10;
         pj4.attack = 15;

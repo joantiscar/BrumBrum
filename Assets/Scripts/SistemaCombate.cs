@@ -52,6 +52,7 @@ public class SistemaCombate : MonoBehaviour
         if (ordenActual >= pjs.Count){
             ordenActual = 0;
             recalculaOrden(); // Por si acaso le ha cambiado la velocidad a alguien
+            UICombate.muestraOrden();
         }
         pjActual = pjs[ordenActual];
         pjActualPersonaje = pjActual.GetComponent<Character>();
