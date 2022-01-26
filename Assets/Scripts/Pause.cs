@@ -17,8 +17,10 @@ public class Pause : MonoBehaviour
     public GameObject menu;
     public GameObject options;
     public Animator animSensibilitat;
+    public GameObject Sensibilitat;
     public GameObject SliderSensibilitat;
     public Animator animSo;
+    public GameObject So;
     public GameObject SliderSo;
 
     void Start(){
@@ -28,13 +30,14 @@ public class Pause : MonoBehaviour
         }
     }
     void Update(){
-        if(Input.GetKeyDown(KeyCode.Escape) && !paused){
+        if(Input.GetKeyDown(KeyCode.Escape) && !paused && SceneManager.GetActiveScene().name != "MenuInici" && 
+            SceneManager.GetActiveScene().name != "GameOver" && SceneManager.GetActiveScene().name != "Victoria"){
             paused = togglePause();
             Singleton.toggleMenu();
             if(!enCombate) FindObjectOfType<ThirdPersonMovement>().isTalkKing();
             menu.SetActive(true);
         }
-        if ((sensibilitat || so) && ended){
+        if (((sensibilitat || so) && ended) && (Sensibilitat != null || So != null)){
             if (animSensibilitat.GetCurrentAnimatorStateInfo(0).IsName("Default") && animSo.GetCurrentAnimatorStateInfo(0).IsName("Default")){
                 sensibilitat = false;
                 so = false;
@@ -82,11 +85,21 @@ public void opciones (){
         ended = true;
         if (sensibilitat || so){
             if (sensibilitat){
-                animSensibilitat.SetBool("Iniciat", false);
+                if (Sensibilitat == null){
+                    animSensibilitat.SetBool("Iniciat", false);
+                }
+                else{
+                    Sensibilitat.SetActive(false);
+                }
                 SliderSensibilitat.SetActive(true);
             }
             if (so){
-                animSo.SetBool("Iniciat", false);
+                if (So == null){
+                    animSo.SetBool("Iniciat", false);
+                }
+                else {
+                    So.SetActive(false);
+                }
                 SliderSo.SetActive(false);
             }
         }
@@ -107,6 +120,18 @@ public void opciones (){
             SliderSensibilitat.SetActive(false);
             sensibilitat = false;
         }
+    }
+    public void senibilidadRatonMenuPausa(){
+        if (!sensibilitat){
+            Sensibilitat.SetActive(true);
+            SliderSensibilitat.SetActive(true);
+            sensibilitat = true;
+        }
+        else {
+            Sensibilitat.SetActive(false);
+            SliderSensibilitat.SetActive(false);
+            sensibilitat = false;
+        }
 
     }
     public void nivelSonido(){
@@ -117,6 +142,19 @@ public void opciones (){
         }
         else {
             animSo.SetBool("Iniciat", false);
+            SliderSo.SetActive(false);
+            so = false;
+        }
+    }
+    public void nivelSonidoMenuPausa(){
+        if (!so){
+            So.SetActive(true);
+            SliderSo.SetActive(true);
+            so = true;
+        }
+        else {
+            
+            So.SetActive(false);
             SliderSo.SetActive(false);
             so = false;
         }

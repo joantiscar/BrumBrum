@@ -32,4 +32,10 @@ public class PauseFunctions : MonoBehaviour
     public void nivelSonido(){
         FindObjectOfType<Pause>().nivelSonido();
     }
+    public void senibilidadRatonMenuPausa(){
+        FindObjectOfType<Pause>().senibilidadRatonMenuPausa();
+    }
+    public void nivelSonidoMenuPausa(){
+        FindObjectOfType<Pause>().nivelSonidoMenuPausa();
+    }
 }
