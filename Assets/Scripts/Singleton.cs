@@ -5,6 +5,7 @@ public class Singleton {
 
     private static Singleton _instance;
     public bool _menu = false;
+    public bool _levelUpPanel = false;
     public Character[] pjs;
     public int pocions = 10;
     public static bool enCombate = false;
@@ -30,6 +31,15 @@ public class Singleton {
 
     public static void toggleMenu (){
         instance()._menu = !instance()._menu;
+    }
+    
+
+    public static void setLevelupMenu (bool status){
+        instance()._levelUpPanel = status;
+    }
+
+    public static bool LevelupPanel (){
+        return instance()._levelUpPanel;
     }
 
     public static bool menu (){
