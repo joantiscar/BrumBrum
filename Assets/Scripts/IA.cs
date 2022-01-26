@@ -73,6 +73,7 @@ public class IA : MonoBehaviour
                 habilidadesUsables.Add(i);
             }
         }
+        Debug.Log(habilidadesUsables.Count);
         return habilidadesUsables.Count > 0;
     }
 
@@ -83,7 +84,7 @@ public class IA : MonoBehaviour
 
     IEnumerator RutinaAtacar(){
         atacando = true;
-        yield return new WaitForSeconds(Personaje.FindAnimation(Personaje.anim,"Attack").length);
+        yield return new WaitForSeconds(2);
         atacando = false;
         
     }
@@ -114,7 +115,6 @@ public class IA : MonoBehaviour
                         if (PuedeAtacar())
                         {
                             Personaje.habilidadSeleccionada = habilidadesUsables[r.Next(habilidadesUsables.Count)];
-                            DefinirObjetivo();
                             // DE MOMENTO????
                             if(Personaje.habilidadesDisponibles[Personaje.habilidadSeleccionada].radius>0.0f){ // en area
                                 Personaje.objetivos.Clear();
@@ -125,7 +125,9 @@ public class IA : MonoBehaviour
 
                             }
                             Personaje.Atacar();
+                            Objetivo = null;
                             estado = "atacando";
+                            DefinirObjetivo();
                             StartCoroutine(RutinaAtacar());
                         }
                         else estado = "terminado";
@@ -144,8 +146,9 @@ public class IA : MonoBehaviour
                         break;
 
                 }
-                // Debug.Log(estado);
+               
             }
+            //  Debug.Log(estado);
         }
     }
 }

@@ -31,12 +31,16 @@ public class Singleton {
     public static bool menu (){
         return instance()._menu;
     }
+
+    public static int nPocions(){
+        return instance().pocions;
+    }
     
     public static void afegirPocions (int n){
         instance().pocions += n;
     }
 
-    public static void restarPocions (int n){
+    public static void restarPocio (){
         instance().pocions--;
     }
     

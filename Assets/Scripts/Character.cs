@@ -65,7 +65,7 @@ public class Character : MonoBehaviour
     // *            STATE                          *
     // *********************************************
 
-    
+    public int id = 0;
     public double metrosRestantes = 10.0f;
     public int hp = 20;
     // Puntos para usar una habilidad: a los actuales se le suma base cada turno hasta que llegue a max
@@ -485,7 +485,7 @@ public class Character : MonoBehaviour
             }
         }
 
-        return null;
+        return animator.runtimeAnimatorController.animationClips[0];
     }
     
 
@@ -512,6 +512,8 @@ public class Character : MonoBehaviour
             Habilidades.lanzar(this, this, Habilidades.Pocion);
             UICombate.mostrarMissatge("Poción usada");
             actPAtaques--;
+            UICombate.actualizaPP();
+            Singleton.restarPocio();
         }
     }
 
@@ -599,6 +601,7 @@ public class Character : MonoBehaviour
         Debug.Log(nombre + ": Aaaaaa que me muero.");
         if(user_controlled) SistemaCombate.nAliados--;
         else SistemaCombate.nEnemigos--;
+        SistemaCombate.removeCharacter(this.id);
         if (exp_when_killed > 0) Singleton.guanyarExp(exp_when_killed);
         SistemaCombate.compruebaVictoria();
         Destroy(this.gameObject);

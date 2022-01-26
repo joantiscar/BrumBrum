@@ -9,7 +9,8 @@ public class Curandero : Clase{
         new Dato(4, Habilidades.Purificacion),
         new Dato(6, Habilidades.Bendicion),
         new Dato(8, Habilidades.AuraDeCuracion),
-        new Dato(10, Habilidades.Renacer)
+        new Dato(10, Habilidades.Renacer),
+        new Dato(0, Habilidades.Pocion)
         };
     }
 
