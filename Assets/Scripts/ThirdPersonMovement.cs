@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class ThirdPersonMovement : MonoBehaviour
     void Start()
     {
         animator=GetComponentInChildren<Animator>();
+        changeSensitivity();
     }
 
 
@@ -144,5 +146,12 @@ public class ThirdPersonMovement : MonoBehaviour
     public void isTalkKing()
     {
         isTalking = !isTalking;
+    }
+
+    public void changeSensitivity()
+    {
+        CinemachineFreeLook cam = GameObject.FindGameObjectWithTag("CameraPlayer").GetComponent<CinemachineFreeLook>();
+        cam.m_XAxis.m_MaxSpeed = 300*(0.5f+Singleton.sensitivity());
+        cam.m_YAxis.m_MaxSpeed = 3 * (0.5f + Singleton.sensitivity());
     }
 }

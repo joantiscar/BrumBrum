@@ -9,6 +9,7 @@ public class Singleton {
     public int pocions = 10;
     public static bool enCombate = false;
     public float _volume = 1;
+    public float _sensitivity = 0.5f;
     public string _currentScene;
 
     private GameObject guarrada0 = new GameObject();
@@ -61,6 +62,17 @@ public class Singleton {
     {
         return instance()._volume;
     }
+
+    public static void setSensitivity(float s)
+    {
+        instance()._sensitivity = s;
+    }
+
+    public static float sensitivity()
+    {
+        return instance()._sensitivity;
+    }
+
     public static void setCurrentScene(string c)
     {
         instance()._currentScene = c;
