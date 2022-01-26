@@ -15,6 +15,7 @@ public class Pause : MonoBehaviour
     bool ended = false;
     public bool enCombate = false;
     int anterior;
+    int _godMode = 0;
     public GameObject menu;
     public GameObject options;
     public GameObject controls;
@@ -56,15 +57,24 @@ public class Pause : MonoBehaviour
             return(true);    
         }
     }
-
-public void opciones (){
+    public void godMode (){
+        _godMode ++;
+        if (_godMode == 9){
+            Singleton.ActivateGodMode();
+        }
+    }
+    public void empezarPartida(){
+        Singleton.reset();
+        SceneManager.LoadScene("Scene1_Precamping");
+    }
+    public void opciones (){
         menu.SetActive(false);
         options.SetActive(true);
     }
     public void renaudarPartida (){
         menu.SetActive(false);
         paused = togglePause();
-        FindObjectOfType<ThirdPersonMovement>().isTalkKing();
+        if(!enCombate) FindObjectOfType<ThirdPersonMovement>().isTalkKing();
         Singleton.toggleMenu();
     }
     public void salirPartida (){

@@ -14,6 +14,7 @@ public class BotonsInterficies : MonoBehaviour
     }
 
     public void ComencaJoc(){
+        Singleton.reset();
         SceneManager.LoadScene("Scene1_Precamping");
     }
 

@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class PauseFunctions : MonoBehaviour
 {
+    public void godMode (){
+        FindObjectOfType<Pause>().godMode();
+    }
     public void empezarPartida(){
-        SceneManager.LoadScene("Scene1_Precamping");
+        FindObjectOfType<Pause>().empezarPartida();
     }
     public void opciones (){
         FindObjectOfType<Pause>().opciones();

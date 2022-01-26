@@ -11,6 +11,7 @@ public class Singleton {
     public float _volume = 1;
     public float _sensitivity = 0.5f;
     public string _currentScene;
+    public bool _godMode = false;
 
     private GameObject guarrada0 = new GameObject();
     private GameObject guarrada1 = new GameObject();
@@ -86,8 +87,6 @@ public class Singleton {
 
     public void iniciarPjs(){
         pjs = new Character[5];
-
-        // Luchador
         guarrada0.AddComponent<Character>();
         Character pj0 = guarrada0.GetComponent<Character>();
         pj0.nombre = "Herc";
@@ -104,64 +103,148 @@ public class Singleton {
         pj0.upgrade_points = 5;
 
         // Pala
+
         guarrada1.AddComponent<Character>();
         Character pj1 = guarrada1.GetComponent<Character>();
-        pj1.nombre = "Irix";
-        pj1.className = "Paladin";
-        pj1.level = 10;
-        pj1.attack = 10;
-        pj1.special_attack = 10;
-        pj1.defense = 12;
-        pj1.special_defense = 12;
-        pj1.velocity = 10;
-        pj1.hpMax = 50;
-        pj1.elemental_resistance = "physical";
-        pj1.user_controlled = true;
-
-        // Mago
         guarrada2.AddComponent<Character>();
         Character pj2 = guarrada2.GetComponent<Character>();
-        pj2.nombre = "Áine";
-        pj2.className = "Mago";
-        pj2.level = 10;
-        pj2.attack = 7;
-        pj2.special_attack = 15;
-        pj2.defense = 7;
-        pj2.special_defense = 15;
-        pj2.velocity = 15;
-        pj2.hpMax = 40;
-        pj2.elemental_resistance = "ice";
-        pj2.user_controlled = true;
-
-        // Curandero
         guarrada3.AddComponent<Character>();
         Character pj3 = guarrada3.GetComponent<Character>();
-        pj3.nombre = "Hestia";
-        pj3.className = "Curandero";
-        pj3.level = 10;
-        pj3.attack = 5;
-        pj3.special_attack = 20;
-        pj3.defense = 5;
-        pj3.special_defense = 20;
-        pj3.velocity = 20;
-        pj3.hpMax = 35;
-        pj3.elemental_resistance = "holy";
-        pj3.user_controlled = true;
-
-        // Guerrero
         guarrada4.AddComponent<Character>();
         Character pj4 = guarrada4.GetComponent<Character>();
-        pj4.nombre = "Cyrus";
-        pj4.className = "Guerrero";
-        pj4.level = 10;
-        pj4.attack = 15;
-        pj4.special_attack = 8;
-        pj4.defense = 15;
-        pj4.special_defense = 8;
-        pj4.velocity = 7;
-        pj4.hpMax = 60;
-        pj4.elemental_resistance = "physical";
-        pj4.user_controlled = true;
+
+        if (instance()._godMode){
+            // Luchador
+            pj0.nombre = "Herc";
+            pj0.className = "Luchador";
+            pj0.level = 99;
+            pj0.attack = 1000;
+            pj0.special_attack = 1000;
+            pj0.defense = 1000;
+            pj0.special_defense = 1000;
+            pj0.velocity = 1000;
+            pj0.hpMax = 1000;
+            pj0.elemental_resistance = "fire";
+            pj0.user_controlled = true;
+
+            // Pala
+            pj1.nombre = "Irix";
+            pj1.className = "Paladin";
+            pj1.level = 99;
+            pj1.attack = 1000;
+            pj1.special_attack = 1000;
+            pj1.defense = 1000;
+            pj1.special_defense = 1000;
+            pj1.velocity = 1000;
+            pj1.hpMax = 1000;
+            pj1.elemental_resistance = "physical";
+            pj1.user_controlled = true;
+
+            // Mago
+            pj2.nombre = "Áine";
+            pj2.className = "Mago";
+            pj2.level = 99;
+            pj2.attack = 1000;
+            pj2.special_attack = 1000;
+            pj2.defense = 1000;
+            pj2.special_defense = 1000;
+            pj2.velocity = 1000;
+            pj2.hpMax = 1000;
+            pj2.elemental_resistance = "ice";
+            pj2.user_controlled = true;
+
+            // Curandero
+            pj3.nombre = "Hestia";
+            pj3.className = "Curandero";
+            pj3.level = 99;
+            pj3.attack = 1000;
+            pj3.special_attack = 1000;
+            pj3.defense = 1000;
+            pj3.special_defense = 1000;
+            pj3.velocity = 1000;
+            pj3.hpMax = 1000;
+            pj3.elemental_resistance = "holy";
+            pj3.user_controlled = true;
+
+            // Guerrero
+            pj4.nombre = "Cyrus";
+            pj4.className = "Guerrero";
+            pj4.level = 99;
+            pj4.attack = 1000;
+            pj4.special_attack = 1000;
+            pj4.defense = 1000;
+            pj4.special_defense = 1000;
+            pj4.velocity = 1000;
+            pj4.hpMax = 1000;
+            pj4.elemental_resistance = "physical";
+            pj4.user_controlled = true;
+        }
+        else{
+            // Luchador
+            pj0.nombre = "Herc";
+            pj0.className = "Luchador";
+            pj0.level = 10;
+            pj0.attack = 20;
+            pj0.special_attack = 5;
+            pj0.defense = 20;
+            pj0.special_defense = 5;
+            pj0.velocity = 5;
+            pj0.hpMax = 70;
+            pj0.elemental_resistance = "fire";
+            pj0.user_controlled = true;
+
+            // Pala
+            pj1.nombre = "Irix";
+            pj1.className = "Paladin";
+            pj1.level = 10;
+            pj1.attack = 10;
+            pj1.special_attack = 10;
+            pj1.defense = 12;
+            pj1.special_defense = 12;
+            pj1.velocity = 10;
+            pj1.hpMax = 50;
+            pj1.elemental_resistance = "physical";
+            pj1.user_controlled = true;
+
+            // Mago
+            pj2.nombre = "Áine";
+            pj2.className = "Mago";
+            pj2.level = 10;
+            pj2.attack = 7;
+            pj2.special_attack = 15;
+            pj2.defense = 7;
+            pj2.special_defense = 15;
+            pj2.velocity = 15;
+            pj2.hpMax = 40;
+            pj2.elemental_resistance = "ice";
+            pj2.user_controlled = true;
+
+            // Curandero
+            pj3.nombre = "Hestia";
+            pj3.className = "Curandero";
+            pj3.level = 10;
+            pj3.attack = 5;
+            pj3.special_attack = 20;
+            pj3.defense = 5;
+            pj3.special_defense = 20;
+            pj3.velocity = 20;
+            pj3.hpMax = 35;
+            pj3.elemental_resistance = "holy";
+            pj3.user_controlled = true;
+
+            // Guerrero
+            pj4.nombre = "Cyrus";
+            pj4.className = "Guerrero";
+            pj4.level = 10;
+            pj4.attack = 15;
+            pj4.special_attack = 8;
+            pj4.defense = 15;
+            pj4.special_defense = 8;
+            pj4.velocity = 7;
+            pj4.hpMax = 60;
+            pj4.elemental_resistance = "physical";
+            pj4.user_controlled = true;
+        }
 
         pjs[0] = pj0;
         pjs[1] = pj1;
@@ -171,7 +254,12 @@ public class Singleton {
     }
 
     public static void reset(){
+        instance()._godMode = false;
         instance().iniciarPjs();
         instance().pocions = 10;
+    }
+    public static void ActivateGodMode(){
+        instance()._godMode = true;
+        Debug.Log ("godMode active");
     }
 }
