@@ -48,16 +48,14 @@ public class LevelupPanel : MonoBehaviour
         if (nPjActual > 4) nPjActual = 0;
     }
 
-    public void close(){
-        Singleton.setLevelupMenu(false);
-    }
-
     // Update is called once per frame
     void Update()
     {
         Debug.Log(nPjActual);
-        if (Input.GetKeyDown("c") && !Singleton.menu() && !Singleton.enCombate ){
+        if (Input.GetKeyDown("c") && !Singleton.menu() && !Singleton.enCombate && !Singleton.dialegs()){
+            FindObjectOfType<ThirdPersonMovement>().isTalkKing();
             Singleton.setLevelupMenu(!Singleton.LevelupPanel());
+            GetComponentInParent<Pause>().togglePause();
         }
 
 

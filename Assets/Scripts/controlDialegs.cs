@@ -59,6 +59,7 @@ public class controlDialegs : MonoBehaviour
             FindObjectOfType<Interaccio>().isTalkingStarted();
             FindObjectOfType<CameraSwitch>().isCameraOnGoing();
             dialeg_acabat = false;
+            Singleton.toggleDialegs();
             if (GameObject.FindObjectOfType<InteractToChangeScene>() != null){
                 GameObject.FindObjectOfType<InteractToChangeScene>().YesInteraction();
             }
@@ -67,6 +68,7 @@ public class controlDialegs : MonoBehaviour
     public void ActivateDialogues(Texts textObjecte)
     {
         if (!dialeg_acabat){
+            Singleton.toggleDialegs();
             if (GameObject.FindObjectOfType<InteractToChangeScene>() != null){
                 GameObject.FindObjectOfType<InteractToChangeScene>().NoInteraction();
             }

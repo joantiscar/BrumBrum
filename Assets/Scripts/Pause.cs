@@ -31,12 +31,17 @@ public class Pause : MonoBehaviour
         }
     }
     void Update(){
-        if(Input.GetKeyDown(KeyCode.Escape) && !paused && SceneManager.GetActiveScene().name != "MenuInici" && 
+        if(Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "MenuInici" && 
             SceneManager.GetActiveScene().name != "GameOver" && SceneManager.GetActiveScene().name != "Victoria"){
             paused = togglePause();
             Singleton.toggleMenu();
             if(!enCombate) FindObjectOfType<ThirdPersonMovement>().isTalkKing();
-            menu.SetActive(true);
+            if (paused){
+                menu.SetActive(true);
+            }
+            else {
+                menu.SetActive(false);
+            }
         }
         if ((sensibilitat || so) && ended){
                 sensibilitat = false;
@@ -47,7 +52,7 @@ public class Pause : MonoBehaviour
         }
     }
 
-    bool togglePause(){
+    public bool togglePause(){
         if(Time.timeScale == 0f){
             Time.timeScale = 1f;
             return(false);

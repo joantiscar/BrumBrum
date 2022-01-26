@@ -13,6 +13,7 @@ public class Singleton {
     public float _sensitivity = 0.5f;
     public string _currentScene;
     public bool _godMode = false;
+    public bool dialegsIniciats = false;
 
     private GameObject guarrada0 = new GameObject();
     private GameObject guarrada1 = new GameObject();
@@ -266,5 +267,11 @@ public class Singleton {
     public static void ActivateGodMode(){
         instance()._godMode = true;
         Debug.Log ("godMode active");
+    }
+    public static void toggleDialegs (){
+        instance().dialegsIniciats = !instance().dialegsIniciats;
+    }
+    public static bool dialegs (){
+        return instance().dialegsIniciats;
     }
 }
