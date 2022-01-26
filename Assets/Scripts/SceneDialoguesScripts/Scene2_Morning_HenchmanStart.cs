@@ -18,6 +18,8 @@ public class Scene2_Morning_HenchmanStart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Singleton.setCurrentScene("Scene2_Morning");
+
         audioSource = GameObject.Find("Scenario_SecondScene").GetComponent<AudioSource>();
         audioSource.time = 0.6f;
         audioSource.Play();

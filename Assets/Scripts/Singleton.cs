@@ -9,6 +9,7 @@ public class Singleton {
     public int pocions = 10;
     public static bool enCombate = false;
     public float _volume = 1;
+    public string _currentScene;
 
     private GameObject guarrada0 = new GameObject();
     private GameObject guarrada1 = new GameObject();
@@ -59,6 +60,15 @@ public class Singleton {
     public static float volume()
     {
         return instance()._volume;
+    }
+    public static void setCurrentScene(string c)
+    {
+        instance()._currentScene = c;
+    }
+
+    public static string currentScene()
+    {
+        return instance()._currentScene;
     }
 
 

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class BotonsInterficies : MonoBehaviour
 {
     public void Revivir(){ // Reviu la batalla
-        SceneManager.LoadScene("CombatDemo");
+        SceneManager.LoadScene(Singleton.currentScene());
     }
 
     public void Inici(){ // Torna al menu inici
@@ -14,7 +14,7 @@ public class BotonsInterficies : MonoBehaviour
     }
 
     public void ComencaJoc(){
-        SceneManager.LoadScene("MecaniquesAcabades");
+        SceneManager.LoadScene("Scene1_Precamping");
     }
 
     public void Quit(){ // Surt del joc

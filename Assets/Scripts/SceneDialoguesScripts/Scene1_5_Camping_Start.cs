@@ -15,6 +15,8 @@ public class Scene1_5_Camping_Start : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Singleton.setCurrentScene("Scene1-5_Camping");
+
         GameObject.Find("Scenario_FirstHalfScene").GetComponent<AudioSource>().time = 3.5f;
         GameObject.Find("Scenario_FirstHalfScene").GetComponent<AudioSource>().Play();
 

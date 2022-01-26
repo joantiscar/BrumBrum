@@ -18,6 +18,8 @@ public class Scene1_Precamping_Start : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Singleton.setCurrentScene("Scene1_Precamping");
+
         npc_inicialDialogue = GameObject.Find("NPC_InicialDialogue");
         objecteInt = npc_inicialDialogue.GetComponent<objecteInteractiu>();
 

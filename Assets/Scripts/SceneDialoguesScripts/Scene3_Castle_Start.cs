@@ -13,6 +13,8 @@ public class Scene3_Castle_Start : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Singleton.setCurrentScene("Scene3_Castle");
+
         npc_inicialDialogue = GameObject.Find("NPC_InicialDialogue");
         objecteInt = npc_inicialDialogue.GetComponent<objecteInteractiu>();
 
