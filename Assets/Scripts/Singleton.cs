@@ -168,4 +168,9 @@ public class Singleton {
         pjs[3] = pj3;
         pjs[4] = pj4;
     }
+
+    public static void reset(){
+        instance().iniciarPjs();
+        instance().pocions = 10;
+    }
 }

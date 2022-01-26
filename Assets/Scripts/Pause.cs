@@ -56,8 +56,11 @@ public class Pause : MonoBehaviour
             return(true);    
         }
     }
-
-public void opciones (){
+    public void empezarPartida(){
+        Singleton.reset();
+        SceneManager.LoadScene("Scene1_Precamping");
+    }
+    public void opciones (){
         menu.SetActive(false);
         options.SetActive(true);
     }
