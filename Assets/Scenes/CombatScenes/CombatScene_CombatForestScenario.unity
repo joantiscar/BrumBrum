@@ -954,9 +954,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 253088942062544813, guid: 5b9afa0353bc26049bcf4e7e775bbfa3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 253088942062544814, guid: 5b9afa0353bc26049bcf4e7e775bbfa3, type: 3}
+      propertyPath: m_Name
+      value: Suelo
+      objectReference: {fileID: 0}
     - target: {fileID: 253088942062544814, guid: 5b9afa0353bc26049bcf4e7e775bbfa3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 253088942062544815, guid: 5b9afa0353bc26049bcf4e7e775bbfa3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1186,6 +1194,18 @@ PrefabInstance:
     - target: {fileID: 4113819979599977021, guid: 1a72a6d2bb4e51144ada029e276237c5, type: 3}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113819979599977021, guid: 1a72a6d2bb4e51144ada029e276237c5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113819979599977021, guid: 1a72a6d2bb4e51144ada029e276237c5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113819979599977021, guid: 1a72a6d2bb4e51144ada029e276237c5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4113819979599977021, guid: 1a72a6d2bb4e51144ada029e276237c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2196,9 +2216,10 @@ MonoBehaviour:
   enCombate: 0
   menu: {fileID: 0}
   options: {fileID: 0}
-  animSensibilitat: {fileID: 0}
+  controls: {fileID: 0}
+  Sensibilitat: {fileID: 0}
   SliderSensibilitat: {fileID: 0}
-  animSo: {fileID: 0}
+  So: {fileID: 0}
   SliderSo: {fileID: 0}
 --- !u!114 &6751134892291971719
 MonoBehaviour:

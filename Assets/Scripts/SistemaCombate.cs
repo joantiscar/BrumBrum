@@ -123,14 +123,16 @@ public class SistemaCombate : MonoBehaviour
             o.outlineColor = Color.red;
 
         }
-
+        UICombate.SistemaCombate = this;
+        UICombate.muestraOrden();
         pjActualPersonaje.EmpiezaTurno();
         
         objetivosArea = new List<GameObject>();
+
     }
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         Empezar();
     }

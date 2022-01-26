@@ -74,7 +74,7 @@ public class Pause : MonoBehaviour
     public void renaudarPartida (){
         menu.SetActive(false);
         paused = togglePause();
-        FindObjectOfType<ThirdPersonMovement>().isTalkKing();
+        if(!enCombate) FindObjectOfType<ThirdPersonMovement>().isTalkKing();
         Singleton.toggleMenu();
     }
     public void salirPartida (){
