@@ -557,12 +557,8 @@ public class Character : MonoBehaviour
             }
 
         }
-        
 
     }
-
-
-
 
     public bool takeHit(int damage, string element)
     {

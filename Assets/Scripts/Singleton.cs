@@ -89,21 +89,6 @@ public class Singleton {
         pjs = new Character[5];
         guarrada0.AddComponent<Character>();
         Character pj0 = guarrada0.GetComponent<Character>();
-        pj0.nombre = "Herc";
-        pj0.className = "Luchador";
-        pj0.level = 10;
-        pj0.attack = 20;
-        pj0.special_attack = 5;
-        pj0.defense = 20;
-        pj0.special_defense = 5;
-        pj0.velocity = 5;
-        pj0.hpMax = 70;
-        pj0.elemental_resistance = "fire";
-        pj0.user_controlled = true;
-        pj0.upgrade_points = 5;
-
-        // Pala
-
         guarrada1.AddComponent<Character>();
         Character pj1 = guarrada1.GetComponent<Character>();
         guarrada2.AddComponent<Character>();
@@ -192,6 +177,7 @@ public class Singleton {
             pj0.hpMax = 70;
             pj0.elemental_resistance = "fire";
             pj0.user_controlled = true;
+            pj0.upgrade_points = 5;
 
             // Pala
             pj1.nombre = "Irix";
@@ -205,6 +191,8 @@ public class Singleton {
             pj1.hpMax = 50;
             pj1.elemental_resistance = "physical";
             pj1.user_controlled = true;
+            pj1.upgrade_points = 5;
+
 
             // Mago
             pj2.nombre = "Áine";
@@ -218,6 +206,8 @@ public class Singleton {
             pj2.hpMax = 40;
             pj2.elemental_resistance = "ice";
             pj2.user_controlled = true;
+            pj2.upgrade_points = 5;
+
 
             // Curandero
             pj3.nombre = "Hestia";
@@ -231,6 +221,8 @@ public class Singleton {
             pj3.hpMax = 35;
             pj3.elemental_resistance = "holy";
             pj3.user_controlled = true;
+            pj3.upgrade_points = 5;
+
 
             // Guerrero
             pj4.nombre = "Cyrus";
@@ -244,6 +236,8 @@ public class Singleton {
             pj4.hpMax = 60;
             pj4.elemental_resistance = "physical";
             pj4.user_controlled = true;
+            pj4.upgrade_points = 5;
+
         }
 
         pjs[0] = pj0;
