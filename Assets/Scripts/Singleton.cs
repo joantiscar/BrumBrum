@@ -247,7 +247,4 @@ public class Singleton {
         instance()._godMode = true;
         Debug.Log ("godMode active");
     }
-    public static bool godMode(){
-        return instance()._godMode;
-    }
 }
