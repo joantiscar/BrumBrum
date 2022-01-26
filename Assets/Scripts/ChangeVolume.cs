@@ -18,6 +18,7 @@ public class ChangeVolume : MonoBehaviour
     public void SetLevel(float sliderValue)
     {
         Singleton.setVolume(sliderValue);
-        mixer.SetFloat("GeneralVolume", Mathf.Log10(sliderValue) * 20);
+        if(sliderValue <= 0.01f) mixer.SetFloat("GeneralVolume", -80);
+        else mixer.SetFloat("GeneralVolume", Mathf.Log10(sliderValue) * 20);
     }
 }
