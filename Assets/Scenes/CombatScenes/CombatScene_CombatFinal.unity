@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 145019080}
   - component: {fileID: 145019079}
   - component: {fileID: 145019078}
+  - component: {fileID: 145019081}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -207,6 +208,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 53, y: -90, z: 0}
+--- !u!114 &145019081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145019077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea9d5377cc6d43d43bc8ab3668c7636e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &278917137
 GameObject:
   m_ObjectHideFlags: 0
@@ -6001,6 +6014,10 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: e05283bf2646cf24c8d071f8b3e0cb76, type: 3}
+    - target: {fileID: 6128873002990765208, guid: 77fd341a26bea3b42b6b6a91e4085532, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 8c460bb55d0c64d43bd63af8632f46ff, type: 2}
     - target: {fileID: 6128873003022092752, guid: 77fd341a26bea3b42b6b6a91e4085532, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -6962,6 +6979,10 @@ MonoBehaviour:
   enCombate: 0
   menu: {fileID: 0}
   options: {fileID: 0}
+  animSensibilitat: {fileID: 0}
+  SliderSensibilitat: {fileID: 0}
+  animSo: {fileID: 0}
+  SliderSo: {fileID: 0}
 --- !u!1 &6192608079612863851
 GameObject:
   m_ObjectHideFlags: 0
