@@ -13,6 +13,9 @@ public class UICombate : MonoBehaviour
     private Color opaco = Color.white;
 
     private List<Habilidad> _habilidades; // Una array con las habilidades actuales
+
+    private int orden = 0;
+    private bool empezado = false;
     
     public Transform cajaHabilidad;
     public Transform cajaDatos;
@@ -41,24 +44,35 @@ public class UICombate : MonoBehaviour
     }
 
     public void muestraOrden(){ // Cambia el orden de turnos segun el dado por sistema de combate
-        GameObject primero = nombres[0].gameObject;
-        primero.GetComponent<TextMeshPro>().text = SistemaCombate.pjs[0].GetComponent<Character>().nombre;
-        GameObject ant = primero;
-        int i=1;
-        Sprite enemigo = Resources.Load<Sprite>("UIEnemigoActivo");
-        Sprite aliado = Resources.Load<Sprite>("UIAlaidoActivo");
-        while(i<SistemaCombate.pjs.Count){
-            GameObject go = Instantiate(ant,Turnos.transform);
+        if(!empezado){
+            nombres[0].gameObject.GetComponent<TextMeshPro>().text = SistemaCombate.pjs[0].GetComponent<Character>().nombre;
+            GameObject ant = nombres[0].gameObject;
+            int i=1;
+            Sprite enemigo = Resources.Load<Sprite>("UIEnemigoActivo");
+            Sprite aliado = Resources.Load<Sprite>("UIAlaidoActivo");
+            while(i<SistemaCombate.pjs.Count){
+                GameObject go = Instantiate(ant,Turnos.transform);
 
-            if(ant==null)go.transform.position = new Vector3(go.transform.position.x,go.transform.position.y-13.5f,go.transform.position.z);
-            else go.transform.position = new Vector3(ant.transform.position.x,ant.transform.position.y-13.5f,ant.transform.position.z);
-            go.GetComponent<TextMeshPro>().text = SistemaCombate.pjs[i].GetComponent<Character>().nombre;
+                if(ant==null)go.transform.position = new Vector3(go.transform.position.x,go.transform.position.y-13.5f,go.transform.position.z);
+                else go.transform.position = new Vector3(ant.transform.position.x,ant.transform.position.y-13.5f,ant.transform.position.z);
+                go.GetComponent<TextMeshPro>().text = SistemaCombate.pjs[i].GetComponent<Character>().nombre;
 
-            if(!SistemaCombate.pjs[i].GetComponent<Character>().user_controlled) go.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = enemigo;
-            else go.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = aliado;
+                if(!SistemaCombate.pjs[i].GetComponent<Character>().user_controlled) go.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = enemigo;
+                else go.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = aliado;
 
-            i++;
-            ant = go;
+                i++;
+                ant = go;
+            }
+            nombres = Turnos.GetComponentsInChildren<TextMeshPro>();
+            empezado = true;
+        }
+        else{
+            for(int i=1;i<nombres.Length;i++){ // Destruimos todos menos el primero
+                Destroy(nombres[i].gameObject);
+            }
+            nombres = Turnos.GetComponentsInChildren<TextMeshPro>();
+            empezado = false;
+            muestraOrden();
         }
     }
 
@@ -150,12 +164,23 @@ public class UICombate : MonoBehaviour
         
     }
 
+    public void actualizaTurno(Character pj){
+        if(!pj.user_controlled){
+            Sprite enemigo = Resources.Load<Sprite>("UIEnemigoInactivo");
+            nombres[SistemaCombate.ordenActual].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = enemigo;
+        }
+        else{
+            Sprite aliado = Resources.Load<Sprite>("UIAliadoInactivo");
+            nombres[SistemaCombate.ordenActual].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = aliado;
+        }
+    }
+
     public void FinalizaTurno(){ // Llamada cada vez que acaba el turno de un personaje
         // Restart la habilidad seleccionada
         selected.SetActive(false);
         pjActual.habilidadSeleccionada = -1;
         habilidadSeleccionada = -1;
-        
+        if(SistemaCombate.ordenActual!=SistemaCombate.pjs.Count)actualizaTurno(pjActual);
     }
 
     public void muestraDescripcion(int pos){

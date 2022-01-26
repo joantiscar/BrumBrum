@@ -229,11 +229,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: nombre
-      value: Manoloeldelbombo2
+      value: Surrell
       objectReference: {fileID: 0}
     - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: velocity
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8691741044964815986, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: m_RootOrder
@@ -483,7 +483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: nombre
-      value: Manoloeldelbombo
+      value: Astio
       objectReference: {fileID: 0}
     - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: velocity
@@ -549,6 +549,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2978276374573378311, guid: 53fca93cae81a1b40bf90f294930dd18, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786421936563783207, guid: 53fca93cae81a1b40bf90f294930dd18, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786421936563783207, guid: 53fca93cae81a1b40bf90f294930dd18, type: 3}
+      propertyPath: m_enableVertexGradient
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4417777182858951717, guid: 53fca93cae81a1b40bf90f294930dd18, type: 3}

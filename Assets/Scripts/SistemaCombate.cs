@@ -13,7 +13,7 @@ public class SistemaCombate : MonoBehaviour
     public GameObject pjActual;
     public UICombate UICombate;
 
-    private int ordenActual = 0;
+    public int ordenActual = 0;
     public int nEnemigos = 0;
     public int nAliados = 0;
 
@@ -409,12 +409,16 @@ public class SistemaCombate : MonoBehaviour
         bool trobat = false;
         while(!trobat && i < pjs.Count){
             if (pjs[i].GetComponent<Character>().id == id){
-                Debug.Log("Eliminant a " + pjs[i].GetComponent<Character>().nombre);
-                pjs.RemoveAt(i);
+                
                 trobat = true;
                 
             }
-            i++;
+            else i++;
         }
+        // MIRAR LO QUE PASA CON EL ORDEN
+        UICombate.actualizaTurno(pjs[i].GetComponent<Character>()); // por si acaso su turno aun no ha llegado
+
+        Debug.Log("Eliminant a " + pjs[i].GetComponent<Character>().nombre);
+        pjs.RemoveAt(i);
     }
 }

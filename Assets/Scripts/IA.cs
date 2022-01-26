@@ -133,7 +133,9 @@ public class IA : MonoBehaviour
                         else estado = "terminado";
                         break;
                     case "terminado":
+                        Personaje.UICombate.actualizaTurno(Personaje);
                         Personaje.TerminaTurno();
+                        // En la ui cambiamos lo de los turnos jeje se me habia olvidado
                         estado = "esperando";
                         break;
                     case "atacando":
