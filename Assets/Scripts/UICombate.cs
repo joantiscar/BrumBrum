@@ -40,15 +40,7 @@ public class UICombate : MonoBehaviour
 
     }
 
-    void Start(){
-        cajaDatos.gameObject.SetActive(false);
-        cajaHabilidad.gameObject.SetActive(false);
-        TextLabel.text = "";
-        pocionLabel.text = Singleton.nPocions().ToString();
-
-
-        InvokeRepeating("ActualitzarCartell", 0f, 0.5f);
-
+    public void muestraOrden(){
         int i=0;
         foreach(var nombre in nombres){
             nombre.text=SistemaCombate.pjs[i].GetComponent<Character>().nombre;
@@ -64,6 +56,18 @@ public class UICombate : MonoBehaviour
             i++;
             ant = go;
         }
+    }
+
+    void Start(){
+        cajaDatos.gameObject.SetActive(false);
+        cajaHabilidad.gameObject.SetActive(false);
+        TextLabel.text = "";
+        pocionLabel.text = Singleton.nPocions().ToString();
+
+
+        InvokeRepeating("ActualitzarCartell", 0f, 0.5f);
+
+        muestraOrden();
 
     }
 
