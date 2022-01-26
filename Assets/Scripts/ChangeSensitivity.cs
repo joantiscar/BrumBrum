@@ -10,6 +10,7 @@ public class ChangeSensitivity : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log (Singleton.sensitivity());
         slider.value = Singleton.sensitivity();
     }
 

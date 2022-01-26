@@ -150,7 +150,8 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void changeSensitivity()
     {
-        CinemachineFreeLook cam = GameObject.FindGameObjectWithTag("CameraPlayer").GetComponent<CinemachineFreeLook>();
+        CinemachineFreeLook cam = GameObject.FindGameObjectWithTag("CameraPlayer").transform.GetComponent<CinemachineFreeLook>();
+        Debug.Log (GameObject.FindGameObjectWithTag("CameraPlayer").transform.GetComponent<CinemachineFreeLook>());
         cam.m_XAxis.m_MaxSpeed = 300*(0.5f+Singleton.sensitivity());
         cam.m_YAxis.m_MaxSpeed = 3 * (0.5f + Singleton.sensitivity());
     }

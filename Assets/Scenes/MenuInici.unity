@@ -333,7 +333,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 286649950}
         m_TargetAssemblyTypeName: PauseFunctions, Assembly-CSharp
-        m_MethodName: senibilidadRaton
+        m_MethodName: senibilidadRatonMenuPausa
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -639,14 +639,13 @@ GameObject:
   - component: {fileID: 420437941}
   - component: {fileID: 420437943}
   - component: {fileID: 420437942}
-  - component: {fileID: 420437944}
   m_Layer: 0
   m_Name: ImatgeSensibilitat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &420437941
 RectTransform:
   m_ObjectHideFlags: 0
@@ -680,7 +679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -705,25 +704,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 420437940}
   m_CullTransparentMesh: 1
---- !u!95 &420437944
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420437940}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b05126169d20e0e42ac25926ec08407c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &420484601
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,7 +1178,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8, y: 0}
+  m_AnchoredPosition: {x: -15, y: -4}
   m_SizeDelta: {x: 150, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &706628616
@@ -1552,7 +1532,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 949133918}
         m_TargetAssemblyTypeName: PauseFunctions, Assembly-CSharp
-        m_MethodName: nivelSonido
+        m_MethodName: nivelSonidoMenuPausa
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1876,11 +1856,11 @@ MonoBehaviour:
   enCombate: 0
   menu: {fileID: 420484601}
   options: {fileID: 252291998}
-  animSensibilitat: {fileID: 420437944}
-  Sensibilitat: {fileID: 0}
+  animSensibilitat: {fileID: 0}
+  Sensibilitat: {fileID: 420437940}
   SliderSensibilitat: {fileID: 706628614}
-  animSo: {fileID: 1621625742}
-  So: {fileID: 0}
+  animSo: {fileID: 0}
+  So: {fileID: 1621625738}
   SliderSo: {fileID: 1281323645}
 --- !u!82 &1020005441
 AudioSource:
@@ -2359,7 +2339,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8, y: 0}
+  m_AnchoredPosition: {x: 20, y: 10}
   m_SizeDelta: {x: 150, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1281323647
@@ -2740,14 +2720,13 @@ GameObject:
   - component: {fileID: 1621625739}
   - component: {fileID: 1621625741}
   - component: {fileID: 1621625740}
-  - component: {fileID: 1621625742}
   m_Layer: 0
   m_Name: ImatgeSo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1621625739
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2781,7 +2760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2806,25 +2785,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621625738}
   m_CullTransparentMesh: 1
---- !u!95 &1621625742
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621625738}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b05126169d20e0e42ac25926ec08407c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1650573605
 GameObject:
   m_ObjectHideFlags: 0
