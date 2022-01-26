@@ -14,8 +14,10 @@ public class Pause : MonoBehaviour
     bool so = false;
     bool ended = false;
     public bool enCombate = false;
+    int anterior;
     public GameObject menu;
     public GameObject options;
+    public GameObject controls;
     public GameObject Sensibilitat;
     public GameObject SliderSensibilitat;
     public GameObject So;
@@ -67,15 +69,31 @@ public void opciones (){
     }
     public void salirPartida (){
         paused = togglePause();
-        FindObjectOfType<ThirdPersonMovement>().isTalkKing();
         Singleton.toggleMenu();
         SceneManager.LoadScene("MenuInici");
     }
     public void salirJuego(){
         Application.Quit();
     }
+    public void manualUsuarioMenuPrincipal(){
+        anterior = 0;
+        menu.SetActive(false);
+        controls.SetActive(true);
+    }
     public void manualUsuario(){
-        Debug.Log ("Controls");
+        anterior = 1;
+        options.SetActive(false);
+        controls.SetActive(true);
+    }
+    public void volverManualUsuario (){
+        if (anterior == 0){
+            menu.SetActive(true);
+            controls.SetActive(false);
+        }
+        else {
+            options.SetActive(true);
+            controls.SetActive(false); 
+        }
     }
     public void volverMenu(){
         ended = true;

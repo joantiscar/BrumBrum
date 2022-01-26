@@ -23,6 +23,12 @@ public class PauseFunctions : MonoBehaviour
     public void manualUsuario(){
         FindObjectOfType<Pause>().manualUsuario();
     }
+    public void manualUsuarioMenuPrincipal(){
+        FindObjectOfType<Pause>().manualUsuarioMenuPrincipal();
+    }
+    public void volverManualUsuario(){
+        FindObjectOfType<Pause>().volverManualUsuario();
+    }
     public void volverMenu(){
         FindObjectOfType<Pause>().volverMenu();
     }
