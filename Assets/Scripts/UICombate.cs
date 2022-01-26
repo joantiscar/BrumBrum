@@ -45,7 +45,8 @@ public class UICombate : MonoBehaviour
         primero.GetComponent<TextMeshPro>().text = SistemaCombate.pjs[0].GetComponent<Character>().nombre;
         GameObject ant = primero;
         int i=1;
-        Sprite enemigo = Resources.Load<Sprite>("UIEnemigoActivo.png");
+        Sprite enemigo = Resources.Load<Sprite>("UIEnemigoActivo");
+        Sprite aliado = Resources.Load<Sprite>("UIAlaidoActivo");
         while(i<SistemaCombate.pjs.Count){
             GameObject go = Instantiate(ant,Turnos.transform);
 
@@ -53,7 +54,8 @@ public class UICombate : MonoBehaviour
             else go.transform.position = new Vector3(ant.transform.position.x,ant.transform.position.y-13.5f,ant.transform.position.z);
             go.GetComponent<TextMeshPro>().text = SistemaCombate.pjs[i].GetComponent<Character>().nombre;
 
-            if(!SistemaCombate.pjs[i].GetComponent<Character>().user_controlled) go.transform.GetChild(0).GetComponent<Image>().sprite = enemigo;
+            if(!SistemaCombate.pjs[i].GetComponent<Character>().user_controlled) go.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = enemigo;
+            else go.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = aliado;
 
             i++;
             ant = go;
@@ -235,7 +237,6 @@ public class UICombate : MonoBehaviour
         cajaDatos.Find("Nombre").GetComponent<Text>().text = c.nombre;
         cajaDatos.Find("HP").GetComponent<Text>().text = c.hp.ToString() + " HP";
         cajaDatos.Find("Nivel").GetComponent<Text>().text = "Lvl "+c.level.ToString();
-        cajaDatos.Find("Estado").GetComponent<Text>().text = "Ningun estado alterado\n (TEXTO DEBUG)";
 
         // Actualiza la barra con el HP
         Slider barra = cajaDatos.Find("Barra").GetComponent<Slider>();
