@@ -79,6 +79,9 @@ public class UICombate : MonoBehaviour
         if(pj.user_controlled){
             habilitarUI(true);
 
+            pjActual = pj;
+
+
             // Cambia las imagenes de la barra de abajo por las del parametro habilidades
             foreach (Image img in imgs)
             {
@@ -87,17 +90,17 @@ public class UICombate : MonoBehaviour
             int i;
             for(i=0;i<habilidades.Count;i++)
             {
-                string nombre = habilidades[i].name;
                 // Usamos el nombre de la habilidad para saber qué imagen usar
                 // EL PATH TIENE QUE ESTAR EN RESOURCES/... PORFA HACEDLE CASO A ESTO SI LO TOCAIS EN ALGUN MOMENTO SANKIU VERY MUCH
-                imgs[i].sprite = Resources.Load<Sprite>(nombre);
+                imgs[i].sprite = Resources.Load<Sprite>(habilidades[i].name);
+                if(pjActual.cooldowns[i]>0) deshabilitaHabilidad(i); // Miramos el cooldown, si es mayor que 0, en gris
+                else imgs[i].material = null;
             }
             while(i<imgs.Length-1){ // ponemos el resto menos la poti transparentes
                 imgs[i].color = transparente;
                 i++;
             }
             _habilidades = habilidades;
-            pjActual = pj;
 
             // Actualiza la barra con el HP
             barraHP.maxValue = (float) pj.hpMax;
@@ -107,6 +110,8 @@ public class UICombate : MonoBehaviour
             // Actualiza el label de PP
             LabelPP.text = pjActual.actPAtaques.ToString();
 
+            // Miramos si tiene potis para ponerlo en gris o no
+            if(Singleton.nPocions()==0) deshabilitaHabilidad(6); 
             
         }
         else{
@@ -229,6 +234,7 @@ public class UICombate : MonoBehaviour
     public void bebePocion(){
         pjActual.pocion();
         pocionLabel.text = Singleton.nPocions().ToString();
+        if(Singleton.nPocions()==0) deshabilitaHabilidad(6);
     }
 
     public void deshabilitaHabilidad(int h){
