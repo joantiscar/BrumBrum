@@ -23,14 +23,14 @@ public class PauseFunctions : MonoBehaviour
     public void manualUsuario(){
         FindObjectOfType<Pause>().manualUsuario();
     }
+    public void manualUsuarioMenuPrincipal(){
+        FindObjectOfType<Pause>().manualUsuarioMenuPrincipal();
+    }
+    public void volverManualUsuario(){
+        FindObjectOfType<Pause>().volverManualUsuario();
+    }
     public void volverMenu(){
         FindObjectOfType<Pause>().volverMenu();
-    }
-    public void senibilidadRaton(){
-        FindObjectOfType<Pause>().senibilidadRaton();
-    }
-    public void nivelSonido(){
-        FindObjectOfType<Pause>().nivelSonido();
     }
     public void senibilidadRatonMenuPausa(){
         FindObjectOfType<Pause>().senibilidadRatonMenuPausa();

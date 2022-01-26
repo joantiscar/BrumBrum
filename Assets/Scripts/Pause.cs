@@ -14,12 +14,12 @@ public class Pause : MonoBehaviour
     bool so = false;
     bool ended = false;
     public bool enCombate = false;
+    int anterior;
     public GameObject menu;
     public GameObject options;
-    public Animator animSensibilitat;
+    public GameObject controls;
     public GameObject Sensibilitat;
     public GameObject SliderSensibilitat;
-    public Animator animSo;
     public GameObject So;
     public GameObject SliderSo;
 
@@ -37,14 +37,12 @@ public class Pause : MonoBehaviour
             if(!enCombate) FindObjectOfType<ThirdPersonMovement>().isTalkKing();
             menu.SetActive(true);
         }
-        if (((sensibilitat || so) && ended) && (Sensibilitat != null || So != null)){
-            if (animSensibilitat.GetCurrentAnimatorStateInfo(0).IsName("Default") && animSo.GetCurrentAnimatorStateInfo(0).IsName("Default")){
+        if ((sensibilitat || so) && ended){
                 sensibilitat = false;
                 so = false;
                 ended = false;
                 menu.SetActive(true);
                 options.SetActive(false);
-            }
         }
     }
 
@@ -71,35 +69,41 @@ public void opciones (){
     }
     public void salirPartida (){
         paused = togglePause();
-        FindObjectOfType<ThirdPersonMovement>().isTalkKing();
         Singleton.toggleMenu();
         SceneManager.LoadScene("MenuInici");
     }
     public void salirJuego(){
         Application.Quit();
     }
+    public void manualUsuarioMenuPrincipal(){
+        anterior = 0;
+        menu.SetActive(false);
+        controls.SetActive(true);
+    }
     public void manualUsuario(){
-        Debug.Log ("Controls");
+        anterior = 1;
+        options.SetActive(false);
+        controls.SetActive(true);
+    }
+    public void volverManualUsuario (){
+        if (anterior == 0){
+            menu.SetActive(true);
+            controls.SetActive(false);
+        }
+        else {
+            options.SetActive(true);
+            controls.SetActive(false); 
+        }
     }
     public void volverMenu(){
         ended = true;
         if (sensibilitat || so){
             if (sensibilitat){
-                if (Sensibilitat == null){
-                    animSensibilitat.SetBool("Iniciat", false);
-                }
-                else{
-                    Sensibilitat.SetActive(false);
-                }
+                Sensibilitat.SetActive(false);
                 SliderSensibilitat.SetActive(true);
             }
             if (so){
-                if (So == null){
-                    animSo.SetBool("Iniciat", false);
-                }
-                else {
-                    So.SetActive(false);
-                }
+                So.SetActive(false);
                 SliderSo.SetActive(false);
             }
         }
@@ -107,18 +111,6 @@ public void opciones (){
             ended = false;
             menu.SetActive(true);
             options.SetActive(false);
-        }
-    }
-    public void senibilidadRaton(){
-        if (!sensibilitat){
-            animSensibilitat.SetBool("Iniciat", true);
-            SliderSensibilitat.SetActive(true);
-            sensibilitat = true;
-        }
-        else {
-            animSensibilitat.SetBool("Iniciat", false);
-            SliderSensibilitat.SetActive(false);
-            sensibilitat = false;
         }
     }
     public void senibilidadRatonMenuPausa(){
@@ -133,18 +125,6 @@ public void opciones (){
             sensibilitat = false;
         }
 
-    }
-    public void nivelSonido(){
-        if (!so){
-            animSo.SetBool("Iniciat", true);
-            SliderSo.SetActive(true);
-            so = true;
-        }
-        else {
-            animSo.SetBool("Iniciat", false);
-            SliderSo.SetActive(false);
-            so = false;
-        }
     }
     public void nivelSonidoMenuPausa(){
         if (!so){
