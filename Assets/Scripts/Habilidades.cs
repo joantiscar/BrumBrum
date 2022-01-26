@@ -32,9 +32,9 @@ public class Habilidades                                                        
     // Guerrero
     public static Habilidad TajoCruzado = new Habilidad("Tajo cruzado", "Ataque perpendicular con dos espadas", "physical", 2, 2, 40, 1.75f);
     public static Habilidad FragorDeLaBatalla = new Habilidad("Fragor de la batalla", "Aprecia la grandiosidad del combate que está por venir y mejora sus estadísticas ofensivas", "none", 2, 2, 0, 0.001f, 0.0f, false, false, false, false);
-    public static Habilidad Remolino = new Habilidad("Remolino", "Beyblade Beyblade!", "physical", 3, 4, 50, 0.001f, 1.75f, true, false, false, false);
+    public static Habilidad Remolino = new Habilidad("Remolino", "Beyblade Beyblade!", "physical", 3, 4, 50, 0.001f, 1.75f, true, false, false);
     public static Habilidad Furia = new Habilidad("Furia", "Entra en furia, aumentando el daño pero disminuyendo las defensas", "none", 4, 2, 0, 0.001f, 0.0f, false, false, false, false);
-    public static Habilidad Masacre = new Habilidad("Masacre", "Ataca a bocajarro a un enemigo hasta quedarse sin energías, inflingiendo muchisimo daño", "none", 4, 8, 200, 1.75f, 0.0f, true, false, false, false);
+    public static Habilidad Masacre = new Habilidad("Masacre", "Ataca a bocajarro a un enemigo hasta quedarse sin energías, inflingiendo muchisimo daño", "none", 4, 8, 200, 1.75f, 0.0f, true, false, false);
 
     // Luchador
     public static Habilidad Punetazo = new Habilidad("Puñetazo", "Ataque con los puños", "physical", 0, 2, 10, 1.3f);
@@ -109,6 +109,8 @@ public class Habilidades                                                        
                     break;
                 case "Aura de protección mágica":
                     objetivoScript.mejorarDefensaEspecial();
+                    break;
+                case "Purificación": // quita estados alterados, bools y turnos
                     break;
                 default:
                         break;

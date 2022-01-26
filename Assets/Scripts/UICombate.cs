@@ -155,6 +155,7 @@ public class UICombate : MonoBehaviour
         selected.SetActive(false);
         pjActual.habilidadSeleccionada = -1;
         habilidadSeleccionada = -1;
+        
     }
 
     public void muestraDescripcion(int pos){
