@@ -40,21 +40,23 @@ public class UICombate : MonoBehaviour
 
     }
 
-    public void muestraOrden(){
-        // Debug.Log(SistemaCombate.pjs.Count);
-        // foreach(var nombre in nombres){
-        //     nombre.text=SistemaCombate.pjs[i].GetComponent<Character>().nombre;
-        //     i++;
-        // }
+    public void muestraOrden(){ // Cambia el orden de turnos segun el dado por sistema de combate
         GameObject primero = nombres[0].gameObject;
         primero.GetComponent<TextMeshPro>().text = SistemaCombate.pjs[0].GetComponent<Character>().nombre;
         GameObject ant = primero;
         int i=1;
+        Sprite enemigo = Resources.Load<Sprite>("UIEnemigoActivo");
+        Sprite aliado = Resources.Load<Sprite>("UIAlaidoActivo");
         while(i<SistemaCombate.pjs.Count){
             GameObject go = Instantiate(ant,Turnos.transform);
+
             if(ant==null)go.transform.position = new Vector3(go.transform.position.x,go.transform.position.y-13.5f,go.transform.position.z);
             else go.transform.position = new Vector3(ant.transform.position.x,ant.transform.position.y-13.5f,ant.transform.position.z);
             go.GetComponent<TextMeshPro>().text = SistemaCombate.pjs[i].GetComponent<Character>().nombre;
+
+            if(!SistemaCombate.pjs[i].GetComponent<Character>().user_controlled) go.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = enemigo;
+            else go.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = aliado;
+
             i++;
             ant = go;
         }
@@ -168,8 +170,8 @@ public class UICombate : MonoBehaviour
             cajaHabilidad.gameObject.SetActive(true);
             cajaHabilidad.Find("Nombre").GetComponent<Text>().text = h.name;
             cajaHabilidad.Find("Dano").GetComponent<Text>().text = h.damage.ToString();
-            if(pos==6) cajaHabilidad.Find("Cooldown").GetComponent<Text>().text = "0";
-            else cajaHabilidad.Find("Cooldown").GetComponent<Text>().text = pjActual.cooldowns[pos].ToString();
+            if(pos==6) cajaHabilidad.Find("Cooldown").GetComponent<Text>().text = "—";
+            else cajaHabilidad.Find("Cooldown").GetComponent<Text>().text = h.cooldown.ToString();
             cajaHabilidad.Find("nCost").GetComponent<Text>().text = h.coste.ToString() + " PP";
             cajaHabilidad.Find("Descripcion").GetComponent<Text>().text = h.description;
             if(h.heals){
@@ -235,7 +237,6 @@ public class UICombate : MonoBehaviour
         cajaDatos.Find("Nombre").GetComponent<Text>().text = c.nombre;
         cajaDatos.Find("HP").GetComponent<Text>().text = c.hp.ToString() + " HP";
         cajaDatos.Find("Nivel").GetComponent<Text>().text = "Lvl "+c.level.ToString();
-        cajaDatos.Find("Estado").GetComponent<Text>().text = "Ningun estado alterado\n (TEXTO DEBUG)";
 
         // Actualiza la barra con el HP
         Slider barra = cajaDatos.Find("Barra").GetComponent<Slider>();

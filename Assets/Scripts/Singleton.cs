@@ -178,6 +178,7 @@ public class Singleton {
             pj0.hpMax = 70;
             pj0.elemental_resistance = "fire";
             pj0.user_controlled = true;
+            pj0.upgrade_points = 5;
 
             // Pala
             pj1.nombre = "Irix";
@@ -191,6 +192,8 @@ public class Singleton {
             pj1.hpMax = 50;
             pj1.elemental_resistance = "physical";
             pj1.user_controlled = true;
+            pj1.upgrade_points = 5;
+
 
             // Mago
             pj2.nombre = "Áine";
@@ -204,6 +207,8 @@ public class Singleton {
             pj2.hpMax = 40;
             pj2.elemental_resistance = "ice";
             pj2.user_controlled = true;
+            pj2.upgrade_points = 5;
+
 
             // Curandero
             pj3.nombre = "Hestia";
@@ -217,6 +222,8 @@ public class Singleton {
             pj3.hpMax = 35;
             pj3.elemental_resistance = "holy";
             pj3.user_controlled = true;
+            pj3.upgrade_points = 5;
+
 
             // Guerrero
             pj4.nombre = "Cyrus";
@@ -230,6 +237,8 @@ public class Singleton {
             pj4.hpMax = 60;
             pj4.elemental_resistance = "physical";
             pj4.user_controlled = true;
+            pj4.upgrade_points = 5;
+
         }
 
         pjs[0] = pj0;
