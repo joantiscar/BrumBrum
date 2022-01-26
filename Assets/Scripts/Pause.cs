@@ -10,9 +10,16 @@ public class Pause : MonoBehaviour
 {
     bool paused = false;
     bool resume = false;
+    bool sensibilitat = false;
+    bool so = false;
+    bool ended = false;
     public bool enCombate = false;
     public GameObject menu;
     public GameObject options;
+    public Animator animSensibilitat;
+    public GameObject SliderSensibilitat;
+    public Animator animSo;
+    public GameObject SliderSo;
 
     void Start(){
         if(menu==null && options==null){
@@ -26,6 +33,15 @@ public class Pause : MonoBehaviour
             Singleton.toggleMenu();
             if(!enCombate) FindObjectOfType<ThirdPersonMovement>().isTalkKing();
             menu.SetActive(true);
+        }
+        if ((sensibilitat || so) && ended){
+            if (animSensibilitat.GetCurrentAnimatorStateInfo(0).IsName("Default") && animSo.GetCurrentAnimatorStateInfo(0).IsName("Default")){
+                sensibilitat = false;
+                so = false;
+                ended = false;
+                menu.SetActive(true);
+                options.SetActive(false);
+            }
         }
     }
 
@@ -60,13 +76,46 @@ public void opciones (){
         Debug.Log ("Controls");
     }
     public void volverMenu(){
-        menu.SetActive(true);
-        options.SetActive(false);
+        ended = true;
+        if (sensibilitat || so){
+            if (sensibilitat){
+                animSensibilitat.SetBool("Iniciat", false);
+                SliderSensibilitat.SetActive(true);
+            }
+            if (so){
+                animSo.SetBool("Iniciat", false);
+                SliderSo.SetActive(false);
+            }
+        }
+        else{
+            ended = false;
+            menu.SetActive(true);
+            options.SetActive(false);
+        }
     }
     public void senibilidadRaton(){
-        Debug.Log ("Desplegar Sensibilitat");
+        if (!sensibilitat){
+            animSensibilitat.SetBool("Iniciat", true);
+            SliderSensibilitat.SetActive(true);
+            sensibilitat = true;
+        }
+        else {
+            animSensibilitat.SetBool("Iniciat", false);
+            SliderSensibilitat.SetActive(false);
+            sensibilitat = false;
+        }
+
     }
     public void nivelSonido(){
-        Debug.Log ("Desplegar Sonido");
+        if (!so){
+            animSo.SetBool("Iniciat", true);
+            SliderSo.SetActive(true);
+            so = true;
+        }
+        else {
+            animSo.SetBool("Iniciat", false);
+            SliderSo.SetActive(false);
+            so = false;
+        }
     }
 }
