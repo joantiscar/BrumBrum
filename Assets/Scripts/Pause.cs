@@ -15,6 +15,7 @@ public class Pause : MonoBehaviour
     bool ended = false;
     public bool enCombate = false;
     int anterior;
+    int _godMode = 0;
     public GameObject menu;
     public GameObject options;
     public GameObject controls;
@@ -54,6 +55,12 @@ public class Pause : MonoBehaviour
         else{
             Time.timeScale = 0f;
             return(true);    
+        }
+    }
+    public void godMode (){
+        _godMode ++;
+        if (_godMode == 9){
+            Singleton.ActivateGodMode();
         }
     }
     public void empezarPartida(){
