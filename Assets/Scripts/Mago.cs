@@ -9,8 +9,7 @@ public class Mago : Clase{
             new Dato(4, Habilidades.ColmilloVenenoso),
             new Dato(6, Habilidades.BolaDeFuego),
             new Dato(8, Habilidades.AreaDeProteccionMagica),
-            new Dato(10, Habilidades.Meteorito),
-        new Dato(0, Habilidades.Pocion)
+            new Dato(10, Habilidades.Meteorito)
         };
     }
 }

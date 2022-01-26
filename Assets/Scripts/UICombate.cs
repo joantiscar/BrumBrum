@@ -28,6 +28,7 @@ public class UICombate : MonoBehaviour
     Character pjActual;
     GameObject pjDatosActual;
     private List<string> missatges = new List<string>();
+    int mensajeHP = 0;
     public SistemaCombate SistemaCombate;
 
     void Awake()
@@ -43,7 +44,7 @@ public class UICombate : MonoBehaviour
         pocionLabel.text = Singleton.nPocions().ToString();
 
 
-        InvokeRepeating("ActualitzarCartell", 0f, 3f);
+        InvokeRepeating("ActualitzarCartell", 0f, 0.5f);
 
     }
 
@@ -52,10 +53,16 @@ public class UICombate : MonoBehaviour
             TextLabel.gameObject.SetActive(false);
             TextBackground.SetActive(false);
         }else {
-            TextLabel.gameObject.SetActive(true);
-            TextBackground.SetActive(true);
-            TextLabel.text = missatges[0];
-            missatges.RemoveAt(0);
+            if(mensajeHP==0){
+                TextLabel.gameObject.SetActive(true);
+                TextBackground.SetActive(true);
+                TextLabel.text = missatges[0];
+                mensajeHP = 4;
+            }
+            else{
+                mensajeHP--;
+                if(mensajeHP==0) missatges.RemoveAt(0);
+            }
         }
     }
 
@@ -85,7 +92,7 @@ public class UICombate : MonoBehaviour
                 // EL PATH TIENE QUE ESTAR EN RESOURCES/... PORFA HACEDLE CASO A ESTO SI LO TOCAIS EN ALGUN MOMENTO SANKIU VERY MUCH
                 imgs[i].sprite = Resources.Load<Sprite>(nombre);
             }
-            while(i<imgs.Length){
+            while(i<imgs.Length-1){ // ponemos el resto menos la poti transparentes
                 imgs[i].color = transparente;
                 i++;
             }
@@ -118,13 +125,19 @@ public class UICombate : MonoBehaviour
 
     public void muestraDescripcion(int pos){
         // Cuando se hace hover sobre una imagen, nos llega la pos en habilidades de la imagen
-        if(pos<_habilidades.Count){
-            habilidadSeleccionada = pos;
-            Habilidad h = _habilidades[pos];
+        if(pos<_habilidades.Count || pos==6){ // 6 es la pocion
+            Habilidad h;
+            if(pos==6){
+                h = Habilidades.Pocion;
+            }else{
+                habilidadSeleccionada = pos;
+                h = _habilidades[pos];
+            }
             cajaHabilidad.gameObject.SetActive(true);
             cajaHabilidad.Find("Nombre").GetComponent<Text>().text = h.name;
             cajaHabilidad.Find("Dano").GetComponent<Text>().text = h.damage.ToString();
-            cajaHabilidad.Find("Cooldown").GetComponent<Text>().text = pjActual.cooldowns[pos].ToString();
+            if(pos==6) cajaHabilidad.Find("Cooldown").GetComponent<Text>().text = "0";
+            else cajaHabilidad.Find("Cooldown").GetComponent<Text>().text = pjActual.cooldowns[pos].ToString();
             cajaHabilidad.Find("nCost").GetComponent<Text>().text = h.coste.ToString() + " PP";
             cajaHabilidad.Find("Descripcion").GetComponent<Text>().text = h.description;
             if(h.heals){
@@ -216,6 +229,10 @@ public class UICombate : MonoBehaviour
     public void bebePocion(){
         pjActual.pocion();
         pocionLabel.text = Singleton.nPocions().ToString();
+    }
+
+    public void deshabilitaHabilidad(int h){
+        imgs[h].material = Resources.Load<Material>("Gray");
     }
 
 }
