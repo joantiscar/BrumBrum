@@ -208,4 +208,8 @@ public class UICombate : MonoBehaviour
         missatges.Add(missatge);
     }
 
+    public void bebePocion(){
+        pjActual.pocion();
+    }
+
 }

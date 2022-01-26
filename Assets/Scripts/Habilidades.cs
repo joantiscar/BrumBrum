@@ -6,7 +6,7 @@ public class Habilidades                                                        
 {                                  
     // Base                                                                                                                             // cooldown coste damage range radius damages heals special targetEnemy
     public static Habilidad AtaqueConEspada = new Habilidad("Ataque con espada", "Ataque con espada", "physical", 0, 2, 10, 1.75f);
-    public static Habilidad Pocion = new Habilidad("Pocion", "Bebe una pocion para recuperar salud", "none", 0, 1, 10, 0.0001f, 0.0f, false, true, true, false);
+    public static Habilidad Pocion = new Habilidad("Pocion", "Bebe una poción para recuperar salud", "none", 0, 1, 10, 0.0001f, 0.0f, false, true, true, false);
 
     // Paladin
     public static Habilidad Proteger = new Habilidad("Proteger", "Prepara su escudo para defenderse de ataques enemigos", "none", 4, 2, 0, 0.001f, 0.0f, false, false, true, false);
