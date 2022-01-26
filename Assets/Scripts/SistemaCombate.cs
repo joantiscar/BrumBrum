@@ -86,10 +86,15 @@ public class SistemaCombate : MonoBehaviour
 
     void cargarProtas(){
         pjs[0].GetComponent<Character>().copy(Singleton.instance().pjs[0]);
+        pjs[0].GetComponent<Character>().id = 1;
         pjs[1].GetComponent<Character>().copy(Singleton.instance().pjs[1]);
+        pjs[1].GetComponent<Character>().id = 2;
         pjs[2].GetComponent<Character>().copy(Singleton.instance().pjs[2]);
+        pjs[2].GetComponent<Character>().id = 3;
         pjs[3].GetComponent<Character>().copy(Singleton.instance().pjs[3]);
+        pjs[3].GetComponent<Character>().id = 4;
         pjs[4].GetComponent<Character>().copy(Singleton.instance().pjs[4]);
+        pjs[4].GetComponent<Character>().id = 5;
     }
 
     public void Empezar(){
@@ -106,6 +111,7 @@ public class SistemaCombate : MonoBehaviour
             pjs[i].GetComponent<Character>().SistemaCombate = this;
             pjs[i].GetComponent<Character>().iniciarEstado();
             pjs[i].GetComponent<Character>().UICombate = this.UICombate;
+            pjs[i].GetComponent<Character>().id = i+1;
 
             Outline o = pjs[i].AddComponent<Outline>();
             o.outlineWidth = 0;
@@ -391,5 +397,21 @@ public class SistemaCombate : MonoBehaviour
             GameObject.FindObjectOfType<SistemaCombate>().victoria = true;
         }
 
+    }
+    
+
+    
+    public void removeCharacter(int id){
+        int i = 0;
+        bool trobat = false;
+        while(!trobat && i < pjs.Count){
+            if (pjs[i].GetComponent<Character>().id == id){
+                Debug.Log("Eliminant a " + pjs[i].GetComponent<Character>().nombre);
+                pjs.RemoveAt(i);
+                trobat = true;
+                
+            }
+            i++;
+        }
     }
 }

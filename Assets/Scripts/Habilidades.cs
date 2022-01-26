@@ -38,11 +38,11 @@ public class Habilidades                                                        
 
     // Luchador
     public static Habilidad Punetazo = new Habilidad("Puñetazo", "Ataque con los puños", "physical", 0, 2, 10, 1.3f);
-    public static Habilidad Partenueces = new Habilidad("Partenueces", "Ataque a las partes del contrincante", "physical", 2, 2, 30, 1.3f, 0.0f, true, false, false, false);
-    public static Habilidad LanzamientoDeRoca = new Habilidad("Lanzamiento de roca", "Lanza una roca enorme hacia un enemigo", "physical", 3, 3, 40, 2.0f, 0.0f, true, false, false, false);
-    public static Habilidad PalmadaSonica = new Habilidad("Palmada sonica", "Da una palmada de fuerza incalculable, emanando potentes ondas de sonido que dañan a los enemigos", "sound", 3, 3, 80, 0.001f, 1.75f, true, false, false, false);
-    public static Habilidad Terremoto = new Habilidad("Terremoto", "Pisa el suelo con toda su fuerza, creando una onda expansiva que daña a los enemigos encima de este", "physical", 4, 4, 50, 1.0f, 2.0f, true, false, false, false);
-    public static Habilidad PunetazoDeUnaPulgada = new Habilidad("Puñetazo de una pulgada", "Lanza un potente puñetazo al pecho del rival, matándolo instantáneamente si no tiene suficiente salud", "none", 4, 8, 200, 1.0f, 0.0f, true, false, false, false);
+    public static Habilidad Partenueces = new Habilidad("Partenueces", "Ataque a las partes del contrincante", "physical", 2, 2, 30, 1.3f, 0.0f, true, false, false, true);
+    public static Habilidad LanzamientoDeRoca = new Habilidad("Lanzamiento de roca", "Lanza una roca enorme hacia un enemigo", "physical", 3, 3, 40, 2.0f, 0.0f, true, false, false, true);
+    public static Habilidad PalmadaSonica = new Habilidad("Palmada sonica", "Da una palmada de fuerza incalculable, emanando potentes ondas de sonido que dañan a los enemigos", "sound", 3, 3, 80, 0.001f, 1.75f, true, false, false, true);
+    public static Habilidad Terremoto = new Habilidad("Terremoto", "Pisa el suelo con toda su fuerza, creando una onda expansiva que daña a los enemigos encima de este", "physical", 4, 4, 50, 1.0f, 2.0f, true, false, false, true);
+    public static Habilidad PunetazoDeUnaPulgada = new Habilidad("Puñetazo de una pulgada", "Lanza un potente puñetazo al pecho del rival, matándolo instantáneamente si no tiene suficiente salud", "none", 4, 8, 200, 1.0f, 0.0f, true, false, false, true);
 
 
 
