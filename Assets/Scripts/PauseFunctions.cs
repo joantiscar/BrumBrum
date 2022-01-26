@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseFunctions : MonoBehaviour
 {
+    public void empezarPartida(){
+        SceneManager.LoadScene("Scene1_Precamping");
+    }
     public void opciones (){
         FindObjectOfType<Pause>().opciones();
     }

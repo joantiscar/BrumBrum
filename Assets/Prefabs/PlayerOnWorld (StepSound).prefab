@@ -1912,7 +1912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 14, z: -12}
+  m_FollowOffset: {x: 0, y: 11.924534, z: -14.049938}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1932,7 +1932,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 52.967842
+    Value: -94.40325
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -2038,7 +2038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 14, z: -12}
+  m_FollowOffset: {x: 0, y: 11.924534, z: -14.049938}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -2058,7 +2058,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 52.967842
+    Value: -94.40325
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -2760,7 +2760,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4603186940095289487}
-  m_LocalRotation: {x: 0.34422144, y: 0.41164976, z: -0.17150189, w: 0.8262223}
+  m_LocalRotation: {x: 0.21084689, y: -0.6975223, z: 0.22770688, w: 0.64587605}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2834,7 +2834,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4603186940287500566}
-  m_LocalRotation: {x: 0.37400672, y: 0.40514827, z: -0.18634182, w: 0.8131732}
+  m_LocalRotation: {x: 0.23416917, y: -0.6887905, z: 0.252894, w: 0.6377908}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3081,8 +3081,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4603186940483596901}
-  m_LocalRotation: {x: 0.3740067, y: 0.40514824, z: -0.18634182, w: 0.8131732}
-  m_LocalPosition: {x: -9.579571, y: 18, z: -7.2271576}
+  m_LocalRotation: {x: 0.23035635, y: -0.6902884, z: 0.24877632, w: 0.6391778}
+  m_LocalPosition: {x: 14.008469, y: 15.924534, z: 1.0786896}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4603186941545397572}
@@ -3199,7 +3199,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4603186940795462422}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.579571, y: 18, z: -7.2271576}
+  m_LocalPosition: {x: 14.008469, y: 15.924534, z: 1.0786896}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4603186940287500560}
@@ -3244,7 +3244,7 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_YAxis:
-    Value: 1
+    Value: 0.8358573
     m_SpeedMode: 0
     m_MaxSpeed: 4
     m_AccelTime: 0.1
@@ -3268,7 +3268,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 52.967842
+    Value: -94.40325
     m_SpeedMode: 0
     m_MaxSpeed: 450
     m_AccelTime: 0.1
@@ -3427,7 +3427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 14, z: -12}
+  m_FollowOffset: {x: 0, y: 11.924534, z: -14.049938}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -3447,7 +3447,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 52.967842
+    Value: -94.40325
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -3519,7 +3519,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4603186941209880045}
-  m_LocalRotation: {x: 0.35915363, y: 0.40847075, z: -0.17894161, w: 0.8198416}
+  m_LocalRotation: {x: 0.22252932, y: -0.6932765, z: 0.24032345, w: 0.6419447}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5235,6 +5235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4211357809480855820}
   - component: {fileID: 6841847318847077996}
+  - component: {fileID: 3276575682517443714}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -5315,6 +5316,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3276575682517443714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6358741806360329879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e41d9438358e8c4da7103a7ca9f3fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: 8c460bb55d0c64d43bd63af8632f46ff, type: 2}
+  slider: {fileID: 6841847318847077996}
 --- !u!1 &6420933013918637180
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class Singleton {
     public Character[] pjs;
     public int pocions = 10;
     public static bool enCombate = false;
+    public float _volume = 1;
 
     private GameObject guarrada0 = new GameObject();
     private GameObject guarrada1 = new GameObject();
@@ -49,7 +50,18 @@ public class Singleton {
             instance().pjs[i].take_xp(n);
         }
     }
-    
+
+    public static void setVolume(float v)
+    {
+        instance()._volume = v;
+    }
+
+    public static float volume()
+    {
+        return instance()._volume;
+    }
+
+
     public void iniciarPjs(){
         pjs = new Character[5];
 

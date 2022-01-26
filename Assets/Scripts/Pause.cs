@@ -67,6 +67,9 @@ public void opciones (){
         Singleton.toggleMenu();
     }
     public void salirPartida (){
+        paused = togglePause();
+        FindObjectOfType<ThirdPersonMovement>().isTalkKing();
+        Singleton.toggleMenu();
         SceneManager.LoadScene("MenuInici");
     }
     public void salirJuego(){
