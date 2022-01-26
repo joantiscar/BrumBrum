@@ -170,7 +170,7 @@ public class Singleton {
     }
 
     public static void reset(){
-        iniciarPjs();
+        instance().iniciarPjs();
         instance().pocions = 10;
     }
 }
