@@ -631,6 +631,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Combate
       objectReference: {fileID: 0}
+    - target: {fileID: 5409459656640738962, guid: 53fca93cae81a1b40bf90f294930dd18, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5409459656640738963, guid: 53fca93cae81a1b40bf90f294930dd18, type: 3}
       propertyPath: m_RootOrder
       value: 3
