@@ -261,7 +261,6 @@ public class SistemaCombate : MonoBehaviour
                                 if (Input.GetKeyDown(i.ToString())){
                                     UICombate.seleccionarHabilidad(i-1);
                                     
-
                                 }
                             }
                         }
