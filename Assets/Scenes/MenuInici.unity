@@ -1852,7 +1852,7 @@ MonoBehaviour:
   animSensibilitat: {fileID: 420437944}
   SliderSensibilitat: {fileID: 706628614}
   animSo: {fileID: 1621625742}
-  SliderSo: {fileID: 0}
+  SliderSo: {fileID: 1281323645}
 --- !u!1 &1120745242
 GameObject:
   m_ObjectHideFlags: 0
