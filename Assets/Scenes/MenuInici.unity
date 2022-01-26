@@ -1187,7 +1187,7 @@ RectTransform:
   m_GameObject: {fileID: 706628614}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 2133032766}
   - {fileID: 2132300372}
@@ -1197,8 +1197,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 20}
+  m_AnchoredPosition: {x: 8, y: 0}
+  m_SizeDelta: {x: 150, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &706628616
 Animator:
@@ -1851,8 +1851,10 @@ MonoBehaviour:
   menu: {fileID: 420484601}
   options: {fileID: 252291998}
   animSensibilitat: {fileID: 420437944}
+  Sensibilitat: {fileID: 0}
   SliderSensibilitat: {fileID: 706628614}
   animSo: {fileID: 1621625742}
+  So: {fileID: 0}
   SliderSo: {fileID: 1281323645}
 --- !u!82 &1020005441
 AudioSource:
@@ -2321,7 +2323,7 @@ RectTransform:
   m_GameObject: {fileID: 1281323645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 53602035}
   - {fileID: 1441122841}
@@ -2331,8 +2333,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 20}
+  m_AnchoredPosition: {x: -8, y: 0}
+  m_SizeDelta: {x: 150, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1281323647
 MonoBehaviour:
