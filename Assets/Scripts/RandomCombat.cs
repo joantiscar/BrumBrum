@@ -140,6 +140,7 @@ public class RandomCombat : MonoBehaviour
 
     public void ExitCombat()
     {
+        FindObjectOfType<CameraSwitch>().isCameraOnGoing();
         inCombat = false;
         Singleton.enCombate = false;
 
