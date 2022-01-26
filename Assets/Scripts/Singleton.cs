@@ -87,6 +87,7 @@ public class Singleton {
 
     public void iniciarPjs(){
         pjs = new Character[5];
+
         guarrada0.AddComponent<Character>();
         Character pj0 = guarrada0.GetComponent<Character>();
         guarrada1.AddComponent<Character>();
