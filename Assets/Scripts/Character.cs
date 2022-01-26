@@ -512,6 +512,8 @@ public class Character : MonoBehaviour
             Habilidades.lanzar(this, this, Habilidades.Pocion);
             UICombate.mostrarMissatge("Poción usada");
             actPAtaques--;
+            UICombate.actualizaPP();
+            Singleton.restarPocio();
         }
     }
 

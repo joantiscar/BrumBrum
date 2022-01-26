@@ -19,6 +19,7 @@ public class UICombate : MonoBehaviour
     public Slider barraHP;
     public Text LabelPP;
     public TextMeshPro TextLabel;
+    public TextMeshPro pocionLabel;
     public GameObject TextBackground;
 
     public GameObject selected; // El cuadrito que muestra el seleccionado
@@ -38,8 +39,9 @@ public class UICombate : MonoBehaviour
     void Start(){
         cajaDatos.gameObject.SetActive(false);
         cajaHabilidad.gameObject.SetActive(false);
-        // LabelPP.text = pjActual.actPAtaques.ToString();
         TextLabel.text = "";
+        pocionLabel.text = Singleton.nPocions().ToString();
+
 
         InvokeRepeating("ActualitzarCartell", 0f, 3f);
 
@@ -210,6 +212,7 @@ public class UICombate : MonoBehaviour
 
     public void bebePocion(){
         pjActual.pocion();
+        pocionLabel.text = Singleton.nPocions().ToString();
     }
 
 }
