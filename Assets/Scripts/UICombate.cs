@@ -21,6 +21,8 @@ public class UICombate : MonoBehaviour
     public TextMeshPro TextLabel;
     public TextMeshPro pocionLabel;
     public GameObject TextBackground;
+    public GameObject Turnos;
+    private TextMeshPro[] nombres;
 
     public GameObject selected; // El cuadrito que muestra el seleccionado
 
@@ -34,6 +36,7 @@ public class UICombate : MonoBehaviour
     void Awake()
     {
         imgs = GetComponentsInChildren<Image>();
+        nombres = Turnos.GetComponentsInChildren<TextMeshPro>();
 
     }
 
@@ -45,6 +48,22 @@ public class UICombate : MonoBehaviour
 
 
         InvokeRepeating("ActualitzarCartell", 0f, 0.5f);
+
+        int i=0;
+        foreach(var nombre in nombres){
+            nombre.text=SistemaCombate.pjs[i].GetComponent<Character>().nombre;
+            i++;
+        }
+        GameObject ultimo = nombres[nombres.Length-1].gameObject;
+        GameObject ant = null;
+        while(i<SistemaCombate.pjs.Count){
+            GameObject go = Instantiate(ultimo,Turnos.transform);
+            if(ant==null)go.transform.position = new Vector3(go.transform.position.x,go.transform.position.y-10,go.transform.position.z);
+            else go.transform.position = new Vector3(ant.transform.position.x,ant.transform.position.y-10,ant.transform.position.z);
+            go.GetComponent<TextMeshPro>().text = SistemaCombate.pjs[i].GetComponent<Character>().nombre;
+            i++;
+            ant = go;
+        }
 
     }
 
