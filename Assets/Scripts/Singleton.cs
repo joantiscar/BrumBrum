@@ -101,6 +101,7 @@ public class Singleton {
         pj0.hpMax = 70;
         pj0.elemental_resistance = "fire";
         pj0.user_controlled = true;
+        pj0.upgrade_points = 5;
 
         // Pala
         guarrada1.AddComponent<Character>();
