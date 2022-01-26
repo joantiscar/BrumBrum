@@ -88,6 +88,7 @@ public class UICombate : MonoBehaviour
                 img.color = opaco;
                 img.transform.GetChild(0).gameObject.SetActive(false);
             }
+            imgs[6].transform.GetChild(0).gameObject.SetActive(true);
             int i;
             for(i=0;i<habilidades.Count;i++)
             {
@@ -96,8 +97,7 @@ public class UICombate : MonoBehaviour
                 imgs[i].sprite = Resources.Load<Sprite>(habilidades[i].name);
                 if(pjActual.cooldowns[i]>0){
                     deshabilitaHabilidad(i); // Miramos el cooldown, si es mayor que 0, en gris
-                    
-
+                
                 }
                 else imgs[i].material = null;
             }

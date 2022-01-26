@@ -43,7 +43,10 @@ public class SistemaCombate : MonoBehaviour
         if(pjActualPersonaje.user_controlled){
             UICombate.FinalizaTurno();
             pjActualPersonaje.TerminaTurno();
+            destruirCirculoArea();
             deshabilitarTodosOutline();
+            ultimoMirado=null;
+            apuntando=false;
         }
         ordenActual++;
         if (ordenActual >= pjs.Count){
@@ -80,6 +83,7 @@ public class SistemaCombate : MonoBehaviour
     public bool enRango(GameObject caster, GameObject objetivo, Habilidad h){
         float distancia = Vector3.Distance(caster.transform.position, objetivo.transform.position);
         float radio = objetivo.GetComponentInChildren<CapsuleCollider>().radius; // Lo tenemos en cuenta por si acasito el modelo queda dentro pero la posicion no
+        if(distancia<radio) return distancia <= h.range;
         return distancia-radio <= h.range;// && distancia+radio >= h.range;
     }
 
@@ -301,14 +305,15 @@ public class SistemaCombate : MonoBehaviour
                                             
                                             // Miramos que el objetivo del ray y el ultimo objetivo mirado no sean el mismo para ir más rápido
                                             if(objetivo!=lastOutline){
+                                                deshabilitarOutline(lastOutline);
+
                                                 lastOutline = objetivo;
                                                 highlightPersonaje(h,lastOutline);
                                             }
                                     }
-                                    else if(lastOutline!=null){
+                                    else{
                                         deshabilitarOutline(lastOutline);
                                         lastOutline = null;
-
                                     }
                                 }
                                 else{
@@ -344,10 +349,6 @@ public class SistemaCombate : MonoBehaviour
                         ultimoMirado = null;
 
                     }
-
-
-                    
-
                 }
 
                 // Miramos si ha llegado a su destino dandole un poco de margen para que no se quede atascau siempre
