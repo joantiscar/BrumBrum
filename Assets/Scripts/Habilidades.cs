@@ -5,29 +5,29 @@ using UnityEngine;
 public class Habilidades                                                                                                                                    // 0  true    false  false    true
 {                                  
     // Base                                                                                                                             // cooldown coste damage range radius damages heals special targetEnemy
-    public static Habilidad AtaqueConEspada = new Habilidad("Ataque con espada", "Ataque con espada", "physical", 0, 2, 10, 1.75f);
+    public static Habilidad AtaqueConEspada = new Habilidad("Ataque con espada", "Ataque con espada", "physical", 0, 2, 10, 8.0f);
     public static Habilidad Pocion = new Habilidad("Pocion", "Bebe una poción para recuperar salud", "none", 0, 1, 10, 0.0001f, 0.0f, false, true, true, false);
 
     // Paladin
     public static Habilidad Proteger = new Habilidad("Proteger", "Prepara su escudo para defenderse de ataques enemigos", "none", 4, 2, 0, 0.001f, 0.0f, false, false, true, false);
     public static Habilidad Rezar = new Habilidad("Rezar", "Realiza una plegaria para recuperar salud", "none", 3, 2, 40, 0.0001f, 0.0f, false, true, true, false);
-    public static Habilidad Devocion = new Habilidad("Devoción", "Reza a su dios para mejorar las estadísticas de un aliado", "none", 4, 2, 0, 1.0f, 0.0f, false, false, false, false);
-    public static Habilidad GolpeDeEscudo = new Habilidad("Golpe de escudo", "Golpea a un enemigo con su escudo para aturdirlo", "physical", 3, 3, 10, 1.75f);
-    public static Habilidad CastigoDivino = new Habilidad("Castigo divino", "Canaliza la energía de su divinidad en su arma para hacer arder a sus enemigos", "physical", 4, 4, 80, 1.75f);
+    public static Habilidad Devocion = new Habilidad("Devoción", "Reza a su dios para mejorar las estadísticas de un aliado", "none", 4, 2, 0, 15.0f, 0.0f, false, false, false, false);
+    public static Habilidad GolpeDeEscudo = new Habilidad("Golpe de escudo", "Golpea a un enemigo con su escudo para aturdirlo", "physical", 3, 3, 10, 10f);
+    public static Habilidad CastigoDivino = new Habilidad("Castigo divino", "Canaliza la energía de su divinidad en su arma para hacer arder a sus enemigos", "physical", 4, 4, 80, 15f);
     
     // Mago                                                                                         
-    public static Habilidad BolaDeFuego = new Habilidad("Bola de fuego", "Lanza una bola de fuego hacia su oponente", "fire", 4, 4, 20, 3f, 0.75f, true, false, true);
-    public static Habilidad EsquirlaDeHielo = new Habilidad("Esquirla de hielo", "Lanza una esquirla de hielo hacia su oponente", "ice", 2, 2, 10, 3.5f, 0.0f, true, false, true);
-    public static Habilidad ColmilloVenenoso = new Habilidad("Colmillo venenoso", "Lanza un proyectil venenoso hacia su oponente", "poison", 2, 2 , 10, 3.0f, 0.0f);
-    public static Habilidad AreaDeProteccionMagica = new Habilidad("Aura de protección mágica", "Mejora la defensa especial de todos los aliados en un área", "none", 4, 2, 0, 5.0f, 3.5f, false, false, false, false);
-    public static Habilidad Meteorito = new Habilidad("Meteorito", "Hace que caiga un meteorito del cielo sobre sus rivales", "fire", 6, 4, 100, 3.0f, 1.75f, true, false, true);
+    public static Habilidad BolaDeFuego = new Habilidad("Bola de fuego", "Lanza una bola de fuego hacia su oponente", "fire", 4, 4, 20, 15f, 3f, true, false, true);
+    public static Habilidad EsquirlaDeHielo = new Habilidad("Esquirla de hielo", "Lanza una esquirla de hielo hacia su oponente", "ice", 2, 2, 10, 20f, 0.0f, true, false, true);
+    public static Habilidad ColmilloVenenoso = new Habilidad("Colmillo venenoso", "Lanza un proyectil venenoso hacia su oponente", "poison", 2, 2 , 10, 15.0f, 0.0f);
+    public static Habilidad AreaDeProteccionMagica = new Habilidad("Aura de protección mágica", "Mejora la defensa especial de todos los aliados en un área", "none", 4, 2, 0, 15f, 4f, false, false, false, false);
+    public static Habilidad Meteorito = new Habilidad("Meteorito", "Hace que caiga un meteorito del cielo sobre sus rivales", "fire", 6, 4, 100, 10f, 4f, true, false, true);
 
     // Curandero
-    public static Habilidad Curacion = new Habilidad("Curación", "Canaliza energía divina para sanar a un aliado", "none", 2, 2 , 30, 2.15f, 0.0f, false, true, true, false);
-    public static Habilidad Purificacion = new Habilidad("Purificación", "Elimina los estados alterados de un aliado", "none", 3, 2 , 0, 2.15f, 0.0f, false, false, false,false);
-    public static Habilidad Bendicion = new Habilidad("Bendición", "Da a un aliado la bendición de los dioses, mejorando todas sus estadísticas", "none", 3, 2 , 0, 2.15f, 0.0f, false, false, false, false);
-    public static Habilidad AuraDeCuracion = new Habilidad("Aura de curación", "Canaliza energía divina para sanar a todos los aliados en un área", "none", 3, 4 , 20, 1.75f, 1.75f, false, true, true, false);
-    public static Habilidad Renacer = new Habilidad("Renacer", "Provoca el renacimiento de un aliado, devolviendo asi su salud al maximo y curando todos sus estados alterados", "none", 4, 8 , 999999, 1.75f, 0.0f, false, true, true, false);
+    public static Habilidad Curacion = new Habilidad("Curación", "Canaliza energía divina para sanar a un aliado", "none", 2, 2 , 30, 20f, 0.0f, false, true, true, false);
+    public static Habilidad Purificacion = new Habilidad("Purificación", "Elimina los estados alterados de un aliado", "none", 3, 2 , 0, 20f, 0.0f, false, false, false,false);
+    public static Habilidad Bendicion = new Habilidad("Bendición", "Da a un aliado la bendición de los dioses, mejorando todas sus estadísticas", "none", 3, 2 , 0, 20f, 0.0f, false, false, false, false);
+    public static Habilidad AuraDeCuracion = new Habilidad("Aura de curación", "Canaliza energía divina para sanar a todos los aliados en un área", "none", 3, 4 , 20, 15f, 4f, false, true, true, false);
+    public static Habilidad Renacer = new Habilidad("Renacer", "Provoca el renacimiento de un aliado, devolviendo asi su salud al maximo y curando todos sus estados alterados", "none", 4, 8 , 999999, 10f, 0.0f, false, true, true, false);
 
     // Guerrero
     public static Habilidad TajoCruzado = new Habilidad("Tajo cruzado", "Ataque perpendicular con dos espadas", "physical", 2, 2, 40, 1.75f);
