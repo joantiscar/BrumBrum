@@ -30,19 +30,19 @@ public class Habilidades                                                        
     public static Habilidad Renacer = new Habilidad("Renacer", "Provoca el renacimiento de un aliado, devolviendo asi su salud al maximo y curando todos sus estados alterados", "none", 4, 8 , 999999, 10f, 0.0f, false, true, true, false);
 
     // Guerrero
-    public static Habilidad TajoCruzado = new Habilidad("Tajo cruzado", "Ataque perpendicular con dos espadas", "physical", 2, 2, 40, 1.75f);
+    public static Habilidad TajoCruzado = new Habilidad("Tajo cruzado", "Ataque perpendicular con dos espadas", "physical", 2, 2, 40, 10f);
     public static Habilidad FragorDeLaBatalla = new Habilidad("Fragor de la batalla", "Aprecia la grandiosidad del combate que está por venir y mejora sus estadísticas ofensivas", "none", 2, 2, 0, 0.001f, 0.0f, false, false, false, false);
-    public static Habilidad Remolino = new Habilidad("Remolino", "Beyblade Beyblade!", "physical", 3, 4, 50, 0.001f, 1.75f, true, false, false, false);
+    public static Habilidad Remolino = new Habilidad("Remolino", "Beyblade Beyblade!", "physical", 3, 4, 50, 12f, 4f, true, false, false, false);
     public static Habilidad Furia = new Habilidad("Furia", "Entra en furia, aumentando el daño pero disminuyendo las defensas", "none", 4, 2, 0, 0.001f, 0.0f, false, false, false, false);
-    public static Habilidad Masacre = new Habilidad("Masacre", "Ataca a bocajarro a un enemigo hasta quedarse sin energías, inflingiendo muchisimo daño", "none", 4, 8, 200, 1.75f, 0.0f, true, false, false, false);
+    public static Habilidad Masacre = new Habilidad("Masacre", "Ataca a bocajarro a un enemigo hasta quedarse sin energías, inflingiendo muchisimo daño", "none", 4, 8, 200, 6f, 0.0f, true, false, false, false);
 
     // Luchador
-    public static Habilidad Punetazo = new Habilidad("Puñetazo", "Ataque con los puños", "physical", 0, 2, 10, 1.3f);
-    public static Habilidad Partenueces = new Habilidad("Partenueces", "Ataque a las partes del contrincante", "physical", 2, 2, 30, 1.3f, 0.0f, true, false, false, true);
-    public static Habilidad LanzamientoDeRoca = new Habilidad("Lanzamiento de roca", "Lanza una roca enorme hacia un enemigo", "physical", 3, 3, 40, 2.0f, 0.0f, true, false, false, true);
-    public static Habilidad PalmadaSonica = new Habilidad("Palmada sonica", "Da una palmada de fuerza incalculable, emanando potentes ondas de sonido que dañan a los enemigos", "sound", 3, 3, 80, 0.001f, 1.75f, true, false, false, true);
-    public static Habilidad Terremoto = new Habilidad("Terremoto", "Pisa el suelo con toda su fuerza, creando una onda expansiva que daña a los enemigos encima de este", "physical", 4, 4, 50, 1.0f, 2.0f, true, false, false, true);
-    public static Habilidad PunetazoDeUnaPulgada = new Habilidad("Puñetazo de una pulgada", "Lanza un potente puñetazo al pecho del rival, matándolo instantáneamente si no tiene suficiente salud", "none", 4, 8, 200, 1.0f, 0.0f, true, false, false, true);
+    public static Habilidad Punetazo = new Habilidad("Puñetazo", "Ataque con los puños", "physical", 0, 2, 10, 8f);
+    public static Habilidad Partenueces = new Habilidad("Partenueces", "Ataque a las partes del contrincante", "physical", 2, 2, 30, 8f, 0.0f, true, false, false, true);
+    public static Habilidad LanzamientoDeRoca = new Habilidad("Lanzamiento de roca", "Lanza una roca enorme hacia un enemigo", "physical", 3, 3, 40, 15f, 0.0f, true, false, false, true);
+    public static Habilidad PalmadaSonica = new Habilidad("Palmada sonica", "Da una palmada de fuerza incalculable, emanando potentes ondas de sonido que dañan a los enemigos", "sound", 3, 3, 80, 2f, 8f, true, false, false, true);
+    public static Habilidad Terremoto = new Habilidad("Terremoto", "Pisa el suelo con toda su fuerza, creando una onda expansiva que daña a los enemigos encima de este", "physical", 4, 4, 50, 2.0f, 10f, true, false, false, true);
+    public static Habilidad PunetazoDeUnaPulgada = new Habilidad("Puñetazo de una pulgada", "Lanza un potente puñetazo al pecho del rival, matándolo instantáneamente si no tiene suficiente salud", "none", 4, 8, 200, 7.0f, 0.0f, true, false, false, true);
 
 
 
