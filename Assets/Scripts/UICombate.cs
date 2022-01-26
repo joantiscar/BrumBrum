@@ -86,6 +86,7 @@ public class UICombate : MonoBehaviour
             foreach (Image img in imgs)
             {
                 img.color = opaco;
+                img.transform.GetChild(0).gameObject.SetActive(false);
             }
             int i;
             for(i=0;i<habilidades.Count;i++)
@@ -93,7 +94,11 @@ public class UICombate : MonoBehaviour
                 // Usamos el nombre de la habilidad para saber qué imagen usar
                 // EL PATH TIENE QUE ESTAR EN RESOURCES/... PORFA HACEDLE CASO A ESTO SI LO TOCAIS EN ALGUN MOMENTO SANKIU VERY MUCH
                 imgs[i].sprite = Resources.Load<Sprite>(habilidades[i].name);
-                if(pjActual.cooldowns[i]>0) deshabilitaHabilidad(i); // Miramos el cooldown, si es mayor que 0, en gris
+                if(pjActual.cooldowns[i]>0){
+                    deshabilitaHabilidad(i); // Miramos el cooldown, si es mayor que 0, en gris
+                    
+
+                }
                 else imgs[i].material = null;
             }
             while(i<imgs.Length-1){ // ponemos el resto menos la poti transparentes
@@ -239,6 +244,8 @@ public class UICombate : MonoBehaviour
 
     public void deshabilitaHabilidad(int h){
         imgs[h].material = Resources.Load<Material>("Gray");
+        imgs[h].transform.GetChild(0).gameObject.SetActive(true);
+        imgs[h].transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = pjActual.cooldowns[h].ToString();
     }
 
 }
