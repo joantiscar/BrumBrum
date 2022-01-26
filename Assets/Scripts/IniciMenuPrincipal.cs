@@ -16,6 +16,10 @@ public class IniciMenuPrincipal : MonoBehaviour
     bool acabat = true;
 
     // Update is called once per frame
+    void Start()
+    {
+        inici.SetBool("Iniciar", true);
+    }
     void Update()
     {
         if(inici.GetCurrentAnimatorStateInfo(0).IsName("Ended") && _inici){
