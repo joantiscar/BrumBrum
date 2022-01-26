@@ -258,8 +258,8 @@ public class SistemaCombate : MonoBehaviour
                             destruirCirculoArea();
                         }
                         else if (Input.GetKeyDown("q") && Singleton.instance().pocions > 0){
-                            pjActualPersonaje.pocion();
-                            UICombate.actualizaPP();
+                            UICombate.bebePocion();
+                            
                         }
                         else{
                             // Vamos mirando las teclas de 1 a n habilidades para seleccionar una habilidad

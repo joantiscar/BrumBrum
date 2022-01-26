@@ -551,7 +551,10 @@ public class Character : MonoBehaviour
             UICombate.mostrarMissatge(this.nombre + " lanzó " + habilidad.name);
             // Restamos los puntos que se usan
             actPAtaques -= habilidad.coste;
-            if(user_controlled)UICombate.actualizaPP();
+            if(user_controlled){
+                UICombate.actualizaPP();
+                UICombate.deshabilitaHabilidad(habilidadSeleccionada);
+            }
 
         }
         

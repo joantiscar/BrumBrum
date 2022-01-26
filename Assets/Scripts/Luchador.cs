@@ -9,8 +9,7 @@ public class Luchador : Clase{
         new Dato(4, Habilidades.LanzamientoDeRoca),
         new Dato(6, Habilidades.PalmadaSonica),
         new Dato(8, Habilidades.Terremoto),
-        new Dato(10, Habilidades.PunetazoDeUnaPulgada),
-        new Dato(0, Habilidades.Pocion)
+        new Dato(10, Habilidades.PunetazoDeUnaPulgada)
         };
     }
 }

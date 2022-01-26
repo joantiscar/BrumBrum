@@ -9,8 +9,7 @@ public class Guerrero : Clase{
         new Dato(4, Habilidades.FragorDeLaBatalla),
         new Dato(6, Habilidades.Remolino),
         new Dato(8, Habilidades.Furia),
-        new Dato(10, Habilidades.Masacre),
-        new Dato(0, Habilidades.Pocion)
+        new Dato(10, Habilidades.Masacre)
         };
     }
 }

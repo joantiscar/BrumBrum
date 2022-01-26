@@ -9,8 +9,7 @@ public class Paladin : Clase{
         new Dato(4, Habilidades.Rezar),
         new Dato(6, Habilidades.Devocion),
         new Dato(8, Habilidades.GolpeDeEscudo),
-        new Dato(10, Habilidades.CastigoDivino),
-        new Dato(0, Habilidades.Pocion)
+        new Dato(10, Habilidades.CastigoDivino)
         };
     }
 }
