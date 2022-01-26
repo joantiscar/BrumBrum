@@ -87,23 +87,9 @@ public class Singleton {
 
     public void iniciarPjs(){
         pjs = new Character[5];
+
         guarrada0.AddComponent<Character>();
         Character pj0 = guarrada0.GetComponent<Character>();
-        pj0.nombre = "Herc";
-        pj0.className = "Luchador";
-        pj0.level = 10;
-        pj0.attack = 20;
-        pj0.special_attack = 5;
-        pj0.defense = 20;
-        pj0.special_defense = 5;
-        pj0.velocity = 5;
-        pj0.hpMax = 70;
-        pj0.elemental_resistance = "fire";
-        pj0.user_controlled = true;
-        pj0.upgrade_points = 5;
-
-        // Pala
-
         guarrada1.AddComponent<Character>();
         Character pj1 = guarrada1.GetComponent<Character>();
         guarrada2.AddComponent<Character>();
