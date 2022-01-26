@@ -7,20 +7,21 @@ using TMPro;
 public class LevelupPanel : MonoBehaviour
 {
 
-    public TextMeshPro puntsText;
-    public TextMeshPro hp;
-    public TextMeshPro att;
-    public TextMeshPro def;
-    public TextMeshPro spAtt;
-    public TextMeshPro spDef;
-    public TextMeshPro vel;
-    public TextMeshPro nomActual;
-    public TextMeshPro newHp;
-    public TextMeshPro newAtt;
-    public TextMeshPro newDef;
-    public TextMeshPro newSpAtt;
-    public TextMeshPro newSpDef;
-    public TextMeshPro newVel;
+    public GameObject panel;
+    public TextMeshProUGUI puntsText;
+    public TextMeshProUGUI hp;
+    public TextMeshProUGUI att;
+    public TextMeshProUGUI def;
+    public TextMeshProUGUI spAtt;
+    public TextMeshProUGUI spDef;
+    public TextMeshProUGUI vel;
+    public TextMeshProUGUI nomActual;
+    public TextMeshProUGUI newHp;
+    public TextMeshProUGUI newAtt;
+    public TextMeshProUGUI newDef;
+    public TextMeshProUGUI newSpAtt;
+    public TextMeshProUGUI newSpDef;
+    public TextMeshProUGUI newVel;
     public Button nextButton;
     public Button prevButton;
     public Button upgradeHp;
@@ -35,7 +36,7 @@ public class LevelupPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.gameObject.SetActive(true);
+        panel.SetActive(false);
     }
 
     public void pre(){
@@ -47,40 +48,49 @@ public class LevelupPanel : MonoBehaviour
         if (nPjActual > 4) nPjActual = 0;
     }
 
-
+    public void close(){
+        Singleton.setLevelupMenu(false);
+    }
 
     // Update is called once per frame
     void Update()
     {
-        // pjActual = Singleton.instance().pjs[nPjActual];
-        // puntsText.text = "Puntos actuales: " + pjActual.upgrade_points.ToString();
-        // hp.text = "HP: " + pjActual.hpMax.ToString();
-        // newHp.text = (pjActual.hpMax + 5).ToString();
-        // att.text = "Ataque: " + pjActual.attack.ToString();
-        // newAtt.text = (pjActual.attack + 1).ToString();
-        // spAtt.text = "Ataque esp: " + pjActual.special_attack.ToString();
-        // newSpAtt.text = (pjActual.special_attack + 1).ToString();
-        // def.text = "Defensa: " + pjActual.defense.ToString();
-        // newDef.text = (pjActual.defense + 1).ToString();
-        // spDef.text = "Defensa esp: " + pjActual.special_defense.ToString();
-        // newSpDef.text = (pjActual.special_defense + 1).ToString();
-        // vel.text = "Velocidad: " + pjActual.velocity.ToString();
-        // newVel.text = (pjActual.velocity + 1).ToString();
-        // nomActual.text = pjActual.nombre.ToString();
+        Debug.Log(nPjActual);
+        if (Input.GetKeyDown("c") && !Singleton.menu() && !Singleton.enCombate ){
+            Singleton.setLevelupMenu(!Singleton.LevelupPanel());
+        }
+
+
+        panel.SetActive(Singleton.LevelupPanel());
+        pjActual = Singleton.instance().pjs[nPjActual];
+        puntsText.text = "Puntos actuales: " + pjActual.upgrade_points.ToString();
+        hp.text = "HP: " + pjActual.hpMax.ToString();
+        newHp.text = (pjActual.hpMax + 5).ToString();
+        att.text = "Ataque: " + pjActual.attack.ToString();
+        newAtt.text = (pjActual.attack + 1).ToString();
+        spAtt.text = "Ataque esp: " + pjActual.special_attack.ToString();
+        newSpAtt.text = (pjActual.special_attack + 1).ToString();
+        def.text = "Defensa: " + pjActual.defense.ToString();
+        newDef.text = (pjActual.defense + 1).ToString();
+        spDef.text = "Defensa esp: " + pjActual.special_defense.ToString();
+        newSpDef.text = (pjActual.special_defense + 1).ToString();
+        vel.text = "Velocidad: " + pjActual.velocity.ToString();
+        newVel.text = (pjActual.velocity + 1).ToString();
+        nomActual.text = pjActual.nombre.ToString();
 
       
-        // newHp.gameObject.SetActive(pjActual.upgrade_points > 0);
-        // newAtt.gameObject.SetActive(pjActual.upgrade_points > 0);
-        // newDef.gameObject.SetActive(pjActual.upgrade_points > 0);
-        // newSpAtt.gameObject.SetActive(pjActual.upgrade_points > 0);
-        // newSpDef.gameObject.SetActive(pjActual.upgrade_points > 0);
-        // newVel.gameObject.SetActive(pjActual.upgrade_points > 0);
-        // upgradeHp.gameObject.SetActive(pjActual.upgrade_points > 0);
-        // upgradeAtt.gameObject.SetActive(pjActual.upgrade_points > 0);
-        // upgradeDef.gameObject.SetActive(pjActual.upgrade_points > 0);
-        // upgradeSpAtt.gameObject.SetActive(pjActual.upgrade_points > 0);
-        // upgradeSpDef.gameObject.SetActive(pjActual.upgrade_points > 0);
-        // upgradeVel.gameObject.SetActive(pjActual.upgrade_points > 0);
+        newHp.gameObject.SetActive(pjActual.upgrade_points > 0);
+        newAtt.gameObject.SetActive(pjActual.upgrade_points > 0);
+        newDef.gameObject.SetActive(pjActual.upgrade_points > 0);
+        newSpAtt.gameObject.SetActive(pjActual.upgrade_points > 0);
+        newSpDef.gameObject.SetActive(pjActual.upgrade_points > 0);
+        newVel.gameObject.SetActive(pjActual.upgrade_points > 0);
+        upgradeHp.gameObject.SetActive(pjActual.upgrade_points > 0);
+        upgradeAtt.gameObject.SetActive(pjActual.upgrade_points > 0);
+        upgradeDef.gameObject.SetActive(pjActual.upgrade_points > 0);
+        upgradeSpAtt.gameObject.SetActive(pjActual.upgrade_points > 0);
+        upgradeSpDef.gameObject.SetActive(pjActual.upgrade_points > 0);
+        upgradeVel.gameObject.SetActive(pjActual.upgrade_points > 0);
 
     }
 
