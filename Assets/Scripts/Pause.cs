@@ -3,25 +3,28 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class Pause : MonoBehaviour
 {
     bool paused = false;
-    bool esq_used = false;
     bool resume = false;
-    GameObject menu;
-    GameObject options;
+    public bool enCombate = false;
+    public GameObject menu;
+    public GameObject options;
 
     void Start(){
-        menu = this.transform.GetChild(1).transform.GetChild(2).transform.GetChild(4).gameObject;
-        options = this.transform.GetChild(1).transform.GetChild(2).transform.GetChild(5).gameObject;
+        if(menu==null && options==null){
+            menu = this.transform.GetChild(1).transform.GetChild(2).transform.GetChild(4).gameObject;
+            options = this.transform.GetChild(1).transform.GetChild(2).transform.GetChild(5).gameObject;
+        }
     }
     void Update(){
         if(Input.GetKeyDown(KeyCode.Escape) && !paused){
             paused = togglePause();
             Singleton.toggleMenu();
-            FindObjectOfType<ThirdPersonMovement>().isTalkKing();
+            if(!enCombate) FindObjectOfType<ThirdPersonMovement>().isTalkKing();
             menu.SetActive(true);
         }
     }
@@ -37,7 +40,7 @@ public class Pause : MonoBehaviour
         }
     }
 
-    public void opciones (){
+public void opciones (){
         menu.SetActive(false);
         options.SetActive(true);
     }
@@ -48,10 +51,10 @@ public class Pause : MonoBehaviour
         Singleton.toggleMenu();
     }
     public void salirPartida (){
-        Debug.Log ("MenuPrincipal");
+        SceneManager.LoadScene("MenuInici");
     }
     public void salirJuego(){
-        Debug.Log ("Adioh");
+        Application.Quit();
     }
     public void manualUsuario(){
         Debug.Log ("Controls");

@@ -512,6 +512,8 @@ public class Character : MonoBehaviour
             Habilidades.lanzar(this, this, Habilidades.Pocion);
             UICombate.mostrarMissatge("Poción usada");
             actPAtaques--;
+            UICombate.actualizaPP();
+            Singleton.restarPocio();
         }
     }
 
@@ -532,7 +534,6 @@ public class Character : MonoBehaviour
             }
             else if(habilidad.radius>0.0f && objetivos.Count!=0){ // en area
                 this.transform.LookAt(objetivos[0].transform);
-                Debug.Log(objetivos.Count);
 
                 foreach(var obj in objetivos){
                     Character objetivoPJ = obj.GetComponent<Character>();
