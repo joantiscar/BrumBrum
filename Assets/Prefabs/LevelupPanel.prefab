@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3788589539459375237}
   - component: {fileID: 3788589539459375239}
   - component: {fileID: 3788589539459375238}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PuntsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 3788589539481732054}
   - component: {fileID: 3788589539481732048}
   - component: {fileID: 3788589539481732055}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PjActual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 3788589539483973170}
   - component: {fileID: 3788589539483973169}
   - component: {fileID: 3788589539483973168}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MejorarSpDef
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 3788589539509476135}
   - component: {fileID: 3788589539509476129}
   - component: {fileID: 3788589539509476128}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Att
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,7 +643,7 @@ GameObject:
   - component: {fileID: 3788589539602674239}
   - component: {fileID: 3788589539602674238}
   - component: {fileID: 3788589539602674237}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PrevPJ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -764,7 +764,7 @@ GameObject:
   - component: {fileID: 3788589539790405970}
   - component: {fileID: 3788589539790405969}
   - component: {fileID: 3788589539790405968}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MejorarHP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -884,7 +884,7 @@ GameObject:
   - component: {fileID: 3788589539825634335}
   - component: {fileID: 3788589539825634329}
   - component: {fileID: 3788589539825634328}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DefNew
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1054,7 +1054,7 @@ GameObject:
   - component: {fileID: 3788589539890664885}
   - component: {fileID: 3788589539890664887}
   - component: {fileID: 3788589539890664886}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1134,7 +1134,7 @@ GameObject:
   - component: {fileID: 3788589540012817944}
   - component: {fileID: 3788589540012817951}
   - component: {fileID: 3788589540012817950}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MejorarDef
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1254,7 +1254,7 @@ GameObject:
   - component: {fileID: 3788589540040445845}
   - component: {fileID: 3788589540040445847}
   - component: {fileID: 3788589540040445846}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SpAttNew
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1425,7 +1425,7 @@ GameObject:
   - component: {fileID: 3788589540127202275}
   - component: {fileID: 3788589540127202274}
   - component: {fileID: 3788589540127202284}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LevelupPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1441,7 +1441,7 @@ RectTransform:
   m_GameObject: {fileID: 3788589540127202272}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.271243, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.271243, y: 0.7, z: 0}
   m_Children:
   - {fileID: 3788589539459375237}
   - {fileID: 3788589540277525572}
@@ -1501,10 +1501,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
   m_PreserveAspect: 0
-  m_FillCenter: 1
+  m_FillCenter: 0
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
@@ -1556,7 +1556,7 @@ GameObject:
   - component: {fileID: 3788589540177508220}
   - component: {fileID: 3788589540177508222}
   - component: {fileID: 3788589540177508221}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AttNew
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1726,7 +1726,7 @@ GameObject:
   - component: {fileID: 3788589540251866289}
   - component: {fileID: 3788589540251866291}
   - component: {fileID: 3788589540251866290}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Vel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1896,7 +1896,7 @@ GameObject:
   - component: {fileID: 3788589540277525572}
   - component: {fileID: 3788589540277525574}
   - component: {fileID: 3788589540277525573}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2066,7 +2066,7 @@ GameObject:
   - component: {fileID: 3788589540596068574}
   - component: {fileID: 3788589540596068568}
   - component: {fileID: 3788589540596068575}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SpDef
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2237,7 +2237,7 @@ GameObject:
   - component: {fileID: 3788589540602287064}
   - component: {fileID: 3788589540602287071}
   - component: {fileID: 3788589540602287070}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: NextPJ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2357,7 +2357,7 @@ GameObject:
   - component: {fileID: 3788589540692848999}
   - component: {fileID: 3788589540692848993}
   - component: {fileID: 3788589540692848992}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: VelNew
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2527,7 +2527,7 @@ GameObject:
   - component: {fileID: 3788589540698928845}
   - component: {fileID: 3788589540698928847}
   - component: {fileID: 3788589540698928846}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2606,7 +2606,7 @@ GameObject:
   - component: {fileID: 3788589540741410072}
   - component: {fileID: 3788589540741410074}
   - component: {fileID: 3788589540741410073}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2685,7 +2685,7 @@ GameObject:
   - component: {fileID: 3788589540747925770}
   - component: {fileID: 3788589540747925812}
   - component: {fileID: 3788589540747925771}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2764,7 +2764,7 @@ GameObject:
   - component: {fileID: 3788589540781519474}
   - component: {fileID: 3788589540781519484}
   - component: {fileID: 3788589540781519475}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2843,7 +2843,7 @@ GameObject:
   - component: {fileID: 3788589541029981824}
   - component: {fileID: 3788589541029981826}
   - component: {fileID: 3788589541029981825}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2922,7 +2922,7 @@ GameObject:
   - component: {fileID: 3788589541205409195}
   - component: {fileID: 3788589541205409237}
   - component: {fileID: 3788589541205409236}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SpAtt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3092,7 +3092,7 @@ GameObject:
   - component: {fileID: 3788589541274378367}
   - component: {fileID: 3788589541274378361}
   - component: {fileID: 3788589541274378360}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HpNew
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3262,7 +3262,7 @@ GameObject:
   - component: {fileID: 3788589541286895230}
   - component: {fileID: 3788589541286895224}
   - component: {fileID: 3788589541286895231}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SpDefNew
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3433,7 +3433,7 @@ GameObject:
   - component: {fileID: 3788589541294474689}
   - component: {fileID: 3788589541294474688}
   - component: {fileID: 3788589541294474695}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MejorarAtt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3554,7 +3554,7 @@ GameObject:
   - component: {fileID: 3788589541311982269}
   - component: {fileID: 3788589541311982268}
   - component: {fileID: 3788589541311982259}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MejorarSpAtt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3674,7 +3674,7 @@ GameObject:
   - component: {fileID: 3788589541343485910}
   - component: {fileID: 3788589541343485904}
   - component: {fileID: 3788589541343485911}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3753,7 +3753,7 @@ GameObject:
   - component: {fileID: 3788589541395339531}
   - component: {fileID: 3788589541395339573}
   - component: {fileID: 3788589541395339572}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Def
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3924,7 +3924,7 @@ GameObject:
   - component: {fileID: 3788589541426532327}
   - component: {fileID: 3788589541426532326}
   - component: {fileID: 3788589541426532325}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MejorarVel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4044,7 +4044,7 @@ GameObject:
   - component: {fileID: 3788589541461082144}
   - component: {fileID: 3788589541461082146}
   - component: {fileID: 3788589541461082145}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
