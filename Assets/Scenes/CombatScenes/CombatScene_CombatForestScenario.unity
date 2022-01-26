@@ -231,6 +231,42 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: hpMax
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: level
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: attack
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: nombre
+      value: Elf
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: defense
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: velocity
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: className
+      value: Paladin
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: special_attack
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: special_defense
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8691741044964815986, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -294,6 +330,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1072953828550491021, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072953828550491021, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1072953829647174081, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
       propertyPath: m_Name
       value: UI
@@ -367,6 +411,42 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: hpMax
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: level
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: attack
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: nombre
+      value: Elf
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: defense
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: velocity
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: className
+      value: Mago
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: special_attack
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: special_defense
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 8691741044964815986, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -433,6 +513,42 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: hpMax
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: level
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: attack
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: nombre
+      value: Elf
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: defense
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: velocity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: className
+      value: Luchador
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: special_attack
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: special_defense
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8691741044964815986, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -498,6 +614,42 @@ PrefabInstance:
     - target: {fileID: 3891733841399310315, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: hpMax
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: level
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: attack
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: nombre
+      value: Elf
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: defense
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: velocity
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: className
+      value: Curandero
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: special_attack
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: special_defense
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8691741044964815986, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: m_RootOrder
@@ -745,23 +897,23 @@ PrefabInstance:
     - target: {fileID: 7157379173561198294, guid: a276c917969f8514796d0998f569b481, type: 3}
       propertyPath: pjs.Array.data[0]
       value: 
-      objectReference: {fileID: 1475834467}
+      objectReference: {fileID: 1897231791}
     - target: {fileID: 7157379173561198294, guid: a276c917969f8514796d0998f569b481, type: 3}
       propertyPath: pjs.Array.data[1]
       value: 
-      objectReference: {fileID: 1941679239}
+      objectReference: {fileID: 1475834467}
     - target: {fileID: 7157379173561198294, guid: a276c917969f8514796d0998f569b481, type: 3}
       propertyPath: pjs.Array.data[2]
       value: 
-      objectReference: {fileID: 1733321084}
+      objectReference: {fileID: 1904129673}
     - target: {fileID: 7157379173561198294, guid: a276c917969f8514796d0998f569b481, type: 3}
       propertyPath: pjs.Array.data[3]
       value: 
-      objectReference: {fileID: 1897231791}
+      objectReference: {fileID: 1733321084}
     - target: {fileID: 7157379173561198294, guid: a276c917969f8514796d0998f569b481, type: 3}
       propertyPath: pjs.Array.data[4]
       value: 
-      objectReference: {fileID: 1904129673}
+      objectReference: {fileID: 1941679239}
     - target: {fileID: 7157379173561198294, guid: a276c917969f8514796d0998f569b481, type: 3}
       propertyPath: pjs.Array.data[5]
       value: 
@@ -883,7 +1035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4269196547571038387, guid: d791bb2136f0d1349812c78d8a130eb9, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4269196547571038387, guid: d791bb2136f0d1349812c78d8a130eb9, type: 3}
       propertyPath: m_LocalScale.x
@@ -954,13 +1106,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 253088941140671778, guid: 5b9afa0353bc26049bcf4e7e775bbfa3, type: 3}
+      propertyPath: m_Name
+      value: Suelo
+      objectReference: {fileID: 0}
     - target: {fileID: 253088942062544813, guid: 5b9afa0353bc26049bcf4e7e775bbfa3, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 253088942062544814, guid: 5b9afa0353bc26049bcf4e7e775bbfa3, type: 3}
       propertyPath: m_Name
-      value: Suelo
+      value: Plane
       objectReference: {fileID: 0}
     - target: {fileID: 253088942062544814, guid: 5b9afa0353bc26049bcf4e7e775bbfa3, type: 3}
       propertyPath: m_IsActive
@@ -1041,7 +1197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3500817066759301352, guid: 940a8138f0a7dc641af984310cb4bdf2, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3500817066759301352, guid: 940a8138f0a7dc641af984310cb4bdf2, type: 3}
       propertyPath: m_LocalScale.x
@@ -1193,7 +1349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4113819979599977021, guid: 1a72a6d2bb4e51144ada029e276237c5, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4113819979599977021, guid: 1a72a6d2bb4e51144ada029e276237c5, type: 3}
       propertyPath: m_LocalScale.x
@@ -1986,6 +2142,42 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: hpMax
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: level
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: attack
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: nombre
+      value: Elf
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: defense
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: velocity
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: className
+      value: Guerrero
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: special_attack
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: special_defense
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 8691741044964815986, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -2060,7 +2252,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3429166038170501773, guid: 113230c407ab303478a3d5ff763b9044, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3429166038170501773, guid: 113230c407ab303478a3d5ff763b9044, type: 3}
       propertyPath: m_LocalScale.x
@@ -2149,7 +2341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7621739909833878530, guid: fd455b059163b974b98a6d2a30290576, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7621739909833878530, guid: fd455b059163b974b98a6d2a30290576, type: 3}
       propertyPath: m_LocalPosition.x

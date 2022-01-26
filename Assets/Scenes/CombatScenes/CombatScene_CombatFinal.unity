@@ -369,6 +369,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2817804356330218225, guid: 4941c10a0fdf3f54bb2ab54e577ee0df, type: 3}
+      propertyPath: hpMax
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817804356330218225, guid: 4941c10a0fdf3f54bb2ab54e577ee0df, type: 3}
+      propertyPath: level
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817804356330218225, guid: 4941c10a0fdf3f54bb2ab54e577ee0df, type: 3}
+      propertyPath: attack
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817804356330218225, guid: 4941c10a0fdf3f54bb2ab54e577ee0df, type: 3}
+      propertyPath: nombre
+      value: Zeth
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817804356330218225, guid: 4941c10a0fdf3f54bb2ab54e577ee0df, type: 3}
+      propertyPath: defense
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817804356330218225, guid: 4941c10a0fdf3f54bb2ab54e577ee0df, type: 3}
+      propertyPath: velocity
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817804356330218225, guid: 4941c10a0fdf3f54bb2ab54e577ee0df, type: 3}
+      propertyPath: className
+      value: Guerrero
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817804356330218225, guid: 4941c10a0fdf3f54bb2ab54e577ee0df, type: 3}
+      propertyPath: special_attack
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817804356330218225, guid: 4941c10a0fdf3f54bb2ab54e577ee0df, type: 3}
+      propertyPath: special_defense
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817804356330218225, guid: 4941c10a0fdf3f54bb2ab54e577ee0df, type: 3}
+      propertyPath: elemental_resistance
+      value: holy
+      objectReference: {fileID: 0}
     - target: {fileID: 5520242920960006675, guid: 4941c10a0fdf3f54bb2ab54e577ee0df, type: 3}
       propertyPath: m_Name
       value: Evil
@@ -4279,23 +4319,23 @@ PrefabInstance:
     - target: {fileID: 7157379173561198294, guid: a276c917969f8514796d0998f569b481, type: 3}
       propertyPath: pjs.Array.data[0]
       value: 
-      objectReference: {fileID: 2267422201538196775}
+      objectReference: {fileID: 6966393127524027310}
     - target: {fileID: 7157379173561198294, guid: a276c917969f8514796d0998f569b481, type: 3}
       propertyPath: pjs.Array.data[1]
       value: 
-      objectReference: {fileID: 78524783177511378}
+      objectReference: {fileID: 2267422201538196775}
     - target: {fileID: 7157379173561198294, guid: a276c917969f8514796d0998f569b481, type: 3}
       propertyPath: pjs.Array.data[2]
       value: 
-      objectReference: {fileID: 6047241846194460487}
+      objectReference: {fileID: 6360845593166395897}
     - target: {fileID: 7157379173561198294, guid: a276c917969f8514796d0998f569b481, type: 3}
       propertyPath: pjs.Array.data[3]
       value: 
-      objectReference: {fileID: 6966393127524027310}
+      objectReference: {fileID: 6047241846194460487}
     - target: {fileID: 7157379173561198294, guid: a276c917969f8514796d0998f569b481, type: 3}
       propertyPath: pjs.Array.data[4]
       value: 
-      objectReference: {fileID: 6360845593166395897}
+      objectReference: {fileID: 78524783177511378}
     - target: {fileID: 7157379173561198294, guid: a276c917969f8514796d0998f569b481, type: 3}
       propertyPath: pjs.Array.data[5]
       value: 

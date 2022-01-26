@@ -1065,6 +1065,42 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: hpMax
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: level
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: attack
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: nombre
+      value: Elf
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: defense
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: velocity
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: className
+      value: Guerrero
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: special_attack
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: special_defense
+      value: 130
+      objectReference: {fileID: 0}
     - target: {fileID: 8691741044964815986, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -4493,6 +4529,42 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: hpMax
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: level
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: attack
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: nombre
+      value: Elf
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: defense
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: velocity
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: className
+      value: Curandero
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: special_attack
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: special_defense
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 8691741044964815986, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -4558,6 +4630,42 @@ PrefabInstance:
     - target: {fileID: 3891733841399310315, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: hpMax
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: level
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: attack
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: nombre
+      value: Elf
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: defense
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: velocity
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: className
+      value: Paladin
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: special_attack
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: special_defense
+      value: 170
       objectReference: {fileID: 0}
     - target: {fileID: 8691741044964815986, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: m_RootOrder
@@ -4625,6 +4733,42 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: hpMax
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: level
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: attack
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: nombre
+      value: Elf
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: defense
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: velocity
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: className
+      value: Mago
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: special_attack
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: special_defense
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 8691741044964815986, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -4690,6 +4834,42 @@ PrefabInstance:
     - target: {fileID: 3891733841399310315, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: hpMax
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: level
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: attack
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: nombre
+      value: Elf
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: defense
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: velocity
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: className
+      value: Luchador
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: special_attack
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: special_defense
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8691741044964815986, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: m_RootOrder
@@ -7402,9 +7582,10 @@ MonoBehaviour:
   enCombate: 0
   menu: {fileID: 0}
   options: {fileID: 0}
-  animSensibilitat: {fileID: 0}
+  controls: {fileID: 0}
+  Sensibilitat: {fileID: 0}
   SliderSensibilitat: {fileID: 0}
-  animSo: {fileID: 0}
+  So: {fileID: 0}
   SliderSo: {fileID: 0}
 --- !u!1 &6192608079612863851
 GameObject:
@@ -8393,8 +8574,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d0ce0bee3a4e94b8b3687f8934e65a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camStatic1: {fileID: 4603186941598792880}
-  camPlayer1: {fileID: 4603186941016320400}
+  camStatic: {fileID: 0}
+  camPlayer: {fileID: 0}
 --- !u!1 &8235091896913504671
 GameObject:
   m_ObjectHideFlags: 0
