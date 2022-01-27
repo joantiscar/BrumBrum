@@ -29,12 +29,7 @@ public class Pause : MonoBehaviour
     public GameObject Layout3;
     public UICombate UICombate;
 
-    /*void Start(){
-        if(menu==null && options==null){
-            menu = this.transform.GetChild(1).transform.GetChild(2).transform.GetChild(4).gameObject;
-            options = this.transform.GetChild(1).transform.GetChild(2).transform.GetChild(5).gameObject;
-        }
-    }*/
+
     void Start (){
         if (ThirdPersonCamera != null){
             ThirdPersonCamera.SetActive(false);

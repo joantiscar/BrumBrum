@@ -33,10 +33,9 @@ public class Scene4_Throne_Start : MonoBehaviour
             Destroy(npc_inicialDialogue.GetComponent<CapsuleCollider>());
             Destroy(objecteInt);
         }
-        else if (!FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit") /*&& !secondDialogueIsCalled*/)
+        else if (!FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit"))
         {
             GameObject.Find("Scenario_FourthScene").GetComponent<AudioSource>().volume = 0.5f;
-            //Destroy(npc_inicialDialogue.transform.parent.gameObject);
         }
     }
 }

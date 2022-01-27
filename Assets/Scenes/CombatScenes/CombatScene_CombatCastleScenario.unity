@@ -4595,7 +4595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: className
-      value: Curandero
+      value: Paladin
       objectReference: {fileID: 0}
     - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: metrosMaximos
@@ -7656,6 +7656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enCombate: 0
+  ThirdPersonCamera: {fileID: 0}
   menu: {fileID: 0}
   options: {fileID: 0}
   controls: {fileID: 0}

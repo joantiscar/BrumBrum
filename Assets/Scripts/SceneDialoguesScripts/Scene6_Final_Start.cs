@@ -51,11 +51,6 @@ public class Scene6_Final_Start : MonoBehaviour
         }
         else if (interacted && imageAnimator.GetCurrentAnimatorStateInfo(0).IsName("Default") && !secondDialogueIsCalled && !secondDialogueNextFrame)
         {
-            //secondDialogueIsCalled = true;
-            //interacted = false;
-            //objecteInt.Interactuate();
-            //player.GetComponent<Interaccio>().isTalkingStarted();
-
             secondDialogueNextFrame = true;
         }
         else if (interacted && imageAnimator.GetCurrentAnimatorStateInfo(0).IsName("Default") && !secondDialogueIsCalled && secondDialogueNextFrame)
@@ -75,7 +70,6 @@ public class Scene6_Final_Start : MonoBehaviour
             imageAnimator.SetBool("Fade", false);
             GameObject.Find("Scenario_SixthScene").GetComponent<AudioSource>().volume = 1;
 
-            //Destroy(npc_inicialDialogue.GetComponent<CapsuleCollider>());
             Destroy(npc_inicialDialogue.GetComponent<Narrado1_5>());
             Destroy(objecteInt);
             npc_inicialDialogue.tag = "Untagged";
