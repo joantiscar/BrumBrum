@@ -57,7 +57,7 @@ MonoBehaviour:
   velocity: 0
   nombre: 
   elemental_resistance: 
-  metrosMaximos: 2.5
+  metrosMaximos: 10
   objetivo: {fileID: 0}
   objetivos: []
   className: Clase
