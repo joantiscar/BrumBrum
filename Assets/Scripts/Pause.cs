@@ -68,7 +68,7 @@ public class Pause : MonoBehaviour
             return(false);
         }
         else{
-            GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().Pause();
+            if(!enCombate) GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().Pause();
             Time.timeScale = 0f;
             return(true);    
         }

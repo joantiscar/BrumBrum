@@ -321,7 +321,6 @@ public class UICombate : MonoBehaviour
     }
 
     public void escondeDatos(){
-        Debug.Log("Que me escondo");
         cajaDatos.gameObject.SetActive(false);
         
     }
