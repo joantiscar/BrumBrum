@@ -46,7 +46,7 @@ public class Pause : MonoBehaviour
             SceneManager.GetActiveScene().name != "GameOver" && SceneManager.GetActiveScene().name != "Victoria" && !Singleton.LevelupPanel()){
             paused = togglePause();
             Singleton.toggleMenu();
-            if(!enCombate && !Singleton.dialegs()) FindObjectOfType<ThirdPersonMovement>().isTalkKing();
+            if(!enCombate/* && !Singleton.dialegs()*/) FindObjectOfType<ThirdPersonMovement>().isTalkKing();
             if (paused){
                 menu.SetActive(true);
                 if(enCombate) UICombate.habilitarUI(false,true);
