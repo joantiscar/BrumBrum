@@ -21,6 +21,8 @@ public class SistemaCombate : MonoBehaviour
     public bool victoria = false;
     public bool gameover = false;
 
+    public bool esRandom = true;
+
     public bool apuntando = false; // Indica si estamos en modo lanzar habilidad o no
     public bool moviendose = false; // Indica si pjActual está moviendose o no, para bloquear inputs
 
@@ -107,8 +109,17 @@ public class SistemaCombate : MonoBehaviour
         Cursor.visible = true;
 
         cargarProtas();
+        if(esRandom){
+            Debug.Log("Hay "+ (Singleton.getEnemigos()).ToString()+" enemigos");
+            for (int i = 0; i < 5-Singleton.getEnemigos(); i++)
+            {
+                Destroy(pjs[pjs.Count-1]);
+                pjs.RemoveAt(pjs.Count-1);
+            }
+        }
         pjActual = recalculaOrden();
         pjActualPersonaje = pjActual.GetComponent<Character>();
+
 
         for(int i=0;i<pjs.Count;i++){
             if(pjs[i].GetComponent<Character>().user_controlled) nAliados++;

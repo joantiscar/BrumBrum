@@ -4309,6 +4309,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7157379173561198294, guid: a276c917969f8514796d0998f569b481, type: 3}
+      propertyPath: esRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157379173561198294, guid: a276c917969f8514796d0998f569b481, type: 3}
       propertyPath: UICombate
       value: 
       objectReference: {fileID: 5891865783928964887}
@@ -7172,6 +7176,7 @@ MonoBehaviour:
   SliderSensibilitat: {fileID: 0}
   So: {fileID: 0}
   SliderSo: {fileID: 0}
+  UICombate: {fileID: 0}
 --- !u!1 &6192608079612863851
 GameObject:
   m_ObjectHideFlags: 0

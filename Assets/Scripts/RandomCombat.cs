@@ -7,7 +7,7 @@ using Random = System.Random;
 
 public class RandomCombat : MonoBehaviour
 {
-    public float probability = 0.5f;
+    public float probability = 1f;
     public bool able;
     private bool inCombat;
     private string battleScene;
@@ -77,7 +77,8 @@ public class RandomCombat : MonoBehaviour
             }
             else if (inCombat && fadeIn && imageAnimator.GetCurrentAnimatorStateInfo(0).IsName("Default"))
             {
-                
+                Singleton.randomEnemigos(r.Next(1,6)); // dame enemigos del 1 al 5
+
                 //SceneManager.LoadScene("CombatDemo", LoadSceneMode.Additive); battleScene = "CombatDemo";
                 if (SceneManager.GetActiveScene().name == "Scene3_Castle")
                 {

@@ -73,7 +73,7 @@ public class IA : MonoBehaviour
                 habilidadesUsables.Add(i);
             }
         }
-        Debug.Log(habilidadesUsables.Count);
+        // Debug.Log(habilidadesUsables.Count);
         return habilidadesUsables.Count > 0;
     }
 

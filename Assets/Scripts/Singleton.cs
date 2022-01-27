@@ -14,6 +14,7 @@ public class Singleton {
     public string _currentScene;
     public bool _godMode = false;
     public bool dialegsIniciats = false;
+    public int _nEnemigos = 0;
 
     private GameObject guarrada0 = new GameObject();
     private GameObject guarrada1 = new GameObject();
@@ -58,6 +59,14 @@ public class Singleton {
     public static void restarPocio (){
         instance().pocions--;
     }
+
+    public static void randomEnemigos (int n){
+        instance()._nEnemigos = n;
+    }
+
+    public static int getEnemigos (){
+        return instance()._nEnemigos;
+    }
     
     public static void guanyarExp (int n){
         for (int i = 0; i < instance().pjs.Length; i++){
@@ -99,14 +108,19 @@ public class Singleton {
     public void iniciarPjs(){
         pjs = new Character[5];
 
+        if(guarrada0 == null) guarrada0 = new GameObject();
         guarrada0.AddComponent<Character>();
         Character pj0 = guarrada0.GetComponent<Character>();
+        if(guarrada1 == null) guarrada1 = new GameObject();
         guarrada1.AddComponent<Character>();
         Character pj1 = guarrada1.GetComponent<Character>();
+        if(guarrada2 == null) guarrada2 = new GameObject();
         guarrada2.AddComponent<Character>();
         Character pj2 = guarrada2.GetComponent<Character>();
+        if(guarrada3 == null) guarrada3 = new GameObject();
         guarrada3.AddComponent<Character>();
         Character pj3 = guarrada3.GetComponent<Character>();
+        if(guarrada4 == null) guarrada4 = new GameObject();
         guarrada4.AddComponent<Character>();
         Character pj4 = guarrada4.GetComponent<Character>();
 
