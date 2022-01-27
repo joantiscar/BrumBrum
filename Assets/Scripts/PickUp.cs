@@ -53,7 +53,9 @@ public class PickUp : MonoBehaviour
             cofre = transform.gameObject.GetComponent<LootCofres>();
             cofre.getLoot();
         }
-        Destroy(gameObject);
+        else{
+            Destroy(gameObject);
+        }
         pickupText.gameObject.SetActive(false);
     }
 }

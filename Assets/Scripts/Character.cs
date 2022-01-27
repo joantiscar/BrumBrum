@@ -647,22 +647,22 @@ public class Character : MonoBehaviour
         {
             switch(up_stat){
                 case "hp":
-                    hpMax += 5;
+                    hpMax += 10;
                     break;
                 case "attack":
-                    attack += 1;
+                    attack += 5;
                     break;
                 case "special_attack":
-                    special_attack += 1;
+                    special_attack += 5;
                     break;
                 case "defense":
-                    defense += 1;
+                    defense += 5;
                     break;
                 case "special_defense":
-                    special_defense += 1;
+                    special_defense += 5;
                     break;
                 case "velocity":
-                    velocity += 1;
+                    velocity += 5;
                     break;
                 default:
                     hp += 5;
