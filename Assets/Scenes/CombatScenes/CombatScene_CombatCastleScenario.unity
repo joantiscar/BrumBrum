@@ -1343,6 +1343,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 1072953829647174081, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1072953829647174086, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -1357,7 +1361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1072953829647174086, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -273
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1072953829647174086, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
       propertyPath: m_LocalRotation.w
