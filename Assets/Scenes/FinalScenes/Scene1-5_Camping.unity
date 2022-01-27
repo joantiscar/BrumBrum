@@ -1063,6 +1063,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4603186941209880047, guid: 9d4cd693c6451a3459382e6ca56f94ac, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4603186941209880047, guid: 9d4cd693c6451a3459382e6ca56f94ac, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.0000076293945
       objectReference: {fileID: 0}
@@ -1612,7 +1616,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   probability: 0.5
   able: 0
-  waitTill: 500
+  waitTill: 550
   waiting: 0
   ThirdPersonCamera: {fileID: 224010959}
 --- !u!1001 &1190187001

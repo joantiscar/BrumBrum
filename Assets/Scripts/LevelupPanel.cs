@@ -74,7 +74,7 @@ public class LevelupPanel : MonoBehaviour
         newSpDef.text = (pjActual.special_defense + 5).ToString();
         vel.text = pjActual.velocity.ToString();
         newVel.text = (pjActual.velocity + 5).ToString();
-        nomActual.text = pjActual.nombre.ToString() + " " + pjActual.level.ToString();
+        nomActual.text = pjActual.nombre.ToString() + " LV " + pjActual.level.ToString();
 
       
         newHp.gameObject.SetActive(pjActual.upgrade_points > 0);
