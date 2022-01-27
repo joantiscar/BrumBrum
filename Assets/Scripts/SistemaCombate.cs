@@ -391,7 +391,7 @@ public class SistemaCombate : MonoBehaviour
                 if (derrota) SceneManager.LoadScene("GameOver");
                 else
                 {
-                    //SceneManager.LoadScene("Victoria");
+                    SceneManager.LoadScene("Victoria");
 
 
                     string currentScene = SceneManager.GetActiveScene().name;

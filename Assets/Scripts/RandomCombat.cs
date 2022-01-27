@@ -98,8 +98,8 @@ public class RandomCombat : MonoBehaviour
                 inCombat = false;
                 Singleton.enCombate = false;
 
-                scene.SetActive(true);
-                Destroy(GameObject.Find("New Game Object"));
+                /*scene.SetActive(true);
+                Destroy(GameObject.Find("New Game Object"));*/
                 SceneManager.UnloadSceneAsync(battleScene);
 
                 //imageAnimator.SetBool("Fade", false);
@@ -145,8 +145,14 @@ public class RandomCombat : MonoBehaviour
 
     public void ExitCombat()
     {
-        ThirdPersonCamera.SetActive(false);
-        ThirdPersonCamera.SetActive(true);
+        scene.SetActive(true);
+        Destroy(GameObject.Find("New Game Object"));
+        SceneManager.UnloadSceneAsync(battleScene);
+        Debug.Log ("Que tal?");
+        //if (GameObject.FindObjectOfType<SistemaCombate>().victoria){
+            ThirdPersonCamera.SetActive(false);
+            ThirdPersonCamera.SetActive(true);
+        //}
         inCombat = false;
         Singleton.enCombate = false;
 
