@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,17 +11,17 @@ public class Habilidades                                                        
 
     // Paladin
     public static Habilidad Proteger = new Habilidad("Proteger", "Prepara su escudo para defenderse de ataques enemigos", "none", 4, 2, 0, 0.001f, 0.0f, false, false, true, false);
-    public static Habilidad Rezar = new Habilidad("Rezar", "Realiza una plegaria para recuperar salud", "none", 3, 2, 40, 0.0001f, 0.0f, false, true, true, false);
+    public static Habilidad Rezar = new Habilidad("Rezar", "Realiza una plegaria para recuperar salud", "none", 3, 2, 30, 0.0001f, 0.0f, false, true, true, false);
     public static Habilidad Devocion = new Habilidad("Devoción", "Reza a su dios para mejorar las estadísticas de un aliado", "none", 4, 2, 0, 15.0f, 0.0f, false, false, false, false);
-    public static Habilidad GolpeDeEscudo = new Habilidad("Golpe de escudo", "Golpea a un enemigo con su escudo para aturdirlo", "physical", 3, 3, 10, 10f);
-    public static Habilidad CastigoDivino = new Habilidad("Castigo divino", "Canaliza la energía de su divinidad en su arma para hacer arder a sus enemigos", "physical", 4, 4, 80, 15f);
+    public static Habilidad GolpeDeEscudo = new Habilidad("Golpe de escudo", "Golpea a un enemigo con su escudo para aturdirlo", "physical", 3, 3, 20, 10f);
+    public static Habilidad CastigoDivino = new Habilidad("Castigo divino", "Canaliza la energía de su divinidad en su arma para hacer arder a sus enemigos", "physical", 4, 4, 40, 15f);
     
     // Mago                                                                                         
     public static Habilidad BolaDeFuego = new Habilidad("Bola de fuego", "Lanza una bola de fuego hacia su oponente", "fire", 4, 4, 20, 15f, 3f, true, false, true);
     public static Habilidad EsquirlaDeHielo = new Habilidad("Esquirla de hielo", "Lanza una esquirla de hielo hacia su oponente", "ice", 2, 2, 10, 20f, 0.0f, true, false, true);
     public static Habilidad ColmilloVenenoso = new Habilidad("Colmillo venenoso", "Lanza un proyectil venenoso hacia su oponente", "poison", 2, 2 , 10, 15.0f, 0.0f);
     public static Habilidad AreaDeProteccionMagica = new Habilidad("Aura de protección mágica", "Mejora la defensa especial de todos los aliados en un área", "none", 4, 2, 0, 15f, 4f, false, false, false, false);
-    public static Habilidad Meteorito = new Habilidad("Meteorito", "Hace que caiga un meteorito del cielo sobre sus rivales", "fire", 6, 4, 100, 10f, 4f, true, false, true);
+    public static Habilidad Meteorito = new Habilidad("Meteorito", "Hace que caiga un meteorito del cielo sobre sus rivales", "fire", 6, 4, 40, 10f, 4f, true, false, true);
 
     // Curandero
     public static Habilidad Curacion = new Habilidad("Curación", "Canaliza energía divina para sanar a un aliado", "none", 2, 2 , 30, 20f, 0.0f, false, true, true, false);
@@ -30,26 +31,26 @@ public class Habilidades                                                        
     public static Habilidad Renacer = new Habilidad("Renacer", "Provoca el renacimiento de un aliado, devolviendo asi su salud al maximo y curando todos sus estados alterados", "none", 4, 8 , 999999, 10f, 0.0f, false, true, true, false);
 
     // Guerrero
-    public static Habilidad TajoCruzado = new Habilidad("Tajo cruzado", "Ataque perpendicular con dos espadas", "physical", 2, 2, 40, 10f);
+    public static Habilidad TajoCruzado = new Habilidad("Tajo cruzado", "Ataque perpendicular con dos espadas", "physical", 2, 2, 20, 10f);
     public static Habilidad FragorDeLaBatalla = new Habilidad("Fragor de la batalla", "Aprecia la grandiosidad del combate que está por venir y mejora sus estadísticas ofensivas", "none", 2, 2, 0, 0.001f, 0.0f, false, false, false, false);
-    public static Habilidad Remolino = new Habilidad("Remolino", "Beyblade Beyblade!", "physical", 3, 4, 50, 12f, 4f, true, false, false);
+    public static Habilidad Remolino = new Habilidad("Remolino", "Beyblade Beyblade!", "physical", 3, 4, 25, 12f, 4f, true, false, false);
     public static Habilidad Furia = new Habilidad("Furia", "Entra en furia, aumentando el daño pero disminuyendo las defensas", "none", 4, 2, 0, 0.001f, 0.0f, false, false, false, false);
-    public static Habilidad Masacre = new Habilidad("Masacre", "Ataca a bocajarro a un enemigo hasta quedarse sin energías, inflingiendo muchisimo daño", "none", 4, 8, 200, 6f, 0.0f, true, false, false);
+    public static Habilidad Masacre = new Habilidad("Masacre", "Ataca a bocajarro a un enemigo hasta quedarse sin energías, inflingiendo muchisimo daño", "none", 4, 8, 40, 6f, 0.0f, true, false, false);
 
     // Luchador
     public static Habilidad Punetazo = new Habilidad("Puñetazo", "Ataque con los puños", "physical", 0, 2, 10, 8f);
-    public static Habilidad Partenueces = new Habilidad("Partenueces", "Ataque a las partes del contrincante", "physical", 2, 2, 30, 8f, 0.0f, true, false, false, true);
-    public static Habilidad LanzamientoDeRoca = new Habilidad("Lanzamiento de roca", "Lanza una roca enorme hacia un enemigo", "physical", 3, 3, 40, 15f, 0.0f, true, false, false, true);
-    public static Habilidad PalmadaSonica = new Habilidad("Palmada sonica", "Da una palmada de fuerza incalculable, emanando potentes ondas de sonido que dañan a los enemigos", "sound", 3, 3, 80, 2f, 8f, true, false, false, true);
-    public static Habilidad Terremoto = new Habilidad("Terremoto", "Pisa el suelo con toda su fuerza, creando una onda expansiva que daña a los enemigos encima de este", "physical", 4, 4, 50, 2.0f, 10f, true, false, false, true);
-    public static Habilidad PunetazoDeUnaPulgada = new Habilidad("Puñetazo de una pulgada", "Lanza un potente puñetazo al pecho del rival, matándolo instantáneamente si no tiene suficiente salud", "none", 4, 8, 200, 7.0f, 0.0f, true, false, false, true);
+    public static Habilidad Partenueces = new Habilidad("Partenueces", "Ataque a las partes del contrincante", "physical", 2, 2, 20, 8f, 0.0f, true, false, false, true);
+    public static Habilidad LanzamientoDeRoca = new Habilidad("Lanzamiento de roca", "Lanza una roca enorme hacia un enemigo", "physical", 3, 3, 15, 15f, 0.0f, true, false, false, true);
+    public static Habilidad PalmadaSonica = new Habilidad("Palmada sonica", "Da una palmada de fuerza incalculable, emanando potentes ondas de sonido que dañan a los enemigos", "sound", 3, 3, 20, 2f, 8f, true, false, false, true);
+    public static Habilidad Terremoto = new Habilidad("Terremoto", "Pisa el suelo con toda su fuerza, creando una onda expansiva que daña a los enemigos encima de este", "physical", 4, 4, 30, 2.0f, 10f, true, false, false, true);
+    public static Habilidad PunetazoDeUnaPulgada = new Habilidad("Puñetazo de una pulgada", "Lanza un potente puñetazo al pecho del rival, matándolo instantáneamente si no tiene suficiente salud", "none", 4, 8, 40, 7.0f, 0.0f, true, false, false, true);
 
 
 
 
    public static bool unaEntre(int max){
         
-        return Random.Range(0, max - 1) == 0;
+        return UnityEngine.Random.Range(0, max - 1) == 0;
     }
 
     public static void lanzar(Character caster, Character objetivo, Habilidad habilidad){
@@ -89,8 +90,9 @@ public class Habilidades                                                        
                 }
             }
         }else if (habilidad.heals){
-            objetivoScript.recieveHeal(habilidad.damage + caster.ataqueEspecialActual());
-            if (habilidad.name == "Renacer") objetivoScript.renacer();
+            if(habilidad.name == "Pocion") objetivoScript.recieveHeal(10);
+            else if (habilidad.name == "Renacer") objetivoScript.renacer();
+            else objetivoScript.recieveHeal(habilidad.damage + (int)Math.Round(caster.ataqueEspecialActual()/2f)); //Si dejamos el ataqueespecial tal cual, en endgame esto está muy roto
         }else{
             switch(habilidad.name){
                 case "Proteger":
@@ -110,7 +112,15 @@ public class Habilidades                                                        
                 case "Aura de protección mágica":
                     objetivoScript.mejorarDefensaEspecial();
                     break;
+                case "Bendición":
+                    objetivoScript.mejorarAtaque();
+                    objetivoScript.mejorarAtaqueEspecial();
+                    objetivoScript.mejorarVelocidad();
+                    objetivoScript.mejorarDefensaEspecial();
+                    objetivoScript.mejorarDefensa();
+                    break;
                 case "Purificación": // quita estados alterados, bools y turnos
+                    objetivoScript.quitarEstados();
                     break;
                 default:
                         break;

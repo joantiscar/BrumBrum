@@ -241,7 +241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8691741044964815986, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.42
+      value: 3.29
       objectReference: {fileID: 0}
     - target: {fileID: 8691741044964815986, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -249,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8691741044964815986, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.75
+      value: -2.67
       objectReference: {fileID: 0}
     - target: {fileID: 8691741044964815986, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -770,6 +770,10 @@ PrefabInstance:
     - target: {fileID: 5409459657445659089, guid: 53fca93cae81a1b40bf90f294930dd18, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 339
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409459657447197229, guid: 53fca93cae81a1b40bf90f294930dd18, type: 3}
+      propertyPath: esRandom
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5409459657447197229, guid: 53fca93cae81a1b40bf90f294930dd18, type: 3}
       propertyPath: pjs.Array.size

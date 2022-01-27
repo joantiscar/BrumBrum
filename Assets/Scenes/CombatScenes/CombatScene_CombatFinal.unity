@@ -379,7 +379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2817804356330218225, guid: 4941c10a0fdf3f54bb2ab54e577ee0df, type: 3}
       propertyPath: attack
-      value: 500
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2817804356330218225, guid: 4941c10a0fdf3f54bb2ab54e577ee0df, type: 3}
       propertyPath: nombre
@@ -387,11 +387,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2817804356330218225, guid: 4941c10a0fdf3f54bb2ab54e577ee0df, type: 3}
       propertyPath: defense
-      value: 500
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2817804356330218225, guid: 4941c10a0fdf3f54bb2ab54e577ee0df, type: 3}
       propertyPath: velocity
-      value: 300
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2817804356330218225, guid: 4941c10a0fdf3f54bb2ab54e577ee0df, type: 3}
       propertyPath: className
@@ -403,11 +403,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2817804356330218225, guid: 4941c10a0fdf3f54bb2ab54e577ee0df, type: 3}
       propertyPath: special_attack
-      value: 500
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2817804356330218225, guid: 4941c10a0fdf3f54bb2ab54e577ee0df, type: 3}
       propertyPath: special_defense
-      value: 500
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2817804356330218225, guid: 4941c10a0fdf3f54bb2ab54e577ee0df, type: 3}
       propertyPath: elemental_resistance
@@ -4510,6 +4510,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3065380904217312764, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3065380904217312764, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7517580568055650692, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
 --- !u!114 &5891865783928964887 stripped
@@ -7180,6 +7192,9 @@ MonoBehaviour:
   SliderSensibilitat: {fileID: 0}
   So: {fileID: 0}
   SliderSo: {fileID: 0}
+  Layout1: {fileID: 0}
+  Layout2: {fileID: 0}
+  Layout3: {fileID: 0}
   UICombate: {fileID: 0}
 --- !u!1 &6192608079612863851
 GameObject:

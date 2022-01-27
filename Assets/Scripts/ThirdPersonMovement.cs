@@ -48,29 +48,12 @@ public class ThirdPersonMovement : MonoBehaviour
             {
                 animator.SetBool("OnGround", true);
                 verticalVelocity = -gravity * Time.deltaTime;
-                /*
-                if(Input.GetKeyDown(KeyCode.Space) && !(animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")))
-                {
-                    verticalVelocity = jumpHeight;
-                    //animator.Play("Jump");
-                    //animator.SetBool("OnGround", false);
-
-                    animator.SetBool("Jumping", true);
-                }
-                */
             }
             else
             {
                 verticalVelocity -= -gravity * Time.deltaTime;
                 animator.SetBool("OnGround", false);
             }
-            /*
-            if (Input.GetKeyDown(KeyCode.Space) && (animator.GetCurrentAnimatorStateInfo(0).IsName("Move Blend")))
-            {
-                verticalVelocity = jumpHeight;
-                animator.Play("Jump");
-            }
-            */
 
             if (!Singleton.menu()){
                 Vector3 moveVectorJump = new Vector3(0,verticalVelocity,0);
@@ -78,17 +61,8 @@ public class ThirdPersonMovement : MonoBehaviour
                 float horizontal = Input.GetAxisRaw("Horizontal");
                 float vertical = Input.GetAxisRaw("Vertical");
                 Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-
-                /*if(Input.GetButtonDown("Jump") && isGrounded)
-                {
-                    velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-                }*/
-
-
-
                 Vector3 auxVec = new Vector3(0, 0, 0);
                 
-
                 if (direction.magnitude >= 0.1f && 
                         !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Land"))
                 {
@@ -99,18 +73,10 @@ public class ThirdPersonMovement : MonoBehaviour
                     Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                     controller.Move(moveDir.normalized * speed * Time.deltaTime);
 
-
-
-                    //velocity.y += gravity * Time.deltaTime;
-
-                    //controller.Move(velocity * Time.deltaTime);
-
                     auxVec = moveDir.normalized;
                 }
                 float auxVel = Mathf.Sqrt(auxVec[0] * auxVec[0] + auxVec[2] * auxVec[2]);
-                //Debug.Log(auxVel);
                 animator.SetFloat("Velocity", auxVel);
-
                 
                 // SONIDO DE LOS PASOS //
                 if (auxVel > 0 && !GetComponent<AudioSource>().isPlaying)
@@ -122,15 +88,6 @@ public class ThirdPersonMovement : MonoBehaviour
                 {
                     GetComponent<AudioSource>().Stop();
                 }
-                
-
-                /*
-                if (Input.GetKeyDown(KeyCode.Mouse0) && animator.GetBool("OnGround"))
-                {
-                    //Debug.Log("Attack");
-                    animator.Play("Attack");
-                }
-                */
             }
         }
         else

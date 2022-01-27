@@ -10,6 +10,7 @@ TagManager:
   - Cofre
   - Cartell
   - ItemText
+  - LootPanel
   layers:
   - Default
   - TransparentFX

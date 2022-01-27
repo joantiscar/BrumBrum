@@ -38,9 +38,6 @@ public class Scene5_Flight_Part1_Start : MonoBehaviour
         }
         else if (!FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit") /*&& !secondDialogueIsCalled*/ && !interacted)
         {
-            //GameObject.Find("Scenario_FourthScene").GetComponent<AudioSource>().volume = 1;
-            //Destroy(npc_inicialDialogue.transform.parent.gameObject);
-
             interacted = true;
             imageAnimator.SetBool("Fade", true);
         }

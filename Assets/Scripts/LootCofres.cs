@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LootCofres : MonoBehaviour
 {
     private int escena;
+    bool nextframe = false;
+    bool done = false;
+    string nombre = null;
     private AudioSource audioSource;
+    public GameObject missatgeLoot;
+    TextMeshProUGUI TextLoot;
+    public Animator animMissatgeLoot;
 
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GameObject.Find("Loot").GetComponent<AudioSource>();
-
+        Debug.Log (missatgeLoot);
+        TextLoot = missatgeLoot.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         switch (SceneManager.GetActiveScene().name){
             case "Scene1_Precamping":
                 escena = 0;
@@ -29,7 +37,20 @@ public class LootCofres : MonoBehaviour
         }
     }
 
+    void Update (){
+        if (animMissatgeLoot.GetCurrentAnimatorStateInfo(0).IsName("AnimacioPanelLoot") && !nextframe && !done && nombre != null){
+            nextframe = true;
+        }
+        else if (animMissatgeLoot.GetCurrentAnimatorStateInfo(0).IsName("AnimacioPanelLoot") && nextframe && !done){
+            animMissatgeLoot.SetBool("Show", false);
+            nextframe = false;
+            done = true;
+            Destroy(gameObject);
+        }
+    }
+
     public void getLoot() {
+        nombre = transform.gameObject.name;
         int loot;
         int quantitat;
         audioSource.Play();
@@ -45,11 +66,22 @@ public class LootCofres : MonoBehaviour
                 if (loot == 0){
                     quantitat = Random.Range(1, 3);
                     Singleton.afegirPocions(quantitat);
-                    Debug.Log(quantitat + " pocions");
+                    if (quantitat == 1){
+                        TextLoot.text = "Has conseguido " + quantitat + " poción";
+                    }
+                    else{
+                        TextLoot.text = "Has conseguido " + quantitat + " pociones";
+                    }
+                    animMissatgeLoot.SetBool("Show", true);
+                    nextframe = false;
+                    done = false;
                 }
                 else {
-                    Debug.Log ("50 d'experiencia");
-                    Singleton.guanyarExp(50);
+                    TextLoot.text = "Has conseguido 5 de experiencia";
+                    Singleton.guanyarExp(5);
+                    animMissatgeLoot.SetBool("Show", true);
+                    nextframe = false;
+                    done = false;
                 }
             break;
             case 1:
@@ -58,11 +90,17 @@ public class LootCofres : MonoBehaviour
                 if (loot == 0){
                     quantitat = Random.Range(2, 4);
                     Singleton.afegirPocions(quantitat);
-                    Debug.Log(quantitat + " pocions");
+                    TextLoot.text = "Has conseguido " + quantitat + " pociones";
+                    animMissatgeLoot.SetBool("Show", true);
+                    nextframe = false;
+                    done = false;
                 }
                 else {
-                    Debug.Log ("100 d'experiencia");
-                    Singleton.guanyarExp(100);
+                    TextLoot.text = "Has conseguido 10 de experiencia";
+                    Singleton.guanyarExp(10);
+                    animMissatgeLoot.SetBool("Show", true);
+                    nextframe = false;
+                    done = false;
                 }
             break;
             case 2:
@@ -71,11 +109,17 @@ public class LootCofres : MonoBehaviour
                 if (loot == 0){
                     quantitat = Random.Range(3, 5);
                     Singleton.afegirPocions(quantitat);
-                    Debug.Log(quantitat + " pocions");
+                    TextLoot.text = "Has conseguido " + quantitat + " pociones";
+                    animMissatgeLoot.SetBool("Show", true);
+                    nextframe = false;
+                    done = false;
                 }
                 else {
-                    Debug.Log ("150 d'experiencia");
-                    Singleton.guanyarExp(150);
+                    TextLoot.text = "Has conseguido 15 de experiencia";
+                    Singleton.guanyarExp(15);
+                    animMissatgeLoot.SetBool("Show", true);
+                    nextframe = false;
+                    done = false;
                 }
             break;
             case 3:
@@ -84,11 +128,17 @@ public class LootCofres : MonoBehaviour
                 if (loot == 0){
                     quantitat = Random.Range(4, 6);
                     Singleton.afegirPocions(quantitat);
-                    Debug.Log(quantitat + " pocions");
+                    TextLoot.text = "Has conseguido " + quantitat + " pociones";
+                    animMissatgeLoot.SetBool("Show", true);
+                    nextframe = false;
+                    done = false;
                 }
                 else {
-                    Debug.Log ("200 d'experiencia");
-                    Singleton.guanyarExp(200);
+                    TextLoot.text = "Has conseguido 20 de experiencia";
+                    Singleton.guanyarExp(20);
+                    animMissatgeLoot.SetBool("Show", true);
+                    nextframe = false;
+                    done = false;
                 }
             break;
         }

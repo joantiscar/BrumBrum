@@ -250,6 +250,7 @@ public class SistemaCombate : MonoBehaviour
                         if (Input.GetMouseButtonDown(0)) { // Clic izquierdo hace varias cosas dependiendo del modo
                             if(hitDado){
                                 if(apuntando){// Si en modo habilidad y hay un objetivo en el punto de mira, atacamos y volemos a modo moverse
+                                    Character c;
                                     if(pjActualPersonaje.habilidadesDisponibles[pjActualPersonaje.habilidadSeleccionada].radius==0.0f && lastOutline!=null){  // Habilidad normal
                                         pjActualPersonaje.objetivo = lastOutline;
                                         pjActualPersonaje.Atacar();
@@ -268,6 +269,14 @@ public class SistemaCombate : MonoBehaviour
                                     UICombate.deseleccionarHabilidad();
                                     destruirCirculoArea();
                                     apuntando = false;
+                                    
+                                    if(ultimoMirado!=null){
+                                        UICombate.escondeDatos();
+                                        if(pjs.IndexOf(ultimoMirado)!=-1){
+                                            UICombate.mostrarDatos(ultimoMirado);
+                                        }
+                                    }
+
                                 }  
                                 else{ // Casteamos el ray a ver donde se ha clicado
 
@@ -298,7 +307,10 @@ public class SistemaCombate : MonoBehaviour
                         }
                         else if (Input.GetKeyDown("q") && Singleton.instance().pocions > 0){
                             UICombate.bebePocion();
-                            
+                            if(ultimoMirado!=null){
+                                UICombate.escondeDatos();
+                                UICombate.mostrarDatos(ultimoMirado);
+                            }
                         }
                         else{
                             // Vamos mirando las teclas de 1 a n habilidades para seleccionar una habilidad
@@ -378,34 +390,35 @@ public class SistemaCombate : MonoBehaviour
 
                 // Miramos si ha llegado a su destino dandole un poco de margen para que no se quede atascau siempre
                 if (moviendose && 
-                    pjActual.transform.position[0] >= last_hit.point[0] - 0.2 && pjActual.transform.position[0] <= last_hit.point[0] + 0.2 && 
-                    pjActual.transform.position[2] >= last_hit.point[2] - 0.2 && pjActual.transform.position[2] <= last_hit.point[2] + 0.2) {
+                    pjActual.transform.position[0] >= last_hit.point[0] - 0.4f && pjActual.transform.position[0] <= last_hit.point[0] + 0.4f && 
+                    pjActual.transform.position[2] >= last_hit.point[2] - 0.4f && pjActual.transform.position[2] <= last_hit.point[2] + 0.4f) {
                     pjActual.GetComponentInChildren<Animator>().SetFloat("Velocity", 0);
                     pjActual.GetComponent<NavMeshAgent>().isStopped = true;
                     pjActual.GetComponent<NavMeshAgent>().isStopped = false;
+                    pjActual.GetComponent<NavMeshAgent>().destination = pjActual.transform.position;
                     moviendose = false;
                 }                
                 
             }
             else{
-                if (derrota) SceneManager.LoadScene("GameOver");
+                if (derrota)
+                {
+                    Singleton.enCombate = false;
+                    SceneManager.LoadScene("GameOver");
+                }
                 else
                 {
-                    //SceneManager.LoadScene("Victoria");
-
-
                     string currentScene = SceneManager.GetActiveScene().name;
 
-                    
                     if (currentScene == "CombatScene_CombatFinal")
                     {
                         SceneManager.LoadScene("Scene5_Flight_Part1");
                     }
                     else
                     {
-                        GameObject.FindObjectOfType<RandomCombat>().ExitCombat();
+                        GameObject.Find("FullScene").GetComponent<RandomCombat>().ExitCombat();
                     }
-                    
+
 
                 }
 
@@ -435,10 +448,16 @@ public class SistemaCombate : MonoBehaviour
             }
             else i++;
         }
-        // MIRAR LO QUE PASA CON EL ORDEN
         UICombate.actualizaTurno(pjs[i].GetComponent<Character>(),true); // por si acaso su turno aun no ha llegado
 
         Debug.Log("Eliminant a " + pjs[i].GetComponent<Character>().nombre);
+        if(ultimoMirado==pjs[i]){
+            UICombate.escondeDatos();
+            ultimoMirado=null;
+        }
         pjs.RemoveAt(i);
+        if(i<ordenActual)ordenActual--;
+
+
     }
 }

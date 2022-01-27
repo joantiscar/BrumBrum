@@ -9,10 +9,9 @@ public class Interaccio : MonoBehaviour
     private bool triggering;
     private bool isRPressed = false;
     [SerializeField] TextMeshProUGUI npcText;
-    // Start is called before the first frame update
+
 
     // Update is called once per frame
-    
     void Update()
     {
         if (!Singleton.menu()){
@@ -23,7 +22,6 @@ public class Interaccio : MonoBehaviour
 
                 if(Input.GetKeyDown(KeyCode.R) && !isRPressed)
                 {
-                    //Debug.Log("Interaccio: " + triggeringNpc.name);
                     GetComponent<AudioSource>().Stop();
                     GameObject.Find(triggeringNpc.name).GetComponent<objecteInteractiu>().Interactuate();
                     isTalkingStarted();

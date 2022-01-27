@@ -31,7 +31,7 @@ public class Scene3_Castle_Start : MonoBehaviour
             objecteInt.Interactuate();
             player.GetComponent<Interaccio>().isTalkingStarted();
         }
-        else if (!FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit") /*&& !secondDialogueIsCalled*/)
+        else if (!FindObjectOfType<controlDialegs>().animSeguit.GetBool("Seguit"))
         {
             GameObject.Find("Scenario_ThirdScene").GetComponent<AudioSource>().volume = 0.5f;
             GameObject.FindObjectOfType<RandomCombat>().SetAble();

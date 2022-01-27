@@ -32,6 +32,8 @@ public class RandomCombat : MonoBehaviour
 
         scene = GameObject.Find("MovementScene");
 
+        Debug.Log(scene);
+
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if(player!=null)
             imageAnimator = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Canvas>().GetComponentInChildren<Image>().GetComponent<Animator>();
@@ -50,36 +52,16 @@ public class RandomCombat : MonoBehaviour
                 (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
             {
                 waiting = waitTill;
-
-                //Debug.Log("There is combat");
-                //battle = SceneManager.LoadScene("CombatDemo");
                 inCombat = true;
                 Singleton.enCombate = true;
-                //scene.SetActive(false);
-
-                //SceneManager.LoadScene("CombatDemo", LoadSceneMode.Additive);
-
-                /*
-                if (SceneManager.GetActiveScene().name == "Scene3_Castle")
-                {
-                    SceneManager.LoadScene("CombatScene_CombatCastleScenario", LoadSceneMode.Additive);
-                    battleScene = "CombatScene_CombatCastleScenario";
-                }
-                else
-                {
-                    SceneManager.LoadScene("CombatScene_CombatForestScenario", LoadSceneMode.Additive);
-                    battleScene = "CombatScene_CombatForestScenario";
-                }
-                */
 
                 fadeIn = true;
                 imageAnimator.SetBool("Fade", true);
             }
             else if (inCombat && fadeIn && imageAnimator.GetCurrentAnimatorStateInfo(0).IsName("Default"))
             {
-                Singleton.randomEnemigos(r.Next(1,6)); // dame enemigos del 1 al 5
+                Singleton.randomEnemigos(r.Next(1,6)); 
 
-                //SceneManager.LoadScene("CombatDemo", LoadSceneMode.Additive); battleScene = "CombatDemo";
                 if (SceneManager.GetActiveScene().name == "Scene3_Castle")
                 {
                     SceneManager.LoadScene("CombatScene_CombatCastleScenario", LoadSceneMode.Additive);
@@ -93,27 +75,6 @@ public class RandomCombat : MonoBehaviour
 
                 scene.SetActive(false);
             }
-            if (inCombat && Input.GetKeyDown(KeyCode.X))
-            {
-                inCombat = false;
-                Singleton.enCombate = false;
-
-                /*scene.SetActive(true);
-                Destroy(GameObject.Find("New Game Object"));*/
-                SceneManager.UnloadSceneAsync(battleScene);
-
-                //imageAnimator.SetBool("Fade", false);
-                //imageAnimator.Play("FadeOut");
-                ExitCombat();
-            }
-            if (inCombat && Input.GetKeyDown(KeyCode.O))
-            {
-                GameObject.FindObjectOfType<SistemaCombate>().derrota = true;
-            }
-            if (inCombat && Input.GetKeyDown(KeyCode.P))
-            {
-                GameObject.FindObjectOfType<SistemaCombate>().victoria = true;
-            }
         }
     }
 
@@ -121,9 +82,7 @@ public class RandomCombat : MonoBehaviour
     {
         bool combat = false;
 
-
         float num = UnityEngine.Random.Range(0f, 99f);
-        //Debug.Log(num);
         if (num <= probability)
         {
             combat = true;
@@ -145,19 +104,13 @@ public class RandomCombat : MonoBehaviour
 
     public void ExitCombat()
     {
-        scene.SetActive(true);
-        Destroy(GameObject.Find("New Game Object"));
-        SceneManager.UnloadSceneAsync(battleScene);
-        Debug.Log ("Que tal?");
-        //if (GameObject.FindObjectOfType<SistemaCombate>().victoria){
-            ThirdPersonCamera.SetActive(false);
-            ThirdPersonCamera.SetActive(true);
-        //}
         inCombat = false;
         Singleton.enCombate = false;
-
+        SceneManager.UnloadSceneAsync(battleScene);
         scene.SetActive(true);
-
+        
+        ThirdPersonCamera.SetActive(false);
+        ThirdPersonCamera.SetActive(true);
 
         SistemaCombate sistema = FindObjectOfType<SistemaCombate>();
         GameObject pjAct = sistema.pjActual;
@@ -166,20 +119,6 @@ public class RandomCombat : MonoBehaviour
         pjAct.GetComponent<Character>().destruirCirculoHab();
         pjAct.GetComponent<Character>().destruirCirculoMov();
 
-        /*
-        Character[] chars = FindObjectsOfType<Character>();
-
-        foreach(Character c in chars)
-        {
-            Debug.Log(c.hpMax);
-        }
-        */
-
-
-        //Destroy(GameObject.Find("New Game Object"));
         SceneManager.UnloadSceneAsync(battleScene);
-
-        //imageAnimator.SetBool("Fade", false);
-        //imageAnimator.Play("FadeOut");
     }
 }

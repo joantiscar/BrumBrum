@@ -16,6 +16,7 @@ public class Pause : MonoBehaviour
     public bool enCombate = false;
     int anterior;
     int _godMode = 0;
+    public GameObject ThirdPersonCamera;
     public GameObject menu;
     public GameObject options;
     public GameObject controls;
@@ -23,15 +24,18 @@ public class Pause : MonoBehaviour
     public GameObject SliderSensibilitat;
     public GameObject So;
     public GameObject SliderSo;
-
+    public GameObject Layout1;
+    public Animator Layout2;
+    public GameObject Layout3;
     public UICombate UICombate;
 
-    /*void Start(){
-        if(menu==null && options==null){
-            menu = this.transform.GetChild(1).transform.GetChild(2).transform.GetChild(4).gameObject;
-            options = this.transform.GetChild(1).transform.GetChild(2).transform.GetChild(5).gameObject;
+
+    void Start (){
+        if (ThirdPersonCamera != null){
+            ThirdPersonCamera.SetActive(false);
+            ThirdPersonCamera.SetActive(true);
         }
-    }*/
+    }
     void Update(){
         if(Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "MenuInici" && 
             SceneManager.GetActiveScene().name != "GameOver" && SceneManager.GetActiveScene().name != "Victoria" && !Singleton.LevelupPanel()){
@@ -64,6 +68,7 @@ public class Pause : MonoBehaviour
             return(false);
         }
         else{
+            GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().Pause();
             Time.timeScale = 0f;
             return(true);    
         }
@@ -71,6 +76,9 @@ public class Pause : MonoBehaviour
     public void godMode (){
         _godMode ++;
         if (_godMode == 9){
+            Layout1.SetActive(false);
+            Layout2.SetBool("GodMode", true);
+            Layout3.SetActive(true);
             Singleton.ActivateGodMode();
         }
     }
