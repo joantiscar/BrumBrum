@@ -32,6 +32,8 @@ public class RandomCombat : MonoBehaviour
 
         scene = GameObject.Find("MovementScene");
 
+        Debug.Log(scene.name);
+
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if(player!=null)
             imageAnimator = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Canvas>().GetComponentInChildren<Image>().GetComponent<Animator>();
@@ -113,6 +115,11 @@ public class RandomCombat : MonoBehaviour
             if (inCombat && Input.GetKeyDown(KeyCode.P))
             {
                 GameObject.FindObjectOfType<SistemaCombate>().victoria = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                Singleton.guanyarExp(260);
             }
         }
     }
