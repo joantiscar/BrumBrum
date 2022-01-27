@@ -364,6 +364,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5537636040612022137, guid: fd455b059163b974b98a6d2a30290576, type: 3}
+      propertyPath: metrosMaximos
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5537636040612022137, guid: fd455b059163b974b98a6d2a30290576, type: 3}
       propertyPath: user_controlled
       value: 0
       objectReference: {fileID: 0}
@@ -1094,6 +1098,10 @@ PrefabInstance:
       value: Guerrero
       objectReference: {fileID: 0}
     - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: metrosMaximos
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: special_attack
       value: 130
       objectReference: {fileID: 0}
@@ -1255,6 +1263,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6765537070348315722, guid: 113230c407ab303478a3d5ff763b9044, type: 3}
+      propertyPath: metrosMaximos
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765537070348315722, guid: 113230c407ab303478a3d5ff763b9044, type: 3}
       propertyPath: user_controlled
       value: 0
       objectReference: {fileID: 0}
@@ -1315,6 +1327,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1072953828550491021, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072953828550491021, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1072953828644696913, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
       propertyPath: SistemaCombate
       value: 
@@ -1372,6 +1392,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1072953830330879621, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3065380904217312764, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3065380904217312764, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
@@ -4558,6 +4586,10 @@ PrefabInstance:
       value: Curandero
       objectReference: {fileID: 0}
     - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: metrosMaximos
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: special_attack
       value: 250
       objectReference: {fileID: 0}
@@ -4658,6 +4690,10 @@ PrefabInstance:
     - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: className
       value: Paladin
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: metrosMaximos
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: special_attack
@@ -4762,6 +4798,10 @@ PrefabInstance:
       value: Mago
       objectReference: {fileID: 0}
     - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: metrosMaximos
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: special_attack
       value: 200
       objectReference: {fileID: 0}
@@ -4862,6 +4902,10 @@ PrefabInstance:
     - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: className
       value: Luchador
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: metrosMaximos
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: special_attack
@@ -7464,6 +7508,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2171655411991565256, guid: d791bb2136f0d1349812c78d8a130eb9, type: 3}
+      propertyPath: metrosMaximos
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171655411991565256, guid: d791bb2136f0d1349812c78d8a130eb9, type: 3}
       propertyPath: user_controlled
       value: 0
       objectReference: {fileID: 0}
@@ -7587,6 +7635,7 @@ MonoBehaviour:
   SliderSensibilitat: {fileID: 0}
   So: {fileID: 0}
   SliderSo: {fileID: 0}
+  UICombate: {fileID: 0}
 --- !u!1 &6192608079612863851
 GameObject:
   m_ObjectHideFlags: 0
@@ -7674,6 +7723,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1551798079434539923, guid: 940a8138f0a7dc641af984310cb4bdf2, type: 3}
+      propertyPath: metrosMaximos
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1551798079434539923, guid: 940a8138f0a7dc641af984310cb4bdf2, type: 3}
       propertyPath: user_controlled
       value: 0
@@ -8035,6 +8088,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2020787794639745350, guid: 1a72a6d2bb4e51144ada029e276237c5, type: 3}
+      propertyPath: metrosMaximos
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2020787794639745350, guid: 1a72a6d2bb4e51144ada029e276237c5, type: 3}
       propertyPath: user_controlled
       value: 0

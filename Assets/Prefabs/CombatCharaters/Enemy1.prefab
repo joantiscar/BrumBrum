@@ -59,9 +59,11 @@ MonoBehaviour:
   velocity: 0
   nombre: 
   elemental_resistance: 
-  metrosMaximos: 2.5
+  metrosMaximos: 10
   objetivo: {fileID: 0}
+  objetivos: []
   className: Clase
+  id: 0
   metrosRestantes: 0
   hp: 0
   habilidadSeleccionada: -1
@@ -69,6 +71,9 @@ MonoBehaviour:
   maxPAtaques: 8
   actPAtaques: 0
   cooldowns: 
+  mejoraDefensaEspecial: 0
+  turnosMejoraDefensaEspecial: 0
+  UICombate: {fileID: 0}
   user_controlled: 0
   exp_when_killed: 0
   SistemaCombate: {fileID: 0}
