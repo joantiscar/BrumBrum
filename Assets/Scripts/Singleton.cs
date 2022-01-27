@@ -274,7 +274,6 @@ public class Singleton {
     }
 
     public static void reset(){
-        instance()._godMode = false;
         instance().iniciarPjs();
         instance().pocions = 10;
     }
