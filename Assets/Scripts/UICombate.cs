@@ -311,6 +311,14 @@ public class UICombate : MonoBehaviour
         Slider barra = cajaDatos.Find("Barra").GetComponent<Slider>();
         barra.maxValue = (float) c.hpMax;
         barra.value = (float) c.hp;
+
+        // Mostrar estados
+        for (int i = 0; i < c.EstadosActivos.Length; i++)
+        {
+            if(c.EstadosActivos[i]) habilitaEstado(i);
+            else deshabilitaEstado(i);
+        }
+
     }
 
     public void escondeDatos(){

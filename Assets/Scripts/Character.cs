@@ -129,75 +129,77 @@ public class Character : MonoBehaviour
     // *            Estados alterados              *
     // *********************************************
 
+    public bool[] EstadosActivos = new bool[17];
+
     bool aturdido = false;
     int turnosAturdido = 0;
     public void aturdir(){
         this.aturdido = true;
         this.turnosAturdido += 3;
-        UICombate.habilitaEstado(3);
+        EstadosActivos[3] = true;
     }
     bool envenenado = false;
     int turnosEnvenenado = 0;
     public void envenenar(){
         this.envenenado = true;
         this.turnosEnvenenado += 3;
-        UICombate.habilitaEstado(2);
+        EstadosActivos[2] = true;
     }
     bool quemado = false;
     int turnosQuemado = 0;
     public void quemar(){
         this.quemado = true;
         this.turnosQuemado += 3;
-        UICombate.habilitaEstado(0);
+        EstadosActivos[0] = true;
     }
     bool congelado = false;
     int turnosCongelado = 0;
     public void congelar(){
         this.congelado = true;
         this.turnosCongelado += 3;
-        UICombate.habilitaEstado(1);
+        EstadosActivos[1] = true;
     }
     bool protegido = false;
     int turnosProtegido = 0;
     public void proteger(){
         this.protegido = true;
         this.turnosProtegido += 3;
-        UICombate.habilitaEstado(7);
+        EstadosActivos[7] = true;
     }
     bool contraataque = false;
     int turnosContraataque = 0;
     public void contraatacar(){
         this.contraataque = true;
         this.turnosContraataque += 3;
-        UICombate.habilitaEstado(10);
+        EstadosActivos[10] = true;
     }
     bool sangrado = false;
     int turnosSangrado = 0;
     public void sangrar(){
         this.sangrado = true;
         this.turnosSangrado += 3;
-        UICombate.habilitaEstado(4);
+        EstadosActivos[4] = true;
     }
     bool miedo = false;
     int turnosMiedo = 0;
     public void asustar(){
         this.miedo = true;
         this.turnosMiedo += 3;
-        UICombate.habilitaEstado(5);
+        EstadosActivos[5] = true;
     }
     bool furia = false;
     int turnosFuria = 0;
     public void enfurecer(){
         this.furia = true;
         this.turnosFuria += 3;
-        UICombate.habilitaEstado(6);
+        EstadosActivos[6] = true;
     }
     bool inmortal = false;
     int turnosInmortal = 0;
     public void inmortalizar(){
         this.inmortal = true;
         this.turnosInmortal += 3;
-        UICombate.habilitaEstado(11);
+        EstadosActivos[11] = true;
     }
 
     // *********************************************
@@ -209,49 +211,49 @@ public class Character : MonoBehaviour
     public void inspirar() {
         inspirado = true;
         turnosInspirado += 3;
-        UICombate.habilitaEstado(9); 
+        EstadosActivos[9] = true; 
     }
     bool bendecido = false;
     int turnosBendecido = 0;
     public void bendecir() {
         bendecido = true;
         turnosBendecido += 3;
-        UICombate.habilitaEstado(8); 
+        EstadosActivos[8] = true; 
     }
     bool mejoraAtaque = false;
     int turnosMejoraAtaque = 0;
     public void mejorarAtaque() {
         mejoraAtaque = true;
         turnosMejoraAtaque += 3;
-        UICombate.habilitaEstado(12); 
+        EstadosActivos[12] = true; 
     }
     bool mejoraAtaqueEspecial = false;
     int turnosMejoraAtaqueEspecial = 0;
     public void mejorarAtaqueEspecial() {
         mejoraAtaqueEspecial = true;
         turnosMejoraAtaqueEspecial += 3;
-        UICombate.habilitaEstado(13); 
+        EstadosActivos[13] = true; 
     }
     bool mejoraDefensa = false;
     int turnosMejoraDefensa = 0;
     public void mejorarDefensa() {
         mejoraDefensa = true;
         turnosMejoraDefensa += 3;
-        UICombate.habilitaEstado(14); 
+        EstadosActivos[14] = true; 
     }
     public bool mejoraDefensaEspecial = false;
     public int turnosMejoraDefensaEspecial = 0;
     public void mejorarDefensaEspecial() {
         mejoraDefensaEspecial = true;
         turnosMejoraDefensaEspecial += 3;
-        UICombate.habilitaEstado(15); 
+        EstadosActivos[15] = true; 
     }
     bool mejoraVelocidad = false;
     int turnosMejoraVelocidad = 0;
     public void mejorarVelocidad() {
         mejoraVelocidad = true;
         turnosMejoraVelocidad += 3;
-        UICombate.habilitaEstado(16); 
+        EstadosActivos[16] = true; 
     }
 
 
@@ -342,23 +344,23 @@ public class Character : MonoBehaviour
 
 
     void reducirTurnosBuffsDebuffsYEstadosAlterados(){
-        turnosQuemado--; if (turnosQuemado == 0) quemado = false; UICombate.deshabilitaEstado(0);
-        turnosCongelado--; if (turnosCongelado == 0) congelado = false; UICombate.deshabilitaEstado(1);
-        turnosEnvenenado--; if (turnosEnvenenado == 0) envenenado = false; UICombate.deshabilitaEstado(2);
-        turnosAturdido--; if (turnosAturdido == 0) aturdido = false; UICombate.deshabilitaEstado(3);
-        turnosSangrado--; if (turnosSangrado == 0) sangrado = false; UICombate.deshabilitaEstado(4);
-        turnosMiedo--; if (turnosMiedo == 0) miedo = false; UICombate.deshabilitaEstado(5);
-        turnosFuria--; if (turnosFuria == 0) furia = false; UICombate.deshabilitaEstado(6);
-        turnosProtegido--; if (turnosProtegido == 0) protegido = false; UICombate.deshabilitaEstado(7);
-        turnosBendecido--; if (turnosBendecido == 0) bendecido = false; UICombate.deshabilitaEstado(8);
-        turnosInspirado--; if (turnosInspirado == 0) inspirado = false; UICombate.deshabilitaEstado(9);
-        turnosContraataque--; if (turnosContraataque == 0) contraataque = false; UICombate.deshabilitaEstado(10);
-        turnosInmortal--; if (turnosInmortal == 0) inmortal = false; UICombate.deshabilitaEstado(11);
-        turnosMejoraAtaque--; if (turnosMejoraAtaque == 0) mejoraAtaque = false; UICombate.deshabilitaEstado(12);
-        turnosMejoraAtaqueEspecial--; if (turnosMejoraAtaqueEspecial == 0) mejoraAtaqueEspecial = false; UICombate.deshabilitaEstado(13);
-        turnosMejoraDefensa--; if (turnosMejoraDefensa == 0) mejoraDefensa = false; UICombate.deshabilitaEstado(14);
-        turnosMejoraDefensaEspecial--; if (turnosMejoraDefensaEspecial == 0) mejoraDefensaEspecial = false; UICombate.deshabilitaEstado(15);
-        turnosMejoraVelocidad--; if (turnosMejoraVelocidad == 0) mejoraVelocidad = false; UICombate.deshabilitaEstado(16);
+        turnosQuemado--; if (turnosQuemado == 0) quemado = false; EstadosActivos[0] = false;
+        turnosCongelado--; if (turnosCongelado == 0) congelado = false; EstadosActivos[1] = false;
+        turnosEnvenenado--; if (turnosEnvenenado == 0) envenenado = false; EstadosActivos[2] = false;
+        turnosAturdido--; if (turnosAturdido == 0) aturdido = false; EstadosActivos[3] = false;
+        turnosSangrado--; if (turnosSangrado == 0) sangrado = false; EstadosActivos[4] = false;
+        turnosMiedo--; if (turnosMiedo == 0) miedo = false; EstadosActivos[5] = false;
+        turnosFuria--; if (turnosFuria == 0) furia = false; EstadosActivos[6] = false;
+        turnosProtegido--; if (turnosProtegido == 0) protegido = false; EstadosActivos[7] = false;
+        turnosBendecido--; if (turnosBendecido == 0) bendecido = false; EstadosActivos[8] = false;
+        turnosInspirado--; if (turnosInspirado == 0) inspirado = false; EstadosActivos[9] = false;
+        turnosContraataque--; if (turnosContraataque == 0) contraataque = false; EstadosActivos[10] = false;
+        turnosInmortal--; if (turnosInmortal == 0) inmortal = false; EstadosActivos[11] = false;
+        turnosMejoraAtaque--; if (turnosMejoraAtaque == 0) mejoraAtaque = false; EstadosActivos[12] = false;
+        turnosMejoraAtaqueEspecial--; if (turnosMejoraAtaqueEspecial == 0) mejoraAtaqueEspecial = false; EstadosActivos[13] = false;
+        turnosMejoraDefensa--; if (turnosMejoraDefensa == 0) mejoraDefensa = false; EstadosActivos[14] = false;
+        turnosMejoraDefensaEspecial--; if (turnosMejoraDefensaEspecial == 0) mejoraDefensaEspecial = false; EstadosActivos[15] = false;
+        turnosMejoraVelocidad--; if (turnosMejoraVelocidad == 0) mejoraVelocidad = false; EstadosActivos[16] = false;
     }
 
 
