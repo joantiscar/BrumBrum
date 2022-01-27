@@ -61,18 +61,18 @@ public class LevelupPanel : MonoBehaviour
 
         panel.SetActive(Singleton.LevelupPanel());
         pjActual = Singleton.instance().pjs[nPjActual];
-        puntsText.text = "Puntos actuales: " + pjActual.upgrade_points.ToString();
-        hp.text = "HP: " + pjActual.hpMax.ToString();
+        puntsText.text = pjActual.upgrade_points.ToString();
+        hp.text = pjActual.hpMax.ToString();
         newHp.text = (pjActual.hpMax + 5).ToString();
-        att.text = "Ataque: " + pjActual.attack.ToString();
+        att.text = pjActual.attack.ToString();
         newAtt.text = (pjActual.attack + 1).ToString();
-        spAtt.text = "Ataque esp: " + pjActual.special_attack.ToString();
+        spAtt.text = pjActual.special_attack.ToString();
         newSpAtt.text = (pjActual.special_attack + 1).ToString();
-        def.text = "Defensa: " + pjActual.defense.ToString();
+        def.text = pjActual.defense.ToString();
         newDef.text = (pjActual.defense + 1).ToString();
-        spDef.text = "Defensa esp: " + pjActual.special_defense.ToString();
+        spDef.text = pjActual.special_defense.ToString();
         newSpDef.text = (pjActual.special_defense + 1).ToString();
-        vel.text = "Velocidad: " + pjActual.velocity.ToString();
+        vel.text = pjActual.velocity.ToString();
         newVel.text = (pjActual.velocity + 1).ToString();
         nomActual.text = pjActual.nombre.ToString();
 
