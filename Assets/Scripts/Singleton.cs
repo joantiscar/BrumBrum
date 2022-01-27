@@ -274,6 +274,10 @@ public class Singleton {
     }
 
     public static void reset(){
+        enCombate = false;
+        instance()._menu = false;
+        instance()._levelUpPanel = false;
+        instance().dialegsIniciats = false;
         instance().iniciarPjs();
         instance().pocions = 10;
     }
