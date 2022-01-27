@@ -23,7 +23,9 @@ public class Pause : MonoBehaviour
     public GameObject SliderSensibilitat;
     public GameObject So;
     public GameObject SliderSo;
-
+    public GameObject Layout1;
+    public Animator Layout2;
+    public GameObject Layout3;
     public UICombate UICombate;
 
     /*void Start(){
@@ -71,6 +73,9 @@ public class Pause : MonoBehaviour
     public void godMode (){
         _godMode ++;
         if (_godMode == 9){
+            Layout1.SetActive(false);
+            Layout2.SetBool("GodMode", true);
+            Layout3.SetActive(true);
             Singleton.ActivateGodMode();
         }
     }
