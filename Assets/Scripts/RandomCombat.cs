@@ -9,15 +9,15 @@ public class RandomCombat : MonoBehaviour
 {
     public float probability = 1f;
     public bool able;
-    public bool inCombat;
-    public string battleScene;
+    private bool inCombat;
+    private string battleScene;
     private bool fadeIn = false;
 
     public int waitTill = 500;
     public int waiting = 0;
     public GameObject ThirdPersonCamera;
 
-    public GameObject scene;
+    private GameObject scene;
     private Animator imageAnimator;
 
     Random r = new Random();
@@ -97,12 +97,12 @@ public class RandomCombat : MonoBehaviour
             }
             if (inCombat && Input.GetKeyDown(KeyCode.X))
             {
-                inCombat = false;
-                Singleton.enCombate = false;
+                //inCombat = false;
+                //Singleton.enCombate = false;
 
                 /*scene.SetActive(true);
                 Destroy(GameObject.Find("New Game Object"));*/
-                SceneManager.UnloadSceneAsync(battleScene);
+                //SceneManager.UnloadSceneAsync(battleScene);
 
                 //imageAnimator.SetBool("Fade", false);
                 //imageAnimator.Play("FadeOut");
@@ -153,8 +153,6 @@ public class RandomCombat : MonoBehaviour
 
     public void ExitCombat()
     {
-
-
         inCombat = false;
         Singleton.enCombate = false;
         SceneManager.UnloadSceneAsync(battleScene);
@@ -165,14 +163,6 @@ public class RandomCombat : MonoBehaviour
         scene.SetActive(true);
         
         //Destroy(GameObject.Find("New Game Object"));
-        
-        //inCombat = false;
-        //Singleton.enCombate = false;
-        //SceneManager.UnloadSceneAsync(battleScene);
-
-
-        //Debug.Log ("Que tal?");
-
 
         //if (GameObject.FindObjectOfType<SistemaCombate>().victoria){
             ThirdPersonCamera.SetActive(false);

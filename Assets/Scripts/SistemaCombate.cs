@@ -420,7 +420,8 @@ public class SistemaCombate : MonoBehaviour
                     }
                     else
                     {
-                        GameObject.FindObjectOfType<RandomCombat>().ExitCombat();
+                        GameObject.Find("FullScene").GetComponent<RandomCombat>().ExitCombat();
+                        //FindObjectOfType<RandomCombat>().ExitCombat();
                     }
 
 
