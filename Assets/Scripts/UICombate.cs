@@ -20,7 +20,9 @@ public class UICombate : MonoBehaviour
     public Transform cajaHabilidad;
     public Transform cajaDatos;
     public Slider barraHP;
+    public Slider barraDistancia;
     public TextMeshPro LabelPP;
+    public TextMeshPro LabelPPMax;
     public TextMeshPro TextLabel;
     public TextMeshPro pocionLabel;
     public GameObject TextBackground;
@@ -120,11 +122,13 @@ public class UICombate : MonoBehaviour
 
 
 
-    public void habilitarUI(bool habilitar){
+    public void habilitarUI(bool habilitar, bool pausa = false){
         barraHP.gameObject.transform.parent.gameObject.SetActive(habilitar);
         LabelPP.gameObject.transform.parent.gameObject.SetActive(habilitar);
-        this.gameObject.SetActive(habilitar);
-        this.transform.parent.Find("FondoSkills").gameObject.SetActive(habilitar);
+        this.gameObject.SetActive(habilitar && (!pausa || (pjActual!=null && pjActual.user_controlled)));
+        this.transform.parent.GetChild(0).gameObject.SetActive(habilitar);
+        barraDistancia.gameObject.SetActive(habilitar);
+        Turnos.SetActive(!pausa || (habilitar && pausa));
     }
 
     public void adaptaUI(List<Habilidad> habilidades,Character pj){ //Llamada cada vez que empieza el turno de un personaje
@@ -158,11 +162,14 @@ public class UICombate : MonoBehaviour
             }
             _habilidades = habilidades;
 
+            barraHP.maxValue = (float) pj.hpMax;
+            barraDistancia.maxValue = (float) pj.metrosMaximos - 0.5f;
             actualizaHP();
-
+            ActualizaDistancia();
 
             // Actualiza el label de PP
             LabelPP.text = pjActual.actPAtaques.ToString();
+            LabelPPMax.text = pjActual.maxPAtaques.ToString();
 
             // Miramos si tiene potis para ponerlo en gris o no
             if(Singleton.nPocions()==0) deshabilitaHabilidad(6); 
@@ -220,13 +227,13 @@ public class UICombate : MonoBehaviour
             cajaHabilidad.Find("Dano").GetComponent<TextMeshPro>().text = h.damage.ToString();
             if(pos==6) cajaHabilidad.Find("Cooldown").GetComponent<TextMeshPro>().text = "—";
             else cajaHabilidad.Find("Cooldown").GetComponent<TextMeshPro>().text = h.cooldown.ToString();
-            cajaHabilidad.Find("nCost").GetComponent<TextMeshPro>().text = h.coste.ToString() + " PP";
+            cajaHabilidad.Find("nCost").GetComponent<TextMeshPro>().text = h.coste.ToString();
             cajaHabilidad.Find("Descripcion").GetComponent<TextMeshPro>().text = h.description;
             if(h.heals){
-                cajaHabilidad.Find("Fondo").GetComponent<Image>().sprite = Resources.Load<Sprite>("Assets/Resources/HUDS/HUD_JUGADOR_AUX/HUD_CURA");
+                cajaHabilidad.Find("Fondo").GetComponent<Image>().sprite = Resources.Load<Sprite>("HUDS/HUD_JUGADOR_AUX/HUD_CURA");
             }
             else{
-                cajaHabilidad.Find("Fondo").GetComponent<Image>().sprite = Resources.Load<Sprite>("Assets/Resources/HUDS/HUD_JUGADOR_AUX/DANO");
+                cajaHabilidad.Find("Fondo").GetComponent<Image>().sprite = Resources.Load<Sprite>("HUDS/HUD_JUGADOR_AUX/DANO");
             }
         }
     }
@@ -246,9 +253,7 @@ public class UICombate : MonoBehaviour
             selected.SetActive(true);
             selected.transform.position = imgs[h].transform.position;
             selected.GetComponent<EventTrigger>().triggers[0].callback.AddListener((data) => { muestraDescripcion(h); });
-            // Debug.Log(selected.GetComponent<EventTrigger>().triggers[0].callback);
-
-
+            
             pjActual.destruirCirculoMov();
             pjActual.dibujaCirculoHab();
             SistemaCombate.destruirCirculoArea();
@@ -272,12 +277,13 @@ public class UICombate : MonoBehaviour
 
     public void actualizaHP(){
         // Actualiza la barra con el HP
-        barraHP.maxValue = (float) pjActual.hpMax;
+        // barraHP.maxValue = (float) pjActual.hpMax;
         barraHP.value = (float) pjActual.hp;
     }
 
     public void ActualizaDistancia(){
         // Actualizamos la GUI con la distancia
+        barraDistancia.value = (float) pjActual.metrosRestantes - 0.5f;
         pjActual.dibujaCirculoMov();
     }
 
@@ -288,9 +294,9 @@ public class UICombate : MonoBehaviour
 
         Character c = personaje.GetComponent<Character>();
 
-        cajaDatos.Find("Nombre").GetComponent<Text>().text = c.nombre;
-        cajaDatos.Find("HP").GetComponent<Text>().text = c.hp.ToString() + " HP";
-        cajaDatos.Find("Nivel").GetComponent<Text>().text = "Lvl "+c.level.ToString();
+        cajaDatos.Find("Nombre").GetComponent<TextMeshPro>().text = c.nombre;
+        cajaDatos.Find("HP").GetComponent<TextMeshPro>().text = c.hp.ToString() + " HP";
+        cajaDatos.Find("Nivel").GetComponent<TextMeshPro>().text = c.level.ToString();
 
         // Actualiza la barra con el HP
         Slider barra = cajaDatos.Find("Barra").GetComponent<Slider>();
@@ -299,6 +305,7 @@ public class UICombate : MonoBehaviour
     }
 
     public void escondeDatos(){
+        
         cajaDatos.gameObject.SetActive(false);
         pjDatosActual = null;
     }

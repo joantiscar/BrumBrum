@@ -202,6 +202,27 @@ public class SistemaCombate : MonoBehaviour
         o.UpdateMaterialProperties();
     }
 
+    public void MirarDatos(bool hitDado, RaycastHit hit){
+        if (hitDado) {
+            GameObject objetivo = getCharacter(hit.collider.gameObject.transform);
+
+            // Mostramos los datos del personaje, da igual en qué modo estemos, ni si está en rango...
+            if(objetivo!=null && ultimoMirado!=objetivo){
+                UICombate.mostrarDatos(objetivo);
+                ultimoMirado = objetivo;
+            }
+            else if(objetivo==null & ultimoMirado!=null){ // No es un personaje objetivo
+                UICombate.escondeDatos();
+                ultimoMirado = null;
+            }
+        }
+        else if(ultimoMirado!=null){ // Le damos a un sitio no válido, como el fondo (igual esto luego no sirve)
+            UICombate.escondeDatos();
+            ultimoMirado = null;
+
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {   
@@ -334,24 +355,14 @@ public class SistemaCombate : MonoBehaviour
                         }
                     }
 
-                    if (hitDado) {
-                        GameObject objetivo = getCharacter(hit.collider.gameObject.transform);
+                    MirarDatos(hitDado,hit);
 
-                        // Mostramos los datos del personaje, da igual en qué modo estemos, ni si está en rango...
-                        if(objetivo!=null && ultimoMirado!=objetivo){
-                            UICombate.mostrarDatos(objetivo);
-                            ultimoMirado = objetivo;
-                        }
-                        else if(objetivo==null){ // No es un personaje objetivo
-                            UICombate.escondeDatos();
-                            ultimoMirado = null;
-                        }
-                    }
-                    else{ // Le damos a un sitio no válido, como el fondo (igual esto luego no sirve)
-                        UICombate.escondeDatos();
-                        ultimoMirado = null;
-
-                    }
+                    
+                }
+                else if(!pjActualPersonaje.user_controlled){
+                    RaycastHit hit;
+                    bool hitDado = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100); 
+                    MirarDatos(hitDado,hit);
                 }
 
                 // Miramos si ha llegado a su destino dandole un poco de margen para que no se quede atascau siempre

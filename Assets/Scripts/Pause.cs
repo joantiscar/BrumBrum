@@ -24,6 +24,8 @@ public class Pause : MonoBehaviour
     public GameObject So;
     public GameObject SliderSo;
 
+    public UICombate UICombate;
+
     /*void Start(){
         if(menu==null && options==null){
             menu = this.transform.GetChild(1).transform.GetChild(2).transform.GetChild(4).gameObject;
@@ -38,11 +40,13 @@ public class Pause : MonoBehaviour
             if(!enCombate && !Singleton.dialegs()) FindObjectOfType<ThirdPersonMovement>().isTalkKing();
             if (paused){
                 menu.SetActive(true);
+                if(enCombate) UICombate.habilitarUI(false,true);
             }
             else {
                 menu.SetActive(false);
                 options.SetActive(false);
                 controls.SetActive(false);
+                if(enCombate) UICombate.habilitarUI(true,true);
             }
         }
         if ((sensibilitat || so) && ended){
@@ -82,6 +86,7 @@ public class Pause : MonoBehaviour
         menu.SetActive(false);
         paused = togglePause();
         if(!enCombate) FindObjectOfType<ThirdPersonMovement>().isTalkKing();
+        else if(enCombate) UICombate.habilitarUI(true,true);
         Singleton.toggleMenu();
     }
     public void salirPartida (){
