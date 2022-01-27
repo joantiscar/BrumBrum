@@ -55,10 +55,8 @@ public class Habilidades                                                        
 
     public static void lanzar(Character caster, Character objetivo, Habilidad habilidad){
         Character objetivoScript = objetivo.GetComponent<Character>();
-        switch(habilidad.name){
-            default:
-                break;
-        }
+        
+        // SONIDOS
 
         if (habilidad.damages){
             bool hits;
