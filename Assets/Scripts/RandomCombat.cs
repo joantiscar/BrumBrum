@@ -9,15 +9,15 @@ public class RandomCombat : MonoBehaviour
 {
     public float probability = 1f;
     public bool able;
-    private bool inCombat;
-    private string battleScene;
+    public bool inCombat;
+    public string battleScene;
     private bool fadeIn = false;
 
     public int waitTill = 500;
     public int waiting = 0;
     public GameObject ThirdPersonCamera;
 
-    private GameObject scene;
+    public GameObject scene;
     private Animator imageAnimator;
 
     Random r = new Random();
@@ -32,7 +32,7 @@ public class RandomCombat : MonoBehaviour
 
         scene = GameObject.Find("MovementScene");
 
-        Debug.Log(scene.name);
+        Debug.Log(scene);
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if(player!=null)
@@ -106,6 +106,7 @@ public class RandomCombat : MonoBehaviour
 
                 //imageAnimator.SetBool("Fade", false);
                 //imageAnimator.Play("FadeOut");
+                
                 ExitCombat();
             }
             if (inCombat && Input.GetKeyDown(KeyCode.O))
@@ -152,18 +153,33 @@ public class RandomCombat : MonoBehaviour
 
     public void ExitCombat()
     {
-        scene.SetActive(true);
-        Destroy(GameObject.Find("New Game Object"));
+
+
+        inCombat = false;
+        Singleton.enCombate = false;
         SceneManager.UnloadSceneAsync(battleScene);
-        Debug.Log ("Que tal?");
+
+
+        Debug.Log(scene.name);
+
+        scene.SetActive(true);
+        
+        //Destroy(GameObject.Find("New Game Object"));
+        
+        //inCombat = false;
+        //Singleton.enCombate = false;
+        //SceneManager.UnloadSceneAsync(battleScene);
+
+
+        //Debug.Log ("Que tal?");
+
+
         //if (GameObject.FindObjectOfType<SistemaCombate>().victoria){
             ThirdPersonCamera.SetActive(false);
             ThirdPersonCamera.SetActive(true);
         //}
-        inCombat = false;
-        Singleton.enCombate = false;
 
-        scene.SetActive(true);
+        //scene.SetActive(true);
 
 
         SistemaCombate sistema = FindObjectOfType<SistemaCombate>();
