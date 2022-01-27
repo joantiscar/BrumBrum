@@ -194,7 +194,7 @@ public class Singleton {
             // Luchador
             pj0.nombre = "Herc";
             pj0.className = "Luchador";
-            pj0.level = 10;
+            pj0.level = 1;
             pj0.attack = 20;
             pj0.special_attack = 5;
             pj0.defense = 20;
@@ -208,7 +208,7 @@ public class Singleton {
             // Pala
             pj1.nombre = "Irix";
             pj1.className = "Paladin";
-            pj1.level = 10;
+            pj1.level = 1;
             pj1.attack = 10;
             pj1.special_attack = 10;
             pj1.defense = 12;
@@ -223,7 +223,7 @@ public class Singleton {
             // Mago
             pj2.nombre = "Áine";
             pj2.className = "Mago";
-            pj2.level = 10;
+            pj2.level = 1;
             pj2.attack = 7;
             pj2.special_attack = 15;
             pj2.defense = 7;
@@ -238,7 +238,7 @@ public class Singleton {
             // Curandero
             pj3.nombre = "Hestia";
             pj3.className = "Curandero";
-            pj3.level = 10;
+            pj3.level = 1;
             pj3.attack = 5;
             pj3.special_attack = 20;
             pj3.defense = 5;
@@ -253,7 +253,7 @@ public class Singleton {
             // Guerrero
             pj4.nombre = "Cyrus";
             pj4.className = "Guerrero";
-            pj4.level = 10;
+            pj4.level = 1;
             pj4.attack = 15;
             pj4.special_attack = 8;
             pj4.defense = 15;
