@@ -74,7 +74,7 @@ public class LevelupPanel : MonoBehaviour
         newSpDef.text = (pjActual.special_defense + 1).ToString();
         vel.text = pjActual.velocity.ToString();
         newVel.text = (pjActual.velocity + 1).ToString();
-        nomActual.text = pjActual.nombre.ToString();
+        nomActual.text = pjActual.nombre.ToString() + " " + pjActual.level.ToString();
 
       
         newHp.gameObject.SetActive(pjActual.upgrade_points > 0);
@@ -101,11 +101,11 @@ public class LevelupPanel : MonoBehaviour
     }
 
     public void investDef(){
-        pjActual.use_upgrade_point("special_attack");
+        pjActual.use_upgrade_point("defense");
     }
 
     public void investSpAtt(){
-        pjActual.use_upgrade_point("defense");
+        pjActual.use_upgrade_point("special_attack");
     }
 
     public void investSpdef(){
