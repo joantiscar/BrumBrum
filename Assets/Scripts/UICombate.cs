@@ -27,9 +27,12 @@ public class UICombate : MonoBehaviour
     public TextMeshPro pocionLabel;
     public GameObject TextBackground;
     public GameObject Turnos;
+    public GameObject Estados;
 
     private List<TextMeshPro> nombres;
+    private Image[] imgsEstados;
     private List<GameObject> aDestruir = new List<GameObject>();
+    private Vector3 primerNombre;
 
     public GameObject selected; // El cuadrito que muestra el seleccionado
 
@@ -45,7 +48,7 @@ public class UICombate : MonoBehaviour
     {
         imgs = GetComponentsInChildren<Image>();
         nombres = Turnos.GetComponentsInChildren<TextMeshPro>().ToList();
-
+        imgsEstados = Estados.GetComponentsInChildren<Image>();
     }
 
     public void muestraOrden(){ // Cambia el orden de turnos segun el dado por sistema de combate
@@ -85,6 +88,7 @@ public class UICombate : MonoBehaviour
                 Destroy(obj);
             }
             aDestruir.Clear();
+            nombres[0].transform.position = primerNombre;
             nombres = Turnos.GetComponentsInChildren<TextMeshPro>().ToList();
             empezado = false;
             muestraOrden();
@@ -97,9 +101,9 @@ public class UICombate : MonoBehaviour
         TextLabel.text = "";
         pocionLabel.text = Singleton.nPocions().ToString();
 
-
         InvokeRepeating("ActualitzarCartell", 0f, 0.5f);
 
+        primerNombre = Turnos.transform.Find("Pos").position;
     }
 
     void ActualitzarCartell(){
@@ -333,6 +337,14 @@ public class UICombate : MonoBehaviour
             imgs[h].transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = pjActual.cooldowns[h].ToString();
 
         }
+    }
+
+    public void habilitaEstado(int estado){
+        imgsEstados[estado].material = null;
+    }
+
+    public void deshabilitaEstado(int estado){
+        imgsEstados[estado].material = Resources.Load<Material>("Gray");
     }
 
 }
