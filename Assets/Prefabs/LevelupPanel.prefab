@@ -547,6 +547,7 @@ GameObject:
   - component: {fileID: 1580027133623437307}
   - component: {fileID: 1580027133623437304}
   - component: {fileID: 1580027133623437305}
+  - component: {fileID: 5915924435532304382}
   - component: {fileID: 1580027133623437306}
   m_Layer: 5
   m_Name: PrevPJ
@@ -612,6 +613,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5915924435532304382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580027133623437300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2af5c18b145ab48a291e2bcc39c47d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1580027133623437305}
 --- !u!114 &1580027133623437306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,6 +693,7 @@ GameObject:
   - component: {fileID: 1580027133779919856}
   - component: {fileID: 1580027133779919861}
   - component: {fileID: 1580027133779919862}
+  - component: {fileID: 1135221496541313668}
   - component: {fileID: 1580027133779919863}
   m_Layer: 5
   m_Name: MejorarSpDef
@@ -744,6 +759,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1135221496541313668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580027133779919857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2af5c18b145ab48a291e2bcc39c47d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1580027133779919862}
 --- !u!114 &1580027133779919863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -811,6 +839,7 @@ GameObject:
   - component: {fileID: 1580027134077465744}
   - component: {fileID: 1580027134077465749}
   - component: {fileID: 1580027134077465750}
+  - component: {fileID: 3727213818428904217}
   - component: {fileID: 1580027134077465751}
   m_Layer: 5
   m_Name: MejorarHP
@@ -876,6 +905,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3727213818428904217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580027134077465745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2af5c18b145ab48a291e2bcc39c47d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1580027134077465750}
 --- !u!114 &1580027134077465751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -943,6 +985,7 @@ GameObject:
   - component: {fileID: 1580027134324558810}
   - component: {fileID: 1580027134324558815}
   - component: {fileID: 1580027134324558808}
+  - component: {fileID: 3362134131250723442}
   - component: {fileID: 1580027134324558809}
   m_Layer: 5
   m_Name: MejorarDef
@@ -1008,6 +1051,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3362134131250723442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580027134324558811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2af5c18b145ab48a291e2bcc39c47d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1580027134324558808}
 --- !u!114 &1580027134324558809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1075,6 +1131,7 @@ GameObject:
   - component: {fileID: 1580027134905263642}
   - component: {fileID: 1580027134905263647}
   - component: {fileID: 1580027134905263640}
+  - component: {fileID: 1769007173859017627}
   - component: {fileID: 1580027134905263641}
   m_Layer: 5
   m_Name: NextPJ
@@ -1140,6 +1197,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1769007173859017627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580027134905263643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2af5c18b145ab48a291e2bcc39c47d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1580027134905263640}
 --- !u!114 &1580027134905263641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1207,6 +1277,7 @@ GameObject:
   - component: {fileID: 1580027135460948515}
   - component: {fileID: 1580027135460948512}
   - component: {fileID: 1580027135460948513}
+  - component: {fileID: 8648890039760013489}
   - component: {fileID: 1580027135460948514}
   m_Layer: 5
   m_Name: MejorarVel
@@ -1272,6 +1343,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8648890039760013489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580027135460948540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2af5c18b145ab48a291e2bcc39c47d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1580027135460948513}
 --- !u!114 &1580027135460948514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1339,6 +1423,7 @@ GameObject:
   - component: {fileID: 1580027135589068801}
   - component: {fileID: 1580027135589068806}
   - component: {fileID: 1580027135589068807}
+  - component: {fileID: 4516759463929659349}
   - component: {fileID: 1580027135589068800}
   m_Layer: 5
   m_Name: MejorarAtt
@@ -1404,6 +1489,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4516759463929659349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580027135589068802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2af5c18b145ab48a291e2bcc39c47d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1580027135589068807}
 --- !u!114 &1580027135589068800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1471,6 +1569,7 @@ GameObject:
   - component: {fileID: 1580027135609053045}
   - component: {fileID: 1580027135609053050}
   - component: {fileID: 1580027135609053051}
+  - component: {fileID: 4133714663041869435}
   - component: {fileID: 1580027135609053044}
   m_Layer: 5
   m_Name: MejorarSpAtt
@@ -1536,6 +1635,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4133714663041869435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580027135609053046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2af5c18b145ab48a291e2bcc39c47d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1580027135609053051}
 --- !u!114 &1580027135609053044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3032,7 +3144,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Manolo
+  m_text: 'Manolo 1
 
 '
   m_isRightToLeft: 0
