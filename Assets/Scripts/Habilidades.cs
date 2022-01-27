@@ -5,7 +5,7 @@ using UnityEngine;
 public class Habilidades                                                                                                                                    // 0  true    false  false    true
 {                                  
     // Base                                                                                                                             // cooldown coste damage range radius damages heals special targetEnemy
-    public static Habilidad AtaqueConEspada = new Habilidad("Ataque con espada", "Ataque con espada", "physical", 0, 2, 10, 8.0f);
+    public static Habilidad AtaqueConEspada = new Habilidad("Ataque con espada", "Ataque con espada", "physical", 0, 2, 10, 4.0f);
     public static Habilidad Pocion = new Habilidad("Pocion", "Bebe una poción para recuperar salud", "none", 0, 1, 10, 0.0001f, 0.0f, false, true, true, false);
 
     // Paladin

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Random = System.Random;
 
 public class RandomCombat : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class RandomCombat : MonoBehaviour
     private GameObject scene;
     private Animator imageAnimator;
 
+    Random r = new Random();
 
     // Start is called before the first frame update
     void Start()
@@ -75,6 +77,7 @@ public class RandomCombat : MonoBehaviour
             }
             else if (inCombat && fadeIn && imageAnimator.GetCurrentAnimatorStateInfo(0).IsName("Default"))
             {
+                
                 //SceneManager.LoadScene("CombatDemo", LoadSceneMode.Additive); battleScene = "CombatDemo";
                 if (SceneManager.GetActiveScene().name == "Scene3_Castle")
                 {
@@ -118,7 +121,7 @@ public class RandomCombat : MonoBehaviour
         bool combat = false;
 
 
-        float num = Random.Range(0f, 99f);
+        float num = UnityEngine.Random.Range(0f, 99f);
         //Debug.Log(num);
         if (num <= probability)
         {
