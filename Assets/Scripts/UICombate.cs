@@ -32,7 +32,6 @@ public class UICombate : MonoBehaviour
     private List<TextMeshPro> nombres;
     private Image[] imgsEstados;
     private List<GameObject> aDestruir = new List<GameObject>();
-    private List<GameObject> ordenPjs;
     private Vector3 primerNombre;
 
     public GameObject selected; // El cuadrito que muestra el seleccionado
@@ -77,7 +76,6 @@ public class UICombate : MonoBehaviour
                 ant = go;
             }
             nombres = Turnos.GetComponentsInChildren<TextMeshPro>().ToList();
-            ordenPjs = new List<GameObject>(SistemaCombate.pjs);
             empezado = true;
         }
         else{
@@ -107,7 +105,7 @@ public class UICombate : MonoBehaviour
 
     public void actualizaTurno(Character pj, bool muerto){
         int pos = buscaPj(pj.nombre);
-        if(pos<nombres.Count-1 || (pos==nombres.Count-1 && muerto)){ // El ultimo no hace falta si no esta muerto
+        if(pos<nombres.Count-1 || muerto){ // El ultimo no hace falta si no esta muerto
             if(!pj.user_controlled){
                 Sprite enemigo = Resources.Load<Sprite>("UIEnemigoInactivo");
                 nombres[pos].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = enemigo;
@@ -131,7 +129,7 @@ public class UICombate : MonoBehaviour
 
         InvokeRepeating("ActualitzarCartell", 0f, 0.5f);
 
-        primerNombre = Turnos.transform.Find("Pos").position;
+        primerNombre = Turnos.transform.Find("Pos").position; // Esto es para que no haya fallos de donde tiene que ir las etiquetas de los turnos
     }
 
     void ActualitzarCartell(){
