@@ -16,6 +16,7 @@ public class Pause : MonoBehaviour
     public bool enCombate = false;
     int anterior;
     int _godMode = 0;
+    public GameObject ThirdPersonCamera;
     public GameObject menu;
     public GameObject options;
     public GameObject controls;
@@ -34,6 +35,12 @@ public class Pause : MonoBehaviour
             options = this.transform.GetChild(1).transform.GetChild(2).transform.GetChild(5).gameObject;
         }
     }*/
+    void Start (){
+        if (ThirdPersonCamera != null){
+            ThirdPersonCamera.SetActive(false);
+            ThirdPersonCamera.SetActive(true);
+        }
+    }
     void Update(){
         if(Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "MenuInici" && 
             SceneManager.GetActiveScene().name != "GameOver" && SceneManager.GetActiveScene().name != "Victoria" && !Singleton.LevelupPanel()){

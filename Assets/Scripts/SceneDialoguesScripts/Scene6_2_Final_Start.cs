@@ -44,6 +44,8 @@ public class Scene6_2_Final_Start : MonoBehaviour
         }
         else if (GameObject.Find("ImatgeDialeg").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Default") && final)
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             SceneManager.LoadScene("Victoria");
         }
     }

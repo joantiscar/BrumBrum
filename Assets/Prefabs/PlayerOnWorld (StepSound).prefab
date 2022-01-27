@@ -3333,8 +3333,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4603186940095289487}
-  m_LocalRotation: {x: 0.025338562, y: 0.70665264, z: -0.025338562, w: 0.70665276}
-  m_LocalPosition: {x: -11.616777, y: 0, z: -11.664103}
+  m_LocalRotation: {x: -0.008890399, y: -0.970289, z: 0.036081295, w: -0.23907833}
+  m_LocalPosition: {x: -15.666706, y: 0, z: 5.055231}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3158121022105832046}
@@ -3408,7 +3408,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4603186940287500566}
   m_LocalRotation: {x: 0.00014899299, y: 0.9973527, z: -0.072686195, w: 0.0020443497}
-  m_LocalPosition: {x: 4.6373, y: 0, z: 4.6561966}
+  m_LocalPosition: {x: -8.323751, y: 0, z: 6.8339233}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4603186941177687624}
@@ -3657,8 +3657,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4603186940483596901}
-  m_LocalRotation: {x: 0.38453433, y: 0.014120903, z: -0.0058830664, w: 0.9229839}
-  m_LocalPosition: {x: -0.36709693, y: 18, z: -11.994387}
+  m_LocalRotation: {x: 0.4178079, y: 0.013897805, z: -0.0063920915, w: 0.90840656}
+  m_LocalPosition: {x: -0.36709833, y: 18, z: -11.994388}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4603186941545397572}
@@ -3775,7 +3775,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4603186940795462422}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.703666, y: 6.372348, z: 11.664106}
+  m_LocalPosition: {x: 8.257383, y: 6.372348, z: 9.486385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4603186940287500560}
@@ -4095,8 +4095,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4603186941209880045}
-  m_LocalRotation: {x: 0.00011178292, y: 0.99850994, z: -0.05453282, w: 0.002046883}
-  m_LocalPosition: {x: 4.6373, y: 0, z: 4.6561966}
+  m_LocalRotation: {x: 0.029413138, y: -0.8538201, z: 0.048531767, w: 0.5174657}
+  m_LocalPosition: {x: 6.25399, y: 0, z: -2.0179906}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3158121022574224836}
@@ -4276,6 +4276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enCombate: 0
+  ThirdPersonCamera: {fileID: 4603186940795462422}
   menu: {fileID: 7325840220407765017}
   options: {fileID: 8300028906018187036}
   controls: {fileID: 8451108573572973828}
