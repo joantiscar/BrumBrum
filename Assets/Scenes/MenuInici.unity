@@ -1422,7 +1422,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d0b93ba952e731b439216ef88e978e80, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dba50e5ae349da74dabd5e1d7371cdae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2103,6 +2103,7 @@ MonoBehaviour:
   SliderSensibilitat: {fileID: 706628614}
   So: {fileID: 1621625738}
   SliderSo: {fileID: 1281323645}
+  UICombate: {fileID: 0}
 --- !u!82 &1020005441
 AudioSource:
   m_ObjectHideFlags: 0
