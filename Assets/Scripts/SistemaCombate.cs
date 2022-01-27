@@ -408,11 +408,7 @@ public class SistemaCombate : MonoBehaviour
                 }
                 else
                 {
-                    //SceneManager.LoadScene("Victoria");
-
-
                     string currentScene = SceneManager.GetActiveScene().name;
-
 
                     if (currentScene == "CombatScene_CombatFinal")
                     {
@@ -421,7 +417,6 @@ public class SistemaCombate : MonoBehaviour
                     else
                     {
                         GameObject.Find("FullScene").GetComponent<RandomCombat>().ExitCombat();
-                        //FindObjectOfType<RandomCombat>().ExitCombat();
                     }
 
 
