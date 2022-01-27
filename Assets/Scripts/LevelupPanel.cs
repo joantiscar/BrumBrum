@@ -63,17 +63,17 @@ public class LevelupPanel : MonoBehaviour
         pjActual = Singleton.instance().pjs[nPjActual];
         puntsText.text = pjActual.upgrade_points.ToString();
         hp.text = pjActual.hpMax.ToString();
-        newHp.text = (pjActual.hpMax + 5).ToString();
+        newHp.text = (pjActual.hpMax + 10).ToString();
         att.text = pjActual.attack.ToString();
-        newAtt.text = (pjActual.attack + 1).ToString();
+        newAtt.text = (pjActual.attack + 5).ToString();
         spAtt.text = pjActual.special_attack.ToString();
-        newSpAtt.text = (pjActual.special_attack + 1).ToString();
+        newSpAtt.text = (pjActual.special_attack + 5).ToString();
         def.text = pjActual.defense.ToString();
-        newDef.text = (pjActual.defense + 1).ToString();
+        newDef.text = (pjActual.defense + 5).ToString();
         spDef.text = pjActual.special_defense.ToString();
-        newSpDef.text = (pjActual.special_defense + 1).ToString();
+        newSpDef.text = (pjActual.special_defense + 5).ToString();
         vel.text = pjActual.velocity.ToString();
-        newVel.text = (pjActual.velocity + 1).ToString();
+        newVel.text = (pjActual.velocity + 5).ToString();
         nomActual.text = pjActual.nombre.ToString() + " " + pjActual.level.ToString();
 
       

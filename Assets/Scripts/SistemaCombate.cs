@@ -388,7 +388,11 @@ public class SistemaCombate : MonoBehaviour
                 
             }
             else{
-                if (derrota) SceneManager.LoadScene("GameOver");
+                if (derrota)
+                {
+                    Singleton.enCombate = false;
+                    SceneManager.LoadScene("GameOver");
+                }
                 else
                 {
                     //SceneManager.LoadScene("Victoria");
@@ -396,7 +400,7 @@ public class SistemaCombate : MonoBehaviour
 
                     string currentScene = SceneManager.GetActiveScene().name;
 
-                    
+
                     if (currentScene == "CombatScene_CombatFinal")
                     {
                         SceneManager.LoadScene("Scene5_Flight_Part1");
@@ -405,7 +409,7 @@ public class SistemaCombate : MonoBehaviour
                     {
                         GameObject.FindObjectOfType<RandomCombat>().ExitCombat();
                     }
-                    
+
 
                 }
 

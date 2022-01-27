@@ -1106,6 +1106,10 @@ PrefabInstance:
       value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: exp_when_killed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: special_defense
       value: 130
       objectReference: {fileID: 0}
@@ -1343,6 +1347,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 1072953829647174081, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1072953829647174086, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -1357,7 +1365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1072953829647174086, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -273
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1072953829647174086, guid: b99758a2b584bd94f98782fd987866ab, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4594,6 +4602,10 @@ PrefabInstance:
       value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: exp_when_killed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: special_defense
       value: 250
       objectReference: {fileID: 0}
@@ -4698,6 +4710,10 @@ PrefabInstance:
     - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: special_attack
       value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: exp_when_killed
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: special_defense
@@ -4806,6 +4822,10 @@ PrefabInstance:
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: exp_when_killed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: special_defense
       value: 200
       objectReference: {fileID: 0}
@@ -4910,6 +4930,10 @@ PrefabInstance:
     - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: special_attack
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
+      propertyPath: exp_when_killed
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6738294195465428745, guid: 5c4a469ebfcdcf74b8e4d00ea150f88f, type: 3}
       propertyPath: special_defense
@@ -7635,6 +7659,9 @@ MonoBehaviour:
   SliderSensibilitat: {fileID: 0}
   So: {fileID: 0}
   SliderSo: {fileID: 0}
+  Layout1: {fileID: 0}
+  Layout2: {fileID: 0}
+  Layout3: {fileID: 0}
   UICombate: {fileID: 0}
 --- !u!1 &6192608079612863851
 GameObject:
