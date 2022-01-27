@@ -18,6 +18,8 @@ public class IniciMenuPrincipal : MonoBehaviour
     // Update is called once per frame
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         inici.SetBool("Iniciar", true);
     }
     void Update()
