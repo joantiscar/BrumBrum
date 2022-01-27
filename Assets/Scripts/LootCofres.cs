@@ -9,6 +9,7 @@ public class LootCofres : MonoBehaviour
     private int escena;
     bool nextframe = false;
     bool done = false;
+    string nombre = null;
     private AudioSource audioSource;
     public GameObject missatgeLoot;
     TextMeshProUGUI TextLoot;
@@ -37,17 +38,19 @@ public class LootCofres : MonoBehaviour
     }
 
     void Update (){
-        if (animMissatgeLoot.GetCurrentAnimatorStateInfo(0).IsName("AnimacioPanelLoot") && !nextframe && !done){
+        if (animMissatgeLoot.GetCurrentAnimatorStateInfo(0).IsName("AnimacioPanelLoot") && !nextframe && !done && nombre != null){
             nextframe = true;
         }
         else if (animMissatgeLoot.GetCurrentAnimatorStateInfo(0).IsName("AnimacioPanelLoot") && nextframe && !done){
             animMissatgeLoot.SetBool("Show", false);
             nextframe = false;
             done = true;
+            Destroy(gameObject);
         }
     }
 
     public void getLoot() {
+        nombre = transform.gameObject.name;
         int loot;
         int quantitat;
         audioSource.Play();
@@ -87,7 +90,7 @@ public class LootCofres : MonoBehaviour
                 if (loot == 0){
                     quantitat = Random.Range(2, 4);
                     Singleton.afegirPocions(quantitat);
-                    TextLoot.text = quantitat + " pocions";
+                    TextLoot.text = "Has conseguido " + quantitat + " pociones";
                     animMissatgeLoot.SetBool("Show", true);
                     nextframe = false;
                     done = false;
@@ -106,7 +109,7 @@ public class LootCofres : MonoBehaviour
                 if (loot == 0){
                     quantitat = Random.Range(3, 5);
                     Singleton.afegirPocions(quantitat);
-                    TextLoot.text = quantitat + " pocions";
+                    TextLoot.text = "Has conseguido " + quantitat + " pociones";
                     animMissatgeLoot.SetBool("Show", true);
                     nextframe = false;
                     done = false;
@@ -125,7 +128,7 @@ public class LootCofres : MonoBehaviour
                 if (loot == 0){
                     quantitat = Random.Range(4, 6);
                     Singleton.afegirPocions(quantitat);
-                    TextLoot.text = quantitat + " pocions";
+                    TextLoot.text = "Has conseguido " + quantitat + " pociones";
                     animMissatgeLoot.SetBool("Show", true);
                     nextframe = false;
                     done = false;
