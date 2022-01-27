@@ -378,11 +378,12 @@ public class SistemaCombate : MonoBehaviour
 
                 // Miramos si ha llegado a su destino dandole un poco de margen para que no se quede atascau siempre
                 if (moviendose && 
-                    pjActual.transform.position[0] >= last_hit.point[0] - 0.25 && pjActual.transform.position[0] <= last_hit.point[0] + 0.25 && 
-                    pjActual.transform.position[2] >= last_hit.point[2] - 0.25 && pjActual.transform.position[2] <= last_hit.point[2] + 0.25) {
+                    pjActual.transform.position[0] >= last_hit.point[0] - 0.4f && pjActual.transform.position[0] <= last_hit.point[0] + 0.4f && 
+                    pjActual.transform.position[2] >= last_hit.point[2] - 0.4f && pjActual.transform.position[2] <= last_hit.point[2] + 0.4f) {
                     pjActual.GetComponentInChildren<Animator>().SetFloat("Velocity", 0);
                     pjActual.GetComponent<NavMeshAgent>().isStopped = true;
                     pjActual.GetComponent<NavMeshAgent>().isStopped = false;
+                    pjActual.GetComponent<NavMeshAgent>().destination = pjActual.transform.position;
                     moviendose = false;
                 }                
                 
