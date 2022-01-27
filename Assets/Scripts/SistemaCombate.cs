@@ -444,5 +444,6 @@ public class SistemaCombate : MonoBehaviour
 
         Debug.Log("Eliminant a " + pjs[i].GetComponent<Character>().nombre);
         pjs.RemoveAt(i);
+        ordenActual--;
     }
 }

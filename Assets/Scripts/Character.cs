@@ -300,7 +300,7 @@ public class Character : MonoBehaviour
     public void dibujaCirculoMov(){
         destruirCirculoMov();
         circuloMov = new GameObject();
-        circuloMov.DrawCircle((float)metrosRestantes, .075f, Color.green);
+        circuloMov.DrawCircle((float)metrosRestantes, .075f, new Color(0, 0.88f, 1));
     }
 
     public void destruirCirculoMov(){
