@@ -32,8 +32,6 @@ public class RandomCombat : MonoBehaviour
 
         scene = GameObject.Find("MovementScene");
 
-        Debug.Log(scene);
-
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if(player!=null)
             imageAnimator = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Canvas>().GetComponentInChildren<Image>().GetComponent<Animator>();
