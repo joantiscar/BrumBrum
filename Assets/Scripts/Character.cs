@@ -363,7 +363,25 @@ public class Character : MonoBehaviour
         turnosMejoraVelocidad--; if (turnosMejoraVelocidad == 0) mejoraVelocidad = false; EstadosActivos[16] = false;
     }
 
-
+    public void quitarEstados(){
+        if (turnosQuemado != 0) quemado = false; EstadosActivos[0] = false;
+        if (turnosCongelado != 0) congelado = false; EstadosActivos[1] = false;
+        if (turnosEnvenenado != 0) envenenado = false; EstadosActivos[2] = false;
+        if (turnosAturdido != 0) aturdido = false; EstadosActivos[3] = false;
+        if (turnosSangrado != 0) sangrado = false; EstadosActivos[4] = false;
+        if (turnosMiedo != 0) miedo = false; EstadosActivos[5] = false;
+        if (turnosFuria != 0) furia = false; EstadosActivos[6] = false;
+        if (turnosProtegido != 0) protegido = false; EstadosActivos[7] = false;
+        if (turnosBendecido != 0) bendecido = false; EstadosActivos[8] = false;
+        if (turnosInspirado != 0) inspirado = false; EstadosActivos[9] = false;
+        if (turnosContraataque != 0) contraataque = false; EstadosActivos[10] = false;
+        if (turnosInmortal != 0) inmortal = false; EstadosActivos[11] = false;
+        if (turnosMejoraAtaque != 0) mejoraAtaque = false; EstadosActivos[12] = false;
+        if (turnosMejoraAtaqueEspecial != 0) mejoraAtaqueEspecial = false; EstadosActivos[13] = false;
+        if (turnosMejoraDefensa != 0) mejoraDefensa = false; EstadosActivos[14] = false;
+        if (turnosMejoraDefensaEspecial != 0) mejoraDefensaEspecial = false; EstadosActivos[15] = false;
+        if (turnosMejoraVelocidad != 0) mejoraVelocidad = false; EstadosActivos[16] = false;
+    }
 
     void Awake(){
         iniciarEstado();

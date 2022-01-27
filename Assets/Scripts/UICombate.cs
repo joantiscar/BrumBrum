@@ -38,7 +38,6 @@ public class UICombate : MonoBehaviour
 
     public int habilidadSeleccionada = -1;
     Character pjActual;
-    GameObject pjDatosActual;
     private List<string> missatges = new List<string>();
     int mensajeHP = 0;
     
@@ -297,40 +296,34 @@ public class UICombate : MonoBehaviour
     }
 
     public void mostrarDatos(GameObject personaje){
-        cajaDatos.gameObject.SetActive(true);
+        if(SistemaCombate.pjs.IndexOf(personaje)!=-1){
+            cajaDatos.gameObject.SetActive(true);
 
-        pjDatosActual = personaje;
+            Character c = personaje.GetComponent<Character>();
 
-        Character c = personaje.GetComponent<Character>();
+            cajaDatos.Find("Nombre").GetComponent<TextMeshPro>().text = c.nombre;
+            cajaDatos.Find("HP").GetComponent<TextMeshPro>().text = c.hp.ToString() + " HP";
+            cajaDatos.Find("Nivel").GetComponent<TextMeshPro>().text = c.level.ToString();
 
-        cajaDatos.Find("Nombre").GetComponent<TextMeshPro>().text = c.nombre;
-        cajaDatos.Find("HP").GetComponent<TextMeshPro>().text = c.hp.ToString() + " HP";
-        cajaDatos.Find("Nivel").GetComponent<TextMeshPro>().text = c.level.ToString();
+            // Actualiza la barra con el HP
+            Slider barra = cajaDatos.Find("Barra").GetComponent<Slider>();
+            barra.maxValue = (float) c.hpMax;
+            barra.value = (float) c.hp;
 
-        // Actualiza la barra con el HP
-        Slider barra = cajaDatos.Find("Barra").GetComponent<Slider>();
-        barra.maxValue = (float) c.hpMax;
-        barra.value = (float) c.hp;
+            // Mostrar estados
+            for (int i = 0; i < c.EstadosActivos.Length; i++)
+            {
+                if(c.EstadosActivos[i]) habilitaEstado(i);
+                else deshabilitaEstado(i);
+            }
 
-        // Mostrar estados
-        for (int i = 0; i < c.EstadosActivos.Length; i++)
-        {
-            if(c.EstadosActivos[i]) habilitaEstado(i);
-            else deshabilitaEstado(i);
         }
-
     }
 
     public void escondeDatos(){
-        
+        Debug.Log("Que me escondo");
         cajaDatos.gameObject.SetActive(false);
-        pjDatosActual = null;
-    }
-
-    public void actualizaDatos(){
-        if(cajaDatos.gameObject.activeSelf){
-            cajaDatos.Find("Barra").GetComponent<Slider>().value = (float) pjDatosActual.GetComponent<Character>().hp;
-        }
+        
     }
 
     public void mostrarMissatge(string missatge){

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -49,7 +50,7 @@ public class Habilidades                                                        
 
    public static bool unaEntre(int max){
         
-        return Random.Range(0, max - 1) == 0;
+        return UnityEngine.Random.Range(0, max - 1) == 0;
     }
 
     public static void lanzar(Character caster, Character objetivo, Habilidad habilidad){
@@ -89,8 +90,9 @@ public class Habilidades                                                        
                 }
             }
         }else if (habilidad.heals){
-            objetivoScript.recieveHeal(habilidad.damage + caster.ataqueEspecialActual());
-            if (habilidad.name == "Renacer") objetivoScript.renacer();
+            if(habilidad.name == "Pocion") objetivoScript.recieveHeal(10);
+            else if (habilidad.name == "Renacer") objetivoScript.renacer();
+            else objetivoScript.recieveHeal(habilidad.damage + (int)Math.Round(caster.ataqueEspecialActual()/2f)); //Si dejamos el ataqueespecial tal cual, en endgame esto está muy roto
         }else{
             switch(habilidad.name){
                 case "Proteger":
@@ -110,7 +112,15 @@ public class Habilidades                                                        
                 case "Aura de protección mágica":
                     objetivoScript.mejorarDefensaEspecial();
                     break;
+                case "Bendición":
+                    objetivoScript.mejorarAtaque();
+                    objetivoScript.mejorarAtaqueEspecial();
+                    objetivoScript.mejorarVelocidad();
+                    objetivoScript.mejorarDefensaEspecial();
+                    objetivoScript.mejorarDefensa();
+                    break;
                 case "Purificación": // quita estados alterados, bools y turnos
+                    objetivoScript.quitarEstados();
                     break;
                 default:
                         break;
