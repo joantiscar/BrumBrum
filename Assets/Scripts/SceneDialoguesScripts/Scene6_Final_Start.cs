@@ -58,7 +58,6 @@ public class Scene6_Final_Start : MonoBehaviour
             secondDialogueIsCalled = true;
             interacted = false;
             objecteInt.Interactuate();
-            player.GetComponent<Interaccio>().isTalkingStarted();
         }
         else if (secondDialogueIsCalled && !FindObjectOfType<controlDialegs>().animText.GetBool("Sign") && !interacted)
         {

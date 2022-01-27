@@ -10570,6 +10570,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b865be784f8624481f11636ebc78e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  missatgeLoot: {fileID: 0}
+  animMissatgeLoot: {fileID: 0}
 --- !u!114 &4158201558183205526
 MonoBehaviour:
   m_ObjectHideFlags: 0

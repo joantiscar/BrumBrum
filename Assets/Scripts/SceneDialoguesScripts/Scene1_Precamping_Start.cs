@@ -50,7 +50,6 @@ public class Scene1_Precamping_Start : MonoBehaviour
             objecteInt.Start();
             secondDialogueIsCalled = true;
             objecteInt.Interactuate();
-            player.GetComponent<Interaccio>().isTalkingStarted();
 
             Destroy(npc_inicialDialogue.GetComponent<GameDialogue>());
             Destroy(objecteInt);
