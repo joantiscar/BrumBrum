@@ -425,16 +425,6 @@ public class SistemaCombate : MonoBehaviour
             }
 
         }
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            GameObject.FindObjectOfType<SistemaCombate>().derrota = true;
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            GameObject.FindObjectOfType<SistemaCombate>().victoria = true;
-        }
-
     }
     
 
