@@ -2270,6 +2270,9 @@ MonoBehaviour:
   SliderSensibilitat: {fileID: 6221606653808434982}
   So: {fileID: 4349423092276399127}
   SliderSo: {fileID: 720177339931714097}
+  Layout1: {fileID: 0}
+  Layout2: {fileID: 0}
+  Layout3: {fileID: 0}
   UICombate: {fileID: 1072953828644696913}
 --- !u!1 &1072953829698428390
 GameObject:
