@@ -1126,13 +1126,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Suelo
       objectReference: {fileID: 0}
+    - target: {fileID: 253088941140671778, guid: 5b9afa0353bc26049bcf4e7e775bbfa3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 253088942062544813, guid: 5b9afa0353bc26049bcf4e7e775bbfa3, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 253088942062544814, guid: 5b9afa0353bc26049bcf4e7e775bbfa3, type: 3}
       propertyPath: m_Name
-      value: Plane
+      value: Suelo
       objectReference: {fileID: 0}
     - target: {fileID: 253088942062544814, guid: 5b9afa0353bc26049bcf4e7e775bbfa3, type: 3}
       propertyPath: m_IsActive
