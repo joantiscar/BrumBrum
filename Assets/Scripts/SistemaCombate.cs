@@ -378,8 +378,8 @@ public class SistemaCombate : MonoBehaviour
 
                 // Miramos si ha llegado a su destino dandole un poco de margen para que no se quede atascau siempre
                 if (moviendose && 
-                    pjActual.transform.position[0] >= last_hit.point[0] - 0.2 && pjActual.transform.position[0] <= last_hit.point[0] + 0.2 && 
-                    pjActual.transform.position[2] >= last_hit.point[2] - 0.2 && pjActual.transform.position[2] <= last_hit.point[2] + 0.2) {
+                    pjActual.transform.position[0] >= last_hit.point[0] - 0.25 && pjActual.transform.position[0] <= last_hit.point[0] + 0.25 && 
+                    pjActual.transform.position[2] >= last_hit.point[2] - 0.25 && pjActual.transform.position[2] <= last_hit.point[2] + 0.25) {
                     pjActual.GetComponentInChildren<Animator>().SetFloat("Velocity", 0);
                     pjActual.GetComponent<NavMeshAgent>().isStopped = true;
                     pjActual.GetComponent<NavMeshAgent>().isStopped = false;
@@ -444,5 +444,6 @@ public class SistemaCombate : MonoBehaviour
 
         Debug.Log("Eliminant a " + pjs[i].GetComponent<Character>().nombre);
         pjs.RemoveAt(i);
+        if(i<ordenActual)ordenActual--;
     }
 }

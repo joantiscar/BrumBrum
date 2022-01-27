@@ -95,6 +95,32 @@ public class UICombate : MonoBehaviour
         }
     }
 
+    int buscaPj(string nombre){ // Al tener 
+        int i = 0;
+        while(i<nombres.Count && nombres[i].text!=nombre){
+            i++;
+        }
+        return i;
+    }
+
+    public void actualizaTurno(Character pj, bool muerto){
+        int pos = buscaPj(pj.nombre);
+        if(pos<nombres.Count-1 || muerto){ // El ultimo no hace falta si no esta muerto
+            if(!pj.user_controlled){
+                Sprite enemigo = Resources.Load<Sprite>("UIEnemigoInactivo");
+                nombres[pos].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = enemigo;
+            }
+            else{
+                Sprite aliado = Resources.Load<Sprite>("UIAliadoInactivo");
+                nombres[pos].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = aliado;
+            }
+            if(muerto){
+                aDestruir.Add(nombres[pos].gameObject);
+                nombres.RemoveAt(pos);
+            }
+        }
+    }
+
     void Start(){
         cajaDatos.gameObject.SetActive(false);
         cajaHabilidad.gameObject.SetActive(false);
@@ -103,7 +129,7 @@ public class UICombate : MonoBehaviour
 
         InvokeRepeating("ActualitzarCartell", 0f, 0.5f);
 
-        primerNombre = Turnos.transform.Find("Pos").position;
+        primerNombre = Turnos.transform.Find("Pos").position; // Esto es para que no haya fallos de donde tiene que ir las etiquetas de los turnos
     }
 
     void ActualitzarCartell(){
@@ -152,7 +178,7 @@ public class UICombate : MonoBehaviour
             for(i=0;i<habilidades.Count;i++)
             {
                 // Usamos el nombre de la habilidad para saber qué imagen usar
-                // EL PATH TIENE QUE ESTAR EN RESOURCES/... PORFA HACEDLE CASO A ESTO SI LO TOCAIS EN ALGUN MOMENTO SANKIU VERY MUCH
+                // EL PATH TIENE QUE ESTAR EN RESOURCES/... PORFA HACEDLE CASO A ESTO
                 imgs[i].sprite = Resources.Load<Sprite>(habilidades[i].name);
                 if(pjActual.cooldowns[i]>0){
                     deshabilitaHabilidad(i); // Miramos el cooldown, si es mayor que 0, en gris
@@ -184,27 +210,6 @@ public class UICombate : MonoBehaviour
             habilitarUI(false);
         }
         
-    }
-
-    public void actualizaTurno(Character pj, bool muerto){
-        int pos; 
-        if(muerto) pos = SistemaCombate.pjs.IndexOf(pj.gameObject);
-        else pos = SistemaCombate.ordenActual;
-        if(pos<nombres.Count-1){
-            if(!pj.user_controlled){
-                Sprite enemigo = Resources.Load<Sprite>("UIEnemigoInactivo");
-                nombres[pos].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = enemigo;
-            }
-            else{
-                Sprite aliado = Resources.Load<Sprite>("UIAliadoInactivo");
-                nombres[pos].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = aliado;
-            }
-            if(muerto){
-                aDestruir.Add(nombres[pos].gameObject);
-                nombres.RemoveAt(pos);
-            }
-
-        }
     }
 
     public void FinalizaTurno(){ // Llamada cada vez que acaba el turno de un personaje

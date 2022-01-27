@@ -772,6 +772,10 @@ PrefabInstance:
       value: 339
       objectReference: {fileID: 0}
     - target: {fileID: 5409459657447197229, guid: 53fca93cae81a1b40bf90f294930dd18, type: 3}
+      propertyPath: esRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409459657447197229, guid: 53fca93cae81a1b40bf90f294930dd18, type: 3}
       propertyPath: pjs.Array.size
       value: 7
       objectReference: {fileID: 0}
