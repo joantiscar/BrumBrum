@@ -579,6 +579,7 @@ public class Character : MonoBehaviour
     {
         hp += ammount;
         if (hp > hpMax) hp = hpMax;
+        if(SistemaCombate.pjActualPersonaje == this) UICombate.actualizaHP();
         return true;
     }
 

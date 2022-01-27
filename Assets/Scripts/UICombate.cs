@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Linq;
 using TMPro;
 using System;
 public class UICombate : MonoBehaviour
@@ -14,18 +15,19 @@ public class UICombate : MonoBehaviour
 
     private List<Habilidad> _habilidades; // Una array con las habilidades actuales
 
-    private int orden = 0;
     private bool empezado = false;
     
     public Transform cajaHabilidad;
     public Transform cajaDatos;
     public Slider barraHP;
-    public Text LabelPP;
+    public TextMeshPro LabelPP;
     public TextMeshPro TextLabel;
     public TextMeshPro pocionLabel;
     public GameObject TextBackground;
     public GameObject Turnos;
-    private TextMeshPro[] nombres;
+
+    private List<TextMeshPro> nombres;
+    private List<GameObject> aDestruir = new List<GameObject>();
 
     public GameObject selected; // El cuadrito que muestra el seleccionado
 
@@ -34,22 +36,27 @@ public class UICombate : MonoBehaviour
     GameObject pjDatosActual;
     private List<string> missatges = new List<string>();
     int mensajeHP = 0;
+    
     public SistemaCombate SistemaCombate;
 
     void Awake()
     {
         imgs = GetComponentsInChildren<Image>();
-        nombres = Turnos.GetComponentsInChildren<TextMeshPro>();
+        nombres = Turnos.GetComponentsInChildren<TextMeshPro>().ToList();
 
     }
 
     public void muestraOrden(){ // Cambia el orden de turnos segun el dado por sistema de combate
         if(!empezado){
-            nombres[0].gameObject.GetComponent<TextMeshPro>().text = SistemaCombate.pjs[0].GetComponent<Character>().nombre;
-            GameObject ant = nombres[0].gameObject;
-            int i=1;
             Sprite enemigo = Resources.Load<Sprite>("UIEnemigoActivo");
             Sprite aliado = Resources.Load<Sprite>("UIAlaidoActivo");
+            // Ponemos bien el primero: nombre y fondo
+            nombres[0].gameObject.GetComponent<TextMeshPro>().text = SistemaCombate.pjs[0].GetComponent<Character>().nombre;
+            if(!SistemaCombate.pjs[0].GetComponent<Character>().user_controlled) nombres[0].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = enemigo;
+            else nombres[0].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = aliado;
+            // Vamos copiando
+            GameObject ant = nombres[0].gameObject;
+            int i=1;
             while(i<SistemaCombate.pjs.Count){
                 GameObject go = Instantiate(ant,Turnos.transform);
 
@@ -63,14 +70,20 @@ public class UICombate : MonoBehaviour
                 i++;
                 ant = go;
             }
-            nombres = Turnos.GetComponentsInChildren<TextMeshPro>();
+            nombres = Turnos.GetComponentsInChildren<TextMeshPro>().ToList();
             empezado = true;
         }
         else{
-            for(int i=1;i<nombres.Length;i++){ // Destruimos todos menos el primero
+            for(int i=1;i<nombres.Count;i++){ // Destruimos todos menos el primero
+                nombres[i].transform.SetParent(null,false);
                 Destroy(nombres[i].gameObject);
             }
-            nombres = Turnos.GetComponentsInChildren<TextMeshPro>();
+            foreach(var obj in aDestruir){
+                obj.transform.SetParent(null,false);
+                Destroy(obj);
+            }
+            aDestruir.Clear();
+            nombres = Turnos.GetComponentsInChildren<TextMeshPro>().ToList();
             empezado = false;
             muestraOrden();
         }
@@ -145,9 +158,7 @@ public class UICombate : MonoBehaviour
             }
             _habilidades = habilidades;
 
-            // Actualiza la barra con el HP
-            barraHP.maxValue = (float) pj.hpMax;
-            barraHP.value = (float) pj.hp;
+            actualizaHP();
 
 
             // Actualiza el label de PP
@@ -164,14 +175,24 @@ public class UICombate : MonoBehaviour
         
     }
 
-    public void actualizaTurno(Character pj){
-        if(!pj.user_controlled){
-            Sprite enemigo = Resources.Load<Sprite>("UIEnemigoInactivo");
-            nombres[SistemaCombate.ordenActual].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = enemigo;
-        }
-        else{
-            Sprite aliado = Resources.Load<Sprite>("UIAliadoInactivo");
-            nombres[SistemaCombate.ordenActual].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = aliado;
+    public void actualizaTurno(Character pj, bool muerto){
+        int pos; 
+        if(muerto) pos = SistemaCombate.pjs.IndexOf(pj.gameObject);
+        else pos = SistemaCombate.ordenActual;
+        if(pos<nombres.Count-1){
+            if(!pj.user_controlled){
+                Sprite enemigo = Resources.Load<Sprite>("UIEnemigoInactivo");
+                nombres[pos].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = enemigo;
+            }
+            else{
+                Sprite aliado = Resources.Load<Sprite>("UIAliadoInactivo");
+                nombres[pos].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = aliado;
+            }
+            if(muerto){
+                aDestruir.Add(nombres[pos].gameObject);
+                nombres.RemoveAt(pos);
+            }
+
         }
     }
 
@@ -180,7 +201,8 @@ public class UICombate : MonoBehaviour
         selected.SetActive(false);
         pjActual.habilidadSeleccionada = -1;
         habilidadSeleccionada = -1;
-        if(SistemaCombate.ordenActual!=SistemaCombate.pjs.Count)actualizaTurno(pjActual);
+        if(SistemaCombate.ordenActual!=SistemaCombate.pjs.Count)actualizaTurno(pjActual,false);
+
     }
 
     public void muestraDescripcion(int pos){
@@ -194,17 +216,17 @@ public class UICombate : MonoBehaviour
                 h = _habilidades[pos];
             }
             cajaHabilidad.gameObject.SetActive(true);
-            cajaHabilidad.Find("Nombre").GetComponent<Text>().text = h.name;
-            cajaHabilidad.Find("Dano").GetComponent<Text>().text = h.damage.ToString();
-            if(pos==6) cajaHabilidad.Find("Cooldown").GetComponent<Text>().text = "—";
-            else cajaHabilidad.Find("Cooldown").GetComponent<Text>().text = h.cooldown.ToString();
-            cajaHabilidad.Find("nCost").GetComponent<Text>().text = h.coste.ToString() + " PP";
-            cajaHabilidad.Find("Descripcion").GetComponent<Text>().text = h.description;
+            cajaHabilidad.Find("Nombre").GetComponent<TextMeshPro>().text = h.name;
+            cajaHabilidad.Find("Dano").GetComponent<TextMeshPro>().text = h.damage.ToString();
+            if(pos==6) cajaHabilidad.Find("Cooldown").GetComponent<TextMeshPro>().text = "—";
+            else cajaHabilidad.Find("Cooldown").GetComponent<TextMeshPro>().text = h.cooldown.ToString();
+            cajaHabilidad.Find("nCost").GetComponent<TextMeshPro>().text = h.coste.ToString() + " PP";
+            cajaHabilidad.Find("Descripcion").GetComponent<TextMeshPro>().text = h.description;
             if(h.heals){
-                cajaHabilidad.Find("LabelDano").GetComponent<Text>().text = "Cura:";
+                cajaHabilidad.Find("Fondo").GetComponent<Image>().sprite = Resources.Load<Sprite>("Assets/Resources/HUDS/HUD_JUGADOR_AUX/HUD_CURA");
             }
             else{
-                cajaHabilidad.Find("LabelDano").GetComponent<Text>().text = "Daño:";
+                cajaHabilidad.Find("Fondo").GetComponent<Image>().sprite = Resources.Load<Sprite>("Assets/Resources/HUDS/HUD_JUGADOR_AUX/DANO");
             }
         }
     }
@@ -246,6 +268,12 @@ public class UICombate : MonoBehaviour
 
     public void actualizaPP(){
         LabelPP.text = pjActual.actPAtaques.ToString();
+    }
+
+    public void actualizaHP(){
+        // Actualiza la barra con el HP
+        barraHP.maxValue = (float) pjActual.hpMax;
+        barraHP.value = (float) pjActual.hp;
     }
 
     public void ActualizaDistancia(){
@@ -292,9 +320,12 @@ public class UICombate : MonoBehaviour
     }
 
     public void deshabilitaHabilidad(int h){
-        imgs[h].material = Resources.Load<Material>("Gray");
-        imgs[h].transform.GetChild(0).gameObject.SetActive(true);
-        imgs[h].transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = pjActual.cooldowns[h].ToString();
+        if(pjActual.habilidadesDisponibles[h].cooldown>0){
+            imgs[h].material = Resources.Load<Material>("Gray");
+            imgs[h].transform.GetChild(0).gameObject.SetActive(true);
+            imgs[h].transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = pjActual.cooldowns[h].ToString();
+
+        }
     }
 
 }

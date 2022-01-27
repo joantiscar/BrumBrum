@@ -409,14 +409,12 @@ public class SistemaCombate : MonoBehaviour
         bool trobat = false;
         while(!trobat && i < pjs.Count){
             if (pjs[i].GetComponent<Character>().id == id){
-                
                 trobat = true;
-                
             }
             else i++;
         }
         // MIRAR LO QUE PASA CON EL ORDEN
-        UICombate.actualizaTurno(pjs[i].GetComponent<Character>()); // por si acaso su turno aun no ha llegado
+        UICombate.actualizaTurno(pjs[i].GetComponent<Character>(),true); // por si acaso su turno aun no ha llegado
 
         Debug.Log("Eliminant a " + pjs[i].GetComponent<Character>().nombre);
         pjs.RemoveAt(i);
